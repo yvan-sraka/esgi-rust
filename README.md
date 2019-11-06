@@ -1,15 +1,30 @@
 # esgi-rust
 
-## Planing mercredi 6 novembre
+Cours de système et réseaux de Rust.
+
+## Journée 0 - Bases de Rust
 
 Plongée dans le langage Rust:
 
-- 09:45 10:00 Présentation
-- 10:00 10:20 installation de rust
-- 10:20 11:15 exercices sur rustlings
-- 11:15 11:30 pause
+### Planning
 
-- 11:30 13:00
+- 09:45 - 10:00 Présentation générales
+- 10:00 - 10:20 Installation de rust avec rustup
+- 10:20 - 11:15 Exercices sur rustlings bases
+- 11:15 - 11:30 Pause
+- 11:30 - 13:00 Exercices sur rustlings jusque aux struct
+
+- 13:00 - 14:00 Pause manger
+
+- 14:00 - 14:20 Fin exercice sur rustlings
+- 14:20 - 15:30 application sur les structures `struct Point2D`
+- 15:30 - 15:45 Pause
+- 15:45 - 16:30 Recapitulatif et concepts clé de Rust
+- 16:30 - 17:15 Temps de travail en autonomie
+
+### Installation de Rust
+
+Pour installer Rust on va utiliser le projet [Rustup.rs](https://rustup.rs/),
 
 ### Les bases
 
