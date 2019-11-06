@@ -28,13 +28,33 @@ Pour installer Rust on va utiliser le projet [Rustup.rs](https://rustup.rs/),
 
 ### Les bases
 
-Exercices sur rustlings <https://github.com/rust-lang/rustlings/>.
+Pour assimiler les bases je vous propose de faire des exercices en autonomie pour intégrer la syntaxe
+et les concepts de base du langage.
+
+On va commencer avec le projet rustlings <https://github.com/rust-lang/rustlings/> jusque
+aux `struct`.
+
+Vous pouvez l'installer avec la commande: `curl -L https://git.io/rustlings | bash`
+
+#### Focus sur les struct `Point2D`
+
+Écrire une struct `Point2D` avec deux champs `x` et `y` de type `i32`,
+écrire une fonction new et add dans un bloc `impl` voir ce [chapitre sur les methodes](https://doc.rust-lang.org/book/ch05-03-method-syntax.html) du livre de Rust.
+
+- `new` aura la signature suivante: `fn new (x: i32, y: i32) -> Point2D`
+- `add` aura la signature suivante: `fn add(&self, a: &Point2D) -> Point2D`
+
+Questions0: Si `add` avait eu la signature `fn add(self, a: Point2D) -> Point2D` quel
+problème aurions eu? (Tentez de l'écrire et la tester avec cette signature en
+realisant plusieurs additions avec le même point.
+
+
 
 ## Rust en ligne
 
 Editeur rust en ligne [play.rust-lang.org](https://play.rust-lang.org/)
 
-## Ressources pedagogiques:
+## Ressources pedagogiques
 
 - Livre officiel : [The Rust programming Language](https://doc.rust-lang.org/book/)
 - Tutoriel communautaire en français de Guillaume Gomez https://blog.guillaume-gomez.fr/Rust
