@@ -15,6 +15,10 @@ Plongée dans le langage Rust:
 
 Exercices sur rustlings <https://github.com/rust-lang/rustlings/>.
 
+## Rust en ligne
+
+Editeur rust en ligne [play.rust-lang.org](https://play.rust-lang.org/)
+
 ## Ressources pedagogiques:
 
 - Livre officiel : [The Rust programming Language](https://doc.rust-lang.org/book/)
