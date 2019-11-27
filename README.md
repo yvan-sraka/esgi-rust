@@ -6,13 +6,16 @@ Cours de système et réseaux de Rust.
 
 Plongée dans le langage Rust:
 
+Les exercices sont ici: https://framagit.org/darnuria/rust-initiation/-
+
+
 ### Planning
 
 - 09:45 - 10:00 Présentation générales
 - 10:00 - 10:20 Installation de rust avec rustup
-- 10:20 - 11:15 Exercices sur rustlings bases
+- 10:20 - 11:15 Exercices de base
 - 11:15 - 11:30 Pause
-- 11:30 - 13:00 Exercices sur rustlings jusque aux struct
+- 11:30 - 13:00 Exercices on continue sur les bases!
 
 - 13:00 - 14:00 Pause manger
 
@@ -21,6 +24,10 @@ Plongée dans le langage Rust:
 - 15:30 - 15:45 Pause
 - 15:45 - 16:30 Recapitulatif et concepts clé de Rust
 - 16:30 - 17:15 Temps de travail en autonomie
+
+Travail maison:
+
+Faire au maximum rustling d'ici la prochaine seance: https://github.com/rust-lang/rustlings/
 
 ### Installation de Rust
 
