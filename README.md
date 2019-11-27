@@ -33,6 +33,14 @@ Faire au maximum rustling d'ici la prochaine seance: https://github.com/rust-lan
 
 Pour installer Rust on va utiliser le projet [Rustup.rs](https://rustup.rs/),
 
+#### Windows
+
+Installer la dernière version de [visual studio 2019](https://visualstudio.microsoft.com/downloads/)
+cocher le support *C++*, Rust utilise le linker de de visual studio pour lier
+les binaires.
+
+Source: http://www.jonathanturner.org/2017/03/rust-in-windows.html
+
 ### Les bases
 
 Pour assimiler les bases je vous propose de faire des exercices en autonomie pour intégrer la syntaxe
