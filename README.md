@@ -6,7 +6,7 @@ Cours de système et réseaux de Rust.
 
 Plongée dans le langage Rust:
 
-Les exercices sont ici: https://framagit.org/darnuria/rust-initiation/-
+Les exercices sont ici: https://framagit.org/darnuria/rust-initiation/
 
 
 ### Planning
