@@ -63,8 +63,6 @@ Questions0: Si `add` avait eu la signature `fn add(self, a: Point2D) -> Point2D`
 problème aurions eu? (Tentez de l'écrire et la tester avec cette signature en
 realisant plusieurs additions avec le même point.
 
-
-
 ## Rust en ligne
 
 Editeur rust en ligne [play.rust-lang.org](https://play.rust-lang.org/)
@@ -77,3 +75,16 @@ Editeur rust en ligne [play.rust-lang.org](https://play.rust-lang.org/)
 ## Ressources optionnelles
 
 - Programming Rust Jim Blandy Oreally
+
+## Communauté et veille technologique
+
+Page récapitulative:
+https://www.rust-lang.org/community
+
+Pour la veille en rust je vous recommande le site https://this-week-in-rust.org/
+qui propose de faire une revue des actualités de la semaine en Rust.
+
+Le reddit de Rust est aussi pertinant:
+https://www.reddit.com/r/rust/
+
+Il existe un channel Discord ou les débutants sont les bienvenus: https://discordapp.com/invite/rust-lang
