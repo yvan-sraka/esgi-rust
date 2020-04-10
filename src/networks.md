@@ -51,7 +51,7 @@ tokio = { version = "0.2", features = ["full"] }
 
 ## Lvl 2 - API Request
 
-Using <https://docs.rs/reqwest> play with some external API, like Giphy one: https://developers.giphy.com/docs/api/endpoint#random and create a small command-line program that takes a parameter and save the GIF image on your computer!
+Using <https://docs.rs/reqwest> play with some external API, like Giphy one: <https://developers.giphy.com/docs/api/endpoint#random> and create a small command-line program that takes a parameter and save the GIF image on your computer!
 
 ```toml
 [dependencies]

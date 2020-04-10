@@ -1,0 +1,343 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>FFI &amp; Unsafe - Systems and Networks programming in Rust</title>
+        
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "light" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div id="sidebar-scrollbox" class="sidebar-scrollbox">
+                <ol class="chapter"><li class="expanded "><a href="rust-syntax.html"><strong aria-hidden="true">1.</strong> Introduction to Rust syntax</a></li><li class="expanded "><a href="ownership-borrowing.html"><strong aria-hidden="true">2.</strong> Memory in depth</a></li><li class="expanded "><a href="unix-multithreading.html"><strong aria-hidden="true">3.</strong> Unix and multithreading</a></li><li class="expanded "><a href="ffi-unsafe.html" class="active"><strong aria-hidden="true">4.</strong> FFI &amp; Unsafe</a></li><li class="expanded "><a href="libppm.html"><strong aria-hidden="true">5.</strong> Project libppm</a></li><li class="expanded "><a href="networks.html"><strong aria-hidden="true">6.</strong> Networking</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
+
+                    <h1 class="menu-title">Systems and Networks programming in Rust</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1><a class="header" href="#recall-ffi--unsafe" id="recall-ffi--unsafe">Recall, FFI &amp; Unsafe</a></h1>
+<h2><a class="header" href="#activity--1-requierements-quick-setup" id="activity--1-requierements-quick-setup">Activity -1: Requierements (quick setup)</a></h2>
+<p>Have an <strong>up to date rust toolchain</strong>:</p>
+<pre><code>rustup update
+</code></pre>
+<p>If you need a recap on <strong>Rust syntax</strong>:</p>
+<ul>
+<li><a href="https://github.com/rust-lang/rustlings">https://github.com/rust-lang/rustlings</a></li>
+<li><a href="https://learnxinyminutes.com/docs/rust/">https://learnxinyminutes.com/docs/rust/</a></li>
+<li><a href="https://exercism.io/tracks/rust">https://exercism.io/tracks/rust</a></li>
+</ul>
+<p><strong>Tooling</strong>: be sure to have <strong>RLS</strong> (<a href="https://github.com/rust-lang/rls">https://github.com/rust-lang/rls</a>) linting enabled in your editor!</p>
+<p>N.B. if you're looking for a cool font with code ligatures: 
+<a href="https://github.com/tonsky/FiraCode">https://github.com/tonsky/FiraCode</a></p>
+<h2><a class="header" href="#activity-0-remind-me-whats-rust-again" id="activity-0-remind-me-whats-rust-again">Activity 0: Remind me, what's Rust again?</a></h2>
+<p>Rust is a <strong>compiled language</strong> with a <strong>strong static</strong> algebraic type system.</p>
+<blockquote>
+<p><em>Reminder:</em></p>
+<ul>
+<li>&quot;static&quot; stands for &quot;computed at compiletime&quot;, e.g. <code>macros</code></li>
+<li>&quot;dynamic&quot; stands for &quot;computed at runtime&quot;, e.g. <code>fn</code></li>
+</ul>
+</blockquote>
+<p>The Rust type system contains information about memory (ownership &amp; lifetime).</p>
+<p><strong>Rust rule of thumb:</strong> in safe mode, we can't have aliasing AND mutability!</p>
+<h3><a class="header" href="#a-quick-borrowing-example" id="a-quick-borrowing-example">A quick borrowing example</a></h3>
+<p>Try to recall that memory is split between:</p>
+<ul>
+<li>the <strong>stack</strong> (for things that size is known at compile time)</li>
+<li>the <strong>heap</strong> (for everything else)</li>
+</ul>
+<pre><pre class="playpen"><code class="language-rust">fn mine_mine_mine(s: String) {
+    println!(&quot;{}&quot;, s);
+}
+
+fn main() {
+    println!(&quot;Hello, world!&quot;);
+    let mut str_on_heap = String::from(&quot;Hello, world!&quot;); // Perfect for IO
+    let mut str_on_stack = &quot;Hello, world!&quot;;
+
+    mine_mine_mine(str_on_heap); // &lt;-- value moved here
+    println!(&quot;{}&quot;, str_on_heap);
+
+    // unsafe {
+    //     // here there is no more memory checking rule
+    // }
+}
+</code></pre></pre>
+<blockquote>
+<p>N.B. <a href="https://doc.rust-lang.org/std/string/struct.String.html">https://doc.rust-lang.org/std/string/struct.String.html</a></p>
+</blockquote>
+<h2><a class="header" href="#activity-1-sort-weel-known-programming-languages" id="activity-1-sort-weel-known-programming-languages">Activity 1: Sort weel-known programming languages</a></h2>
+<h3><a class="header" href="#static-typing-compiled-languages" id="static-typing-compiled-languages">Static typing (compiled languages)</a></h3>
+<ul>
+<li><strong>Static memory management (language that compiles to arch-specific binaries)</strong>:
+Rust (type inference is everywhere) | C++ (type inference with keyword <code>auto</code>) | C (no type inference, need to be explicit)</li>
+</ul>
+<blockquote>
+<p>N.B. There are smart pointers (handle at runtime by reference counting) <a href="https://doc.rust-lang.org/book/ch15-00-smart-pointers.html">https://doc.rust-lang.org/book/ch15-00-smart-pointers.html</a></p>
+</blockquote>
+<ul>
+<li><strong>Dynamic memory management (with garbage collectors)</strong>
+<ul>
+<li>Haskell | OCaml | Go (compile to binaries)</li>
+<li>C# | Java | Scala (compile to &quot;portable&quot; bytecode, needs custom VM to run like JVM and .NET)</li>
+</ul>
+</li>
+</ul>
+<h3><a class="header" href="#dynamic-typing-interpreted-languages-so-dynamic-memory-management-for-scripting-mainly" id="dynamic-typing-interpreted-languages-so-dynamic-memory-management-for-scripting-mainly">Dynamic typing (interpreted languages, so dynamic memory management, for scripting mainly)</a></h3>
+<ul>
+<li>BourneShell | Python | Prel | Ruby | PHP | ECMAScript (libs of these languages often rely on compiled code)</li>
+</ul>
+<h2><a class="header" href="#activity-2-what-rustc-do-without-lying-in-the-details" id="activity-2-what-rustc-do-without-lying-in-the-details">Activity 2: What <code>rustc</code> do (without lying in the details):</a></h2>
+<p>Rust <code>=&gt;</code> Rust (without macro) <code>=&gt;</code> (module resolution) <code>=&gt;</code> (memory management) MIR <code>=&gt;</code> ... <code>=&gt;</code> LLVM <code>=&gt;</code> linking (static libs) <code>=&gt;</code> Binary</p>
+<p>We can have a taste of Rust without macros with <a href="https://github.com/mre/cargo-inspect">https://github.com/mre/cargo-inspect</a></p>
+<p>We can have a taste of MIR / LLVM / ASM with <a href="https://godbolt.org">https://godbolt.org</a></p>
+<h3><a class="header" href="#inlining-example" id="inlining-example">Inlining example</a></h3>
+<pre><pre class="playpen"><code class="language-rust">
+<span class="boring">#![allow(unused_variables)]
+</span><span class="boring">fn main() {
+</span>// Type your code here, or load an example.
+pub fn cube(num: i32) -&gt; i32 {
+    num * square(num)
+}
+
+#[inline(always)]
+pub fn square(num: i32) -&gt; i32 {
+    num * num
+}
+<span class="boring">}
+</span></code></pre></pre>
+<h3><a class="header" href="#binaries" id="binaries">Binaries</a></h3>
+<ul>
+<li><strong>Executable</strong>
+<ul>
+<li>Windows: <code>.exe</code> | Unix (usualy no extension)</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>N.B. Binary format for Linux is ELF: <a href="https://en.wikipedia.org/wiki/Executable_and_Linkable_Format">https://en.wikipedia.org/wiki/Executable_and_Linkable_Format</a></p>
+</blockquote>
+<ul>
+<li><strong>Library</strong>
+<ul>
+<li>lib static <code>-&gt;</code> compile time (UNIX <code>.a</code>, Windows <code>.lib</code>)
+language-dependent &amp; platform-indepedent</li>
+<li>lib dynamic <code>-&gt;</code> runtime (Linux <code>.so</code>, Windows <code>.dll</code>, macOS <code>.dylib</code>)
+language-independent &amp; platform-dependent</li>
+</ul>
+</li>
+</ul>
+<h2><a class="header" href="#activity-3-foreign-function-interface-ffi" id="activity-3-foreign-function-interface-ffi">Activity 3: Foreign Function Interface (FFI)</a></h2>
+<blockquote>
+<p><a href="https://doc.rust-lang.org/book/ffi.html">https://doc.rust-lang.org/book/ffi.html</a></p>
+</blockquote>
+<p>Today we will try to:</p>
+<ul>
+<li>Call a Rust function (compiled as a dynamic library) from a Python script: <a href="https://doc.rust-lang.org/1.5.0/book/rust-inside-other-languages.html">https://doc.rust-lang.org/1.5.0/book/rust-inside-other-languages.html</a></li>
+<li>Call a C function (compiled as a static library) from a Rust code: <a href="https://rust-embedded.github.io/book/interoperability/c-with-rust.html">https://rust-embedded.github.io/book/interoperability/c-with-rust.html</a></li>
+</ul>
+<p>This <a href="https://stackoverflow.com/questions/43826572/where-should-i-place-a-static-library-so-i-can-link-it-with-a-rust-program">https://stackoverflow.com/questions/43826572/where-should-i-place-a-static-library-so-i-can-link-it-with-a-rust-program</a> will help since we have to set up <a href="https://doc.rust-lang.org/cargo/reference/manifest.html#package-build">https://doc.rust-lang.org/cargo/reference/manifest.html#package-build</a> to tell <code>cargo</code> where our static lib is!</p>
+<blockquote>
+<p>Here is our final code <a href="https://github.com/yvan-sraka/rust-ffi-demo">https://github.com/yvan-sraka/rust-ffi-demo</a></p>
+</blockquote>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="unix-multithreading.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+                            <a rel="next" href="libppm.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a rel="prev" href="unix-multithreading.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a rel="next" href="libppm.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+        
+        
+        <script type="text/javascript">
+            window.playpen_copyable = true;
+        </script>
+        
+
+        
+
+        
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>

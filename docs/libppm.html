@@ -1,0 +1,457 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Project libppm - Systems and Networks programming in Rust</title>
+        
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "light" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div id="sidebar-scrollbox" class="sidebar-scrollbox">
+                <ol class="chapter"><li class="expanded "><a href="rust-syntax.html"><strong aria-hidden="true">1.</strong> Introduction to Rust syntax</a></li><li class="expanded "><a href="ownership-borrowing.html"><strong aria-hidden="true">2.</strong> Memory in depth</a></li><li class="expanded "><a href="unix-multithreading.html"><strong aria-hidden="true">3.</strong> Unix and multithreading</a></li><li class="expanded "><a href="ffi-unsafe.html"><strong aria-hidden="true">4.</strong> FFI &amp; Unsafe</a></li><li class="expanded "><a href="libppm.html" class="active"><strong aria-hidden="true">5.</strong> Project libppm</a></li><li class="expanded "><a href="networks.html"><strong aria-hidden="true">6.</strong> Networking</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
+
+                    <h1 class="menu-title">Systems and Networks programming in Rust</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1><a class="header" href="#big-project-guidelines-a-not-so-simple-ppm-image-manipulation-library" id="big-project-guidelines-a-not-so-simple-ppm-image-manipulation-library">Big project guidelines: a not so simple PPM image manipulation library</a></h1>
+<p>Goals: Manipulating IO, Memory, Concurrent programming with threads and exposing Rust function
+through Foreign Function Interface.</p>
+<p>We will use the <a href="https://en.wikipedia.org/wiki/Netpbm_format">Portable Pixel Map</a> in binary format.</p>
+<h2><a class="header" href="#lvl-0---warmup" id="lvl-0---warmup">Lvl 0 - Warmup</a></h2>
+<ul>
+<li>Create a new <code>ppm</code> Rust project as a library</li>
+<li>Make a little readme present your team</li>
+<li>Complete a little bit your Cargo.toml to add yourselves as author</li>
+<li>Make sure that <code>cargo build</code> is working</li>
+</ul>
+<h2><a class="header" href="#lvl-1---struct" id="lvl-1---struct">Lvl 1 - Struct</a></h2>
+<ul>
+<li>Create a nice custom Rust data-structure <code>Image</code> to handle 24bits images.</li>
+</ul>
+<blockquote>
+<p>Create first a <code>Pixel</code> structure to encode an RGB color.</p>
+</blockquote>
+<p>In a PPM file pixels il take 24bits; 8 bits (octet) par color:</p>
+<ul>
+<li>8 for red</li>
+<li>8 for green</li>
+<li>8 for blue</li>
+</ul>
+<h3><a class="header" href="#epic-functions-for-an-epic-pixels" id="epic-functions-for-an-epic-pixels">Epic Functions for an Epic <code>Pixels</code></a></h3>
+<p>Because test are nices: Write a test for all the functions <a href="https://doc.rust-lang.org/book/ch11-01-writing-tests.html">doc</a>
+Also, write a doc in rust style <em>Prof! I don't how to write doc!</em> <a href="https://doc.rust-lang.org/rust-by-example/meta/doc.html">short awnser</a>; <a href="https://doc.rust-lang.org/1.30.0/book/2018-edition/ch14-02-publishing-to-crates-io.html?highlight=document#making-useful-documentation-comments">long answer</a>
+TL;DR writes how to use the function if it panic says it! make an example in the doc!</p>
+<p>Warmups functions:</p>
+<ul>
+<li>Write a block <code>impl Pixel</code> for next questions</li>
+<li>Write a nice constructor <code>fn new(red: u8, green: u8, blue: u8 -&gt; Self</code></li>
+<li>(Optional) Derive <code>Clone</code> and <code>Copy</code> because a Pixel is a tiny type who fits in a register.</li>
+<li>Make a <code>fn display(self) -&gt; String</code> to render a pixel in terminal</li>
+<li>Carve a function <code>fn invert(&amp;mut self)</code> that inverts a pixel. Advise think <a href="https://doc.rust-lang.org/std/ops/trait.Not.html">bitwise</a><em>!</em> ;)</li>
+</ul>
+<p>Not so warmup:</p>
+<ul>
+<li>Make a function <code>fn eq(self, other: Pixel) -&gt; bool</code></li>
+<li>Rewrite your code of <code>eq</code> function to implement <code>PartialEq</code> <a href="https://doc.rust-lang.org/std/cmp/trait.Eq.html">Doc PartialEq</a>!</li>
+</ul>
+<p>Advice: Read the doc again! :)</p>
+<p>Need some engagement:</p>
+<ul>
+<li>Make a function <code>grayscale</code> who convert an RGB pixel to a grayscale pixel</li>
+</ul>
+<h2><a class="header" href="#lvl-2---image-manipulation" id="lvl-2---image-manipulation">Lvl 2 - Image manipulation</a></h2>
+<p>Write a little <code>struct Image</code> that represents a struct you might need the following fields:</p>
+<ul>
+<li><code>Vec&lt;Pixel&gt;</code> to represent the pixels buffer</li>
+<li><code>heigth</code> with type <code>usize</code></li>
+<li><code>width</code> with type <code>usize</code></li>
+<li>Maybe other fields?</li>
+</ul>
+<p>Now write some function to manipulate images!
+A function <code>fn new_with_file(filename: &amp;Path) -&gt; Image</code> that read in text mode a ppm image you might need to write
+the <code>.ppm</code> file format definition <a href="http://netpbm.sourceforge.net/doc/ppm.html">here</a>.</p>
+<p>Write in a <code>impl Image</code> a function <code>fn save(filename: &amp;Path)</code> who saves your struct into a file.</p>
+<p>An example file in text mode looks like:</p>
+<pre><code class="language-text">P3
+3 2
+255
+# The part above is the header
+# &quot;P3&quot; means this is an RGB color image in ASCII
+# &quot;3 2&quot; is the width and height of the image in pixels
+# &quot;255&quot; is the maximum value for each color
+# The part below is image data: RGB triplets
+255 0   0   # red
+0   255 0   # green
+0   0   255 # blue
+255 255 0   # yellow
+255 255 255 # white
+0   0   0   # black
+</code></pre>
+<ul>
+<li>Create an <code>invert</code> function that inverts image colors (reuse your code!)</li>
+<li>Create a <code>grayscale</code> function that makes image B&amp;W based on a filter color</li>
+</ul>
+<h3><a class="header" href="#buffering" id="buffering">Buffering</a></h3>
+<p>Try to with really big files, improve performances. Maybe this doc pointer can help: <a href="https://doc.rust-lang.org/std/io/trait.BufRead.html">std::io::BufRead</a></p>
+<blockquote>
+<p><a href="https://mega.nz/#!dQNSyASY!Vk6rM8ZqxpbwvSyRFzHdYVB1Rh8p_6yKTDewtUxVe6Q">Here</a>
+is a big <code>.ppm</code> the file of a Mandelbrot fractal for your tests!</p>
+<p>You may want to open the file in Rust using a buffer to do the reading of the file and
+image operations in parallel <a href="https://doc.rust-lang.org/std/io/trait.Read.html">https://doc.rust-lang.org/std/io/trait.Read.html</a></p>
+<p><code>.ppm</code> file format has a simple syntax specified here:
+<a href="http://netpbm.sourceforge.net/doc/ppm.html">http://netpbm.sourceforge.net/doc/ppm.html</a></p>
+<p>The purpose of this level is to code a custom <code>.ppm</code> reading function in Rust!</p>
+</blockquote>
+<h3><a class="header" href="#bonus-binary-edition" id="bonus-binary-edition">Bonus binary edition</a></h3>
+<ul>
+<li>Prepare yourself to read the pixel part in binary mode write a <code>fn new_with_file_bin(Path filename) -&gt; Image</code></li>
+</ul>
+<blockquote>
+<p>The whole purpose of this part is to do these computations using several threads,
+and to develop a strategy to find a good compromise on the number of threads to assign
+(e.g. one thread by pixel is maybe a bit too much ...)</p>
+<p>Try to calls these functions from another language!</p>
+</blockquote>
+<h2><a class="header" href="#lvl-3---benchmarks" id="lvl-3---benchmarks">Lvl 3 - Benchmarks</a></h2>
+<ul>
+<li>Add benchmarks tests to measure your performances</li>
+</ul>
+<blockquote>
+<p>Rust have off course a guide on this topic
+<a href="https://doc.rust-lang.org/1.2.0/book/benchmark-tests.html">https://doc.rust-lang.org/1.2.0/book/benchmark-tests.html</a></p>
+</blockquote>
+<h2><a class="header" href="#going-further" id="going-further">Going further</a></h2>
+<h3><a class="header" href="#lvl-4---unsafe---optional-c-fun-with-rust" id="lvl-4---unsafe---optional-c-fun-with-rust">Lvl 4 - Unsafe - Optional C fun with Rust</a></h3>
+<ul>
+<li>Create an <code>readPPM</code> function to read <code>.ppm</code> files</li>
+<li>Create an <code>writePPM</code> function to read <code>.ppm</code> files</li>
+</ul>
+<blockquote>
+<p>Use PPMA_IO: Portable Pixel Map (ASCII) Files Read and Write Utilities
+<a href="https://people.sc.fsu.edu/%7Ejburkardt/c_src/ppma_io/ppma_io.html">https://people.sc.fsu.edu/~jburkardt/c_src/ppma_io/ppma_io.html</a></p>
+<p>You may need to call C code in Rust using <code>unsafe</code> blocks.
+If you want to know about some dark magics, read <a href="https://doc.rust-lang.org/nomicon/ffi.html">https://doc.rust-lang.org/nomicon/ffi.html</a></p>
+<p>You can start with a simpler format like <code>.pbm</code> or <code>.pgm</code>.</p>
+<p>You should make a static library and include it,
+<a href="https://stackoverflow.com/questions/43826572/where-should-i-place-a-static-library-so-i-can-link-it-with-a-rust-program">this StackOverflow post</a>
+could help!</p>
+</blockquote>
+<h3><a class="header" href="#lvl-5---ffi-for-the-fun-and-profit" id="lvl-5---ffi-for-the-fun-and-profit">Lvl 5 - FFI for the fun and profit</a></h3>
+<p>Relatively easy:</p>
+<ul>
+<li>Make a <code>dummy()</code> function that return <code>42</code></li>
+<li>Call this function in another language like Python using basic Foreign Function Interface FFI</li>
+</ul>
+<p><em>Note:</em></p>
+<blockquote>
+<p>The Rust doc has a really handy page on the subject:
+<a href="https://doc.rust-lang.org/1.2.0/book/rust-inside-other-languages.html">https://doc.rust-lang.org/1.2.0/book/rust-inside-other-languages.html</a></p>
+</blockquote>
+<p>Somewhat harder:</p>
+<ul>
+<li>Exposes functions of your <code>ppm</code> crate to Python</li>
+<li>Use <a href="https://github.com/PyO3/pyo3">PyO3</a> and <a href="https://github.com/PyO3/maturin">Maturin</a> read the README of the projects!</li>
+</ul>
+<hr />
+<p>Bonjour tout le monde,</p>
+<p>J'espère que tout ce passe bien pour vous avec le projet Rust.</p>
+<p>Pour aider ceux d'entre vous qui ne sont peut-être pas fluent dans la langue de Shakespeare (by the way, I am not either), en bas de ce mail ce trouve une version compacte du sujet du projet en français !</p>
+<p>J'en profite aussi pour récapituler ce que j'attends et évaluerai de votre soutenance : 15 min de présentation + 5 min de questions (par groupe de 3/4 personnes) le Vendredi 14 Février (dernier examen avant de profiter de votre weekend et de std::option<la St Valentin>).</p>
+<p>J'attends de vous que vous me montriez une petite démo de votre bibliothèque, que vous m'expliquiez les décisions que vous avez prise dans le développement de celle-ci, les difficultés que vous avez rencontrées, comment vous les avez ou non surmonté, et une très bonne manière d'illustrer cela ce sont des Benchmarks de vos fonctions : <a href="https://doc.rust-lang.org/1.2.0/book/benchmark-tests.html">https://doc.rust-lang.org/1.2.0/book/benchmark-tests.html</a></p>
+<p>En particulier je vous invite à vous poser la question de comment faire les calculs demandés en utilisant plusieurs threads, et développer une stratégie pour trouver un bon compromis sur le nombre de threads à attribuer (par exemple, un thread par pixel est peut-être un peu trop ...), écrivez des tests ! de la documentation !</p>
+<p>Tous les bonus sont appréciés, que ce soit des FFI avec Python, un super affichage dans le terminal, une interface web, ou quoi que vous puissiez trouver amusant à faire :)</p>
+<p>Enfin, j'attends aussi que le code de votre projet soit soumis comme Pull-request du dépôt <a href="https://github.com/rust-esgi/libppm">https://github.com/rust-esgi/libppm</a></p>
+<h1><a class="header" href="#projet--une-bibliothèque-de-manipulation-dimages-ppm" id="projet--une-bibliothèque-de-manipulation-dimages-ppm">Projet : une bibliothèque de manipulation d'images PPM</a></h1>
+<p>Objectifs : manipuler les E/S, la mémoire, la programmation concurrente avec des threads et exposer des fonctions Rust via des FFI (interface de fonction étrangère).</p>
+<p>Nous utiliserons le format <a href="https://en.wikipedia.org/wiki/Netpbm_format">Portable Pixel Map</a> au format texte et binaire.</p>
+<h2><a class="header" href="#hello-world" id="hello-world">Hello World</a></h2>
+<ul>
+<li>Créer un nouveau projet Rust <code>ppm</code> en tant que bibliothèque</li>
+<li>Faites un petit <code>README</code> pour présenter votre équipe</li>
+<li>Complétez un peu votre <code>Cargo.toml</code> pour vous ajouter comme auteur</li>
+<li>Assurez-vous que <code>cargo build</code> fonctionne</li>
+</ul>
+<h2><a class="header" href="#structures-de-données-et-fonctions-de-base" id="structures-de-données-et-fonctions-de-base">Structures de données et fonctions de base</a></h2>
+<p>Créez une belle structure de données Rust personnalisée <code>Image</code> pour gérer les images 24 bits.</p>
+<p>Créez d'abord une structure <code>Pixel</code> pour encoder une couleur RVB.</p>
+<p>Dans un fichier PPM, les pixels prennent 24 bits; 8 bits (octet) par couleur:</p>
+<ul>
+<li>8 pour le rouge</li>
+<li>8 pour le vert</li>
+<li>8 pour le bleu</li>
+</ul>
+<p>Pour s'échauffer:</p>
+<ul>
+<li>Ecrire un bloc <code>impl Pixel</code> pour les prochaines questions</li>
+<li>(Facultatif) Écrire un joli constructeur <code>fn new(red: u8, green: u8, blue: u8 -&gt; Self</code></li>
+<li>Dérivez <code>Clone</code> et<code> Copy</code> (car un Pixel est un type tout petit qui tient dans un registre).</li>
+<li>Faite un trait <code>std::fmt::Display</code> pour afficher un pixel dans le terminal</li>
+<li>Écrire une fonction <code>fn invert(&amp;mut self)</code> qui inverse un pixel.</li>
+</ul>
+<p>Un peu plus dur:</p>
+<ul>
+<li>Faire une fonction <code>fn eq(self, other: Pixel) -&gt; bool</code></li>
+<li>Implémenter<code> PartialEq</code> <a href="https://doc.rust-lang.org/std/cmp/trait.Eq.html">https://doc.rust-lang.org/std/cmp/trait.Eq.html</a> !</li>
+<li>Faire une fonction <code>grayscale</code> qui convertit un pixel RVB en pixel de niveaux de gris</li>
+</ul>
+<p>Écrivez des tests pour toutes vos fonctions <a href="https://doc.rust-lang.org/book/ch11-01-writing-tests.html">https://doc.rust-lang.org/book/ch11-01-writing-tests.html</a></p>
+<p>Et de la documentation :</p>
+<ul>
+<li><a href="https://doc.rust-lang.org/rust-by-example/meta/doc.html">https://doc.rust-lang.org/rust-by-example/meta/doc.html</a></li>
+<li><a href="https://doc.rust-lang.org/1.30.0/book/2018-edition/ch14-02-publishing-to-crates-io.html?highlight=document#making-useful-documentation-comments">https://doc.rust-lang.org/1.30.0/book/2018-edition/ch14-02-publishing-to-crates-io.html?highlight=document#making-useful-documentation-comments</a></li>
+</ul>
+<h2><a class="header" href="#manipulation-dimages-ppm" id="manipulation-dimages-ppm">Manipulation d'images PPM</a></h2>
+<p>Écrivez une <code>struct Image</code> qui représente une structure dont vous pourriez avoir besoin des champs suivants :</p>
+<ul>
+<li><code>Vec &lt;Pixel&gt;</code> pour représenter le tampon de pixels</li>
+<li><code>height</code> avec le type<code> usize</code></li>
+<li><code>weight</code> avec le type<code> usize</code></li>
+</ul>
+<p>Maintenant, écrivez des fonctions pour manipuler les images !</p>
+<p>Une fonction <code>fn new_with_file(filename: &amp;Path) -&gt; Image</code> qui lit en mode texte une image PPM </p>
+<p>Le format de fichier <code>.ppm</code> a une syntaxe simple spécifiée ici <a href="http://netpbm.sourceforge.net/doc/ppm.html">http://netpbm.sourceforge.net/doc/ppm.html</a></p>
+<p>Un exemple de fichier en mode texte ressemble à ceci:</p>
+<pre><code>P3
+3 2
+255
+# La partie ci-dessus est l'en-tête
+# &quot;P3&quot; signifie qu'il s'agit d'une image couleur RVB en ASCII
+# &quot;3 2&quot; est la largeur et la hauteur de l'image en pixels
+# &quot;255&quot; est la valeur maximale pour chaque couleur
+# La partie ci-dessous est constituée de données d'image: triplets RVB
+255 0 0 # rouge
+0 255 0 # vert
+0 0 255 # bleu
+255 255 0 # jaune
+255 255 255 # blanc
+0 0 0 # noir
+</code></pre>
+<ul>
+<li>Créez une fonction <code>invert</code> qui inverse les couleurs de l'image (réutilisez votre code!)</li>
+<li>Créer une fonction <code>grayscale</code> qui transforme l'image Noir &amp; Blanc en se basant sur une couleur de filtre</li>
+</ul>
+<p>Bonus :</p>
+<ul>
+<li>Écrivez dans  <code>impl Image</code> une fonction <code>fn save(filename: &amp;Path)</code> qui enregistre votre structure dans un fichier.</li>
+<li>Essayer de recoder vos fonctions pour le format PPM binaire (c'est plus simple que vous ne le pensez, et ça peut être une bonne excuse pour ne pas implémenter le format texte) !</li>
+</ul>
+<h2><a class="header" href="#mise-en-mémoire-tampon" id="mise-en-mémoire-tampon">Mise en mémoire tampon</a></h2>
+<p>Essayez avec de très gros fichiers, améliorez les performances ! <a href="https://doc.rust-lang.org/std/io/trait.BufRead.html">https://doc.rust-lang.org/std/io/trait.BufRead.html</a></p>
+<p>Voici <a href="https://mega.nz/#!dQNSyASY!Vk6rM8ZqxpbwvSyRFzHdYVB1Rh8p_6yKTDewtUxVe6Q">https://mega.nz/#!dQNSyASY!Vk6rM8ZqxpbwvSyRFzHdYVB1Rh8p_6yKTDewtUxVe6Q</a> un gros <code>.ppm</code> le fichier d'une fractale de Mandelbrot pour vos tests!</p>
+<p>Vous voudrez sans doute ouvrir le fichier dans Rust en utilisant un tampon pour faire la lecture du fichier et des opérations d'image en parallèle <a href="https://doc.rust-lang.org/std/io/trait.Read.html">https://doc.rust-lang.org/std/io/trait.Read.html</a></p>
+<hr />
+<p>Bonsoir tout le monde,</p>
+<p>Comme vous êtes déjà tous bien au courant c'est demain que vous présenterez vos projets Rust, j'en profite ici pour vous donner dans les grandes lignes la grille de notation que j'utiliserai pendant votre oral, afin de limiter les mauvaises surprises éventuelles (15 min de présentation et questions) :</p>
+<ul>
+<li>état d'avancement du projet et implémentation éventuelle de bonus : 10 points</li>
+<li>qualité du code, de ses commentaires / documentation et présence de tests : 5 points</li>
+<li>clarté de la présentation, de la démo du projet et présences de benchmarks : 5 points</li>
+</ul>
+<p>Je jetterais bien entendu pendant votre présentation un coup d'œil au code source que vous avez push sur GitHub, je m'attends à ce que celui-ci compile et soit livré avec un README qui explique comment utiliser votre bibliothèque et comment éventuellement lancer des benchmarks / tests.</p>
+<p>ATTENTION : Veuillez ne pas oubliez d'indiquer en haut de votre README les noms des membres de votre groupe !</p>
+<p>Je m'autorise également à poser en fin de présentation en plus de questions sur votre implémentation, des questions générales sur le langage Rust et autres aspects qu'on aurait vu en cours à certains membres du groupe ! Ce n'est pas pour vous piéger, c'est plus pour donner des points supplémentaires à des groupes où par exemple le temps de parole pendant la présentation n'aurait pas été distribué très équitablement.</p>
+<p><a href="https://en.wikipedia.org/wiki/The_Force#%22May_the_Force_be_with_you%22">https://en.wikipedia.org/wiki/The_Force#&quot;May_the_Force_be_with_you&quot;</a></p>
+<p>Yvan</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="ffi-unsafe.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+                            <a rel="next" href="networks.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a rel="prev" href="ffi-unsafe.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a rel="next" href="networks.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+        
+        
+        <script type="text/javascript">
+            window.playpen_copyable = true;
+        </script>
+        
+
+        
+
+        
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>
