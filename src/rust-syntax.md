@@ -12,7 +12,7 @@ Rust basics (Introduction, Syntax, Error Handling):
 
 - 2. Setup a Rust dev environment with <https://rustup.rs>, and a code editor (<https://www.rust-lang.org/tools>) with RLS support (<https://github.com/rust-lang/rls>) and be sure to not have just the VSCode extension but to install it with command `rustup component add rls rust-analysis rust-src`
 
-N.B. People on Windows should read this <https://github.com/rust-lang/rustup.rs/#working-with-rust-on-windows>, and installing Visual Studio C/C++ tools suite (like link.exe to link program) using Visual Studio Installer.
+> **N.B.** People on Windows should read this <https://github.com/rust-lang/rustup.rs/#working-with-rust-on-windows>, and installing Visual Studio C/C++ tools suite (like link.exe to link program) using Visual Studio Installer.
 
 I also recommend to get you a WLS and install Rust with rustup in bash.exe, since starting from course 3 we will play with Linux file abstraction.
 
@@ -26,6 +26,7 @@ SLIDES are here : <https://github.com/yvan-sraka/mymastermind-slides>
 
 Further information could be found in THE RUST BOOK -> <https://doc.rust-lang.org/stable/book/> <- (what we do in class match the 3 first chapters of the book)
 
+Or alternatively in <https://learning-rust.github.io/>!
 
 ## Program of the next lectures
 
@@ -68,7 +69,7 @@ Notions de base sur Rust (Introduction, Syntaxe, Traitement des erreurs):
 
 - 2. Configurez un environnement de développement Rust avec <https://rustup.rs> et un IDE (<https://www.rust-lang.org/tools>) avec support RLS (<https://github.com/rust-lang/rls>) vous avez besoin de l'extension VSCode, mais de lancer cette commande `rustup component add rls rust-analysis rust-src`
 
-N.B. Les utilisateurs de Windows doivent lire ce guide <https://github.com/rust-lang/rustup.rs/#working-with-rust-on-windows> et installer la suite d'outils Visual Studio C / C++ (contenant par exemple link.exe) à l'aide de Visual Studio Installer.
+> **N.B.** Les utilisateurs de Windows doivent lire ce guide <https://github.com/rust-lang/rustup.rs/#working-with-rust-on-windows> et installer la suite d'outils Visual Studio C / C++ (contenant par exemple link.exe) à l'aide de Visual Studio Installer.
 
 Je vous recommande également de vous procurer un WLS et d'installer Rust avec rustup dans bash.exe, puisqu'à partir du cours 3, nous allons jouer avec l'abstraction de fichiers Linux.
 
@@ -80,7 +81,9 @@ Je vous recommande également de vous procurer un WLS et d'installer Rust avec r
 
 Des informations complémentaires sont disponibles dans THE RUST BOOK -> <https://doc.rust-lang.org/stable/book/> <- (ce que nous avons fait en classe correspond aux 3 premiers chapitres du livre)
 
-Ou en français, <https://framagit.org/darnuria/rust-initiation/> !
+Ou alternativement dans <https://learning-rust.github.io/>!
+
+Des exercices d'introduction aux concepts de bases du langage, en français, sont disponiblent ici <https://framagit.org/darnuria/rust-initiation/> !
 
 
 ## Programme des prochaines séances

@@ -20,9 +20,9 @@ futures = "0.3"
 {{#include bob.rs}}
 ```
 
-**N.B.** we can use https://ngrok.com/docs or a VPN to test this code over network meanwhile social distancing ...
+> **N.B.** we can use https://ngrok.com/docs or a VPN to test this code over network meanwhile social distancing ...
 
-> Learn more about `async`: <https://areweasyncyet.rs> (you can use futures, mio or async-std)
+Learn more about `async`: <https://areweasyncyet.rs> (you can use futures, mio or async-std)
 
 ```rust
 {{#include async-await-example.rs}}
@@ -45,9 +45,9 @@ tokio = { version = "0.2", features = ["full"] }
 {{#include mini-http-server.rs}}
 ```
 
-**N.B.** for stuffs that never fail<https://doc.rust-lang.org/std/convert/enum.Infallible.html>
+> **N.B.** for stuffs that never fail<https://doc.rust-lang.org/std/convert/enum.Infallible.html>
 
-> There is plenty of alternatives here too: <https://www.arewewebyet.org>
+There is plenty of alternatives here too: <https://www.arewewebyet.org>
 
 ## Lvl 2 - API Request
 
@@ -62,7 +62,7 @@ reqwest = { version = "0.10", features = ["blocking"] }
 {{#include mini-http-client.rs}}
 ```
 
-**N.B.** I use <https://doc.rust-lang.org/book/ch12-05-working-with-environment-variables.html> to not write my secret `GIPHY_API_KEY` in code!
+> **N.B.** I use <https://doc.rust-lang.org/book/ch12-05-working-with-environment-variables.html> to not write my secret `GIPHY_API_KEY` in code!
 
 ## Lvl ? - Bonus
 

@@ -54,6 +54,8 @@ int main(void) {
 - Why is a Rust executable large? <https://lifthrasiir.github.io/rustlog/why-is-a-rust-executable-large.html>
 - Smart pointers in Rust <https://doc.rust-lang.org/book/ch15-00-smart-pointers.html>
 - Rust sucks because ... <https://wiki.theory.org/index.php/YourLanguageSucks#Rust_sucks_because>
+- `unfork` <https://github.com/whitequark/unfork>
+- <https://github.com/sebasmagri/rust-concurrency-patterns>
 
 ## Prepare the next session (keep talking about Unix tools for binaries analysis)
 
@@ -63,7 +65,7 @@ int main(void) {
 - <https://en.wikipedia.org/wiki/GNU_Binutils>
 - <https://en.wikipedia.org/wiki/Strace>
 
-We will play with => FFI: Foreign Function Interface
+We will play with `=>` FFI: Foreign Function Interface
 
 I wish all of you enjoyed end-of-year celebrations.
 
@@ -121,6 +123,8 @@ int main(void) {
 }
 ```
 
+En français, vous pouvez lire ce cours d'OS <https://darnuria.eu/2019-2020_os> pour vous rafraichir la mémoire !
+
 ## Pour aller plus loin
 
 - Connaissez vous les descripteurs de fichier <https://en.wikipedia.org/wiki/File_descriptor>
@@ -129,6 +133,8 @@ int main(void) {
 - Pourquoi un exécutable Rust est-il volumineux ? <https://lifthrasiir.github.io/rustlog/why-is-a-rust-executable-large.html>
 - Pointeurs intelligents dans Rust <https://doc.rust-lang.org/book/ch15-00-smart-pointers.html>
 - Rust est nul parce que ... <https://wiki.theory.org/index.php/YourLanguageSucks#Rust_sucks_because>
+- `unfork` <https://github.com/whitequark/unfork>
+- <https://github.com/sebasmagri/rust-concurrency-patterns>
 
 ## Pour préparer le prochain cours (parlons d'outils Unix pour l'analyse de binaires)
 
@@ -138,7 +144,7 @@ int main(void) {
    * <https://en.wikipedia.org/wiki/GNU_Binutils>
    * <https://en.wikipedia.org/wiki/Strace>
 
-Nous allons jouer avec les => FFI: Foreign Function Interface
+Nous allons jouer avec les `=>` FFI: Foreign Function Interface
 
 J'espères que vous avez tous passés de très bonnes fêtes de fin d'années,
 

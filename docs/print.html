@@ -170,7 +170,9 @@
 </ol>
 </li>
 </ul>
-<p>N.B. People on Windows should read this <a href="https://github.com/rust-lang/rustup.rs/#working-with-rust-on-windows">https://github.com/rust-lang/rustup.rs/#working-with-rust-on-windows</a>, and installing Visual Studio C/C++ tools suite (like link.exe to link program) using Visual Studio Installer.</p>
+<blockquote>
+<p><strong>N.B.</strong> People on Windows should read this <a href="https://github.com/rust-lang/rustup.rs/#working-with-rust-on-windows">https://github.com/rust-lang/rustup.rs/#working-with-rust-on-windows</a>, and installing Visual Studio C/C++ tools suite (like link.exe to link program) using Visual Studio Installer.</p>
+</blockquote>
 <p>I also recommend to get you a WLS and install Rust with rustup in bash.exe, since starting from course 3 we will play with Linux file abstraction.</p>
 <ul>
 <li>
@@ -191,6 +193,7 @@
 </ul>
 <p>SLIDES are here : <a href="https://github.com/yvan-sraka/mymastermind-slides">https://github.com/yvan-sraka/mymastermind-slides</a></p>
 <p>Further information could be found in THE RUST BOOK -&gt; <a href="https://doc.rust-lang.org/stable/book/">https://doc.rust-lang.org/stable/book/</a> &lt;- (what we do in class match the 3 first chapters of the book)</p>
+<p>Or alternatively in <a href="https://learning-rust.github.io/">https://learning-rust.github.io/</a>!</p>
 <h2><a class="header" href="#program-of-the-next-lectures" id="program-of-the-next-lectures">Program of the next lectures</a></h2>
 <ul>
 <li>Rust advanced (static automated memory management: Ownership &amp; Borrowing)</li>
@@ -228,7 +231,9 @@
 </ol>
 </li>
 </ul>
-<p>N.B. Les utilisateurs de Windows doivent lire ce guide <a href="https://github.com/rust-lang/rustup.rs/#working-with-rust-on-windows">https://github.com/rust-lang/rustup.rs/#working-with-rust-on-windows</a> et installer la suite d'outils Visual Studio C / C++ (contenant par exemple link.exe) à l'aide de Visual Studio Installer.</p>
+<blockquote>
+<p><strong>N.B.</strong> Les utilisateurs de Windows doivent lire ce guide <a href="https://github.com/rust-lang/rustup.rs/#working-with-rust-on-windows">https://github.com/rust-lang/rustup.rs/#working-with-rust-on-windows</a> et installer la suite d'outils Visual Studio C / C++ (contenant par exemple link.exe) à l'aide de Visual Studio Installer.</p>
+</blockquote>
 <p>Je vous recommande également de vous procurer un WLS et d'installer Rust avec rustup dans bash.exe, puisqu'à partir du cours 3, nous allons jouer avec l'abstraction de fichiers Linux.</p>
 <ul>
 <li>
@@ -248,7 +253,8 @@
 </li>
 </ul>
 <p>Des informations complémentaires sont disponibles dans THE RUST BOOK -&gt; <a href="https://doc.rust-lang.org/stable/book/">https://doc.rust-lang.org/stable/book/</a> &lt;- (ce que nous avons fait en classe correspond aux 3 premiers chapitres du livre)</p>
-<p>Ou en français, <a href="https://framagit.org/darnuria/rust-initiation/">https://framagit.org/darnuria/rust-initiation/</a> !</p>
+<p>Ou alternativement dans <a href="https://learning-rust.github.io/">https://learning-rust.github.io/</a>!</p>
+<p>Des exercices d'introduction aux concepts de bases du langage, en français, sont disponiblent ici <a href="https://framagit.org/darnuria/rust-initiation/">https://framagit.org/darnuria/rust-initiation/</a> !</p>
 <h2><a class="header" href="#programme-des-prochaines-séances" id="programme-des-prochaines-séances">Programme des prochaines séances</a></h2>
 <ul>
 <li>Rust avancés (gestion automatique de la mémoire statique: « ownership » et « borrowing »)</li>
@@ -346,6 +352,7 @@ fn main() {
 <ul>
 <li>There no null pointers in Rust! Why? Watch &quot;Null References: The Billion Dollar Mistake&quot; from Tony Hoare <a href="https://www.infoq.com/presentations/Null-References-The-Billion-Dollar-Mistake-Tony-Hoare/">https://www.infoq.com/presentations/Null-References-The-Billion-Dollar-Mistake-Tony-Hoare/</a></li>
 <li>Some more readings for the brave: &quot;What Every Programmer Should Know About Memory&quot; by Ulrich Drepper from Red Hat <a href="https://people.freebsd.org/%7Elstewart/articles/cpumemory.pdf">https://people.freebsd.org/~lstewart/articles/cpumemory.pdf</a></li>
+<li><a href="http://www.squidarth.com/rc/rust/2018/05/31/rust-borrowing-and-ownership.html">Fear not the Rust Borrow Checker</a></li>
 </ul>
 <h1><a class="header" href="#homework-due-to-next-session" id="homework-due-to-next-session">Homework due to next session</a></h1>
 <p>You have to recode a small pipe-like program, working like this:</p>
@@ -427,6 +434,9 @@ fn main() {
     display(&amp;red);
 }
 </code></pre></pre>
+<blockquote>
+<p><strong>N.B.</strong> <a href="https://blog.guillaume-gomez.fr/Rust">https://blog.guillaume-gomez.fr/Rust</a> donne des bonnes explications (en français) du modèle mémoire de Rust !</p>
+</blockquote>
 <h1><a class="header" href="#obligatoire-pour-la-prochaine-session" id="obligatoire-pour-la-prochaine-session">Obligatoire pour la prochaine session</a></h1>
 <p>⚠️ Avoir un système UNIX avec Rust installé dessus :</p>
 <p>Pour ceux qui exécutent une machine Windows, je recommande vivement l'installation d'un WSL (Sous-système Windows pour Linux) <a href="https://docs.microsoft.com/en-us/windows/wsl/install-win10">https://docs.microsoft.com/en-us/windows/wsl/install-win10</a></p>
@@ -449,6 +459,7 @@ fn main() {
 <ul>
 <li>Il n'y a pas de pointeurs « null » dans Rust! Pourquoi? Regardez &quot;Null References: The Billion Dollar Mistake&quot; de Tony Hoare <a href="https://www.infoq.com/presentations/Null-References-The-Billion-Dollar-Mistake-Tony-Hoare/">https://www.infoq.com/presentations/Null-References-The-Billion-Dollar-Mistake-Tony-Hoare/</a></li>
 <li>Quelques lectures supplémentaires pour les plus courageux: &quot;What Every Programmer Should Know About Memory&quot; de Ulrich Drepper chez Red Hat <a href="https://people.freebsd.org/%7Elstewart/articles/cpumemory.pdf">https://people.freebsd.org/~lstewart/articles/cpumemory.pdf</a></li>
+<li><a href="http://www.squidarth.com/rc/rust/2018/05/31/rust-borrowing-and-ownership.html">Fear not the Rust Borrow Checker</a></li>
 </ul>
 <h1><a class="header" href="#devoirs-maison-pour-la-prochaine-session" id="devoirs-maison-pour-la-prochaine-session">Devoirs maison pour la prochaine session</a></h1>
 <p>Vous devez recoder un petit programme qui fonctionne comme pipe | et s'appelle comme ceci:</p>
@@ -583,6 +594,8 @@ int main(void) {
 <li>Why is a Rust executable large? <a href="https://lifthrasiir.github.io/rustlog/why-is-a-rust-executable-large.html">https://lifthrasiir.github.io/rustlog/why-is-a-rust-executable-large.html</a></li>
 <li>Smart pointers in Rust <a href="https://doc.rust-lang.org/book/ch15-00-smart-pointers.html">https://doc.rust-lang.org/book/ch15-00-smart-pointers.html</a></li>
 <li>Rust sucks because ... <a href="https://wiki.theory.org/index.php/YourLanguageSucks#Rust_sucks_because">https://wiki.theory.org/index.php/YourLanguageSucks#Rust_sucks_because</a></li>
+<li><code>unfork</code> <a href="https://github.com/whitequark/unfork">https://github.com/whitequark/unfork</a></li>
+<li><a href="https://github.com/sebasmagri/rust-concurrency-patterns">https://github.com/sebasmagri/rust-concurrency-patterns</a></li>
 </ul>
 <h2><a class="header" href="#prepare-the-next-session-keep-talking-about-unix-tools-for-binaries-analysis" id="prepare-the-next-session-keep-talking-about-unix-tools-for-binaries-analysis">Prepare the next session (keep talking about Unix tools for binaries analysis)</a></h2>
 <ul>
@@ -592,7 +605,7 @@ int main(void) {
 <li><a href="https://en.wikipedia.org/wiki/GNU_Binutils">https://en.wikipedia.org/wiki/GNU_Binutils</a></li>
 <li><a href="https://en.wikipedia.org/wiki/Strace">https://en.wikipedia.org/wiki/Strace</a></li>
 </ul>
-<p>We will play with =&gt; FFI: Foreign Function Interface</p>
+<p>We will play with <code>=&gt;</code> FFI: Foreign Function Interface</p>
 <p>I wish all of you enjoyed end-of-year celebrations.</p>
 <p>Best, Yvan</p>
 <p>P.S. <a href="https://xkcd.com/835/">https://xkcd.com/835/</a> &amp; <a href="https://xkcd.com/2248/">https://xkcd.com/2248/</a></p>
@@ -702,6 +715,7 @@ int main(void) {
     return 0;
 }
 </code></pre>
+<p>En français, vous pouvez lire ce cours d'OS <a href="https://darnuria.eu/2019-2020_os">https://darnuria.eu/2019-2020_os</a> pour vous rafraichir la mémoire !</p>
 <h2><a class="header" href="#pour-aller-plus-loin" id="pour-aller-plus-loin">Pour aller plus loin</a></h2>
 <ul>
 <li>Connaissez vous les descripteurs de fichier <a href="https://en.wikipedia.org/wiki/File_descriptor">https://en.wikipedia.org/wiki/File_descriptor</a></li>
@@ -710,6 +724,8 @@ int main(void) {
 <li>Pourquoi un exécutable Rust est-il volumineux ? <a href="https://lifthrasiir.github.io/rustlog/why-is-a-rust-executable-large.html">https://lifthrasiir.github.io/rustlog/why-is-a-rust-executable-large.html</a></li>
 <li>Pointeurs intelligents dans Rust <a href="https://doc.rust-lang.org/book/ch15-00-smart-pointers.html">https://doc.rust-lang.org/book/ch15-00-smart-pointers.html</a></li>
 <li>Rust est nul parce que ... <a href="https://wiki.theory.org/index.php/YourLanguageSucks#Rust_sucks_because">https://wiki.theory.org/index.php/YourLanguageSucks#Rust_sucks_because</a></li>
+<li><code>unfork</code> <a href="https://github.com/whitequark/unfork">https://github.com/whitequark/unfork</a></li>
+<li><a href="https://github.com/sebasmagri/rust-concurrency-patterns">https://github.com/sebasmagri/rust-concurrency-patterns</a></li>
 </ul>
 <h2><a class="header" href="#pour-préparer-le-prochain-cours-parlons-doutils-unix-pour-lanalyse-de-binaires" id="pour-préparer-le-prochain-cours-parlons-doutils-unix-pour-lanalyse-de-binaires">Pour préparer le prochain cours (parlons d'outils Unix pour l'analyse de binaires)</a></h2>
 <ul>
@@ -719,7 +735,7 @@ int main(void) {
 <li><a href="https://en.wikipedia.org/wiki/GNU_Binutils">https://en.wikipedia.org/wiki/GNU_Binutils</a></li>
 <li><a href="https://en.wikipedia.org/wiki/Strace">https://en.wikipedia.org/wiki/Strace</a></li>
 </ul>
-<p>Nous allons jouer avec les =&gt; FFI: Foreign Function Interface</p>
+<p>Nous allons jouer avec les <code>=&gt;</code> FFI: Foreign Function Interface</p>
 <p>J'espères que vous avez tous passés de très bonnes fêtes de fin d'années,</p>
 <p>Amitiés, Yvan</p>
 <h1><a class="header" href="#recall-ffi--unsafe" id="recall-ffi--unsafe">Recall, FFI &amp; Unsafe</a></h1>
@@ -734,8 +750,10 @@ int main(void) {
 <li><a href="https://exercism.io/tracks/rust">https://exercism.io/tracks/rust</a></li>
 </ul>
 <p><strong>Tooling</strong>: be sure to have <strong>RLS</strong> (<a href="https://github.com/rust-lang/rls">https://github.com/rust-lang/rls</a>) linting enabled in your editor!</p>
-<p>N.B. if you're looking for a cool font with code ligatures: 
+<blockquote>
+<p><strong>N.B.</strong> if you're looking for a cool font with code ligatures: 
 <a href="https://github.com/tonsky/FiraCode">https://github.com/tonsky/FiraCode</a></p>
+</blockquote>
 <h2><a class="header" href="#activity-0-remind-me-whats-rust-again" id="activity-0-remind-me-whats-rust-again">Activity 0: Remind me, what's Rust again?</a></h2>
 <p>Rust is a <strong>compiled language</strong> with a <strong>strong static</strong> algebraic type system.</p>
 <blockquote>
@@ -771,7 +789,7 @@ fn main() {
 }
 </code></pre></pre>
 <blockquote>
-<p>N.B. <a href="https://doc.rust-lang.org/std/string/struct.String.html">https://doc.rust-lang.org/std/string/struct.String.html</a></p>
+<p><strong>N.B.</strong> <a href="https://doc.rust-lang.org/std/string/struct.String.html">https://doc.rust-lang.org/std/string/struct.String.html</a></p>
 </blockquote>
 <h2><a class="header" href="#activity-1-sort-weel-known-programming-languages" id="activity-1-sort-weel-known-programming-languages">Activity 1: Sort weel-known programming languages</a></h2>
 <h3><a class="header" href="#static-typing-compiled-languages" id="static-typing-compiled-languages">Static typing (compiled languages)</a></h3>
@@ -780,7 +798,7 @@ fn main() {
 Rust (type inference is everywhere) | C++ (type inference with keyword <code>auto</code>) | C (no type inference, need to be explicit)</li>
 </ul>
 <blockquote>
-<p>N.B. There are smart pointers (handle at runtime by reference counting) <a href="https://doc.rust-lang.org/book/ch15-00-smart-pointers.html">https://doc.rust-lang.org/book/ch15-00-smart-pointers.html</a></p>
+<p><strong>N.B.</strong> There are smart pointers (handle at runtime by reference counting) <a href="https://doc.rust-lang.org/book/ch15-00-smart-pointers.html">https://doc.rust-lang.org/book/ch15-00-smart-pointers.html</a></p>
 </blockquote>
 <ul>
 <li><strong>Dynamic memory management (with garbage collectors)</strong>
@@ -822,7 +840,7 @@ pub fn square(num: i32) -&gt; i32 {
 </li>
 </ul>
 <blockquote>
-<p>N.B. Binary format for Linux is ELF: <a href="https://en.wikipedia.org/wiki/Executable_and_Linkable_Format">https://en.wikipedia.org/wiki/Executable_and_Linkable_Format</a></p>
+<p><strong>N.B.</strong> Binary format for Linux is ELF: <a href="https://en.wikipedia.org/wiki/Executable_and_Linkable_Format">https://en.wikipedia.org/wiki/Executable_and_Linkable_Format</a></p>
 </blockquote>
 <ul>
 <li><strong>Library</strong>
@@ -836,7 +854,7 @@ language-independent &amp; platform-dependent</li>
 </ul>
 <h2><a class="header" href="#activity-3-foreign-function-interface-ffi" id="activity-3-foreign-function-interface-ffi">Activity 3: Foreign Function Interface (FFI)</a></h2>
 <blockquote>
-<p><a href="https://doc.rust-lang.org/book/ffi.html">https://doc.rust-lang.org/book/ffi.html</a></p>
+<p><strong>N.B.</strong> the Book have a good section on the subject <a href="https://doc.rust-lang.org/book/ffi.html">https://doc.rust-lang.org/book/ffi.html</a></p>
 </blockquote>
 <p>Today we will try to:</p>
 <ul>
@@ -844,9 +862,7 @@ language-independent &amp; platform-dependent</li>
 <li>Call a C function (compiled as a static library) from a Rust code: <a href="https://rust-embedded.github.io/book/interoperability/c-with-rust.html">https://rust-embedded.github.io/book/interoperability/c-with-rust.html</a></li>
 </ul>
 <p>This <a href="https://stackoverflow.com/questions/43826572/where-should-i-place-a-static-library-so-i-can-link-it-with-a-rust-program">https://stackoverflow.com/questions/43826572/where-should-i-place-a-static-library-so-i-can-link-it-with-a-rust-program</a> will help since we have to set up <a href="https://doc.rust-lang.org/cargo/reference/manifest.html#package-build">https://doc.rust-lang.org/cargo/reference/manifest.html#package-build</a> to tell <code>cargo</code> where our static lib is!</p>
-<blockquote>
-<p>Here is our final code <a href="https://github.com/yvan-sraka/rust-ffi-demo">https://github.com/yvan-sraka/rust-ffi-demo</a></p>
-</blockquote>
+<p><strong>Here is our final code <a href="https://github.com/yvan-sraka/rust-ffi-demo">https://github.com/yvan-sraka/rust-ffi-demo</a> :)</strong></p>
 <h1><a class="header" href="#big-project-guidelines-a-not-so-simple-ppm-image-manipulation-library" id="big-project-guidelines-a-not-so-simple-ppm-image-manipulation-library">Big project guidelines: a not so simple PPM image manipulation library</a></h1>
 <p>Goals: Manipulating IO, Memory, Concurrent programming with threads and exposing Rust function
 through Foreign Function Interface.</p>
@@ -976,9 +992,8 @@ could help!</p>
 <li>Make a <code>dummy()</code> function that return <code>42</code></li>
 <li>Call this function in another language like Python using basic Foreign Function Interface FFI</li>
 </ul>
-<p><em>Note:</em></p>
 <blockquote>
-<p>The Rust doc has a really handy page on the subject:
+<p><strong>N.B.</strong> The Rust doc has a really handy page on the subject:
 <a href="https://doc.rust-lang.org/1.2.0/book/rust-inside-other-languages.html">https://doc.rust-lang.org/1.2.0/book/rust-inside-other-languages.html</a></p>
 </blockquote>
 <p>Somewhat harder:</p>
@@ -990,7 +1005,7 @@ could help!</p>
 <p>Bonjour tout le monde,</p>
 <p>J'espère que tout ce passe bien pour vous avec le projet Rust.</p>
 <p>Pour aider ceux d'entre vous qui ne sont peut-être pas fluent dans la langue de Shakespeare (by the way, I am not either), en bas de ce mail ce trouve une version compacte du sujet du projet en français !</p>
-<p>J'en profite aussi pour récapituler ce que j'attends et évaluerai de votre soutenance : 15 min de présentation + 5 min de questions (par groupe de 3/4 personnes) le Vendredi 14 Février (dernier examen avant de profiter de votre weekend et de std::option<la St Valentin>).</p>
+<p>J'en profite aussi pour récapituler ce que j'attends et évaluerai de votre soutenance : 15 min de présentation + 5 min de questions (par groupe de 3/4 personnes) le Vendredi 14 Février (dernier examen avant de profiter de votre weekend et de <code>std::option&lt;la St Valentin&gt;</code>).</p>
 <p>J'attends de vous que vous me montriez une petite démo de votre bibliothèque, que vous m'expliquiez les décisions que vous avez prise dans le développement de celle-ci, les difficultés que vous avez rencontrées, comment vous les avez ou non surmonté, et une très bonne manière d'illustrer cela ce sont des Benchmarks de vos fonctions : <a href="https://doc.rust-lang.org/1.2.0/book/benchmark-tests.html">https://doc.rust-lang.org/1.2.0/book/benchmark-tests.html</a></p>
 <p>En particulier je vous invite à vous poser la question de comment faire les calculs demandés en utilisant plusieurs threads, et développer une stratégie pour trouver un bon compromis sur le nombre de threads à attribuer (par exemple, un thread par pixel est peut-être un peu trop ...), écrivez des tests ! de la documentation !</p>
 <p>Tous les bonus sont appréciés, que ce soit des FFI avec Python, un super affichage dans le terminal, une interface web, ou quoi que vous puissiez trouver amusant à faire :)</p>
@@ -1081,8 +1096,10 @@ could help!</p>
 <li>qualité du code, de ses commentaires / documentation et présence de tests : 5 points</li>
 <li>clarté de la présentation, de la démo du projet et présences de benchmarks : 5 points</li>
 </ul>
-<p>Je jetterais bien entendu pendant votre présentation un coup d'œil au code source que vous avez push sur GitHub, je m'attends à ce que celui-ci compile et soit livré avec un README qui explique comment utiliser votre bibliothèque et comment éventuellement lancer des benchmarks / tests.</p>
-<p>ATTENTION : Veuillez ne pas oubliez d'indiquer en haut de votre README les noms des membres de votre groupe !</p>
+<p>Je jetterais bien entendu pendant votre présentation un coup d'œil au code source que vous avez push sur GitHub, je m'attends à ce que celui-ci compile et soit livré avec un <code>README</code> qui explique comment utiliser votre bibliothèque et comment éventuellement lancer des benchmarks / tests.</p>
+<blockquote>
+<p><strong>ATTENTION :</strong> Veuillez ne pas oubliez d'indiquer en haut de votre <code>README</code> les noms des membres de votre groupe !</p>
+</blockquote>
 <p>Je m'autorise également à poser en fin de présentation en plus de questions sur votre implémentation, des questions générales sur le langage Rust et autres aspects qu'on aurait vu en cours à certains membres du groupe ! Ce n'est pas pour vous piéger, c'est plus pour donner des points supplémentaires à des groupes où par exemple le temps de parole pendant la présentation n'aurait pas été distribué très équitablement.</p>
 <p><a href="https://en.wikipedia.org/wiki/The_Force#%22May_the_Force_be_with_you%22">https://en.wikipedia.org/wiki/The_Force#&quot;May_the_Force_be_with_you&quot;</a></p>
 <p>Yvan</p>
@@ -1157,10 +1174,10 @@ async fn main() {
     println!(&quot;wrote to stream; success={:?}&quot;, result.is_ok());
 }
 </code></pre></pre>
-<p><strong>N.B.</strong> we can use https://ngrok.com/docs or a VPN to test this code over network meanwhile social distancing ...</p>
 <blockquote>
-<p>Learn more about <code>async</code>: <a href="https://areweasyncyet.rs">https://areweasyncyet.rs</a> (you can use futures, mio or async-std)</p>
+<p><strong>N.B.</strong> we can use https://ngrok.com/docs or a VPN to test this code over network meanwhile social distancing ...</p>
 </blockquote>
+<p>Learn more about <code>async</code>: <a href="https://areweasyncyet.rs">https://areweasyncyet.rs</a> (you can use futures, mio or async-std)</p>
 <pre><pre class="playpen"><code class="language-rust">use futures::executor::block_on;
 
 type Song = String;
@@ -1243,10 +1260,10 @@ async fn main() {
     }
 }
 </code></pre></pre>
-<p><strong>N.B.</strong> for stuffs that never fail<a href="https://doc.rust-lang.org/std/convert/enum.Infallible.html">https://doc.rust-lang.org/std/convert/enum.Infallible.html</a></p>
 <blockquote>
-<p>There is plenty of alternatives here too: <a href="https://www.arewewebyet.org">https://www.arewewebyet.org</a></p>
+<p><strong>N.B.</strong> for stuffs that never fail<a href="https://doc.rust-lang.org/std/convert/enum.Infallible.html">https://doc.rust-lang.org/std/convert/enum.Infallible.html</a></p>
 </blockquote>
+<p>There is plenty of alternatives here too: <a href="https://www.arewewebyet.org">https://www.arewewebyet.org</a></p>
 <h2><a class="header" href="#lvl-2---api-request" id="lvl-2---api-request">Lvl 2 - API Request</a></h2>
 <p>Using <a href="https://docs.rs/reqwest">https://docs.rs/reqwest</a> play with some external API, like Giphy one: <a href="https://developers.giphy.com/docs/api/endpoint#random">https://developers.giphy.com/docs/api/endpoint#random</a> and create a small command-line program that takes a parameter and save the GIF image on your computer!</p>
 <pre><code class="language-toml">[dependencies]
@@ -1264,7 +1281,9 @@ fn main() -&gt; Result&lt;(), Box&lt;dyn std::error::Error&gt;&gt; {
     Ok(())
 }
 </code></pre></pre>
+<blockquote>
 <p><strong>N.B.</strong> I use <a href="https://doc.rust-lang.org/book/ch12-05-working-with-environment-variables.html">https://doc.rust-lang.org/book/ch12-05-working-with-environment-variables.html</a> to not write my secret <code>GIPHY_API_KEY</code> in code!</p>
+</blockquote>
 <h2><a class="header" href="#lvl----bonus" id="lvl----bonus">Lvl ? - Bonus</a></h2>
 <p>Want to play with some &quot;real&quot; web framework, you can try <a href="https://gotham.rs">https://gotham.rs</a> (or <a href="http://nickel-org.github.io">http://nickel-org.github.io</a>)!</p>
 <h2><a class="header" href="#to-go-further--are-we-yet" id="to-go-further--are-we-yet">To go further .. are we yet?</a></h2>

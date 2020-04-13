@@ -218,10 +218,10 @@ async fn main() {
     println!(&quot;wrote to stream; success={:?}&quot;, result.is_ok());
 }
 </code></pre></pre>
-<p><strong>N.B.</strong> we can use https://ngrok.com/docs or a VPN to test this code over network meanwhile social distancing ...</p>
 <blockquote>
-<p>Learn more about <code>async</code>: <a href="https://areweasyncyet.rs">https://areweasyncyet.rs</a> (you can use futures, mio or async-std)</p>
+<p><strong>N.B.</strong> we can use https://ngrok.com/docs or a VPN to test this code over network meanwhile social distancing ...</p>
 </blockquote>
+<p>Learn more about <code>async</code>: <a href="https://areweasyncyet.rs">https://areweasyncyet.rs</a> (you can use futures, mio or async-std)</p>
 <pre><pre class="playpen"><code class="language-rust">use futures::executor::block_on;
 
 type Song = String;
@@ -304,10 +304,10 @@ async fn main() {
     }
 }
 </code></pre></pre>
-<p><strong>N.B.</strong> for stuffs that never fail<a href="https://doc.rust-lang.org/std/convert/enum.Infallible.html">https://doc.rust-lang.org/std/convert/enum.Infallible.html</a></p>
 <blockquote>
-<p>There is plenty of alternatives here too: <a href="https://www.arewewebyet.org">https://www.arewewebyet.org</a></p>
+<p><strong>N.B.</strong> for stuffs that never fail<a href="https://doc.rust-lang.org/std/convert/enum.Infallible.html">https://doc.rust-lang.org/std/convert/enum.Infallible.html</a></p>
 </blockquote>
+<p>There is plenty of alternatives here too: <a href="https://www.arewewebyet.org">https://www.arewewebyet.org</a></p>
 <h2><a class="header" href="#lvl-2---api-request" id="lvl-2---api-request">Lvl 2 - API Request</a></h2>
 <p>Using <a href="https://docs.rs/reqwest">https://docs.rs/reqwest</a> play with some external API, like Giphy one: <a href="https://developers.giphy.com/docs/api/endpoint#random">https://developers.giphy.com/docs/api/endpoint#random</a> and create a small command-line program that takes a parameter and save the GIF image on your computer!</p>
 <pre><code class="language-toml">[dependencies]
@@ -325,7 +325,9 @@ fn main() -&gt; Result&lt;(), Box&lt;dyn std::error::Error&gt;&gt; {
     Ok(())
 }
 </code></pre></pre>
+<blockquote>
 <p><strong>N.B.</strong> I use <a href="https://doc.rust-lang.org/book/ch12-05-working-with-environment-variables.html">https://doc.rust-lang.org/book/ch12-05-working-with-environment-variables.html</a> to not write my secret <code>GIPHY_API_KEY</code> in code!</p>
+</blockquote>
 <h2><a class="header" href="#lvl----bonus" id="lvl----bonus">Lvl ? - Bonus</a></h2>
 <p>Want to play with some &quot;real&quot; web framework, you can try <a href="https://gotham.rs">https://gotham.rs</a> (or <a href="http://nickel-org.github.io">http://nickel-org.github.io</a>)!</p>
 <h2><a class="header" href="#to-go-further--are-we-yet" id="to-go-further--are-we-yet">To go further .. are we yet?</a></h2>

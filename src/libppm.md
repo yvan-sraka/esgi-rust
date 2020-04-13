@@ -144,8 +144,7 @@ Relatively easy:
 - Make a `dummy()` function that return `42`
 - Call this function in another language like Python using basic Foreign Function Interface FFI
  
-_Note:_
-> The Rust doc has a really handy page on the subject:
+> **N.B.** The Rust doc has a really handy page on the subject:
 > <https://doc.rust-lang.org/1.2.0/book/rust-inside-other-languages.html>
  
 Somewhat harder:
@@ -161,7 +160,7 @@ J'espère que tout ce passe bien pour vous avec le projet Rust.
 
 Pour aider ceux d'entre vous qui ne sont peut-être pas fluent dans la langue de Shakespeare (by the way, I am not either), en bas de ce mail ce trouve une version compacte du sujet du projet en français !
 
-J'en profite aussi pour récapituler ce que j'attends et évaluerai de votre soutenance : 15 min de présentation + 5 min de questions (par groupe de 3/4 personnes) le Vendredi 14 Février (dernier examen avant de profiter de votre weekend et de std::option<la St Valentin>).
+J'en profite aussi pour récapituler ce que j'attends et évaluerai de votre soutenance : 15 min de présentation + 5 min de questions (par groupe de 3/4 personnes) le Vendredi 14 Février (dernier examen avant de profiter de votre weekend et de `std::option<la St Valentin>`).
 
 J'attends de vous que vous me montriez une petite démo de votre bibliothèque, que vous m'expliquiez les décisions que vous avez prise dans le développement de celle-ci, les difficultés que vous avez rencontrées, comment vous les avez ou non surmonté, et une très bonne manière d'illustrer cela ce sont des Benchmarks de vos fonctions : <https://doc.rust-lang.org/1.2.0/book/benchmark-tests.html>
 
@@ -269,9 +268,9 @@ Comme vous êtes déjà tous bien au courant c'est demain que vous présenterez 
 - qualité du code, de ses commentaires / documentation et présence de tests : 5 points
 - clarté de la présentation, de la démo du projet et présences de benchmarks : 5 points
 
-Je jetterais bien entendu pendant votre présentation un coup d'œil au code source que vous avez push sur GitHub, je m'attends à ce que celui-ci compile et soit livré avec un README qui explique comment utiliser votre bibliothèque et comment éventuellement lancer des benchmarks / tests.
+Je jetterais bien entendu pendant votre présentation un coup d'œil au code source que vous avez push sur GitHub, je m'attends à ce que celui-ci compile et soit livré avec un `README` qui explique comment utiliser votre bibliothèque et comment éventuellement lancer des benchmarks / tests.
 
-ATTENTION : Veuillez ne pas oubliez d'indiquer en haut de votre README les noms des membres de votre groupe !
+> **ATTENTION :** Veuillez ne pas oubliez d'indiquer en haut de votre `README` les noms des membres de votre groupe !
 
 
 Je m'autorise également à poser en fin de présentation en plus de questions sur votre implémentation, des questions générales sur le langage Rust et autres aspects qu'on aurait vu en cours à certains membres du groupe ! Ce n'est pas pour vous piéger, c'est plus pour donner des points supplémentaires à des groupes où par exemple le temps de parole pendant la présentation n'aurait pas été distribué très équitablement.

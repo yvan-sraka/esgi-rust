@@ -17,7 +17,7 @@ If you need a recap on **Rust syntax**:
 
 **Tooling**: be sure to have **RLS** (<https://github.com/rust-lang/rls>) linting enabled in your editor!
 
-N.B. if you're looking for a cool font with code ligatures: 
+> **N.B.** if you're looking for a cool font with code ligatures: 
 <https://github.com/tonsky/FiraCode>
 
 
@@ -26,6 +26,7 @@ N.B. if you're looking for a cool font with code ligatures:
 Rust is a **compiled language** with a **strong static** algebraic type system.
 
 > _Reminder:_
+>
 > - "static" stands for "computed at compiletime", e.g. `macros`
 > - "dynamic" stands for "computed at runtime", e.g. `fn`
 
@@ -60,7 +61,7 @@ fn main() {
 }
 ```
 
-> N.B. <https://doc.rust-lang.org/std/string/struct.String.html>
+> **N.B.** <https://doc.rust-lang.org/std/string/struct.String.html>
 
 ## Activity 1: Sort weel-known programming languages
 
@@ -69,7 +70,7 @@ fn main() {
 - **Static memory management (language that compiles to arch-specific binaries)**:
   Rust (type inference is everywhere) | C++ (type inference with keyword `auto`) | C (no type inference, need to be explicit)
 
-> N.B. There are smart pointers (handle at runtime by reference counting) <https://doc.rust-lang.org/book/ch15-00-smart-pointers.html>
+> **N.B.** There are smart pointers (handle at runtime by reference counting) <https://doc.rust-lang.org/book/ch15-00-smart-pointers.html>
 
 - **Dynamic memory management (with garbage collectors)**
   * Haskell | OCaml | Go (compile to binaries)
@@ -107,7 +108,7 @@ pub fn square(num: i32) -> i32 {
 - **Executable**
   * Windows: `.exe` | Unix (usualy no extension)
 
-> N.B. Binary format for Linux is ELF: <https://en.wikipedia.org/wiki/Executable_and_Linkable_Format>
+> **N.B.** Binary format for Linux is ELF: <https://en.wikipedia.org/wiki/Executable_and_Linkable_Format>
 
 - **Library**
   * lib static `->` compile time (UNIX `.a`, Windows `.lib`)
@@ -117,7 +118,7 @@ pub fn square(num: i32) -> i32 {
 
 ## Activity 3: Foreign Function Interface (FFI)
 
-> <https://doc.rust-lang.org/book/ffi.html>
+> **N.B.** the Book have a good section on the subject <https://doc.rust-lang.org/book/ffi.html>
 
 Today we will try to:
 
@@ -126,4 +127,4 @@ Today we will try to:
 
 This <https://stackoverflow.com/questions/43826572/where-should-i-place-a-static-library-so-i-can-link-it-with-a-rust-program> will help since we have to set up <https://doc.rust-lang.org/cargo/reference/manifest.html#package-build> to tell `cargo` where our static lib is!
 
-> Here is our final code <https://github.com/yvan-sraka/rust-ffi-demo>
+**Here is our final code <https://github.com/yvan-sraka/rust-ffi-demo> :)**

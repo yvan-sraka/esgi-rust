@@ -58,6 +58,7 @@ Supplementary links to feed your curiosity (bonus, not mandatory):
 
 - There no null pointers in Rust! Why? Watch "Null References: The Billion Dollar Mistake" from Tony Hoare <https://www.infoq.com/presentations/Null-References-The-Billion-Dollar-Mistake-Tony-Hoare/>
 - Some more readings for the brave: "What Every Programmer Should Know About Memory" by Ulrich Drepper from Red Hat <https://people.freebsd.org/~lstewart/articles/cpumemory.pdf>
+- [Fear not the Rust Borrow Checker](http://www.squidarth.com/rc/rust/2018/05/31/rust-borrowing-and-ownership.html)
 
 
 # Homework due to next session
@@ -115,6 +116,8 @@ L'anglais ce n'est pas votre truc, je ne vous en veux pas :)
 {{#include borrowing-example-colors.rs}}
 ```
 
+> **N.B.** <https://blog.guillaume-gomez.fr/Rust> donne des bonnes explications (en français) du modèle mémoire de Rust !
+
 # Obligatoire pour la prochaine session
 
 ⚠️ Avoir un système UNIX avec Rust installé dessus :
@@ -150,6 +153,7 @@ Quelques liens supplémentaires pour nourrir votre curiosité (en bonus, non obl
 
 - Il n'y a pas de pointeurs « null » dans Rust! Pourquoi? Regardez "Null References: The Billion Dollar Mistake" de Tony Hoare <https://www.infoq.com/presentations/Null-References-The-Billion-Dollar-Mistake-Tony-Hoare/>
 - Quelques lectures supplémentaires pour les plus courageux: "What Every Programmer Should Know About Memory" de Ulrich Drepper chez Red Hat <https://people.freebsd.org/~lstewart/articles/cpumemory.pdf>
+- [Fear not the Rust Borrow Checker](http://www.squidarth.com/rc/rust/2018/05/31/rust-borrowing-and-ownership.html)
 
 
 # Devoirs maison pour la prochaine session
