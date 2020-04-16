@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Introduction to Rust syntax - Systems and Networks programming in Rust</title>
+        <title>Rust syntax - Systems and Networks programming in Rust</title>
         
 
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -81,7 +81,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div id="sidebar-scrollbox" class="sidebar-scrollbox">
-                <ol class="chapter"><li class="expanded "><a href="rust-syntax.html"><strong aria-hidden="true">1.</strong> Introduction to Rust syntax</a></li><li class="expanded "><a href="ownership-borrowing.html"><strong aria-hidden="true">2.</strong> Memory in depth</a></li><li class="expanded "><a href="unix-multithreading.html"><strong aria-hidden="true">3.</strong> Unix and multithreading</a></li><li class="expanded "><a href="ffi-unsafe.html"><strong aria-hidden="true">4.</strong> FFI &amp; Unsafe</a></li><li class="expanded "><a href="libppm.html"><strong aria-hidden="true">5.</strong> Project libppm</a></li><li class="expanded "><a href="networks.html"><strong aria-hidden="true">6.</strong> Networking</a></li></ol>
+                <ol class="chapter"><li class="expanded "><a href="ch1/rust-syntax.html"><strong aria-hidden="true">1.</strong> Rust syntax</a></li><li class="expanded "><a href="ch2/ownership-borrowing.html"><strong aria-hidden="true">2.</strong> Ownership and borrowing</a></li><li class="expanded "><a href="ch3/unix-multithreading.html"><strong aria-hidden="true">3.</strong> Unix and multithreading</a></li><li class="expanded "><a href="ch4/ffi-unsafe.html"><strong aria-hidden="true">4.</strong> FFI and unsafe</a></li><li class="expanded "><a href="ch5/sockets-http.html"><strong aria-hidden="true">5.</strong> Sockets and HTTP</a></li><li class="expanded "><a href="ch6/webassembly.html"><strong aria-hidden="true">6.</strong> WebAssembly</a></li><li class="expanded "><a href="p1/libppm.html"><strong aria-hidden="true">7.</strong> Project 1: libppm</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -147,10 +147,11 @@
 
                 <div id="content" class="content">
                     <main>
-                        <p>Hello everybody,</p>
-<p>A quick mail about &quot;Systems and networks programming in Rust&quot; lecture, read it entirely, there is some homework for you at the end.</p>
-<h2><a class="header" href="#in-the-previous-episode" id="in-the-previous-episode">In the previous episode</a></h2>
-<p>Rust basics (Introduction, Syntax, Error Handling):</p>
+                        <h1><a class="header" href="#rust-syntax" id="rust-syntax">Rust syntax</a></h1>
+<!-- Hello everyone,
+
+A quick mail about "Systems and networks programming in Rust" lecture, read it entirely, there is some homework for you at the end. -->
+<h2><a class="header" href="#rust-basics-introduction-syntax-error-handling" id="rust-basics-introduction-syntax-error-handling">Rust basics (Introduction, Syntax, Error Handling)</a></h2>
 <ul>
 <li>
 <ol start="0">
@@ -171,7 +172,7 @@
 <blockquote>
 <p><strong>N.B.</strong> People on Windows should read this <a href="https://github.com/rust-lang/rustup.rs/#working-with-rust-on-windows">https://github.com/rust-lang/rustup.rs/#working-with-rust-on-windows</a>, and installing Visual Studio C/C++ tools suite (like link.exe to link program) using Visual Studio Installer.</p>
 </blockquote>
-<p>I also recommend to get you a WLS and install Rust with rustup in bash.exe, since starting from course 3 we will play with Linux file abstraction.</p>
+<p>I also recommend getting you a WLS and install Rust with rustup in bash.exe, since starting from course 3 we will play with Linux file abstraction.</p>
 <ul>
 <li>
 <ol start="3">
@@ -185,90 +186,68 @@
 </li>
 <li>
 <ol start="5">
-<li>Show off basic tooling: how to create a binary/library with cargo, how to add a dependency form crate.io to our project, we start writing a little MASTERMIND game (Here is a link to the full implementation <a href="https://github.com/yvan-sraka/mymastermind">https://github.com/yvan-sraka/mymastermind</a>)</li>
+<li>Show off basic tooling: how to create a binary/library with cargo, how to add a dependency form crate.io to our project, we start writing a little <strong>MASTERMIND</strong> game (Here is a link to the full implementation <a href="https://github.com/yvan-sraka/mymastermind">https://github.com/yvan-sraka/mymastermind</a>) SLIDES are here: <a href="https://github.com/yvan-sraka/mymastermind-slides">https://github.com/yvan-sraka/mymastermind-slides</a></li>
 </ol>
 </li>
 </ul>
-<p>SLIDES are here : <a href="https://github.com/yvan-sraka/mymastermind-slides">https://github.com/yvan-sraka/mymastermind-slides</a></p>
 <p>Further information could be found in THE RUST BOOK -&gt; <a href="https://doc.rust-lang.org/stable/book/">https://doc.rust-lang.org/stable/book/</a> &lt;- (what we do in class match the 3 first chapters of the book)</p>
-<p>Or alternatively in <a href="https://learning-rust.github.io/">https://learning-rust.github.io/</a>!</p>
-<h2><a class="header" href="#program-of-the-next-lectures" id="program-of-the-next-lectures">Program of the next lectures</a></h2>
-<ul>
-<li>Rust advanced (static automated memory management: Ownership &amp; Borrowing)</li>
-<li>Files (standard IO, synchronous message through pipes), Tasks (process, thread) and other POSIX stuff</li>
-<li>FFI, unsafe world (let's talk about &quot;lifetimes&quot;) and the C runtime (stack &amp; heap)</li>
-<li>*** NETWORK (finally, something fun for the last class) ***</li>
-</ul>
-<h2><a class="header" href="#homeworks-mandatory---deadline-push-it-before-the-class" id="homeworks-mandatory---deadline-push-it-before-the-class">Homeworks (mandatory) - deadline: push it before the class</a></h2>
+<p>Alternatively in <a href="https://learning-rust.github.io/">https://learning-rust.github.io/</a>!</p>
+<h2><a class="header" href="#homeworks-mandatory" id="homeworks-mandatory">Homeworks (mandatory)</a></h2>
+<!-- deadline: push it before the class -->
 <p>Make a PR (Pull-Request) on this repository that fixes this code: <a href="https://github.com/yvan-sraka/base64decode/blob/master/src/main.rs">https://github.com/yvan-sraka/base64decode/blob/master/src/main.rs</a></p>
 <p>It will be automatically validated by GitHub Actions (Continuous Integration), so if it's green you already have a good grade. I will give you extra points if you succeed to reduce the size of the codebase without breaking it!</p>
-<p>You can test your code by trying to decrypt this secret message:</p>
+<p>You can test your code by trying to decode this secret message:</p>
 <pre><code>TGEgcmFjbGV0dGUgKEJyYXRjaMOkcywgwqsgZnJvbWFnZSDCuyByw7R0aSwgZW4gc3Vpc3NlIGFsbGVtYW5kKSBlc3QgZCd1bmUgcGFydCB1biBmcm9tYWdlIChsZSBvdSBsYSByYWNsZXR0ZSkgb3JpZ2luYWlyZSBkdSBjYW50b24gZHUgVmFsYWlzIGVuIFN1aXNzZSwgZXQgZCdhdXRyZSBwYXJ0LCB1bmUgcmVjZXR0ZSBkZSBjdWlzaW5lIHRyYWRpdGlvbm5lbGxlIGV0IGVtYmzDqW1hdGlxdWUgZGUgbGEgY3Vpc2luZSBzdWlzc2UsIGNvbm51ZSBkYW5zIGxlIG1vbmRlIGVudGllciwgdmFyaWFudGUgZGVzIGZvbmR1ZXMgYXUgZnJvbWFnZSwgw6AgYmFzZSBkZSBjZSBmcm9tYWdlIGZvbmR1LCByYWNsw6kgYXUgZnVyIGV0IMOgIG1lc3VyZSBxdeKAmWlsIGZvbmQsIGV0IHNlcnZpZSB0cmFkaXRpb25uZWxsZW1lbnQgYXZlYyBkZXMgcG9tbWVzIGRlIHRlcnJlIGVuIHJvYmUgZGVzIGNoYW1wcyBldCBhY2NvbXBhZ27DqWUgZGUgbMOpZ3VtZXMgYXUgdmluYWlncmUgKGNvcm5pY2hvbnMsIG9pZ25vbnMpLg==
 </code></pre>
-<p>⚠️ Reminder, next class will start with a quick test (don't be late), it will be grade and take the form of a QCM.</p>
+<p>⚠️ Reminder, the next class will start with a quick test (don't be late), it will be grade and take the form of a QCM.</p>
 <p>Cheers, Yvan</p>
-<hr />
-<p>Bonjour tout le monde,</p>
-<p>Un petit courrier suite au premier cours de &quot;Programmation système et réseau en Rust&quot;, lisez-le entièrement, il y a quelques devoirs à faire pour vous à la fin.</p>
-<h2><a class="header" href="#dans-lépisode-précédent" id="dans-lépisode-précédent">Dans l'épisode précédent</a></h2>
-<p>Notions de base sur Rust (Introduction, Syntaxe, Traitement des erreurs):</p>
-<ul>
-<li>
-<ol start="0">
-<li>Horaire, but et règles de la classe (planning, devoirs maisons, notes, etc.)</li>
-</ol>
-</li>
-<li>
-<ol>
-<li>Qu'est-ce que la programmation système ? Pourquoi programmer des systèmes (et des réseaux) ? Pourquoi Rust ?</li>
-</ol>
-</li>
-<li>
-<ol start="2">
-<li>Configurez un environnement de développement Rust avec <a href="https://rustup.rs">https://rustup.rs</a> et un IDE (<a href="https://www.rust-lang.org/tools">https://www.rust-lang.org/tools</a>) avec support RLS (<a href="https://github.com/rust-lang/rls">https://github.com/rust-lang/rls</a>) vous avez besoin de l'extension VSCode, mais de lancer cette commande <code>rustup component add rls rust-analysis rust-src</code></li>
-</ol>
-</li>
-</ul>
-<blockquote>
-<p><strong>N.B.</strong> Les utilisateurs de Windows doivent lire ce guide <a href="https://github.com/rust-lang/rustup.rs/#working-with-rust-on-windows">https://github.com/rust-lang/rustup.rs/#working-with-rust-on-windows</a> et installer la suite d'outils Visual Studio C / C++ (contenant par exemple link.exe) à l'aide de Visual Studio Installer.</p>
-</blockquote>
-<p>Je vous recommande également de vous procurer un WLS et d'installer Rust avec rustup dans bash.exe, puisqu'à partir du cours 3, nous allons jouer avec l'abstraction de fichiers Linux.</p>
-<ul>
-<li>
-<ol start="3">
-<li>Familiarisez-vous avec la syntaxe du langage en jouant un peu avec <a href="https://github.com/rust-lang/rustlings">https://github.com/rust-lang/rustlings</a></li>
-</ol>
-</li>
-<li>
-<ol start="4">
-<li>Récapitulation théorique de la sémantique d'un programme Rust (on a parlé de fonctions VS macros, d'inférence de types, d'énumérations <a href="https://doc.rust-lang.org/std/result/enum.Result.html">https://doc.rust-lang.org/std/result/enum.Result.html</a>)</li>
-</ol>
-</li>
-<li>
-<ol start="5">
-<li>Les outils de base : comment créer une bibliothèque / binaire avec cargo, comment ajouter une dépendance crate.io à notre projet, nous avons commencé à écrire un petit jeu MASTERMIND (voici un lien vers l'implémentation complète <a href="https://github.com/yvan-sraka/mymastermind">https://github.com/yvan-sraka/mymastermind</a>)</li>
-</ol>
-</li>
-</ul>
-<p>Des informations complémentaires sont disponibles dans THE RUST BOOK -&gt; <a href="https://doc.rust-lang.org/stable/book/">https://doc.rust-lang.org/stable/book/</a> &lt;- (ce que nous avons fait en classe correspond aux 3 premiers chapitres du livre)</p>
-<p>Ou alternativement dans <a href="https://learning-rust.github.io/">https://learning-rust.github.io/</a>!</p>
-<p>Des exercices d'introduction aux concepts de bases du langage, en français, sont disponiblent ici <a href="https://framagit.org/darnuria/rust-initiation/">https://framagit.org/darnuria/rust-initiation/</a> !</p>
-<h2><a class="header" href="#programme-des-prochaines-séances" id="programme-des-prochaines-séances">Programme des prochaines séances</a></h2>
-<ul>
-<li>Rust avancés (gestion automatique de la mémoire statique: « ownership » et « borrowing »)</li>
-<li>Fichiers (E / S standard, message synchrone via des pipes), tâches (processus, thread) et autres POSIXeries</li>
-<li>FFI,  unsafe mode (parlons de « lifetimes ») et binaire</li>
-<li>*** NETWORK (enfin, quelque chose d'amusant pour le dernier cours) ***</li>
-</ul>
-<h2><a class="header" href="#devoir-maison-obligatoire---date-limite-à-envoyer-avant-le-cours" id="devoir-maison-obligatoire---date-limite-à-envoyer-avant-le-cours">Devoir maison (obligatoire) - date limite: à envoyer avant le cours</a></h2>
-<p>Créez une PR (Pull-Request) sur ce repos qui corrige les bugs de ce code: <a href="https://github.com/rust-esgi/base64decode">https://github.com/rust-esgi/base64decode</a></p>
-<p>Il sera automatiquement validé par GitHub Actions (Intégration Continue), donc si c'est vert, vous avez déjà une bonne note. Je vous donnerai des points supplémentaires si vous parvenez à réduire la taille du code sans le casser!</p>
-<p>Vous pouvez tester votre code en essayant de déchiffrer ce message secret:</p>
-<pre><code>TGEgcmFjbGV0dGUgKEJyYXRjaMOkcywgwqsgZnJvbWFnZSDCuyByw7R0aSwgZW4gc3Vpc3NlIGFsbGVtYW5kKSBlc3QgZCd1bmUgcGFydCB1biBmcm9tYWdlIChsZSBvdSBsYSByYWNsZXR0ZSkgb3JpZ2luYWlyZSBkdSBjYW50b24gZHUgVmFsYWlzIGVuIFN1aXNzZSwgZXQgZCdhdXRyZSBwYXJ0LCB1bmUgcmVjZXR0ZSBkZSBjdWlzaW5lIHRyYWRpdGlvbm5lbGxlIGV0IGVtYmzDqW1hdGlxdWUgZGUgbGEgY3Vpc2luZSBzdWlzc2UsIGNvbm51ZSBkYW5zIGxlIG1vbmRlIGVudGllciwgdmFyaWFudGUgZGVzIGZvbmR1ZXMgYXUgZnJvbWFnZSwgw6AgYmFzZSBkZSBjZSBmcm9tYWdlIGZvbmR1LCByYWNsw6kgYXUgZnVyIGV0IMOgIG1lc3VyZSBxdeKAmWlsIGZvbmQsIGV0IHNlcnZpZSB0cmFkaXRpb25uZWxsZW1lbnQgYXZlYyBkZXMgcG9tbWVzIGRlIHRlcnJlIGVuIHJvYmUgZGVzIGNoYW1wcyBldCBhY2NvbXBhZ27DqWUgZGUgbMOpZ3VtZXMgYXUgdmluYWlncmUgKGNvcm5pY2hvbnMsIG9pZ25vbnMpLg ==
-</code></pre>
-<p>⚠️ Rappel, le prochain cours commencera par un test rapide (il ne faut pas arriver en retard), il sera noté et prendra la forme d'un QCM.</p>
-<p>Amitiés, Yvan</p>
+<!--
 
+Bonjour tout le monde,
+
+Un petit courrier suite au premier cours de "Programmation système et réseau en Rust", lisez-le entièrement, il y a quelques devoirs à faire pour vous à la fin.
+
+## Dans l'épisode précédent
+
+Notions de base sur Rust (Introduction, Syntaxe, Traitement des erreurs)
+
+- 0. Horaire, but et règles de la classe (planning, devoirs maisons, notes, etc.)
+
+- 1. Qu'est-ce que la programmation système ? Pourquoi programmer des systèmes (et des réseaux) ? Pourquoi Rust ?
+
+- 2. Configurez un environnement de développement Rust avec <https://rustup.rs> et un IDE (<https://www.rust-lang.org/tools>) avec support RLS (<https://github.com/rust-lang/rls>) vous avez besoin de l'extension VSCode, mais de lancer cette commande `rustup component add rls rust-analysis rust-src`
+
+> **N.B.** Les utilisateurs de Windows doivent lire ce guide <https://github.com/rust-lang/rustup.rs/#working-with-rust-on-windows> et installer la suite d'outils Visual Studio C / C++ (contenant par exemple link.exe) à l'aide de Visual Studio Installer.
+
+Je vous recommande également de vous procurer un WLS et d'installer Rust avec rustup dans bash.exe, puisqu'à partir du cours 3, nous allons jouer avec l'abstraction de fichiers Linux.
+
+- 3. Familiarisez-vous avec la syntaxe du langage en jouant un peu avec <https://github.com/rust-lang/rustlings>
+
+- 4. Récapitulation théorique de la sémantique d'un programme Rust (on a parlé de fonctions VS macros, d'inférence de types, d'énumérations <https://doc.rust-lang.org/std/result/enum.Result.html>)
+
+- 5. Les outils de base : comment créer une bibliothèque / binaire avec cargo, comment ajouter une dépendance crate.io à notre projet, nous avons commencé à écrire un petit jeu MASTERMIND (voici un lien vers l'implémentation complète <https://github.com/yvan-sraka/mymastermind>)
+
+Des informations complémentaires sont disponibles dans THE RUST BOOK -> <https://doc.rust-lang.org/stable/book/> <- (ce que nous avons fait en classe correspond aux 3 premiers chapitres du livre)
+
+Ou alternativement dans <https://learning-rust.github.io/>!
+
+Des exercices d'introduction aux concepts de bases du langage, en français, sont disponiblent ici <https://framagit.org/darnuria/rust-initiation/> !
+
+## Devoir maison (obligatoire) - date limite: à envoyer avant le cours
+
+Créez une PR (Pull-Request) sur ce repos qui corrige les bugs de ce code: <https://github.com/rust-esgi/base64decode>
+
+Il sera automatiquement validé par GitHub Actions (Intégration Continue), donc si c'est vert, vous avez déjà une bonne note. Je vous donnerai des points supplémentaires si vous parvenez à réduire la taille du code sans le casser!
+
+Vous pouvez tester votre code en essayant de décoder ce message secret:
+
+    TGEgcmFjbGV0dGUgKEJyYXRjaMOkcywgwqsgZnJvbWFnZSDCuyByw7R0aSwgZW4gc3Vpc3NlIGFsbGVtYW5kKSBlc3QgZCd1bmUgcGFydCB1biBmcm9tYWdlIChsZSBvdSBsYSByYWNsZXR0ZSkgb3JpZ2luYWlyZSBkdSBjYW50b24gZHUgVmFsYWlzIGVuIFN1aXNzZSwgZXQgZCdhdXRyZSBwYXJ0LCB1bmUgcmVjZXR0ZSBkZSBjdWlzaW5lIHRyYWRpdGlvbm5lbGxlIGV0IGVtYmzDqW1hdGlxdWUgZGUgbGEgY3Vpc2luZSBzdWlzc2UsIGNvbm51ZSBkYW5zIGxlIG1vbmRlIGVudGllciwgdmFyaWFudGUgZGVzIGZvbmR1ZXMgYXUgZnJvbWFnZSwgw6AgYmFzZSBkZSBjZSBmcm9tYWdlIGZvbmR1LCByYWNsw6kgYXUgZnVyIGV0IMOgIG1lc3VyZSBxdeKAmWlsIGZvbmQsIGV0IHNlcnZpZSB0cmFkaXRpb25uZWxsZW1lbnQgYXZlYyBkZXMgcG9tbWVzIGRlIHRlcnJlIGVuIHJvYmUgZGVzIGNoYW1wcyBldCBhY2NvbXBhZ27DqWUgZGUgbMOpZ3VtZXMgYXUgdmluYWlncmUgKGNvcm5pY2hvbnMsIG9pZ25vbnMpLg ==
+
+⚠️ Rappel, le prochain cours commencera par un test rapide (il ne faut pas arriver en retard), il sera noté et prendra la forme d'un QCM.
+
+Amitiés, Yvan
+
+-->
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
@@ -276,7 +255,7 @@
                         
 
                         
-                            <a rel="next" href="ownership-borrowing.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="ch2/ownership-borrowing.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
                         
@@ -290,7 +269,7 @@
                 
 
                 
-                    <a rel="next" href="ownership-borrowing.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="ch2/ownership-borrowing.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
                 

@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>FFI &amp; Unsafe - Systems and Networks programming in Rust</title>
+        <title>FFI and unsafe - Systems and Networks programming in Rust</title>
         
 
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -11,21 +11,21 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff" />
 
-        <link rel="shortcut icon" href="favicon.png">
-        <link rel="stylesheet" href="css/variables.css">
-        <link rel="stylesheet" href="css/general.css">
-        <link rel="stylesheet" href="css/chrome.css">
-        <link rel="stylesheet" href="css/print.css" media="print">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
 
         <!-- Fonts -->
-        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
         <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
 
         <!-- Highlight.js Stylesheets -->
-        <link rel="stylesheet" href="highlight.css">
-        <link rel="stylesheet" href="tomorrow-night.css">
-        <link rel="stylesheet" href="ayu-highlight.css">
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
         
@@ -35,7 +35,7 @@
     <body>
         <!-- Provide site root to javascript -->
         <script type="text/javascript">
-            var path_to_root = "";
+            var path_to_root = "../";
             var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "light" : "light";
         </script>
 
@@ -81,7 +81,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div id="sidebar-scrollbox" class="sidebar-scrollbox">
-                <ol class="chapter"><li class="expanded "><a href="rust-syntax.html"><strong aria-hidden="true">1.</strong> Introduction to Rust syntax</a></li><li class="expanded "><a href="ownership-borrowing.html"><strong aria-hidden="true">2.</strong> Memory in depth</a></li><li class="expanded "><a href="unix-multithreading.html"><strong aria-hidden="true">3.</strong> Unix and multithreading</a></li><li class="expanded "><a href="ffi-unsafe.html" class="active"><strong aria-hidden="true">4.</strong> FFI &amp; Unsafe</a></li><li class="expanded "><a href="libppm.html"><strong aria-hidden="true">5.</strong> Project libppm</a></li><li class="expanded "><a href="networks.html"><strong aria-hidden="true">6.</strong> Networking</a></li></ol>
+                <ol class="chapter"><li class="expanded "><a href="../ch1/rust-syntax.html"><strong aria-hidden="true">1.</strong> Rust syntax</a></li><li class="expanded "><a href="../ch2/ownership-borrowing.html"><strong aria-hidden="true">2.</strong> Ownership and borrowing</a></li><li class="expanded "><a href="../ch3/unix-multithreading.html"><strong aria-hidden="true">3.</strong> Unix and multithreading</a></li><li class="expanded "><a href="../ch4/ffi-unsafe.html" class="active"><strong aria-hidden="true">4.</strong> FFI and unsafe</a></li><li class="expanded "><a href="../ch5/sockets-http.html"><strong aria-hidden="true">5.</strong> Sockets and HTTP</a></li><li class="expanded "><a href="../ch6/webassembly.html"><strong aria-hidden="true">6.</strong> WebAssembly</a></li><li class="expanded "><a href="../p1/libppm.html"><strong aria-hidden="true">7.</strong> Project 1: libppm</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -116,7 +116,7 @@
                     <h1 class="menu-title">Systems and Networks programming in Rust</h1>
 
                     <div class="right-buttons">
-                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
                         
@@ -147,8 +147,10 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1><a class="header" href="#recall-ffi--unsafe" id="recall-ffi--unsafe">Recall, FFI &amp; Unsafe</a></h1>
-<h2><a class="header" href="#activity--1-requierements-quick-setup" id="activity--1-requierements-quick-setup">Activity -1: Requierements (quick setup)</a></h2>
+                        <h1><a class="header" href="#ffi-and-unsafe" id="ffi-and-unsafe">FFI and unsafe</a></h1>
+<!-- Hello everyone, -->
+<p>Lvl -1, 0, 1 recalls from previous sessions ...</p>
+<h2><a class="header" href="#lvl--1-requierements-quick-setup" id="lvl--1-requierements-quick-setup">Lvl -1: Requierements (quick setup)</a></h2>
 <p>Have an <strong>up to date rust toolchain</strong>:</p>
 <pre><code>rustup update
 </code></pre>
@@ -163,7 +165,7 @@
 <p><strong>N.B.</strong> if you're looking for a cool font with code ligatures: 
 <a href="https://github.com/tonsky/FiraCode">https://github.com/tonsky/FiraCode</a></p>
 </blockquote>
-<h2><a class="header" href="#activity-0-remind-me-whats-rust-again" id="activity-0-remind-me-whats-rust-again">Activity 0: Remind me, what's Rust again?</a></h2>
+<h2><a class="header" href="#lvl-0-remind-me-whats-rust-again" id="lvl-0-remind-me-whats-rust-again">Lvl 0: Remind me, what's Rust again?</a></h2>
 <p>Rust is a <strong>compiled language</strong> with a <strong>strong static</strong> algebraic type system.</p>
 <blockquote>
 <p><em>Reminder:</em></p>
@@ -200,7 +202,7 @@ fn main() {
 <blockquote>
 <p><strong>N.B.</strong> <a href="https://doc.rust-lang.org/std/string/struct.String.html">https://doc.rust-lang.org/std/string/struct.String.html</a></p>
 </blockquote>
-<h2><a class="header" href="#activity-1-sort-weel-known-programming-languages" id="activity-1-sort-weel-known-programming-languages">Activity 1: Sort weel-known programming languages</a></h2>
+<h2><a class="header" href="#lvl-1-sort-weel-known-programming-languages" id="lvl-1-sort-weel-known-programming-languages">Lvl 1: Sort weel-known programming languages</a></h2>
 <h3><a class="header" href="#static-typing-compiled-languages" id="static-typing-compiled-languages">Static typing (compiled languages)</a></h3>
 <ul>
 <li><strong>Static memory management (language that compiles to arch-specific binaries)</strong>:
@@ -221,7 +223,7 @@ Rust (type inference is everywhere) | C++ (type inference with keyword <code>aut
 <ul>
 <li>BourneShell | Python | Prel | Ruby | PHP | ECMAScript (libs of these languages often rely on compiled code)</li>
 </ul>
-<h2><a class="header" href="#activity-2-what-rustc-do-without-lying-in-the-details" id="activity-2-what-rustc-do-without-lying-in-the-details">Activity 2: What <code>rustc</code> do (without lying in the details):</a></h2>
+<h2><a class="header" href="#lvl-2-what-rustc-do-without-lying-in-the-details" id="lvl-2-what-rustc-do-without-lying-in-the-details">Lvl 2: What <code>rustc</code> do (without lying in the details):</a></h2>
 <p>Rust <code>=&gt;</code> Rust (without macro) <code>=&gt;</code> (module resolution) <code>=&gt;</code> (memory management) MIR <code>=&gt;</code> ... <code>=&gt;</code> LLVM <code>=&gt;</code> linking (static libs) <code>=&gt;</code> Binary</p>
 <p>We can have a taste of Rust without macros with <a href="https://github.com/mre/cargo-inspect">https://github.com/mre/cargo-inspect</a></p>
 <p>We can have a taste of MIR / LLVM / ASM with <a href="https://godbolt.org">https://godbolt.org</a></p>
@@ -261,7 +263,7 @@ language-independent &amp; platform-dependent</li>
 </ul>
 </li>
 </ul>
-<h2><a class="header" href="#activity-3-foreign-function-interface-ffi" id="activity-3-foreign-function-interface-ffi">Activity 3: Foreign Function Interface (FFI)</a></h2>
+<h2><a class="header" href="#lvl-3-foreign-function-interface-ffi" id="lvl-3-foreign-function-interface-ffi">Lvl 3: Foreign Function Interface (FFI)</a></h2>
 <blockquote>
 <p><strong>N.B.</strong> the Book have a good section on the subject <a href="https://doc.rust-lang.org/book/ffi.html">https://doc.rust-lang.org/book/ffi.html</a></p>
 </blockquote>
@@ -272,19 +274,20 @@ language-independent &amp; platform-dependent</li>
 </ul>
 <p>This <a href="https://stackoverflow.com/questions/43826572/where-should-i-place-a-static-library-so-i-can-link-it-with-a-rust-program">https://stackoverflow.com/questions/43826572/where-should-i-place-a-static-library-so-i-can-link-it-with-a-rust-program</a> will help since we have to set up <a href="https://doc.rust-lang.org/cargo/reference/manifest.html#package-build">https://doc.rust-lang.org/cargo/reference/manifest.html#package-build</a> to tell <code>cargo</code> where our static lib is!</p>
 <p><strong>Here is our final code <a href="https://github.com/yvan-sraka/rust-ffi-demo">https://github.com/yvan-sraka/rust-ffi-demo</a> :)</strong></p>
+<p>Cheers, Yvan</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
                         
-                            <a rel="prev" href="unix-multithreading.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../ch3/unix-multithreading.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
                         
 
                         
-                            <a rel="next" href="libppm.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="../ch5/sockets-http.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
                         
@@ -296,13 +299,13 @@ language-independent &amp; platform-dependent</li>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                 
-                    <a rel="prev" href="unix-multithreading.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../ch3/unix-multithreading.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
                 
 
                 
-                    <a rel="next" href="libppm.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="../ch5/sockets-http.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
                 
@@ -325,14 +328,14 @@ language-independent &amp; platform-dependent</li>
         
 
         
-        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
         
 
-        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
-        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
 
         <!-- Custom JS scripts -->
         

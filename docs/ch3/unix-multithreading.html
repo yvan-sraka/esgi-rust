@@ -11,21 +11,21 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff" />
 
-        <link rel="shortcut icon" href="favicon.png">
-        <link rel="stylesheet" href="css/variables.css">
-        <link rel="stylesheet" href="css/general.css">
-        <link rel="stylesheet" href="css/chrome.css">
-        <link rel="stylesheet" href="css/print.css" media="print">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
 
         <!-- Fonts -->
-        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
         <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
 
         <!-- Highlight.js Stylesheets -->
-        <link rel="stylesheet" href="highlight.css">
-        <link rel="stylesheet" href="tomorrow-night.css">
-        <link rel="stylesheet" href="ayu-highlight.css">
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
         
@@ -35,7 +35,7 @@
     <body>
         <!-- Provide site root to javascript -->
         <script type="text/javascript">
-            var path_to_root = "";
+            var path_to_root = "../";
             var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "light" : "light";
         </script>
 
@@ -81,7 +81,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div id="sidebar-scrollbox" class="sidebar-scrollbox">
-                <ol class="chapter"><li class="expanded "><a href="rust-syntax.html"><strong aria-hidden="true">1.</strong> Introduction to Rust syntax</a></li><li class="expanded "><a href="ownership-borrowing.html"><strong aria-hidden="true">2.</strong> Memory in depth</a></li><li class="expanded "><a href="unix-multithreading.html" class="active"><strong aria-hidden="true">3.</strong> Unix and multithreading</a></li><li class="expanded "><a href="ffi-unsafe.html"><strong aria-hidden="true">4.</strong> FFI &amp; Unsafe</a></li><li class="expanded "><a href="libppm.html"><strong aria-hidden="true">5.</strong> Project libppm</a></li><li class="expanded "><a href="networks.html"><strong aria-hidden="true">6.</strong> Networking</a></li></ol>
+                <ol class="chapter"><li class="expanded "><a href="../ch1/rust-syntax.html"><strong aria-hidden="true">1.</strong> Rust syntax</a></li><li class="expanded "><a href="../ch2/ownership-borrowing.html"><strong aria-hidden="true">2.</strong> Ownership and borrowing</a></li><li class="expanded "><a href="../ch3/unix-multithreading.html" class="active"><strong aria-hidden="true">3.</strong> Unix and multithreading</a></li><li class="expanded "><a href="../ch4/ffi-unsafe.html"><strong aria-hidden="true">4.</strong> FFI and unsafe</a></li><li class="expanded "><a href="../ch5/sockets-http.html"><strong aria-hidden="true">5.</strong> Sockets and HTTP</a></li><li class="expanded "><a href="../ch6/webassembly.html"><strong aria-hidden="true">6.</strong> WebAssembly</a></li><li class="expanded "><a href="../p1/libppm.html"><strong aria-hidden="true">7.</strong> Project 1: libppm</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -116,7 +116,7 @@
                     <h1 class="menu-title">Systems and Networks programming in Rust</h1>
 
                     <div class="right-buttons">
-                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
                         
@@ -147,31 +147,122 @@
 
                 <div id="content" class="content">
                     <main>
-                        <p>Hello everybody,</p>
-<p>Again, a too-long email, the french version is behind!</p>
-<h1><a class="header" href="#-important" id="-important">⚠️ IMPORTANT</a></h1>
-<p>I intend to assign you grades and I need you to be sure that I have the good matching between your mails, GitHub IDs, and names.</p>
+                        <h1><a class="header" href="#unix-and-multithreading" id="unix-and-multithreading">Unix and multithreading</a></h1>
+<!-- Hello everyone,
+
+Again, a too-long email, the french version is behind! -->
 <h2><a class="header" href="#recap-from-the-last-session" id="recap-from-the-last-session">Recap from the last session</a></h2>
 <ul>
 <li>
 <p>Recall previous episode:</p>
 <ul>
-<li>Rust philosophy &quot;zero-cost abstractions&quot; =&gt; play a bit with <code>cargo inspect</code>, <code>cargo fmt</code>, <code>cargo clippy</code></li>
+<li>Rust philosophy &quot;zero-cost abstractions&quot;, play a bit with <code>cargo inspect</code>, <code>cargo fmt</code>, <code>cargo clippy</code></li>
 </ul>
 </li>
 <li>
 <p>Let's talk a bit about POSIX, UNIX, Linux, etc ... and file abstraction</p>
 <ul>
 <li>Named pipe example: <code>mkfifo</code> (to send a synchronous message)</li>
-<li>What about serialization? Do you know protocol buffer? =&gt; <a href="https://developers.google.com/protocol-buffers">https://developers.google.com/protocol-buffers</a>
-(SPOILER: shared memory is better) =&gt; <a href="https://capnproto.org">https://capnproto.org</a></li>
+<li>What about serialization? Do you know protocol buffer? <a href="https://developers.google.com/protocol-buffers">https://developers.google.com/protocol-buffers</a>
+(SPOILER: shared memory is better) <a href="https://capnproto.org">https://capnproto.org</a></li>
 </ul>
 </li>
-<li>
-<p>A multi-thread parallel cat?</p>
+</ul>
+<pre><pre class="playpen"><code class="language-rust">// Wrong mypipe
+
+extern crate clap;
+use clap::{App, Arg};
+use std::process::Command;
+
+fn cmd2str(cmd: &amp;mut Command) -&gt; String {
+    String::from_utf8_lossy(&amp;cmd.output().unwrap().stdout).to_string()
+}
+
+fn main() {
+    let matches = App::new(&quot;mypipe&quot;)
+        .arg(
+            Arg::with_name(&quot;input&quot;)
+                .long(&quot;in&quot;)
+                .takes_value(true)
+                .required(true),
+        )
+        .arg(
+            Arg::with_name(&quot;output&quot;)
+                .long(&quot;out&quot;)
+                .takes_value(true)
+                .required(true),
+        )
+        .get_matches();
+
+    let input = matches.value_of(&quot;input&quot;).unwrap().to_string();
+    let output = matches.value_of(&quot;output&quot;).unwrap().to_string();
+    let buffer = cmd2str(&amp;mut Command::new(input));
+    println!(&quot;{}&quot;, cmd2str(&amp;mut Command::new(output).arg(buffer)));
+}
+</code></pre></pre>
+<pre><pre class="playpen"><code class="language-rust">// Good mypipe (by Théo H)
+
+extern crate clap;
+use clap::{App, Arg};
+use std::process::{Command, Stdio};
+
+fn main() {
+    let matches = App::new(&quot;mypipe&quot;)
+        .version(&quot;1.0&quot;)
+        .about(&quot;Pipe program&quot;)
+        .author(&quot;Théo H&quot;)
+        .arg(
+            Arg::with_name(&quot;in&quot;)
+                .short(&quot;i&quot;)
+                .long(&quot;in&quot;)
+                .value_name(&quot;INPUT&quot;)
+                .help(&quot;INPUT CMD&quot;)
+                .takes_value(true),
+        )
+        .arg(
+            Arg::with_name(&quot;out&quot;)
+                .short(&quot;o&quot;)
+                .long(&quot;out&quot;)
+                .value_name(&quot;OUTPUT&quot;)
+                .help(&quot;OUTPUT CMD&quot;)
+                .takes_value(true),
+        )
+        .get_matches();
+
+    let input_cmd = match matches.value_of(&quot;in&quot;) {
+        Some(x) =&gt; x,
+        None =&gt; panic!(&quot;No input command given&quot;),
+    };
+    let output_cmd = match matches.value_of(&quot;out&quot;) {
+        Some(x) =&gt; x,
+        None =&gt; panic!(&quot;No output command given&quot;),
+    };
+
+    let process_one = match Command::new(input_cmd)
+        .stdin(Stdio::piped())
+        .stdout(Stdio::piped())
+        .spawn()
+    {
+        Err(why) =&gt; panic!(&quot;couldn't spawn {} : {}&quot;, input_cmd, why),
+        Ok(process) =&gt; process,
+    };
+
+    let process_two = match Command::new(output_cmd)
+        .stdin(process_one.stdout.unwrap())
+        .output()
+    {
+        Err(why) =&gt; panic!(&quot;couldn't spawn {} : {}&quot;, input_cmd, why),
+        Ok(process) =&gt; process,
+    };
+
+    println!(&quot;{}&quot;, String::from_utf8_lossy(&amp;process_two.stdout));
+}
+</code></pre></pre>
+<ul>
+<li>A multi-thread parallel cat?
 <ul>
 <li>Talk about process scheduling, etc...</li>
-<li>Show <code>htop</code> tree view, play with small tests using Valgrind / GDB</li>
+<li>Show <code>htop</code> tree view</li>
 </ul>
 </li>
 </ul>
@@ -240,18 +331,6 @@ fn main() {
     }
 }
 </code></pre></pre>
-<p>e.g. Valgrind will tell you that this code have a big memory leak:</p>
-<pre><code class="language-c">#include &quot;stdlib.h&quot;
-#include &quot;unistd.h&quot;
-
-int main(void) {
-    while (1) {
-        malloc(20);
-        sleep(1);
-    }
-    return 0;
-}
-</code></pre>
 <h2><a class="header" href="#to-go-further" id="to-go-further">To go further</a></h2>
 <ul>
 <li>Learn about File Descriptor <a href="https://en.wikipedia.org/wiki/File_descriptor">https://en.wikipedia.org/wiki/File_descriptor</a></li>
@@ -263,7 +342,8 @@ int main(void) {
 <li><code>unfork</code> <a href="https://github.com/whitequark/unfork">https://github.com/whitequark/unfork</a></li>
 <li><a href="https://github.com/sebasmagri/rust-concurrency-patterns">https://github.com/sebasmagri/rust-concurrency-patterns</a></li>
 </ul>
-<h2><a class="header" href="#prepare-the-next-session-keep-talking-about-unix-tools-for-binaries-analysis" id="prepare-the-next-session-keep-talking-about-unix-tools-for-binaries-analysis">Prepare the next session (keep talking about Unix tools for binaries analysis)</a></h2>
+<h2><a class="header" href="#prepare-the-next-session" id="prepare-the-next-session">Prepare the next session</a></h2>
+<p>Kkeep talking about Unix tools for binaries analysis:</p>
 <ul>
 <li><a href="https://lldb.llvm.org">https://lldb.llvm.org</a></li>
 <li><a href="https://godbolt.org">https://godbolt.org</a></li>
@@ -271,52 +351,141 @@ int main(void) {
 <li><a href="https://en.wikipedia.org/wiki/GNU_Binutils">https://en.wikipedia.org/wiki/GNU_Binutils</a></li>
 <li><a href="https://en.wikipedia.org/wiki/Strace">https://en.wikipedia.org/wiki/Strace</a></li>
 </ul>
-<p>We will play with <code>=&gt;</code> FFI: Foreign Function Interface</p>
-<p>I wish all of you enjoyed end-of-year celebrations.</p>
+<p>We will play with FFI: Foreign Function Interface</p>
+<p>I wish all of you enjoyed the end-of-year celebrations.</p>
 <p>Best, Yvan</p>
 <p>P.S. <a href="https://xkcd.com/835/">https://xkcd.com/835/</a> &amp; <a href="https://xkcd.com/2248/">https://xkcd.com/2248/</a></p>
-<hr />
-<p>Bonjour tous le monde,</p>
-<p>Encore une fois, un e-mail trop long:</p>
-<h1><a class="header" href="#-important-1" id="-important-1">⚠️ IMPORTANT</a></h1>
-<p>Pour vous attribuer des notes, j'ai besoin d'avoir la bonne correspondance entre vos e-mails, identifiants GitHub et vos nom / prénom.</p>
-<h2><a class="header" href="#récapitulatif-du-dernier-cours" id="récapitulatif-du-dernier-cours">Récapitulatif du dernier cours</a></h2>
-<ul>
-<li>
-<p>Rappel de l'épisode précédent:</p>
-<ul>
-<li>La philosophie de Rust &quot;zero-cost abstractions&quot; -&gt; jouons un peu avec <code>cargo inspect</code>, <code>cargo fmt</code>, <code>cargo clippy</code></li>
-</ul>
-</li>
-<li>
-<p>Parlons un peu de POSIX, UNIX, Linux, etc ... et de l'abstraction de fichiers</p>
-<ul>
-<li>Exemple de pipe nommé: <code>mkfifo</code> (pour envoyer un message synchrone)</li>
-<li>Qu'en est-il de la sérialisation? Connaissez-vous Protocol Buffer? -&gt; <a href="https://developers.google.com/protocol-buffers">https://developers.google.com/protocol-buffers</a>
-(SPOILER: la mémoire partagée c'est mieux) -&gt; <a href="https://capnproto.org">https://capnproto.org</a></li>
-</ul>
-</li>
-<li>
-<p>Un <code>cat</code> parallèle multi-threadé ?</p>
-<ul>
-<li>Parlons de la planification des processus, etc ...</li>
-<li><code>htop</code> en mode <code>tree view</code>, jouons avec de petits tests en utilisant Valgrind / GDB</li>
-</ul>
-</li>
-</ul>
-<pre><pre class="playpen"><code class="language-rust">// Iterative cat
+<!--
+
+Bonjour tous le monde,
+
+Encore une fois, un e-mail trop long:
+
+## Récapitulatif du dernier cours
+
+- Rappel de l'épisode précédent:
+   * La philosophie de Rust "zero-cost abstractions" -> jouons un peu avec `cargo inspect`, `cargo fmt`, `cargo clippy`
+
+- Parlons un peu de POSIX, UNIX, Linux, etc ... et de l'abstraction de fichiers
+   * Exemple de pipe nommé: `mkfifo` (pour envoyer un message synchrone)
+   * Qu'en est-il de la sérialisation? Connaissez-vous Protocol Buffer? -> <https://developers.google.com/protocol-buffers>
+       (SPOILER: la mémoire partagée c'est mieux) -> <https://capnproto.org>
+
+```rust
+// Wrong mypipe
+
+extern crate clap;
+use clap::{App, Arg};
+use std::process::Command;
+
+fn cmd2str(cmd: &mut Command) -> String {
+    String::from_utf8_lossy(&cmd.output().unwrap().stdout).to_string()
+}
+
+fn main() {
+    let matches = App::new("mypipe")
+        .arg(
+            Arg::with_name("input")
+                .long("in")
+                .takes_value(true)
+                .required(true),
+        )
+        .arg(
+            Arg::with_name("output")
+                .long("out")
+                .takes_value(true)
+                .required(true),
+        )
+        .get_matches();
+
+    let input = matches.value_of("input").unwrap().to_string();
+    let output = matches.value_of("output").unwrap().to_string();
+    let buffer = cmd2str(&mut Command::new(input));
+    println!("{}", cmd2str(&mut Command::new(output).arg(buffer)));
+}
+```
+
+```
+```rust
+// Good mypipe (by Théo H)
+
+extern crate clap;
+use clap::{App, Arg};
+use std::process::{Command, Stdio};
+
+fn main() {
+    let matches = App::new("mypipe")
+        .version("1.0")
+        .about("Pipe program")
+        .author("Théo H")
+        .arg(
+            Arg::with_name("in")
+                .short("i")
+                .long("in")
+                .value_name("INPUT")
+                .help("INPUT CMD")
+                .takes_value(true),
+        )
+        .arg(
+            Arg::with_name("out")
+                .short("o")
+                .long("out")
+                .value_name("OUTPUT")
+                .help("OUTPUT CMD")
+                .takes_value(true),
+        )
+        .get_matches();
+
+    let input_cmd = match matches.value_of("in") {
+        Some(x) => x,
+        None => panic!("No input command given"),
+    };
+    let output_cmd = match matches.value_of("out") {
+        Some(x) => x,
+        None => panic!("No output command given"),
+    };
+
+    let process_one = match Command::new(input_cmd)
+        .stdin(Stdio::piped())
+        .stdout(Stdio::piped())
+        .spawn()
+    {
+        Err(why) => panic!("couldn't spawn {} : {}", input_cmd, why),
+        Ok(process) => process,
+    };
+
+    let process_two = match Command::new(output_cmd)
+        .stdin(process_one.stdout.unwrap())
+        .output()
+    {
+        Err(why) => panic!("couldn't spawn {} : {}", input_cmd, why),
+        Ok(process) => process,
+    };
+
+    println!("{}", String::from_utf8_lossy(&process_two.stdout));
+}
+```
+
+- Un `cat` parallèle multi-threadé ?
+   * Parlons de la planification des processus, etc ...
+   * `htop` en mode `tree view`
+
+```rust
+// Iterative cat
 
 use std::thread;
 
 fn main() {
-    let args: Vec&lt;String&gt; = std::env::args().collect();
-    for filename in &amp;args[1..] {
-        let contents = std::fs::read_to_string(filename).expect(&quot;Something went wrong reading the file: {}&quot;);
-        print!(&quot;{}&quot;, contents);
+    let args: Vec<String> = std::env::args().collect();
+    for filename in &args[1..] {
+        let contents = std::fs::read_to_string(filename).expect("Something went wrong reading the file: {}");
+        print!("{}", contents);
     }
 }
-</code></pre></pre>
-<pre><pre class="playpen"><code class="language-rust">// Parallel cat (verbose version)
+```
+
+```rust
+// Parallel cat (verbose version)
 
 use std::thread;
 
@@ -324,16 +493,16 @@ fn main() {
     // Create a vector to store all thread JoinHandle
     let mut children = vec![];
     // Read command-line arguments
-    let args: Vec&lt;String&gt; = std::env::args().collect();
+    let args: Vec<String> = std::env::args().collect();
     // Iterate through args (but skip first: binary relative path)
-    for arg in &amp;args[1..] {
-        // &quot;magic&quot;: copy arg in memory before giving ownership to thread
+    for arg in &args[1..] {
+        // "magic": copy arg in memory before giving ownership to thread
         let filename = arg.clone();
         // Closure (an anonymous function or lambda function) ...
-        // ... that &quot;capture environment&quot;: take filename ownership
+        // ... that "capture environment": take filename ownership
         let closure = move || {
             // Read file content ...
-            let contents = std::fs::read_to_string(filename).expect(&quot;Something went wrong reading the file&quot;);
+            let contents = std::fs::read_to_string(filename).expect("Something went wrong reading the file");
             // ... and return it on the standard output
             return contents;
         };
@@ -346,7 +515,7 @@ fn main() {
     for child in children {
         let res = child.join().unwrap();
         // Print file
-        print!(&quot;{}&quot;, res);
+        print!("{}", res);
     }
 }
 
@@ -357,66 +526,59 @@ use std::thread;
 
 fn main() {
     let mut children = vec![];
-    let args: Vec&lt;String&gt; = std::env::args().collect();
-    for arg in &amp;args[1..] {
+    let args: Vec<String> = std::env::args().collect();
+    for arg in &args[1..] {
         let filename = arg.clone();
         children.push(thread::spawn(move || {
-            std::fs::read_to_string(filename).expect(&quot;Something went wrong reading the file&quot;)
+            std::fs::read_to_string(filename).expect("Something went wrong reading the file")
         }));
     }
     for child in children {
-        print!(&quot;{}&quot;, child.join().unwrap());
+        print!("{}", child.join().unwrap());
     }
 }
-</code></pre></pre>
-<p>ex: Valgrind va vous dire que ce programme à une grose fuite mémoire :</p>
-<pre><code class="language-c">#include &quot;stdlib.h&quot;
-#include &quot;unistd.h&quot;
+```
 
-int main(void) {
-    while (1) {
-        malloc(20);
-        sleep(1);
-    }
-    return 0;
-}
-</code></pre>
-<p>En français, vous pouvez lire ce cours d'OS <a href="https://darnuria.eu/2019-2020_os">https://darnuria.eu/2019-2020_os</a> pour vous rafraichir la mémoire !</p>
-<h2><a class="header" href="#pour-aller-plus-loin" id="pour-aller-plus-loin">Pour aller plus loin</a></h2>
-<ul>
-<li>Connaissez vous les descripteurs de fichier <a href="https://en.wikipedia.org/wiki/File_descriptor">https://en.wikipedia.org/wiki/File_descriptor</a></li>
-<li>IOStream est désespérément cassé <a href="https://www.moria.us/articles/iostream-is-hopelessly-broken/">https://www.moria.us/articles/iostream-is-hopelessly-broken/</a></li>
-<li>Écrire un OS en Rust <a href="https://os.phil-opp.com/">https://os.phil-opp.com/</a></li>
-<li>Pourquoi un exécutable Rust est-il volumineux ? <a href="https://lifthrasiir.github.io/rustlog/why-is-a-rust-executable-large.html">https://lifthrasiir.github.io/rustlog/why-is-a-rust-executable-large.html</a></li>
-<li>Pointeurs intelligents dans Rust <a href="https://doc.rust-lang.org/book/ch15-00-smart-pointers.html">https://doc.rust-lang.org/book/ch15-00-smart-pointers.html</a></li>
-<li>Rust est nul parce que ... <a href="https://wiki.theory.org/index.php/YourLanguageSucks#Rust_sucks_because">https://wiki.theory.org/index.php/YourLanguageSucks#Rust_sucks_because</a></li>
-<li><code>unfork</code> <a href="https://github.com/whitequark/unfork">https://github.com/whitequark/unfork</a></li>
-<li><a href="https://github.com/sebasmagri/rust-concurrency-patterns">https://github.com/sebasmagri/rust-concurrency-patterns</a></li>
-</ul>
-<h2><a class="header" href="#pour-préparer-le-prochain-cours-parlons-doutils-unix-pour-lanalyse-de-binaires" id="pour-préparer-le-prochain-cours-parlons-doutils-unix-pour-lanalyse-de-binaires">Pour préparer le prochain cours (parlons d'outils Unix pour l'analyse de binaires)</a></h2>
-<ul>
-<li><a href="https://lldb.llvm.org">https://lldb.llvm.org</a></li>
-<li><a href="https://godbolt.org">https://godbolt.org</a></li>
-<li><a href="https://en.wikipedia.org/wiki/Executable_and_Linkable_Format">https://en.wikipedia.org/wiki/Executable_and_Linkable_Format</a></li>
-<li><a href="https://en.wikipedia.org/wiki/GNU_Binutils">https://en.wikipedia.org/wiki/GNU_Binutils</a></li>
-<li><a href="https://en.wikipedia.org/wiki/Strace">https://en.wikipedia.org/wiki/Strace</a></li>
-</ul>
-<p>Nous allons jouer avec les <code>=&gt;</code> FFI: Foreign Function Interface</p>
-<p>J'espères que vous avez tous passés de très bonnes fêtes de fin d'années,</p>
-<p>Amitiés, Yvan</p>
+En français, vous pouvez lire ce cours d'OS <https://darnuria.eu/2019-2020_os> pour vous rafraichir la mémoire !
 
+## Pour aller plus loin
+
+- Connaissez vous les descripteurs de fichier <https://en.wikipedia.org/wiki/File_descriptor>
+- IOStream est désespérément cassé <https://www.moria.us/articles/iostream-is-hopelessly-broken/>
+- Écrire un OS en Rust <https://os.phil-opp.com/>
+- Pourquoi un exécutable Rust est-il volumineux ? <https://lifthrasiir.github.io/rustlog/why-is-a-rust-executable-large.html>
+- Pointeurs intelligents dans Rust <https://doc.rust-lang.org/book/ch15-00-smart-pointers.html>
+- Rust est nul parce que ... <https://wiki.theory.org/index.php/YourLanguageSucks#Rust_sucks_because>
+- `unfork` <https://github.com/whitequark/unfork>
+- <https://github.com/sebasmagri/rust-concurrency-patterns>
+
+## Pour préparer le prochain cours (parlons d'outils Unix pour l'analyse de binaires)
+
+   * <https://lldb.llvm.org>
+   * <https://godbolt.org>
+   * <https://en.wikipedia.org/wiki/Executable_and_Linkable_Format>
+   * <https://en.wikipedia.org/wiki/GNU_Binutils>
+   * <https://en.wikipedia.org/wiki/Strace>
+
+Nous allons jouer avec les FFI: Foreign Function Interface
+
+J'espères que vous avez tous passés de très bonnes fêtes de fin d'années,
+
+Amitiés, Yvan
+
+-->
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
                         
-                            <a rel="prev" href="ownership-borrowing.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../ch2/ownership-borrowing.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
                         
 
                         
-                            <a rel="next" href="ffi-unsafe.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="../ch4/ffi-unsafe.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
                         
@@ -428,13 +590,13 @@ int main(void) {
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                 
-                    <a rel="prev" href="ownership-borrowing.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../ch2/ownership-borrowing.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
                 
 
                 
-                    <a rel="next" href="ffi-unsafe.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="../ch4/ffi-unsafe.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
                 
@@ -457,14 +619,14 @@ int main(void) {
         
 
         
-        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
         
 
-        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
-        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
 
         <!-- Custom JS scripts -->
         
