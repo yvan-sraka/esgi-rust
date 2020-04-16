@@ -1,4 +1,4 @@
-# Big project guidelines: a not so simple PPM image manipulation library
+# `libppm`: a not so simple PPM image manipulation library
  
 Goals: Manipulating IO, Memory, Concurrent programming with threads and exposing Rust function
 through Foreign Function Interface.
@@ -27,15 +27,15 @@ In a PPM file pixels il take 24bits; 8 bits (octet) par color:
 ### Epic Functions for an Epic `Pixels`
  
 Because test are nices: Write a test for all the functions [doc](https://doc.rust-lang.org/book/ch11-01-writing-tests.html)
-Also, write a doc in rust style *Prof! I don't how to write doc!* [short awnser](https://doc.rust-lang.org/rust-by-example/meta/doc.html); [long answer](https://doc.rust-lang.org/1.30.0/book/2018-edition/ch14-02-publishing-to-crates-io.html?highlight=document#making-useful-documentation-comments)
+Also, write a doc in rust style *Prof! I don't how to write doc!* [short answer](https://doc.rust-lang.org/rust-by-example/meta/doc.html); [long answer](https://doc.rust-lang.org/1.30.0/book/2018-edition/ch14-02-publishing-to-crates-io.html?highlight=document#making-useful-documentation-comments)
 TL;DR writes how to use the function if it panic says it! make an example in the doc!
  
 Warmups functions:
  
 - Write a block `impl Pixel` for next questions
-- Write a nice constructor `fn new(red: u8, green: u8, blue: u8 -> Self`
-- (Optional) Derive `Clone` and `Copy` because a Pixel is a tiny type who fits in a register.
-- Make a `fn display(self) -> String` to render a pixel in terminal
+- (Optional) Write a nice constructor `fn new(red: u8, green: u8, blue: u8) -> Self`
+- Derive `Clone` and `Copy` because a Pixel is a tiny type who fits in a register.
+- Make a `std::fmt::Display` trait to render a pixel in terminal
 - Carve a function `fn invert(&mut self)` that inverts a pixel. Advise think [bitwise](https://doc.rust-lang.org/std/ops/trait.Not.html)*!* ;)
  
 Not so warmup:
@@ -54,7 +54,7 @@ Need some engagement:
 Write a little `struct Image` that represents a struct you might need the following fields:
  
 - `Vec<Pixel>` to represent the pixels buffer
-- `heigth` with type `usize`
+- `height` with type `usize`
 - `width` with type `usize`
 - Maybe other fields?
  
@@ -62,26 +62,24 @@ Now write some function to manipulate images!
 A function `fn new_with_file(filename: &Path) -> Image` that read in text mode a ppm image you might need to write
 the `.ppm` file format definition [here](http://netpbm.sourceforge.net/doc/ppm.html).
  
-Write in a `impl Image` a function `fn save(filename: &Path)` who saves your struct into a file.
+Write in an `impl Image` a function `fn save(filename: &Path)` who saves your struct into a file.
  
 An example file in text mode looks like:
- 
-```text
-P3
-3 2
-255
-# The part above is the header
-# "P3" means this is an RGB color image in ASCII
-# "3 2" is the width and height of the image in pixels
-# "255" is the maximum value for each color
-# The part below is image data: RGB triplets
-255 0   0   # red
-0   255 0   # green
-0   0   255 # blue
-255 255 0   # yellow
-255 255 255 # white
-0   0   0   # black
-```
+
+    P3
+    3 2
+    255
+    # The part above is the header
+    # "P3" means this is an RGB color image in ASCII
+    # "3 2" is the width and height of the image in pixels
+    # "255" is the maximum value for each color
+    # The part below is image data: RGB triplets
+    255 0 0 # red
+    0 255 0 # green
+    0 0 255 # blue
+    255 255 0 # yellow
+    255 255 255 # white
+    0 0 0 # black
  
 - Create an `invert` function that inverts image colors (reuse your code!)
 - Create a `grayscale` function that makes image B&W based on a filter color
@@ -103,7 +101,7 @@ Try to with really big files, improve performances. Maybe this doc pointer can h
  
 ### Bonus binary edition
  
-- Prepare yourself to read the pixel part in binary mode write a `fn new_with_file_bin(Path filename) -> Image`
+- Prepare yourself to read the pixel part in binary mode write an `fn new_with_file_bin(Path filename) -> Image`
  
 > The whole purpose of this part is to do these computations using several threads,
 > and to develop a strategy to find a good compromise on the number of threads to assign
@@ -152,7 +150,7 @@ Somewhat harder:
 - Exposes functions of your `ppm` crate to Python
 - Use [PyO3](https://github.com/PyO3/pyo3) and [Maturin](https://github.com/PyO3/maturin) read the README of the projects!
 
----
+<!--
 
 Bonjour tout le monde,
 
@@ -279,3 +277,5 @@ Je m'autorise également à poser en fin de présentation en plus de questions s
 <https://en.wikipedia.org/wiki/The_Force#"May_the_Force_be_with_you">
 
 Yvan
+
+-->
