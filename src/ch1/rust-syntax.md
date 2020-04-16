@@ -1,10 +1,10 @@
-Hello everybody,
+# Rust syntax
 
-A quick mail about "Systems and networks programming in Rust" lecture, read it entirely, there is some homework for you at the end.
+<!-- Hello everyone,
 
-## In the previous episode
+A quick mail about "Systems and networks programming in Rust" lecture, read it entirely, there is some homework for you at the end. -->
 
-Rust basics (Introduction, Syntax, Error Handling):
+## Rust basics (Introduction, Syntax, Error Handling)
 
 - 0. Schedule, purpose, and rules of the class (planning, assignments, grades, etc..)
 
@@ -14,54 +14,43 @@ Rust basics (Introduction, Syntax, Error Handling):
 
 > **N.B.** People on Windows should read this <https://github.com/rust-lang/rustup.rs/#working-with-rust-on-windows>, and installing Visual Studio C/C++ tools suite (like link.exe to link program) using Visual Studio Installer.
 
-I also recommend to get you a WLS and install Rust with rustup in bash.exe, since starting from course 3 we will play with Linux file abstraction.
+I also recommend getting you a WLS and install Rust with rustup in bash.exe, since starting from course 3 we will play with Linux file abstraction.
 
 - 3. Get familiar with language syntax by playing a bit with <https://github.com/rust-lang/rustlings>
 
 - 4. Theoretical recap about the semantics of a Rust program (we talk about functions VS macros, type inference, enumeration types <https://doc.rust-lang.org/std/result/enum.Result.html>)
 
-- 5. Show off basic tooling: how to create a binary/library with cargo, how to add a dependency form crate.io to our project, we start writing a little MASTERMIND game (Here is a link to the full implementation <https://github.com/yvan-sraka/mymastermind>)
-
-SLIDES are here : <https://github.com/yvan-sraka/mymastermind-slides>
+- 5. Show off basic tooling: how to create a binary/library with cargo, how to add a dependency form crate.io to our project, we start writing a little **MASTERMIND** game (Here is a link to the full implementation <https://github.com/yvan-sraka/mymastermind>) SLIDES are here: <https://github.com/yvan-sraka/mymastermind-slides>
 
 Further information could be found in THE RUST BOOK -> <https://doc.rust-lang.org/stable/book/> <- (what we do in class match the 3 first chapters of the book)
 
-Or alternatively in <https://learning-rust.github.io/>!
+Alternatively in <https://learning-rust.github.io/>!
 
-## Program of the next lectures
+## Homeworks (mandatory)
 
-- Rust advanced (static automated memory management: Ownership & Borrowing)
-- Files (standard IO, synchronous message through pipes), Tasks (process, thread) and other POSIX stuff
-- FFI, unsafe world (let's talk about "lifetimes") and the C runtime (stack & heap)
-- *** NETWORK (finally, something fun for the last class) ***
-
-
-## Homeworks (mandatory) - deadline: push it before the class
+<!-- deadline: push it before the class -->
 
 Make a PR (Pull-Request) on this repository that fixes this code: <https://github.com/yvan-sraka/base64decode/blob/master/src/main.rs>
 
 It will be automatically validated by GitHub Actions (Continuous Integration), so if it's green you already have a good grade. I will give you extra points if you succeed to reduce the size of the codebase without breaking it!
 
-You can test your code by trying to decrypt this secret message:
+You can test your code by trying to decode this secret message:
 
     TGEgcmFjbGV0dGUgKEJyYXRjaMOkcywgwqsgZnJvbWFnZSDCuyByw7R0aSwgZW4gc3Vpc3NlIGFsbGVtYW5kKSBlc3QgZCd1bmUgcGFydCB1biBmcm9tYWdlIChsZSBvdSBsYSByYWNsZXR0ZSkgb3JpZ2luYWlyZSBkdSBjYW50b24gZHUgVmFsYWlzIGVuIFN1aXNzZSwgZXQgZCdhdXRyZSBwYXJ0LCB1bmUgcmVjZXR0ZSBkZSBjdWlzaW5lIHRyYWRpdGlvbm5lbGxlIGV0IGVtYmzDqW1hdGlxdWUgZGUgbGEgY3Vpc2luZSBzdWlzc2UsIGNvbm51ZSBkYW5zIGxlIG1vbmRlIGVudGllciwgdmFyaWFudGUgZGVzIGZvbmR1ZXMgYXUgZnJvbWFnZSwgw6AgYmFzZSBkZSBjZSBmcm9tYWdlIGZvbmR1LCByYWNsw6kgYXUgZnVyIGV0IMOgIG1lc3VyZSBxdeKAmWlsIGZvbmQsIGV0IHNlcnZpZSB0cmFkaXRpb25uZWxsZW1lbnQgYXZlYyBkZXMgcG9tbWVzIGRlIHRlcnJlIGVuIHJvYmUgZGVzIGNoYW1wcyBldCBhY2NvbXBhZ27DqWUgZGUgbMOpZ3VtZXMgYXUgdmluYWlncmUgKGNvcm5pY2hvbnMsIG9pZ25vbnMpLg==
 
-
-⚠️ Reminder, next class will start with a quick test (don't be late), it will be grade and take the form of a QCM.
+⚠️ Reminder, the next class will start with a quick test (don't be late), it will be grade and take the form of a QCM.
 
 Cheers, Yvan
 
----
+<!--
 
 Bonjour tout le monde,
 
-
 Un petit courrier suite au premier cours de "Programmation système et réseau en Rust", lisez-le entièrement, il y a quelques devoirs à faire pour vous à la fin.
-
 
 ## Dans l'épisode précédent
 
-Notions de base sur Rust (Introduction, Syntaxe, Traitement des erreurs):
+Notions de base sur Rust (Introduction, Syntaxe, Traitement des erreurs)
 
 - 0. Horaire, but et règles de la classe (planning, devoirs maisons, notes, etc.)
 
@@ -85,26 +74,18 @@ Ou alternativement dans <https://learning-rust.github.io/>!
 
 Des exercices d'introduction aux concepts de bases du langage, en français, sont disponiblent ici <https://framagit.org/darnuria/rust-initiation/> !
 
-
-## Programme des prochaines séances
-
-- Rust avancés (gestion automatique de la mémoire statique: « ownership » et « borrowing »)
-- Fichiers (E / S standard, message synchrone via des pipes), tâches (processus, thread) et autres POSIXeries
-- FFI,  unsafe mode (parlons de « lifetimes ») et binaire
-- *** NETWORK (enfin, quelque chose d'amusant pour le dernier cours) ***
-
-
 ## Devoir maison (obligatoire) - date limite: à envoyer avant le cours
 
 Créez une PR (Pull-Request) sur ce repos qui corrige les bugs de ce code: <https://github.com/rust-esgi/base64decode>
 
 Il sera automatiquement validé par GitHub Actions (Intégration Continue), donc si c'est vert, vous avez déjà une bonne note. Je vous donnerai des points supplémentaires si vous parvenez à réduire la taille du code sans le casser!
 
-Vous pouvez tester votre code en essayant de déchiffrer ce message secret:
+Vous pouvez tester votre code en essayant de décoder ce message secret:
 
     TGEgcmFjbGV0dGUgKEJyYXRjaMOkcywgwqsgZnJvbWFnZSDCuyByw7R0aSwgZW4gc3Vpc3NlIGFsbGVtYW5kKSBlc3QgZCd1bmUgcGFydCB1biBmcm9tYWdlIChsZSBvdSBsYSByYWNsZXR0ZSkgb3JpZ2luYWlyZSBkdSBjYW50b24gZHUgVmFsYWlzIGVuIFN1aXNzZSwgZXQgZCdhdXRyZSBwYXJ0LCB1bmUgcmVjZXR0ZSBkZSBjdWlzaW5lIHRyYWRpdGlvbm5lbGxlIGV0IGVtYmzDqW1hdGlxdWUgZGUgbGEgY3Vpc2luZSBzdWlzc2UsIGNvbm51ZSBkYW5zIGxlIG1vbmRlIGVudGllciwgdmFyaWFudGUgZGVzIGZvbmR1ZXMgYXUgZnJvbWFnZSwgw6AgYmFzZSBkZSBjZSBmcm9tYWdlIGZvbmR1LCByYWNsw6kgYXUgZnVyIGV0IMOgIG1lc3VyZSBxdeKAmWlsIGZvbmQsIGV0IHNlcnZpZSB0cmFkaXRpb25uZWxsZW1lbnQgYXZlYyBkZXMgcG9tbWVzIGRlIHRlcnJlIGVuIHJvYmUgZGVzIGNoYW1wcyBldCBhY2NvbXBhZ27DqWUgZGUgbMOpZ3VtZXMgYXUgdmluYWlncmUgKGNvcm5pY2hvbnMsIG9pZ25vbnMpLg ==
-
 
 ⚠️ Rappel, le prochain cours commencera par un test rapide (il ne faut pas arriver en retard), il sera noté et prendra la forme d'un QCM.
 
 Amitiés, Yvan
+
+-->
