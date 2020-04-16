@@ -1,24 +1,30 @@
-Hello everybody,
+# Unix and multithreading
 
-Again, a too-long email, the french version is behind!
+<!-- Hello everyone,
 
-# ⚠️ IMPORTANT
-
-I intend to assign you grades and I need you to be sure that I have the good matching between your mails, GitHub IDs, and names.
+Again, a too-long email, the french version is behind! -->
 
 ## Recap from the last session
 
 - Recall previous episode:
-    * Rust philosophy "zero-cost abstractions" => play a bit with `cargo inspect`, `cargo fmt`, `cargo clippy`
+    * Rust philosophy "zero-cost abstractions", play a bit with `cargo inspect`, `cargo fmt`, `cargo clippy`
 
 - Let's talk a bit about POSIX, UNIX, Linux, etc ... and file abstraction
     * Named pipe example: `mkfifo` (to send a synchronous message)
-    * What about serialization? Do you know protocol buffer? => <https://developers.google.com/protocol-buffers>
-        (SPOILER: shared memory is better) => <https://capnproto.org>
+    * What about serialization? Do you know protocol buffer? <https://developers.google.com/protocol-buffers>
+    (SPOILER: shared memory is better) <https://capnproto.org>
+
+```rust
+{{#include wrong-mypipe.rs}}
+```
+
+```rust
+{{#include mypipe.rs}}
+```
 
 - A multi-thread parallel cat?
     * Talk about process scheduling, etc...
-    * Show `htop` tree view, play with small tests using Valgrind / GDB
+    * Show `htop` tree view
 
 ```rust
 {{#include iterative-cat.rs}}
@@ -29,21 +35,6 @@ I intend to assign you grades and I need you to be sure that I have the good mat
 
 ```rust
 {{#include parallel-cat.rs}}
-```
-
-e.g. Valgrind will tell you that this code have a big memory leak:
-
-```c
-#include "stdlib.h"
-#include "unistd.h"
-
-int main(void) {
-    while (1) {
-        malloc(20);
-        sleep(1);
-    }
-    return 0;
-}
 ```
 
 ## To go further
@@ -57,7 +48,9 @@ int main(void) {
 - `unfork` <https://github.com/whitequark/unfork>
 - <https://github.com/sebasmagri/rust-concurrency-patterns>
 
-## Prepare the next session (keep talking about Unix tools for binaries analysis)
+## Prepare the next session
+
+Kkeep talking about Unix tools for binaries analysis:
 
 - <https://lldb.llvm.org>
 - <https://godbolt.org>
@@ -65,23 +58,19 @@ int main(void) {
 - <https://en.wikipedia.org/wiki/GNU_Binutils>
 - <https://en.wikipedia.org/wiki/Strace>
 
-We will play with `=>` FFI: Foreign Function Interface
+We will play with FFI: Foreign Function Interface
 
-I wish all of you enjoyed end-of-year celebrations.
+I wish all of you enjoyed the end-of-year celebrations.
 
 Best, Yvan
 
 P.S. <https://xkcd.com/835/> & <https://xkcd.com/2248/>
 
----
+<!--
 
 Bonjour tous le monde,
 
 Encore une fois, un e-mail trop long:
-
-# ⚠️ IMPORTANT
-
-Pour vous attribuer des notes, j'ai besoin d'avoir la bonne correspondance entre vos e-mails, identifiants GitHub et vos nom / prénom.
 
 ## Récapitulatif du dernier cours
 
@@ -93,9 +82,18 @@ Pour vous attribuer des notes, j'ai besoin d'avoir la bonne correspondance entre
    * Qu'en est-il de la sérialisation? Connaissez-vous Protocol Buffer? -> <https://developers.google.com/protocol-buffers>
        (SPOILER: la mémoire partagée c'est mieux) -> <https://capnproto.org>
 
+```rust
+{{#include wrong-mypipe.rs}}
+```
+
+```
+```rust
+{{#include mypipe.rs}}
+```
+
 - Un `cat` parallèle multi-threadé ?
    * Parlons de la planification des processus, etc ...
-   * `htop` en mode `tree view`, jouons avec de petits tests en utilisant Valgrind / GDB
+   * `htop` en mode `tree view`
 
 ```rust
 {{#include iterative-cat.rs}}
@@ -106,21 +104,6 @@ Pour vous attribuer des notes, j'ai besoin d'avoir la bonne correspondance entre
 
 ```rust
 {{#include parallel-cat.rs}}
-```
-
-ex: Valgrind va vous dire que ce programme à une grose fuite mémoire :
-
-```c
-#include "stdlib.h"
-#include "unistd.h"
-
-int main(void) {
-    while (1) {
-        malloc(20);
-        sleep(1);
-    }
-    return 0;
-}
 ```
 
 En français, vous pouvez lire ce cours d'OS <https://darnuria.eu/2019-2020_os> pour vous rafraichir la mémoire !
@@ -144,8 +127,10 @@ En français, vous pouvez lire ce cours d'OS <https://darnuria.eu/2019-2020_os> 
    * <https://en.wikipedia.org/wiki/GNU_Binutils>
    * <https://en.wikipedia.org/wiki/Strace>
 
-Nous allons jouer avec les `=>` FFI: Foreign Function Interface
+Nous allons jouer avec les FFI: Foreign Function Interface
 
 J'espères que vous avez tous passés de très bonnes fêtes de fin d'années,
 
 Amitiés, Yvan
+
+-->
