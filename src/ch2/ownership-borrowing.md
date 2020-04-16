@@ -1,9 +1,10 @@
-Hello everyone!
+# Ownership and borrowing
 
-You will find a French version of this mail bellow, read it carefully and enjoy a homework bit trickier than the previous time:
+<!-- Hello everyone,
 
+You will find a French version of this mail below, read it carefully and enjoy a homework bit trickier than the previous time: -->
 
-# Recap from the previous session
+## Recap from the previous session
 
 - QCM is a huge success, the mean of the class is X / 20 (negative points are on me this time)
 - Correction of last homework: <https://gist.github.com/yvan-sraka/94638a5dd95f46cdaecf5ab4d7ed2676>
@@ -19,8 +20,7 @@ You will find a French version of this mail bellow, read it carefully and enjoy 
 ```rust
 {{#include borrowing-example-colors.rs}}
 ```
-
-# Mandatory for the next session
+## Mandatory for the next session
 
 ⚠️ Have a UNIX system with Rust installed inside:
 
@@ -30,11 +30,7 @@ and the nice VSCode extension <https://code.visualstudio.com/remote-tutorials/ws
 
 (and, of course, to have a working Rust dev environment with RLS setup <https://github.com/rust-lang/rls>)
 
-
-# Memory 
-
-
-# Go deeper into Rust
+## Go deeper into Rust
 
 We, at this point cover, all of 6 first chapters, and most of 7, 8 and 9 of the Rust Book <https://doc.rust-lang.org/stable/book/>
 
@@ -45,14 +41,28 @@ I give you here three handy tools that will help you with homework and graded pr
 - <https://github.com/rust-lang/rustfmt>
 - <https://github.com/mre/cargo-inspect> (play with it!)
 
+Play with small tests using Valgrind / GDB, _e.g._ Valgrind will tell you that this code has a big memory leak:
 
-# Go deeper into memory
+```c
+#include "stdlib.h"
+#include "unistd.h"
 
-Try to create a small C program that creates a memory leak (like a loop that malloc but never free) and open it in Valgrind, translates the program in Rust and redo the test.
+int main(void) {
+    while (1) {
+        malloc(20);
+        sleep(1);
+    }
+    return 0;
+}
+```
+
+## Go deeper into memory
+
+Try to create a small C program that creates a memory leak (like a loop that malloc but never free) and open it in Valgrind, translate the program in Rust and do the test again.
 
 Do you know that the program stack has a fixed space size in memory? What's happen when you fill it all with function calls? -> a stack overflow!
 
-You can look at this minimalist malloc implementation from mine, using mmap syscall (read its man) to allocate memory pages: <https://github.com/yvan-sraka/malloc>
+You can look at this minimalist malloc implementation from mine, using `mmap` syscall (read its man) to allocate memory pages: <https://github.com/yvan-sraka/malloc>
 
 Supplementary links to feed your curiosity (bonus, not mandatory):
 
@@ -60,8 +70,7 @@ Supplementary links to feed your curiosity (bonus, not mandatory):
 - Some more readings for the brave: "What Every Programmer Should Know About Memory" by Ulrich Drepper from Red Hat <https://people.freebsd.org/~lstewart/articles/cpumemory.pdf>
 - [Fear not the Rust Borrow Checker](http://www.squidarth.com/rc/rust/2018/05/31/rust-borrowing-and-ownership.html)
 
-
-# Homework due to next session
+## Homework due to next session
 
 You have to recode a small pipe-like program, working like this:
 
@@ -86,20 +95,19 @@ You can use <https://clap.rs> to parse the command-line arguments, and also foll
 
 Upload your code by doing a PR here: <https://github.com/yvan-sraka/mypipe>
 
-
-# Big Project
+## Big Project
 
 I will present during the next class the final project on which you will be evaluated. You're free to come with your idea of an alternative project if you have already in mind something that you want to code in Rust. I will accept any idea that could be reasonably doable by a group of 3 or 4 students (chosen randomly), that implies features specific to systems or networks programming (think about playing with binary encoding, intense computing with concurrent programming, low-level binding with another library or just any funny syscalls, etc…)!
 
 Cheers, Yvan
 
----
+<!--
 
 Bonjour à tous!
 
 L'anglais ce n'est pas votre truc, je ne vous en veux pas :)
 
-# Récapitulatif de la session précédente
+## Récapitulatif de la session précédente
 
 - Le QCM est un énorme succès, la moyenne de la classe est de X / 20 (les points négatifs sont pour moi cette fois)
 - Correction du dernier devoir maison : <https://gist.github.com/yvan-sraka/94638a5dd95f46cdaecf5ab4d7ed2676>
@@ -109,7 +117,6 @@ L'anglais ce n'est pas votre truc, je ne vous en veux pas :)
 ```rust
 {{#include borrowing-example-strings.rs}}
 ```
-
 **RAPPEL:** règle d'or de Rust -> il ne peut pas avoir à la fois de l'aliasing ET de la mutabilité!
 
 ```rust
@@ -118,7 +125,7 @@ L'anglais ce n'est pas votre truc, je ne vous en veux pas :)
 
 > **N.B.** <https://blog.guillaume-gomez.fr/Rust> donne des bonnes explications (en français) du modèle mémoire de Rust !
 
-# Obligatoire pour la prochaine session
+## Obligatoire pour la prochaine session
 
 ⚠️ Avoir un système UNIX avec Rust installé dessus :
 
@@ -128,8 +135,7 @@ et de l'extension VSCode qui va bien <https://code.visualstudio.com/remote-tutor
 
 (et, bien sûr, d'avoir un environnement de développement Rust fonctionnel avec RLS activé <https://github.com/rust-lang/rls>)
 
-
-# Aller plus loin dans Rust
+## Aller plus loin dans Rust
 
 Nous avons couvert jusqu'à présent les 6 premiers chapitres et la plupart des 7, 8 et 9 du Rust Book <https://doc.rust-lang.org/stable/book/>
 
@@ -140,8 +146,22 @@ Je vous donne ici trois outils pratiques qui vous aideront avec vos devoirs et v
 - <https://github.com/rust-lang/rustfmt>
 - <https://github.com/mre/cargo-inspect> (jouez avec !)
 
+Jouez avec de petits tests en utilisant Valgrind / GDB, _ex :_ Valgrind va vous dire que ce programme à une grosse fuite mémoire :
 
-# Aller plus loin dans la mémoire
+```c
+#include "stdlib.h"
+#include "unistd.h"
+
+int main(void) {
+    while (1) {
+        malloc(20);
+        sleep(1);
+    }
+    return 0;
+}
+```
+
+## Aller plus loin dans la mémoire
 
 Essayez de créer un petit programme en C qui crée une fuite de mémoire (comme une boucle qui « malloc » mais qui ne « free » jamais) et ouvrez-le dans Valgrind, traduisez le programme en Rust et refaites le test.
 
@@ -155,8 +175,7 @@ Quelques liens supplémentaires pour nourrir votre curiosité (en bonus, non obl
 - Quelques lectures supplémentaires pour les plus courageux: "What Every Programmer Should Know About Memory" de Ulrich Drepper chez Red Hat <https://people.freebsd.org/~lstewart/articles/cpumemory.pdf>
 - [Fear not the Rust Borrow Checker](http://www.squidarth.com/rc/rust/2018/05/31/rust-borrowing-and-ownership.html)
 
-
-# Devoirs maison pour la prochaine session
+## Devoirs maison pour la prochaine session
 
 Vous devez recoder un petit programme qui fonctionne comme pipe | et s'appelle comme ceci:
 
@@ -181,9 +200,10 @@ Vous pouvez utiliser <https://clap.rs> pour parser les arguments de la ligne de 
 
 Soumettez votre code en faisant une PR ici: <https://github.com/yvan-sraka/mypipe>
 
-
-# Projet final
+## Projet final
 
 Lors du prochain cours, je présenterai le projet final sur lequel vous serez évalué. Vous êtes libre de proposer des idées de projets alternatifs si vous avez déjà en tête quelque chose que vous souhaitez coder dans Rust. J'accepterai toute idée raisonnablement réalisable par un groupe de 3 ou 4 étudiants (choisis au hasard), qui implique des fonctionnalités spécifiques à la programmation système ou réseau (pensez à jouer avec un encodage binaire, des programmes concurrents qui font des calculs, de l'interopérabilité bas niveau avec une autre bibliothèque ou des appels systèmes, etc ...)!
 
 Amitiés, Yvan
+
+-->
