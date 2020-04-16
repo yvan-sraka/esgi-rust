@@ -1,6 +1,10 @@
-# Recall, FFI & Unsafe
+# FFI and unsafe
 
-## Activity -1: Requierements (quick setup)
+<!-- Hello everyone, -->
+
+Lvl -1, 0, 1 recalls from previous sessions ...
+
+## Lvl -1: Requierements (quick setup)
 
 Have an **up to date rust toolchain**:
 
@@ -21,7 +25,7 @@ If you need a recap on **Rust syntax**:
 <https://github.com/tonsky/FiraCode>
 
 
-## Activity 0: Remind me, what's Rust again?
+## Lvl 0: Remind me, what's Rust again?
 
 Rust is a **compiled language** with a **strong static** algebraic type system.
 
@@ -63,7 +67,7 @@ fn main() {
 
 > **N.B.** <https://doc.rust-lang.org/std/string/struct.String.html>
 
-## Activity 1: Sort weel-known programming languages
+## Lvl 1: Sort weel-known programming languages
 
 ### Static typing (compiled languages)
 
@@ -81,7 +85,7 @@ fn main() {
 - BourneShell | Python | Prel | Ruby | PHP | ECMAScript (libs of these languages often rely on compiled code)
 
 
-## Activity 2: What `rustc` do (without lying in the details):
+## Lvl 2: What `rustc` do (without lying in the details):
 
 Rust `=>` Rust (without macro) `=>` (module resolution) `=>` (memory management) MIR `=>` ... `=>` LLVM `=>` linking (static libs) `=>` Binary
 
@@ -116,7 +120,7 @@ pub fn square(num: i32) -> i32 {
   * lib dynamic `->` runtime (Linux `.so`, Windows `.dll`, macOS `.dylib`)
       language-independent & platform-dependent
 
-## Activity 3: Foreign Function Interface (FFI)
+## Lvl 3: Foreign Function Interface (FFI)
 
 > **N.B.** the Book have a good section on the subject <https://doc.rust-lang.org/book/ffi.html>
 
@@ -128,3 +132,5 @@ Today we will try to:
 This <https://stackoverflow.com/questions/43826572/where-should-i-place-a-static-library-so-i-can-link-it-with-a-rust-program> will help since we have to set up <https://doc.rust-lang.org/cargo/reference/manifest.html#package-build> to tell `cargo` where our static lib is!
 
 **Here is our final code <https://github.com/yvan-sraka/rust-ffi-demo> :)**
+
+Cheers, Yvan
