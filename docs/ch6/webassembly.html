@@ -215,6 +215,35 @@ pub fn render(markdown_input: &amp;str) -&gt; String {
 <p>Test using:</p>
 <pre><code class="language-shell">$ wasmtime target/wasm32-wasi/debug/markdown.wasm --invoke render &quot;\# Title&quot;
 </code></pre>
+<p>You can also test to run <code>wastime</code> on this example file:</p>
+<pre><code class="language-lisp">(module
+    ;; Import the required fd_write WASI function which will write the given io vectors to stdout
+    ;; The function signature for fd_write is:
+    ;; (File Descriptor, *iovs, iovs_len, nwritten) -&gt; Returns number of bytes written
+    (import &quot;wasi_unstable&quot; &quot;fd_write&quot; (func $fd_write (param i32 i32 i32 i32) (result i32)))
+
+    (memory 1)
+    (export &quot;memory&quot; (memory 0))
+
+    ;; Write 'hello world\n' to memory at an offset of 8 bytes
+    ;; Note the trailing newline which is required for the text to appear
+    (data (i32.const 8) &quot;hello world\n&quot;)
+
+    (func $main (export &quot;_start&quot;)
+        ;; Creating a new io vector within linear memory
+        (i32.store (i32.const 0) (i32.const 8))  ;; iov.iov_base - This is a pointer to the start of the 'hello world\n' string
+        (i32.store (i32.const 4) (i32.const 12))  ;; iov.iov_len - The length of the 'hello world\n' string
+
+        (call $fd_write
+            (i32.const 1) ;; file_descriptor - 1 for stdout
+            (i32.const 0) ;; *iovs - The pointer to the iov array, which is stored at memory location 0
+            (i32.const 1) ;; iovs_len - We're printing 1 string stored in an iov - so one.
+            (i32.const 20) ;; nwritten - A place in memory to store the number of bytes written
+        )
+        drop ;; Discard the number of bytes written from the top of the stack
+    )
+)
+</code></pre>
 <h2><a class="header" href="#lvl-2" id="lvl-2">Lvl 2</a></h2>
 <p>Try to put our code on a webpage using:</p>
 <ul>
@@ -240,10 +269,10 @@ pub fn render(markdown_input: &amp;str) -&gt; String {
 <p>Play also with <a href="https://github.com/WebAssembly/binaryen">https://github.com/WebAssembly/binaryen</a></p>
 <p>Mozilla Hacks cool tech blog <a href="https://hacks.mozilla.org/category/webassembly/">https://hacks.mozilla.org/category/webassembly/</a></p>
 <ul>
-<li><a href="https://hacks.mozilla.org/2018/04/hello-wasm-pack/">https://hacks.mozilla.org/2018/04/hello-wasm-pack/</a></li>
 <li><a href="https://hacks.mozilla.org/2019/08/webassembly-interface-types/">https://hacks.mozilla.org/2019/08/webassembly-interface-types/</a></li>
 <li><a href="https://hacks.mozilla.org/2019/11/multi-value-all-the-wasm/">https://hacks.mozilla.org/2019/11/multi-value-all-the-wasm/</a></li>
 <li><a href="https://hacks.mozilla.org/2019/03/standardizing-wasi-a-webassembly-system-interface/">https://hacks.mozilla.org/2019/03/standardizing-wasi-a-webassembly-system-interface/</a></li>
+<li><a href="https://hacks.mozilla.org/2018/04/hello-wasm-pack/">https://hacks.mozilla.org/2018/04/hello-wasm-pack/</a></li>
 <li><a href="https://hacks.mozilla.org/2017/02/a-cartoon-intro-to-webassembly/">https://hacks.mozilla.org/2017/02/a-cartoon-intro-to-webassembly/</a></li>
 </ul>
 <p>Another way to solve <em>&quot; the JavaScript issue &quot;</em>:</p>
