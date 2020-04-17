@@ -2,9 +2,9 @@
 
 <!-- Hello everyone, -->
 
-Lvl -1, 0, 1 recalls from previous sessions ...
-
 ## Lvl -1: Requierements (quick setup)
+
+> **N.B.** Lvl -1, 0, 1 recalls from previous sessions ...
 
 Have an **up to date rust toolchain**:
 

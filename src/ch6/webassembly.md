@@ -60,6 +60,12 @@ Test using:
 $ wasmtime target/wasm32-wasi/debug/markdown.wasm --invoke render "\# Title"
 ```
 
+You can also test to run `wastime` on this example file:
+
+```lisp
+{{#include example.wat}}
+```
+
 ## Lvl 2
 
 Try to put our code on a webpage using:
@@ -92,10 +98,10 @@ Play also with <https://github.com/WebAssembly/binaryen>
 
 Mozilla Hacks cool tech blog <https://hacks.mozilla.org/category/webassembly/>
 
-* <https://hacks.mozilla.org/2018/04/hello-wasm-pack/>
 * <https://hacks.mozilla.org/2019/08/webassembly-interface-types/>
 * <https://hacks.mozilla.org/2019/11/multi-value-all-the-wasm/>
 * <https://hacks.mozilla.org/2019/03/standardizing-wasi-a-webassembly-system-interface/>
+* <https://hacks.mozilla.org/2018/04/hello-wasm-pack/>
 * <https://hacks.mozilla.org/2017/02/a-cartoon-intro-to-webassembly/>
 
 Another way to solve _" the JavaScript issue "_:

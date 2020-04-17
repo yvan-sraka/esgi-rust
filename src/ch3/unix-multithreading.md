@@ -32,6 +32,7 @@ Again, a too-long email, the french version is behind! -->
 
 ```rust
 {{#include parallel-cat-verbose.rs}}
+```
 
 ```rust
 {{#include parallel-cat.rs}}
@@ -101,6 +102,7 @@ Encore une fois, un e-mail trop long:
 
 ```rust
 {{#include parallel-cat-verbose.rs}}
+```
 
 ```rust
 {{#include parallel-cat.rs}}
