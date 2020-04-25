@@ -1,12 +1,17 @@
-# Sockets and HTTP
+Sockets and HTTP
+================
 
 <!-- Hello everyone, -->
 
-## Lvl 0 - Hello World!
+Lvl 0 - Hello World!
+--------------------
 
-Today we will play with something fun, sockets:
+Today we will play with something fun,
+[sockets](https://en.wikipedia.org/wiki/Network_socket):
 
-Use `tokio`: <https://github.com/tokio-rs/tokio> to create a small Rust program `alice` that asynchronously wait and print a message sent by a program `bob` using the standard library.
+Use `tokio`: <https://github.com/tokio-rs/tokio> to create a small Rust
+program `alice` that asynchronously wait and print a message sent by a
+program `bob` using the standard library.
 
 ```toml
 [dependencies]
@@ -22,17 +27,23 @@ futures = "0.3"
 {{#include bob.rs}}
 ```
 
-> **N.B.** we can use https://ngrok.com/docs or a VPN to test this code over network meanwhile social distancing ...
+> **N.B.** we can use https://ngrok.com/docs or a VPN to test this code
+> over network meanwhile social distancing ...
 
-Learn more about `async`: <https://areweasyncyet.rs> (you can use `futures`, `mio` or `async-std`)
+Learn more about `async`: <https://areweasyncyet.rs> (you can use
+`futures`, `mio` or `async-std`)
 
 ```rust
 {{#include async-await-example.rs}}
 ```
 
-## Lvl 1 - HTTP server
+Lvl 1 - HTTP server
+-------------------
 
-Create a simple HTTP server using <https://hyper.rs>, that display a fancy "It's works!" message in your favorite browser on <http://127.0.0.1:8080> like shown in <https://rust-lang.github.io/async-book/01_getting_started/05_http_server_example.html>
+Create a simple HTTP server using <https://hyper.rs>, that display a
+fancy "It's works!" message in your favorite browser on
+<http://127.0.0.1:8080> like shown in
+<https://rust-lang.github.io/async-book/01_getting_started/05_http_server_example.html>
 
 ```toml
 [dependencies]
@@ -47,13 +58,18 @@ tokio = { version = "0.2", features = ["full"] }
 {{#include mini-http-server.rs}}
 ```
 
-> **N.B.** for stuffs that never fail<https://doc.rust-lang.org/std/convert/enum.Infallible.html>
+> **N.B.** for stuffs that never
+> fail<https://doc.rust-lang.org/std/convert/enum.Infallible.html>
 
 There is plenty of alternatives here too: <https://www.arewewebyet.org>
 
-## Lvl 2 - API Request
+Lvl 2 - API Request
+-------------------
 
-Using <https://docs.rs/reqwest> play with some external API, like Giphy one: <https://developers.giphy.com/docs/api/endpoint#random> and create a small command-line program that takes a parameter and save the GIF image on your computer!
+Using <https://docs.rs/reqwest> play with some external API, like Giphy
+one: <https://developers.giphy.com/docs/api/endpoint#random> and create
+a small command-line program that takes a parameter and save the GIF
+image on your computer!
 
 ```toml
 [dependencies]
@@ -64,34 +80,49 @@ reqwest = { version = "0.10", features = ["blocking"] }
 {{#include mini-http-client.rs}}
 ```
 
-> **N.B.** I use <https://doc.rust-lang.org/book/ch12-05-working-with-environment-variables.html> to not write my secret `GIPHY_API_KEY` in code!
+> **N.B.** I use
+> <https://doc.rust-lang.org/book/ch12-05-working-with-environment-variables.html>
+> to not write my secret `GIPHY_API_KEY` in code!
 
-## Lvl ? - Bonus
+Lvl ? - Bonus
+-------------
 
-Want to play with some "real" web framework, you can try <https://gotham.rs> (or <http://nickel-org.github.io>)!
+Want to play with some "real" web framework, you can try
+<https://gotham.rs> (or <http://nickel-org.github.io>)!
 
-There is also a cool static site generator (<https://cobalt-org.github.io>) or ORM (<https://diesel.rs>), and here is a bunch of supplementary resources, if you're interested in doing _web_ stuff in Rust: 
+There is also a cool static site generator
+(<https://cobalt-org.github.io>) or ORM (<https://diesel.rs>), and here
+is a bunch of supplementary resources, if you're interested in doing
+*web* stuff in Rust:
 
-* [Rust web framework comparison](https://github.com/flosse/rust-web-framework-comparison)
-* [A small Rust API with Actix](https://stevezeidner.com/blog/rust-actix-api/)
-* [Writing a Simple Web Service in Rust](https://danielwelch.github.io/rust-web-service.html)
-* [Auth Web Microservice with rust using Actix-Web](https://gill.net.in/posts/auth-microservice-rust-actix-web-diesel-complete-tutorial-part-1/)
-* [A web application completely written in Rust](https://github.com/saschagrunert/webapp.rs)
-* [Touring a Fast, Safe, and Complete(ish) Web Service in Rust](https://brandur.org/rust-web)
+-   [Rust web framework
+    comparison](https://github.com/flosse/rust-web-framework-comparison)
+-   [A small Rust API with
+    Actix](https://stevezeidner.com/blog/rust-actix-api/)
+-   [Writing a Simple Web Service in
+    Rust](https://danielwelch.github.io/rust-web-service.html)
+-   [Auth Web Microservice with rust using
+    Actix-Web](https://gill.net.in/posts/auth-microservice-rust-actix-web-diesel-complete-tutorial-part-1/)
+-   [A web application completely written in
+    Rust](https://github.com/saschagrunert/webapp.rs)
+-   [Touring a Fast, Safe, and Complete(ish) Web Service in
+    Rust](https://brandur.org/rust-web)
 
-## To go further .. are we yet?
+To go further .. are we yet?
+----------------------------
 
-- <https://arewegameyet.com>
-- <https://areweguiyet.com>
-- <https://areweaudioyet.com>
-- <http://arewelearningyet.com>
+-   <https://arewegameyet.com>
+-   <https://areweguiyet.com>
+-   <https://areweaudioyet.com>
+-   <http://arewelearningyet.com>
 
-## Cool stuff for the end!!
+Cool stuff for the end!!
+------------------------
 
-* <https://www.wireguard.com>
-* <https://github.com/ixy-languages/ixy-languages>
-* <https://fr.wikipedia.org/wiki/Multipath_TCP>
-* <https://etcd.io> based on <https://raft.github.io>
+-   <https://www.wireguard.com>
+-   <https://github.com/ixy-languages/ixy-languages>
+-   <https://fr.wikipedia.org/wiki/Multipath_TCP>
+-   <https://etcd.io> based on <https://raft.github.io>
 
 Cheers, Yvan
 
