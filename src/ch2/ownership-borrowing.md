@@ -1,47 +1,69 @@
-# Ownership and borrowing
+Ownership and borrowing
+=======================
 
 <!-- Hello everyone,
 
 You will find a French version of this mail below, read it carefully and enjoy a homework bit trickier than the previous time: -->
 
-## Recap from the previous session
+Recap from the previous session
+-------------------------------
 
-- QCM is a huge success, the mean of the class is X / 20 (negative points are on me this time)
-- Correction of last homework: <https://gist.github.com/yvan-sraka/94638a5dd95f46cdaecf5ab4d7ed2676>
-- I strongly advise you to try to finish rustlings to be more comfortable with basic language features <https://github.com/rust-lang/rustlings>
-- The small Rust code I wrote in class to play with ownership and borrowing:
+-   QCM is a huge success, the mean of the class is X / 20 (negative
+    points are on me this time)
+-   Correction of last homework:
+    <https://gist.github.com/yvan-sraka/94638a5dd95f46cdaecf5ab4d7ed2676>
+-   I strongly advise you to try to finish rustlings to be more
+    comfortable with basic language features
+    <https://github.com/rust-lang/rustlings>
+-   The small Rust code I wrote in class to play with ownership and
+    borrowing:
 
 ```rust
 {{#include borrowing-example-strings.rs}}
 ```
 
-**REMINDER**: Rule of thumbs of Rust -> they cannot have both aliasing AND mutability!
+**REMINDER**: Rule of thumbs of Rust ⇨ they cannot have both aliasing
+AND mutability!
 
 ```rust
 {{#include borrowing-example-colors.rs}}
 ```
-## Mandatory for the next session
+
+Mandatory for the next session
+------------------------------
 
 ⚠️ Have a UNIX system with Rust installed inside:
 
-For those that run a Windows machine, I highly recommend the installation of a WSL (Windows Subsystem for Linux) <https://docs.microsoft.com/en-us/windows/wsl/install-win10>
+For those that run a Windows machine, I highly recommend the
+installation of a WSL (Windows Subsystem for Linux)
+<https://docs.microsoft.com/en-us/windows/wsl/install-win10>
 
-and the nice VSCode extension <https://code.visualstudio.com/remote-tutorials/wsl/run-in-wsl> that allows you to run `code` command remotely in bash.exe shell!
+and the nice VSCode extension
+<https://code.visualstudio.com/remote-tutorials/wsl/run-in-wsl> that
+allows you to run `code` command remotely in `bash.exe` shell!
 
-(and, of course, to have a working Rust dev environment with RLS setup <https://github.com/rust-lang/rls>)
+(and, of course, to have a working Rust dev environment with RLS setup
+<https://github.com/rust-lang/rls>)
 
-## Go deeper into Rust
+Go deeper into Rust
+-------------------
 
-We, at this point cover, all of 6 first chapters, and most of 7, 8 and 9 of the Rust Book <https://doc.rust-lang.org/stable/book/>
+We, at this point cover, all of 6 first chapters, and most of 7, 8 and 9
+of the Rust Book <https://doc.rust-lang.org/stable/book/>
 
-We will not advance to much in Rust specific feature after this point (I will not make a class about trait e.g.), I let you free of learning more about it or not!
+We will not advance to much in Rust specific feature after this point (I
+will not make a class about trait e.g.), I let you free of learning more
+about it or not!
 
-I give you here three handy tools that will help you with homework and graded project:
-- <https://github.com/rust-lang/rust-clippy>
-- <https://github.com/rust-lang/rustfmt>
-- <https://github.com/mre/cargo-inspect> (play with it!)
+I give you here three handy tools that will help you with homework and
+graded project:
 
-Play with small tests using Valgrind / GDB, _e.g._ Valgrind will tell you that this code has a big memory leak:
+-   <https://github.com/rust-lang/rust-clippy>
+-   <https://github.com/rust-lang/rustfmt>
+-   <https://github.com/mre/cargo-inspect> (play with it!)
+
+Play with small tests using Valgrind / GDB, *e.g.* Valgrind will tell
+you that this code has a big memory leak:
 
 ```c
 #include "stdlib.h"
@@ -56,48 +78,68 @@ int main(void) {
 }
 ```
 
-## Go deeper into memory
+Go deeper into memory
+---------------------
 
-Try to create a small C program that creates a memory leak (like a loop that malloc but never free) and open it in Valgrind, translate the program in Rust and do the test again.
+Try to create a small C program that creates a memory leak (like a loop
+that malloc but never free) and open it in Valgrind, translate the
+program in Rust and do the test again.
 
-Do you know that the program stack has a fixed space size in memory? What's happen when you fill it all with function calls? -> a stack overflow!
+Do you know that the program stack has a fixed space size in memory?
+What's happen when you fill it all with function calls? ⇨ a stack
+overflow!
 
-You can look at this minimalist malloc implementation from mine, using `mmap` syscall (read its man) to allocate memory pages: <https://github.com/yvan-sraka/malloc>
+You can look at this minimalist malloc implementation from mine, using
+`mmap` syscall (read its man) to allocate memory pages:
+<https://github.com/yvan-sraka/malloc>
 
 Supplementary links to feed your curiosity (bonus, not mandatory):
 
-- There no null pointers in Rust! Why? Watch "Null References: The Billion Dollar Mistake" from Tony Hoare <https://www.infoq.com/presentations/Null-References-The-Billion-Dollar-Mistake-Tony-Hoare/>
-- Some more readings for the brave: "What Every Programmer Should Know About Memory" by Ulrich Drepper from Red Hat <https://people.freebsd.org/~lstewart/articles/cpumemory.pdf>
-- [Fear not the Rust Borrow Checker](http://www.squidarth.com/rc/rust/2018/05/31/rust-borrowing-and-ownership.html)
+-   There no null pointers in Rust! Why? Watch "Null References: The
+    Billion Dollar Mistake" from Tony Hoare
+    <https://www.infoq.com/presentations/Null-References-The-Billion-Dollar-Mistake-Tony-Hoare/>
+-   Some more readings for the brave: "What Every Programmer Should Know
+    About Memory" by Ulrich Drepper from Red Hat
+    <https://people.freebsd.org/~lstewart/articles/cpumemory.pdf>
+-   [Fear not the Rust Borrow
+    Checker](http://www.squidarth.com/rc/rust/2018/05/31/rust-borrowing-and-ownership.html)
+-   <https://www.sublimetext.com/blog/articles/use-mmap-with-care>
 
-## Homework due to next session
+Homework due to next session
+----------------------------
 
 You have to recode a small pipe-like program, working like this:
 
-```
-$ mypipe --in fortune --out cowsay
-```
+    $ mypipe --in fortune --out cowsay
 
-```
- _______________________________________
-/ Q: What's tiny and yellow and very,   \
-| very, dangerous? A: A canary with the |
-\ super-user password.                  /
- ---------------------------------------
-          \   ^__^
-           \  (oo)\_______
-              (__)\       )\/\
-                  ||----w |
-                  ||     ||
-```
+     _______________________________________
+    / Q: What's tiny and yellow and very,   \
+    | very, dangerous? A: A canary with the |
+    \ super-user password.                  /
+     ---------------------------------------
+              \   ^__^
+               \  (oo)\_______
+                  (__)\       )\/\
+                      ||----w |
+                      ||     ||
 
-You can use <https://clap.rs> to parse the command-line arguments, and also follow the guide <https://rust-lang-nursery.github.io/cli-wg/>
+You can use <https://clap.rs> to parse the command-line arguments, and
+also follow the guide <https://rust-lang-nursery.github.io/cli-wg/>
 
-Upload your code by doing a PR here: <https://github.com/yvan-sraka/mypipe>
+Upload your code by doing a PR here:
+<https://github.com/yvan-sraka/mypipe>
 
-## Big Project
+Big Project
+-----------
 
-I will present during the next class the final project on which you will be evaluated. You're free to come with your idea of an alternative project if you have already in mind something that you want to code in Rust. I will accept any idea that could be reasonably doable by a group of 3 or 4 students (chosen randomly), that implies features specific to systems or networks programming (think about playing with binary encoding, intense computing with concurrent programming, low-level binding with another library or just any funny syscalls, etc…)!
+I will present during the next class the final project on which you will
+be evaluated. You're free to come with your idea of an alternative
+project if you have already in mind something that you want to code in
+Rust. I will accept any idea that could be reasonably doable by a group
+of 3 or 4 students (chosen randomly), that implies features specific to
+systems or networks programming (think about playing with binary
+encoding, intense computing with concurrent programming, low-level
+binding with another library or just any funny syscalls, etc...)!
 
 Cheers, Yvan
 
@@ -117,7 +159,7 @@ L'anglais ce n'est pas votre truc, je ne vous en veux pas :)
 ```rust
 {{#include borrowing-example-strings.rs}}
 ```
-**RAPPEL:** règle d'or de Rust -> il ne peut pas avoir à la fois de l'aliasing ET de la mutabilité!
+**RAPPEL:** règle d'or de Rust ⇨ il ne peut pas avoir à la fois de l'aliasing ET de la mutabilité!
 
 ```rust
 {{#include borrowing-example-colors.rs}}
@@ -131,7 +173,7 @@ L'anglais ce n'est pas votre truc, je ne vous en veux pas :)
 
 Pour ceux qui exécutent une machine Windows, je recommande vivement l'installation d'un WSL (Sous-système Windows pour Linux) <https://docs.microsoft.com/en-us/windows/wsl/install-win10>
 
-et de l'extension VSCode qui va bien <https://code.visualstudio.com/remote-tutorials/wsl/run-in-wsl> qui vous permet d'exécuter la commande `code` à distance dans un shell bash.exe!
+et de l'extension VSCode qui va bien <https://code.visualstudio.com/remote-tutorials/wsl/run-in-wsl> qui vous permet d'exécuter la commande `code` à distance dans un shell `bash.exe`!
 
 (et, bien sûr, d'avoir un environnement de développement Rust fonctionnel avec RLS activé <https://github.com/rust-lang/rls>)
 
@@ -165,7 +207,7 @@ int main(void) {
 
 Essayez de créer un petit programme en C qui crée une fuite de mémoire (comme une boucle qui « malloc » mais qui ne « free » jamais) et ouvrez-le dans Valgrind, traduisez le programme en Rust et refaites le test.
 
-Savez-vous que la pile d'un programme a une taille fixe dans l'espace mémoire ? Que se passe-t-il lorsque vous dépassez l'espace disponible avec trop d'appels de fonction ? -> « stack overflow » !
+Savez-vous que la pile d'un programme a une taille fixe dans l'espace mémoire ? Que se passe-t-il lorsque vous dépassez l'espace disponible avec trop d'appels de fonction ? ⇨ « stack overflow » !
 
 Vous pouvez regarder cette implémentation malloc minimaliste, basé sur l'appel système mmap (lisez son manuel) pour allouer des pages de mémoire : <https://github.com/yvan-sraka/malloc>
 
@@ -174,6 +216,7 @@ Quelques liens supplémentaires pour nourrir votre curiosité (en bonus, non obl
 - Il n'y a pas de pointeurs « null » dans Rust! Pourquoi? Regardez "Null References: The Billion Dollar Mistake" de Tony Hoare <https://www.infoq.com/presentations/Null-References-The-Billion-Dollar-Mistake-Tony-Hoare/>
 - Quelques lectures supplémentaires pour les plus courageux: "What Every Programmer Should Know About Memory" de Ulrich Drepper chez Red Hat <https://people.freebsd.org/~lstewart/articles/cpumemory.pdf>
 - [Fear not the Rust Borrow Checker](http://www.squidarth.com/rc/rust/2018/05/31/rust-borrowing-and-ownership.html)
+- <https://www.sublimetext.com/blog/articles/use-mmap-with-care>
 
 ## Devoirs maison pour la prochaine session
 
