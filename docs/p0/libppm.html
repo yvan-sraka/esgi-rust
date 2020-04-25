@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Project 1: libppm - Systems and Networks programming in Rust</title>
+        <title>Project 0: libppm - Systems and Networks programming in Rust</title>
         
 
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -80,8 +80,8 @@
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
-            <div id="sidebar-scrollbox" class="sidebar-scrollbox">
-                <ol class="chapter"><li class="expanded "><a href="../ch1/rust-syntax.html"><strong aria-hidden="true">1.</strong> Rust syntax</a></li><li class="expanded "><a href="../ch2/ownership-borrowing.html"><strong aria-hidden="true">2.</strong> Ownership and borrowing</a></li><li class="expanded "><a href="../ch3/unix-multithreading.html"><strong aria-hidden="true">3.</strong> Unix and multithreading</a></li><li class="expanded "><a href="../ch4/ffi-unsafe.html"><strong aria-hidden="true">4.</strong> FFI and unsafe</a></li><li class="expanded "><a href="../ch5/sockets-http.html"><strong aria-hidden="true">5.</strong> Sockets and HTTP</a></li><li class="expanded "><a href="../ch6/webassembly.html"><strong aria-hidden="true">6.</strong> WebAssembly</a></li><li class="expanded "><a href="../p1/libppm.html" class="active"><strong aria-hidden="true">7.</strong> Project 1: libppm</a></li></ol>
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../ch0/introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../ch1/rust-syntax.html"><strong aria-hidden="true">2.</strong> Rust syntax</a></li><li class="chapter-item expanded "><a href="../ch2/ownership-borrowing.html"><strong aria-hidden="true">3.</strong> Ownership and borrowing</a></li><li class="chapter-item expanded "><a href="../ch3/unix-multithreading.html"><strong aria-hidden="true">4.</strong> Unix and multithreading</a></li><li class="chapter-item expanded "><a href="../ch4/ffi-unsafe.html"><strong aria-hidden="true">5.</strong> FFI and unsafe</a></li><li class="chapter-item expanded "><a href="../ch5/sockets-http.html"><strong aria-hidden="true">6.</strong> Sockets and HTTP</a></li><li class="chapter-item expanded "><a href="../ch6/webassembly.html"><strong aria-hidden="true">7.</strong> WebAssembly</a></li><li class="chapter-item expanded "><a href="../ch7/fast-safe-and-beyond.html"><strong aria-hidden="true">8.</strong> Fast, safe and beyond</a></li><li class="chapter-item expanded "><a href="../p0/libppm.html" class="active"><strong aria-hidden="true">9.</strong> Project 0: libppm</a></li><li class="chapter-item expanded "><a href="../p1/libpwn.html"><strong aria-hidden="true">10.</strong> Project 1: libpwn</a></li><li class="chapter-item expanded "><a href="../p2/libray.html"><strong aria-hidden="true">11.</strong> Project 2: libray</a></li><li class="chapter-item expanded "><a href="../p3/libiso.html"><strong aria-hidden="true">12.</strong> Project 3: libiso</a></li><li class="chapter-item expanded "><a href="../p4/rstrace.html"><strong aria-hidden="true">13.</strong> Project 4: rstrace</a></li><li class="chapter-item expanded "><a href="../p5/rsh.html"><strong aria-hidden="true">14.</strong> Project 5: rsh</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -148,9 +148,10 @@
                 <div id="content" class="content">
                     <main>
                         <h1><a class="header" href="#libppm-a-not-so-simple-ppm-image-manipulation-library" id="libppm-a-not-so-simple-ppm-image-manipulation-library"><code>libppm</code>: a not so simple PPM image manipulation library</a></h1>
-<p>Goals: Manipulating IO, Memory, Concurrent programming with threads and exposing Rust function
-through Foreign Function Interface.</p>
-<p>We will use the <a href="https://en.wikipedia.org/wiki/Netpbm_format">Portable Pixel Map</a> in binary format.</p>
+<p>Goals: Manipulating IO, Memory, Concurrent programming with threads and
+exposing Rust function through Foreign Function Interface.</p>
+<p>We will use the <a href="https://en.wikipedia.org/wiki/Netpbm_format">Portable Pixel
+Map</a> in binary format.</p>
 <h2><a class="header" href="#lvl-0---warmup" id="lvl-0---warmup">Lvl 0 - Warmup</a></h2>
 <ul>
 <li>Create a new <code>ppm</code> Rust project as a library</li>
@@ -160,7 +161,8 @@ through Foreign Function Interface.</p>
 </ul>
 <h2><a class="header" href="#lvl-1---struct" id="lvl-1---struct">Lvl 1 - Struct</a></h2>
 <ul>
-<li>Create a nice custom Rust data-structure <code>Image</code> to handle 24bits images.</li>
+<li>Create a nice custom Rust data-structure <code>Image</code> to handle 24bits
+images.</li>
 </ul>
 <blockquote>
 <p>Create first a <code>Pixel</code> structure to encode an RGB color.</p>
@@ -172,39 +174,52 @@ through Foreign Function Interface.</p>
 <li>8 for blue</li>
 </ul>
 <h3><a class="header" href="#epic-functions-for-an-epic-pixels" id="epic-functions-for-an-epic-pixels">Epic Functions for an Epic <code>Pixels</code></a></h3>
-<p>Because test are nices: Write a test for all the functions <a href="https://doc.rust-lang.org/book/ch11-01-writing-tests.html">doc</a>
-Also, write a doc in rust style <em>Prof! I don't how to write doc!</em> <a href="https://doc.rust-lang.org/rust-by-example/meta/doc.html">short answer</a>; <a href="https://doc.rust-lang.org/1.30.0/book/2018-edition/ch14-02-publishing-to-crates-io.html?highlight=document#making-useful-documentation-comments">long answer</a>
-TL;DR writes how to use the function if it panic says it! make an example in the doc!</p>
+<p>Because test are nices: Write a test for all the functions
+<a href="https://doc.rust-lang.org/book/ch11-01-writing-tests.html">doc</a> Also,
+write a doc in rust style <em>Prof! I don't how to write doc!</em> <a href="https://doc.rust-lang.org/rust-by-example/meta/doc.html">short
+answer</a>; <a href="https://doc.rust-lang.org/1.30.0/book/2018-edition/ch14-02-publishing-to-crates-io.html?highlight=document#making-useful-documentation-comments">long
+answer</a>
+TL;DR writes how to use the function if it panic says it! make an
+example in the doc!</p>
 <p>Warmups functions:</p>
 <ul>
 <li>Write a block <code>impl Pixel</code> for next questions</li>
-<li>(Optional) Write a nice constructor <code>fn new(red: u8, green: u8, blue: u8) -&gt; Self</code></li>
-<li>Derive <code>Clone</code> and <code>Copy</code> because a Pixel is a tiny type who fits in a register.</li>
+<li>(Optional) Write a nice constructor
+<code>fn new(red: u8, green: u8, blue: u8) -&gt; Self</code></li>
+<li>Derive <code>Clone</code> and <code>Copy</code> because a Pixel is a tiny type who fits in
+a register.</li>
 <li>Make a <code>std::fmt::Display</code> trait to render a pixel in terminal</li>
-<li>Carve a function <code>fn invert(&amp;mut self)</code> that inverts a pixel. Advise think <a href="https://doc.rust-lang.org/std/ops/trait.Not.html">bitwise</a><em>!</em> ;)</li>
+<li>Carve a function <code>fn invert(&amp;mut self)</code> that inverts a pixel. Advise
+think <a href="https://doc.rust-lang.org/std/ops/trait.Not.html">bitwise</a><em>!</em>
+;)</li>
 </ul>
 <p>Not so warmup:</p>
 <ul>
 <li>Make a function <code>fn eq(self, other: Pixel) -&gt; bool</code></li>
-<li>Rewrite your code of <code>eq</code> function to implement <code>PartialEq</code> <a href="https://doc.rust-lang.org/std/cmp/trait.Eq.html">Doc PartialEq</a>!</li>
+<li>Rewrite your code of <code>eq</code> function to implement <code>PartialEq</code> <a href="https://doc.rust-lang.org/std/cmp/trait.Eq.html">Doc
+PartialEq</a>!</li>
 </ul>
 <p>Advice: Read the doc again! :)</p>
 <p>Need some engagement:</p>
 <ul>
-<li>Make a function <code>grayscale</code> who convert an RGB pixel to a grayscale pixel</li>
+<li>Make a function <code>grayscale</code> who convert an RGB pixel to a grayscale
+pixel</li>
 </ul>
 <h2><a class="header" href="#lvl-2---image-manipulation" id="lvl-2---image-manipulation">Lvl 2 - Image manipulation</a></h2>
-<p>Write a little <code>struct Image</code> that represents a struct you might need the following fields:</p>
+<p>Write a little <code>struct Image</code> that represents a struct you might need
+the following fields:</p>
 <ul>
 <li><code>Vec&lt;Pixel&gt;</code> to represent the pixels buffer</li>
 <li><code>height</code> with type <code>usize</code></li>
 <li><code>width</code> with type <code>usize</code></li>
 <li>Maybe other fields?</li>
 </ul>
-<p>Now write some function to manipulate images!
-A function <code>fn new_with_file(filename: &amp;Path) -&gt; Image</code> that read in text mode a ppm image you might need to write
-the <code>.ppm</code> file format definition <a href="http://netpbm.sourceforge.net/doc/ppm.html">here</a>.</p>
-<p>Write in an <code>impl Image</code> a function <code>fn save(filename: &amp;Path)</code> who saves your struct into a file.</p>
+<p>Now write some function to manipulate images! A function
+<code>fn new_with_file(filename: &amp;Path) -&gt; Image</code> that read in text mode a
+ppm image you might need to write the <code>.ppm</code> file format definition
+<a href="http://netpbm.sourceforge.net/doc/ppm.html">here</a>.</p>
+<p>Write in an <code>impl Image</code> a function <code>fn save(filename: &amp;Path)</code> who saves
+your struct into a file.</p>
 <p>An example file in text mode looks like:</p>
 <pre><code>P3
 3 2
@@ -222,28 +237,36 @@ the <code>.ppm</code> file format definition <a href="http://netpbm.sourceforge.
 0 0 0 # black
 </code></pre>
 <ul>
-<li>Create an <code>invert</code> function that inverts image colors (reuse your code!)</li>
-<li>Create a <code>grayscale</code> function that makes image B&amp;W based on a filter color</li>
+<li>Create an <code>invert</code> function that inverts image colors (reuse your
+code!)</li>
+<li>Create a <code>grayscale</code> function that makes image B&amp;W based on a filter
+color</li>
 </ul>
 <h3><a class="header" href="#buffering" id="buffering">Buffering</a></h3>
-<p>Try to with really big files, improve performances. Maybe this doc pointer can help: <a href="https://doc.rust-lang.org/std/io/trait.BufRead.html">std::io::BufRead</a></p>
+<p>Try to with really big files, improve performances. Maybe this doc
+pointer can help:
+<a href="https://doc.rust-lang.org/std/io/trait.BufRead.html">std::io::BufRead</a></p>
 <blockquote>
 <p><a href="https://mega.nz/#!dQNSyASY!Vk6rM8ZqxpbwvSyRFzHdYVB1Rh8p_6yKTDewtUxVe6Q">Here</a>
 is a big <code>.ppm</code> the file of a Mandelbrot fractal for your tests!</p>
-<p>You may want to open the file in Rust using a buffer to do the reading of the file and
-image operations in parallel <a href="https://doc.rust-lang.org/std/io/trait.Read.html">https://doc.rust-lang.org/std/io/trait.Read.html</a></p>
+<p>You may want to open the file in Rust using a buffer to do the reading
+of the file and image operations in parallel
+<a href="https://doc.rust-lang.org/std/io/trait.Read.html">https://doc.rust-lang.org/std/io/trait.Read.html</a></p>
 <p><code>.ppm</code> file format has a simple syntax specified here:
 <a href="http://netpbm.sourceforge.net/doc/ppm.html">http://netpbm.sourceforge.net/doc/ppm.html</a></p>
-<p>The purpose of this level is to code a custom <code>.ppm</code> reading function in Rust!</p>
+<p>The purpose of this level is to code a custom <code>.ppm</code> reading function
+in Rust!</p>
 </blockquote>
 <h3><a class="header" href="#bonus-binary-edition" id="bonus-binary-edition">Bonus binary edition</a></h3>
 <ul>
-<li>Prepare yourself to read the pixel part in binary mode write an <code>fn new_with_file_bin(Path filename) -&gt; Image</code></li>
+<li>Prepare yourself to read the pixel part in binary mode write an
+<code>fn new_with_file_bin(Path filename) -&gt; Image</code></li>
 </ul>
 <blockquote>
-<p>The whole purpose of this part is to do these computations using several threads,
-and to develop a strategy to find a good compromise on the number of threads to assign
-(e.g. one thread by pixel is maybe a bit too much ...)</p>
+<p>The whole purpose of this part is to do these computations using
+several threads, and to develop a strategy to find a good compromise
+on the number of threads to assign (e.g. one thread by pixel is maybe
+a bit too much ...)</p>
 <p>Try to calls these functions from another language!</p>
 </blockquote>
 <h2><a class="header" href="#lvl-3---benchmarks" id="lvl-3---benchmarks">Lvl 3 - Benchmarks</a></h2>
@@ -261,20 +284,23 @@ and to develop a strategy to find a good compromise on the number of threads to 
 <li>Create an <code>writePPM</code> function to read <code>.ppm</code> files</li>
 </ul>
 <blockquote>
-<p>Use PPMA_IO: Portable Pixel Map (ASCII) Files Read and Write Utilities
+<p>Use PPMA_IO: Portable Pixel Map (ASCII) Files Read and Write
+Utilities
 <a href="https://people.sc.fsu.edu/%7Ejburkardt/c_src/ppma_io/ppma_io.html">https://people.sc.fsu.edu/~jburkardt/c_src/ppma_io/ppma_io.html</a></p>
-<p>You may need to call C code in Rust using <code>unsafe</code> blocks.
-If you want to know about some dark magics, read <a href="https://doc.rust-lang.org/nomicon/ffi.html">https://doc.rust-lang.org/nomicon/ffi.html</a></p>
+<p>You may need to call C code in Rust using <code>unsafe</code> blocks. If you want
+to know about some dark magics, read
+<a href="https://doc.rust-lang.org/nomicon/ffi.html">https://doc.rust-lang.org/nomicon/ffi.html</a></p>
 <p>You can start with a simpler format like <code>.pbm</code> or <code>.pgm</code>.</p>
-<p>You should make a static library and include it,
-<a href="https://stackoverflow.com/questions/43826572/where-should-i-place-a-static-library-so-i-can-link-it-with-a-rust-program">this StackOverflow post</a>
+<p>You should make a static library and include it, <a href="https://stackoverflow.com/questions/43826572/where-should-i-place-a-static-library-so-i-can-link-it-with-a-rust-program">this StackOverflow
+post</a>
 could help!</p>
 </blockquote>
 <h3><a class="header" href="#lvl-5---ffi-for-the-fun-and-profit" id="lvl-5---ffi-for-the-fun-and-profit">Lvl 5 - FFI for the fun and profit</a></h3>
 <p>Relatively easy:</p>
 <ul>
 <li>Make a <code>dummy()</code> function that return <code>42</code></li>
-<li>Call this function in another language like Python using basic Foreign Function Interface FFI</li>
+<li>Call this function in another language like Python using basic
+Foreign Function Interface FFI</li>
 </ul>
 <blockquote>
 <p><strong>N.B.</strong> The Rust doc has a really handy page on the subject:
@@ -283,7 +309,9 @@ could help!</p>
 <p>Somewhat harder:</p>
 <ul>
 <li>Exposes functions of your <code>ppm</code> crate to Python</li>
-<li>Use <a href="https://github.com/PyO3/pyo3">PyO3</a> and <a href="https://github.com/PyO3/maturin">Maturin</a> read the README of the projects!</li>
+<li>Use <a href="https://github.com/PyO3/pyo3">PyO3</a> and
+<a href="https://github.com/PyO3/maturin">Maturin</a> read the README of the
+projects!</li>
 </ul>
 <!--
 
@@ -419,11 +447,15 @@ Yvan
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
                         
-                            <a rel="prev" href="../ch6/webassembly.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../ch7/fast-safe-and-beyond.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
                         
 
+                        
+                            <a rel="next" href="../p1/libpwn.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
                         
 
                         <div style="clear: both"></div>
@@ -433,11 +465,15 @@ Yvan
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                 
-                    <a rel="prev" href="../ch6/webassembly.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../ch7/fast-safe-and-beyond.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
                 
 
+                
+                    <a rel="next" href="../p1/libpwn.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
                 
             </nav>
 

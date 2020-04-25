@@ -1,0 +1,821 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Project 5: rsh - Systems and Networks programming in Rust</title>
+        
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "light" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../ch0/introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../ch1/rust-syntax.html"><strong aria-hidden="true">2.</strong> Rust syntax</a></li><li class="chapter-item expanded "><a href="../ch2/ownership-borrowing.html"><strong aria-hidden="true">3.</strong> Ownership and borrowing</a></li><li class="chapter-item expanded "><a href="../ch3/unix-multithreading.html"><strong aria-hidden="true">4.</strong> Unix and multithreading</a></li><li class="chapter-item expanded "><a href="../ch4/ffi-unsafe.html"><strong aria-hidden="true">5.</strong> FFI and unsafe</a></li><li class="chapter-item expanded "><a href="../ch5/sockets-http.html"><strong aria-hidden="true">6.</strong> Sockets and HTTP</a></li><li class="chapter-item expanded "><a href="../ch6/webassembly.html"><strong aria-hidden="true">7.</strong> WebAssembly</a></li><li class="chapter-item expanded "><a href="../ch7/fast-safe-and-beyond.html"><strong aria-hidden="true">8.</strong> Fast, safe and beyond</a></li><li class="chapter-item expanded "><a href="../p0/libppm.html"><strong aria-hidden="true">9.</strong> Project 0: libppm</a></li><li class="chapter-item expanded "><a href="../p1/libpwn.html"><strong aria-hidden="true">10.</strong> Project 1: libpwn</a></li><li class="chapter-item expanded "><a href="../p2/libray.html"><strong aria-hidden="true">11.</strong> Project 2: libray</a></li><li class="chapter-item expanded "><a href="../p3/libiso.html"><strong aria-hidden="true">12.</strong> Project 3: libiso</a></li><li class="chapter-item expanded "><a href="../p4/rstrace.html"><strong aria-hidden="true">13.</strong> Project 4: rstrace</a></li><li class="chapter-item expanded "><a href="../p5/rsh.html" class="active"><strong aria-hidden="true">14.</strong> Project 5: rsh</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
+
+                    <h1 class="menu-title">Systems and Networks programming in Rust</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1><a class="header" href="#rsh-a-shell-for-the-future-written-in-rust" id="rsh-a-shell-for-the-future-written-in-rust"><code>rsh</code>: a shell for the future written in Rust</a></h1>
+<blockquote>
+<p>This project was nicely brought by Axel and it's a nice opportunity to
+maybe reuse what you did in the <code>mypipe</code> assignment!</p>
+</blockquote>
+<h2><a class="header" href="#reminders-process" id="reminders-process">(Reminders) Process</a></h2>
+<p>During this practical workshop, we will start by demystifying process
+abstraction by making a mini command prompt very simple.</p>
+<p>Whether you are on Linux, macOS or Windows your programs are isolated
+each other, this abstraction is called the process, sometimes called
+&quot;task&quot;. This basic mechanism makes it possible to implement stronger
+insulations like those used in docker or type virtual machines
+<a href="https://www.qemu.org/">QEMU</a>.</p>
+<p>But in everyday life the processes allow you to write programs without
+having access to other programs on the computer.</p>
+<blockquote>
+<p><strong>N.B.</strong>: We will see a close concept seen earlier on last semester
+the concept of
+<a href="https://en.wikipedia.org/wiki/Thread_(computing)"><em>thread</em></a> or thread
+calculation. A thread is an additional thread in a process! For have
+another program you have to do a process if you want just do
+calculations on another processor a thread is what you need!</p>
+</blockquote>
+<p>A process has its own address space divided into segments, i.e. its own
+<strong>stack</strong>, its own <strong>heap</strong>, its own code in the segment <strong>.text</strong>, its
+own data known to the compilation <strong>.data</strong> and others with their own
+use like space dynamic libraries.</p>
+<p>The size of this space depends on your system, on a 32bit system this
+space goes from the address <code>0x0000_0000</code> to<code>0xFFFF_FFFF</code> on 64 bits
+from <code>0x0000_0000_0000_0000</code> to <code>0xFFFF_FFFF_FFFF_FFFF</code> <sup class="footnote-reference"><a href="#1">1</a></sup> the formula
+for knowing the space maximum addressing is: <code>pow(2, n) - 1</code>.</p>
+<p>This space is divided as we have seen before into segments, it is your
+operating system that orchestrates this abstraction, compilers linkers
+<strong>linkers</strong> and assemblers respect it.</p>
+<h1><a class="header" href="#practical-micro-shell" id="practical-micro-shell">Practical micro-shell</a></h1>
+<p>To appropriate the concepts, we will write a program that reproduces the
+behavior of a shell. A shell is a program that expects commands and
+organizes the execution of programs with a dedicated language in your
+favorite terminal manager. There are many, for example, Bash, Zsh, Ksh,
+PowerShell (Windows).</p>
+<p>Your program at the end of the TP can do at least the actions following:</p>
+<ul>
+<li>You display a character to invite the user to write</li>
+<li>You are waiting for an entry on the <code>STDIN</code></li>
+<li>Try to execute the command</li>
+<li>Read the status of the command</li>
+<li>Repeat at the initial stage</li>
+</ul>
+<p>We will start with the following hand:</p>
+<pre><pre class="playpen"><code class="language-rust">use std::io::{self};
+
+fn main() -&gt; std::io::Result&lt;()&gt; {
+    let stdin = io::stdin();
+    let mut user_input = String::with_capacity(256);
+    // On prend une référence mutable
+    stdin.read_line(&amp;mut user_input)?;
+    // `?` sert à « propager l'erreur » dans la fonction appellante
+    // c'est mieux que de crash avec un unwrap ou expect ;)
+    Ok(())
+}
+</code></pre></pre>
+<h2><a class="header" href="#deployment-of-the-project-and-inputsoutputs" id="deployment-of-the-project-and-inputsoutputs">Deployment of the project and inputs/outputs</a></h2>
+<p>Create a binary project with cargo:</p>
+<pre><code class="language-shell">cargo new --new micro-shell
+    Created binary (application) `micro-shell`.
+</code></pre>
+<p>How to compile and then run your program? Run the tests? Where are put
+the binaries (in debug mode)?</p>
+<ul>
+<li><code>cargo build</code></li>
+<li><code>cargo run</code></li>
+<li><code>cargo test</code></li>
+<li>from your current project directory <code>./target/debug</code></li>
+</ul>
+<p>Display a character inviting to type a command.</p>
+<p>In our micro-shell, we will write a character which indicates that we
+can take a command! It's called <em>prompt</em> in many languages.</p>
+<p>To start, write a <code>main</code> function like here. Challenge of the TP do not
+use <code>unwrap</code> but <code>expect</code> to manage errors correctly.</p>
+<p>In this main function, we will manipulate the standard <code>stdout</code> output
+to display a character prompting for input, for example,<code>&gt;</code>, you
+discover that to write on the <code>stdout</code> and that it appears in common
+sense will have to be explicit because by default the order of reading
+and writing on the <code>stdin</code> and <code>stdout</code> is not the one that you write in
+your program but depending on the availability of the system <sup class="footnote-reference"><a href="#2">2</a></sup>.</p>
+<p>To succeed here are links to the documentation:
+<a href="https://doc.rust-lang.org/std/io/struct.Stdout.htmldoc"><code>std::io::stdout</code></a>
+the <code>flush</code> method may be useful for you it is implemented by the line
+<code>Write</code> <sup class="footnote-reference"><a href="#3">3</a></sup>. For worries with command display of messages on standard
+STDIN and STDOUT streams <code>Write::flush</code> is there to force the effective
+write/read.</p>
+<p>At this point you should have something like this:</p>
+<pre><code class="language-shell">cargo run
+&gt;
+</code></pre>
+<pre><pre class="playpen"><code class="language-rust">use std::io::{self, Read, Write};
+
+fn main() -&gt; std::io::Result&lt;()&gt; {
+    let stdout = io::stdout();
+
+    // All this to display `&gt;` in the console ;)
+    {
+        let mut handle = stdout.lock();
+        handle.write_all(b&quot;&gt; &quot;)?;
+        handle.flush()?
+    }
+
+    let mut user_input = String::with_capacity(256);
+    io::stdin().read_line(&amp;mut user_input)?;
+    Ok(())
+}
+</code></pre></pre>
+<h1><a class="header" href="#execution-of-a-process" id="execution-of-a-process">Execution of a Process</a></h1>
+<p>The next step is to be able to execute a command typed by a user, in
+fact this will require: creating a process and make it execute a program
+of our choice, for example, <code>ls</code>.</p>
+<p>For example, if you write <code>sl</code> instead of <code>ls</code> <sup class="footnote-reference"><a href="#4">4</a></sup>.</p>
+<p>An error will occur, or if you are in the wrong directory, or have the
+wrong rights, short run is full of risks.</p>
+<p>To do so, we will use the <code>std::process</code> module in the standard library
+<a href="https://doc.rust-lang.org/stable/std/process/index.html">doc</a>, this
+abstraction offers a portable way between several OS to manage processes
+<sup class="footnote-reference"><a href="#5">5</a></sup></p>
+<p>Sometimes we need libraries closer to systems like that
+<a href="https://github.com/nix-rust/nix">nix</a> for
+<a href="https://lib.rs/os/windows-apis">windows</a></p>
+<p>A process can execute a process, it gives a parent and a child often
+performing and having a child are two separate actions for an OS and run
+a new program comes back to create a child then execute. Your children's
+program will have its own address space, but it will inherit your open
+file descriptors and you will have the responsibility of verifying that
+he has finished <sup class="footnote-reference"><a href="#6">6</a></sup></p>
+<p>For example, under Linux, the only program without parents is the
+process 1 often called <code>init</code>. His responsibility is quite important,
+all the other processes are children or grandchildren of that one.</p>
+<h2><a class="header" href="#execute-a-command" id="execute-a-command">Execute a command</a></h2>
+<p>Successfully execute a command with <code>std::process::Command::status</code>.</p>
+<p>View command status, why Rust is forcing you to recover the status?</p>
+<p>What does your program do while the child is running?</p>
+<p>Now manage but for a command with several arguments!</p>
+<h1><a class="header" href="#pipe-my-programs" id="pipe-my-programs">Pipe my programs</a></h1>
+<p>As you must have seen from our programs, in addition to memory, system
+calls and files have access to 3 magic files, inputs <code>STDIN</code>,
+outputs<code>STDOUT</code> and standard error <code>STDERR</code>. It allows programs to
+communicate with each other and with the user in the context of a
+terminal.</p>
+<p>We want to be able to communicate very basically two programs between
+them, as if you could connect a tube to redirect the exit to the entry
+of another program.</p>
+<p>We wish we could do something like:</p>
+<pre><code class="language-shell">ls | grep hello
+</code></pre>
+<h2><a class="header" href="#redirects" id="redirects">Redirects</a></h2>
+<p>Writing a basic version or a command without arguments processes a
+command without arguments, for example, a simple <code>ls</code> redirected in the
+<code>echo</code> program.</p>
+<p>Write a more advanced version where our two programs run really at the
+same time (no cheating with <code>std::process::Command::output</code>) and handle
+multiple arguments to both commands.</p>
+<h1><a class="header" href="#competitive-executions-manage-background-commands" id="competitive-executions-manage-background-commands">Competitive executions: Manage background commands</a></h1>
+<p>We would now like to manage commands in the background.</p>
+<p>Now if a command is issued like this with the series of <code>&gt;</code> characters
+in front of the command then your shell will not hang.</p>
+<pre><code class="language-shell">&gt; ls &amp;
+[1] 21520
+latex micro-shell exercises
+[1] + Done ls
+</code></pre>
+<p>The <code>21520</code> corresponds to the process identifier <em>process id</em> of the
+program that you just launched and the <code>[1]</code> to the current command
+number internal shell.</p>
+<p>What's a process id? Write an implementation basic that manages only one
+job in a background task. Write a structure <sup class="footnote-reference"><a href="#7">7</a></sup> to store running
+programs for your shell. To write a job command which displays the
+programs running in the background and their condition.</p>
+<h1><a class="header" href="#program-environment" id="program-environment">Program environment</a></h1>
+<p>In addition to having a stack, a heap, a segment for the code and
+arguments our programs have a little space called environment which
+contains lots of information like the <code>PATH</code> variable which contains the
+paths where to find the executables.</p>
+<p>Write a small program (other binary than the shell) <code>filterEnv</code> which
+executes a command with its arguments as a parameter but filters its
+environment to contain only the variable <code>PATH</code>, <code>TERM</code>, <code>LANG</code> and <code>TZ</code></p>
+<p>To help you importants
+<a href="https://doc.rust-lang.org/stable/std/process/struct.Command.html#method.envs">documentation</a>
+the <code>std::process::Command::env</code> function can be useful!</p>
+<h1><a class="header" href="#go-further" id="go-further">Go further</a></h1>
+<p>Here start the bonuses! It's much harder but free to try!</p>
+<p>In the exercises, we used the terminal in &quot;managed&quot; mode. say that the
+shell has an already existing configuration. You have probably noticed
+you can't rewrite what you write and you can't control the display in
+the terminal. The solution is to change the terminal mode, for that two
+libraries can help you: <a href="https://github.com/redox-os/termion"><code>termion</code></a>
+and <a href="https://dcuddeback.github.io/termios-rs/termios/"><code>termios</code></a></p>
+<p>You may have noticed that <code>Ctrl-C</code> or<code>Ctrl-Z</code> etc does not work as
+expected? On a Unix system, if you want to redefine this stuff you will
+have to discover the signals! A voucher starting point is this piece of
+code from <a href="https://rust-cli.github.io/book/in-depth/signals.html">the interfaces section in book of Command Line Applications
+in Rust</a>.</p>
+<p>So far we have implemented everything using <code>std::process</code>. It is a
+high-level library, present try writing the code to execute a process
+using the crate <a href="https://crates.io/crates/libc"><code>libc</code></a> which offers
+bindings on system libraries in C. The C functions wrapped in <code>fork</code> and
+<code>execve</code> should suit you. Try to write a safe wrapper.</p>
+<!--
+
+**Questions - rendu**: Les questions de code et de compréhension sont à
+faire, celles notées *bonus* sont optionnelles mais recommandées ! Pour
+le rendu un dépôt git sans historique réécrit ni triche sera bien, les
+questions doivent être rendues au format *markdown* dans le fichier
+`readme.md` à la racine du dépôt. **Taille des groupes :** maximum 2
+pensez a noter les noms de votre binôme, votre dépôt contiendra tous les
+travaux pratiques.
+
+Introduction
+============
+
+Bienvenue dans la suite du cours de programmation systèmes et réseaux.
+Au travers ce cours, nous allons visiter des concepts liés aux capacités
+qu'offrent votre hardware et vos systèmes d'exploitations, afin de vous
+dévoiler la magie qui est cachée par les langages de haut niveau.
+
+L'étendue des concepts est très vaste, nous ne pourront pas tout voir
+malheureusement.
+
+Processus
+---------
+
+Au cours de ce travail pratique nous allons commencer par démystifier
+l'abstraction des processus en réalisant un mini invité de commande très
+simple.
+
+Que vous soyez sur Linux, MacOS ou Windows vos programmes sont isolés
+les un des autres, cette abstraction s'appelle le processus, parfois
+appelée «tâche». Ce mécanisme de base permet d'implémenter des
+isolations plus fortes comme celles utilisées dans docker ou les
+machines virtuelles type [QEMU](https://www.qemu.org/).
+
+Mais dans la vie de tout les jours les processus permettent d'écrire des
+programmes sans avoir accès aux autres programmes sur l'ordinateur.
+
+Attention: Nous reverrons plus tard un concept proche déjà vu au premier
+semestre, le concept de
+[*thread*](https://en.wikipedia.org/wiki/Thread_(computing)) ou fil de
+calcul. Un thread est un fil de calcul en plus dans un processus! Pour
+avoir un autre programme il faut faire un processus, si vous voulez
+juste faire des calculs sur un autre processeur, un thread est ce qu'il
+vous faut!
+
+Un processus possède son propre espace d'adressage découpé en segments,
+c'est à dire sa propre pile **stack**, son propre tas **heap**, son
+propre code dans le segment **.text**, ses propres données connues à la
+compilation **.data** et d'autres avec leur propre usage comme l'espace
+des bibliothèques dynamiques.
+
+La taille de cet espace dépend de votre système, sur un système 32bit
+cet espace va de l'adresse `0x0000_0000` à `0xFFFF_FFFF`
+sur 64 bits de `0x0000_0000_0000_0000` à
+`0xFFFF_FFFF_FFFF_FFFF`[^1] la formule pour connaître l'espace
+maximum d'adressage est la suivante: $2^n -1$.
+
+Cet espace est découpé comme nous l'avons vu avant en segments, c'est
+votre système d'exploitation qui orchestre cette abstraction, les
+compilateurs lieurs **linkers** et assembleurs la respectent.
+
+Questions: Rappels de Rust, généralités
+---------------------------------------
+
+En Rust à quoi servent les références?
+
+À partager des données sans les copier, ni les déplacer.
+
+Citez en Rust les grandes façons de déclarer ses propres types. Rust est
+compilé nativement (assembleur sous forme de code machine) ou compte sur
+une machine virtuelle pour s'exécuter?
+
+Rust est compilé nativement.
+
+Imaginons qu'on a un système avec un processeur 8bits, quelle est la
+valeur maximale adressable ? Écrire la solution en notation hexadécimale
+et décimale.
+
+$2^8 - 1 = 255 = 0xFF$
+
+Donnez votre définition d'un processus citez vos sources!
+
+Pratique - micro-shell
+======================
+
+Pour s'approprier les concepts, on va écrire un programme qui reproduit
+le comportement d'un shell. Un shell est le programme qui attend des
+commandes et organise l'exécution de programmes avec un langage dédié
+dans votre gestionnaire de terminal favori. Il en existe de nombreux,
+par exemple: Bash, Zsh, Ksh, PowerShell (Windows).
+
+Votre programme à l'issue du TP pourra faire au moins les actions
+suivantes:
+
+-   Vous affichez un caractère pour inviter l'utilisateur à écrire
+-   Vous attendez une saisie sur la `STDIN`
+-   Tentez d'exécuter la commande
+-   Relevez le statut de la commande
+-   Recommencez à l'étape initiale
+
+On commencera avec le main suivant:
+
+```rust
+use std::io::{self};
+
+fn main() -> std::io::Result<()> {
+    let stdin = io::stdin();
+    let mut user_input = String::with_capacity(256);
+    // On prend une référence mutable
+    stdin.read_line(&mut user_input)?;
+    // `?` sert à « propager l'erreur » dans la fonction appellante
+    // c'est mieux que de crash avec un unwrap ou expect ;)
+    Ok(())
+}
+```
+
+Questions: Deployement du projet et entrées sorties
+---------------------------------------------------
+
+Créer un projet binaire avec cargo:
+
+```shell
+cargo new --new micro-shell
+    Created binary (application) `micro-shell` packageedinline{shell}{}.
+```
+
+Comment compiler puis exécuter son programme? Exécuter les test? Où sont
+rangés les binaires (en mode debug)?
+
+-   `cargo build`
+-   `cargo run`
+-   `cargo test`
+-   depuis votre répertoire courant du projet `./target/debug`
+
+Afficher un caractère invitant à taper une commande
+
+Dans notre micro-shell on va écrire un caractère qui indique qu'on peut
+saisir une commande! Ça s'appelle le *prompt* dans beaucoup de langages.
+
+Pour commencer, écrire une fonction `main` comme ici. Challenge
+du TP n'utilisez pas `unwrap` `expect` afin de gérer
+correctement les erreurs.
+
+Dans cette fonction main, on va manipuler la sortie standard `stdout`
+pour afficher un caractère invitant à la saisie par exemple `>`, vous
+allez découvrir que pour écrire sur la `stdout` et que ça s'affiche dans
+le bon sens il va falloir être explicite car par défaut l'ordre de
+lecture et d'écriture sur la `stdin` et textttstdout n'est pas celui que
+vous écrivez dans votre programme mais en fonction de la disponibilité
+du système [^2].
+
+Pour réussir voici des liens vers la documentation:
+[std::io:stdout](https://doc.rust-lang.org/std/io/struct.Stdout.htmldoc)
+la méthode `flush` risque de vous être utile elle est implémentée
+par le trait `Write`[^3]. Pour les soucis avec l'ordre
+d'affichage des messages sur les flux standards STDIN et STDOUT
+`Write::flush` est là pour forcer l'écriture/lecture effective.
+
+A ce stade vous devriez avoir quelque chose comme ça
+
+```shell
+cargo run
+>
+```
+
+```rust
+use std::io::{self, Read, Write};
+
+fn main() -> std::io::Result<()> {
+    let stdout = io::stdout();
+
+    // All this to display `>` in the console ;)
+    {
+        let mut handle = stdout.lock();
+        handle.write_all(b"> ")?;
+        handle.flush()?
+    }
+
+    let mut user_input = String::with_capacity(256);
+    io::stdin().read_line(&mut user_input)?;
+    Ok(())
+}
+```
+
+Execution d'un Processus
+========================
+
+La prochaine étape est de pouvoir exécuter une commande tapée par un
+utilisateur, dans les fait cela va nécessiter de: créer un processus et
+lui faire exécuter un programme de notre choix, par exemple `ls`.
+
+Par exemple si vous écrivez `sl` au lieu de `ls`[^4].
+
+Une erreur va se produire, ou alors si vous êtes dans le mauvais
+répertoire, ou avez les mauvais droits, bref exécuter est plein de
+risques.
+
+Pour se faire on va utiliser le module `std::process` de la
+bibliothèque standard
+[doc](https://doc.rust-lang.org/stable/std/process/index.html), cette
+abstraction propose une façon portable entre plusieurs OS pour gérer des
+processus[^5]
+
+Parfois on a besoin de bibliothèques plus proches des systèmes telles
+que [nix](https://github.com/nix-rust/nix) pour
+[windows](https://lib.rs/os/windows-apis)
+
+Un processus peut exécuter un processus, ça donne un parent et un enfant
+souvent exécuter et avoir un enfant sont deux actions séparées pour un
+OS et exécuter un nouveau programme reviens à créer un enfant puis
+exécuter. Votre programme enfant va avoir son propre espace d'adressage,
+mais il va hériter de vos descripteurs de fichier ouvert et vous aurez
+la responsabilité de vérifier qu'il ai bien terminé[^6]
+
+Par exemple sous Linux le seul programme sans parents c'est le processus
+1 souvent appelé `init`. Sa responsabilité est assez importante, tous
+les autres processus sont des enfants ou petits enfants de celui-là.
+
+Questions: Executer une commande
+--------------------------------
+
+Réussir à exécuter une commande avec
+`std::process::Command::status`.
+
+Afficher le statut d'une commande, pourquoi Rust vous force à récupérer
+le statut ?
+
+Que fait votre programme pendant que son enfant s'exécute?
+
+Maintenant gérer mais pour une commande avec plusieurs arguments !
+
+Redirections - pipe my programs'
+================================
+
+Comme vous avez dû le constater nos programmes, en plus de la mémoire,
+des appels systèmes et des fichiers ont accès à 3 fichiers magiques, les
+entrées `STDIN`, sorties `STDOUT` et erreur standards `STDERR`. Ça
+permet de faire communiquer les programmes entre eux et avec
+l'utilisateur dans le contexte d'un terminal.
+
+On souhaite pouvoir faire communiquer très basiquement deux programmes
+entre eux, comme si vous pouviez connecter un tube pour rediriger la
+sortie dans l'entrée d'un autre programme.
+
+On souhaiterait pouvoir faire quelque chose comme :
+
+```shell
+ls | grep hello
+```
+
+Questions: Redirections
+-----------------------
+
+Donnez avec vos mot une définition d'un tupe entre deux programmes citez
+vos sources.[^7]
+
+Écrire une version basique ou une commande sans argument traite une
+commande sans arguments par exemple un simple `ls` redirigé dans le
+programme `echo`.
+
+Écrire une version plus avancée où nos deux programmes s'exécutent
+vraiment en même temps (pas de triche avec
+`std::process::Command::output`) et gèrent plusieurs arguments
+aux deux commandes.
+
+Executions en concurence: Gérer des commandes en fond
+=====================================================
+
+On aimerait maintenant gérer des commandes en tâche de fond.
+
+Maintenant si une commande est lancée de la sorte avec la série de
+caractères `>` devant la commande alors votre shell ne se bloquera pas.
+
+```shell
+> ls &
+[1] 21520
+exercices  latex  micro-shell
+[1]+  Done ls
+```
+
+Le `21520` correspond au processus identifier *process id* du programme
+que vous venez de lancer et le `[1]` au numéro de commande en cours
+interne du shell.
+
+Questions
+---------
+
+C'est quoi un processus id? Citez vos sources. Écrire une implémentation
+basique qui gère un seul job en tâche de fond. Écrire une structure [^8]
+pour stocker les programmes en cours d'exécution de votre shell. Écrire
+une commande jobs qui affiche les programmes en cours d'exécution en
+fond et leur état.
+
+Environnement de programmes
+===========================
+
+En plus d'avoir une stack, une heap, un segment pour le code et les
+arguments nos programmes ont un petit espace appelé environnement qui
+contient plein d'informations comme la variable `PATH` qui contient les
+chemins où trouver les exécutables.
+
+questions
+---------
+
+Écrire un petit programme (autre binaire que le shell) `filterEnv` qui
+exécute une commande avec ses arguments en paramètre mais filtre son
+environnement pour contenir seulement la variable `PATH` `TERM` `LANG`
+et `TZ`
+
+Pour vous aider la
+[https://doc.rust-lang.org/stable/std/process/struct.Command.html\#method.envs](documentation)
+de la fonction `std::process::Command::env` peut vous être
+utile !
+
+Aller plus loin
+===============
+
+Ici commencent les bonus ! C'est beaucoup plus dur attention mais libre
+à vour de tenter!
+
+Dans les exercices on a utilisé le terminal en mode «managé», c'est à
+dire que le shell a une configuration déjà existante. Vous avez
+probablement remarqué vous ne pouvez pas réécrire ce que vous écrivez et
+vous ne pouvez pas vraiment contrôler l'affichage dans le terminal. La
+solution est de changer le mode du terminal, pour cela deux
+bibliothèques peuvent vous aider:
+[https://github.com/redox-os/termion](termion) et
+[https://dcuddeback.github.io/termios-rs/termios/](termios)
+
+Vous avez peut être remarqué que `Ctrl-C` ou `Ctrl-Z` etc ne
+fonctionnent pas comme attendu? Sous un système Unix, si vous voulez
+redéfinir ce genre de choses vous devrez découvrir les signaux! Un bon
+point de départ est ce bout de code issu du livre sur les interfaces en
+ligne de commande
+[https://rust-cli.github.io/book/in-depth/signals.html](cli app book).
+
+Jusqu'à présent nous avons tout implémenté a l'aide de
+`std::process`. Il s'agit d'une bibliothèque de haut niveau, à
+présent essayez d'écrire le code pour exécuter un processus en utilisant
+la crate [https://crates.io/crates/libc](libc) qui propose des bindings
+sur les bibliothèques systèmes en C. Les fonctions C wrappé `fork` et
+`execve` devraient vous convenir. Tentez d'écrire un wrapper safe.
+
+[^1]: En décimal : $2^{64} - 1 = 18446744073709551615$ C'est très
+    grand ...
+
+[^2]: si ça vous intéresse voici un bon article:
+    [https://medium.com/\@JoeKreydt/stdout-more-like-stdout-of-order-rust-1f9acc016e89](Stdout? More like Stdout of Order! (Rust) par Joe Kreydt)
+
+[^3]: Les Traits comme `Write` sont un système assez proche des
+    interfaces que vous avez sûrement ailleurs, ce sont des contrats qui
+    peuvent être rempli par des types
+
+[^4]: Pour la blague : Il existe un programme satirique `sl` *steam
+    locomotive*.
+
+[^5]: Attention, c'est une abstraction, chaque système a ses
+    particularités par exemple sous Linux et MacOS il y a `fork` et
+    `execve` pour créer et exécuter un processus.
+
+[^6]: Sinon ça fait un [processus
+    zombie](https://en.wikipedia.org/wiki/Zombie_process) et personne
+    n'aime les zombies, si vous voulez une image pour illustrer [Zombie
+    processes by Daniel
+    Stori](https://turnoff.us/geek/zombie-processes/)
+
+[^7]: La page wikipédia
+    [pipeline](https://en.wikipedia.org/wiki/Pipeline_%28Unix%29) peut
+    vous aider.
+
+[^8]: Vous pouvez utilisé une `std::collections::VecDeque` ou un
+    `Vec` dans votre réalisation
+
+-->
+<div class="footnote-definition" id="1"><sup class="footnote-definition-label">1</sup>
+<p>In decimal: <code>pow(2, 64) - 1 = 18446744073709551615</code> This is very
+big ...</p>
+</div>
+<div class="footnote-definition" id="2"><sup class="footnote-definition-label">2</sup>
+<p>if you are interested here is a good article: <a href="https://medium.com/@JoeKreydt/stdout-more-like-stdout-of-order-rust-1f9acc016e89">Stdout? More like
+Stdout of
+Order!</a></p>
+</div>
+<div class="footnote-definition" id="3"><sup class="footnote-definition-label">3</sup>
+<p>Traits like <code>Write</code> are fairly close to interfaces that you surely
+have elsewhere, these are contracts that can be filled by types</p>
+</div>
+<div class="footnote-definition" id="4"><sup class="footnote-definition-label">4</sup>
+<p>For the joke: There is a satirical program <code>sl</code> <em>steam
+locomotive</em>.</p>
+</div>
+<div class="footnote-definition" id="5"><sup class="footnote-definition-label">5</sup>
+<p>Be careful, it's an abstraction, each system has its own
+particularities for example under Linux and MacOS there is <code>fork</code>
+and <code>execve</code> to create and execute a process.</p>
+</div>
+<div class="footnote-definition" id="6"><sup class="footnote-definition-label">6</sup>
+<p>Otherwise it makes a <a href="https://en.wikipedia.org/wiki/Zombie_process">process
+zombie</a> and no one
+don't like zombies, if you want a picture to illustrate <a href="https://turnoff.us/geek/zombie-processes/">Zombie
+processes by Daniel
+Stori</a></p>
+</div>
+<div class="footnote-definition" id="7"><sup class="footnote-definition-label">7</sup>
+<p>You can use a <code>std::collections::VecDeque</code> or a <code>Vec</code> in your
+achievement</p>
+</div>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="../p4/rstrace.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a rel="prev" href="../p4/rstrace.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+        
+        
+        <script type="text/javascript">
+            window.playpen_copyable = true;
+        </script>
+        
+
+        
+
+        
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>

@@ -80,8 +80,8 @@
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
-            <div id="sidebar-scrollbox" class="sidebar-scrollbox">
-                <ol class="chapter"><li class="expanded "><a href="../ch1/rust-syntax.html"><strong aria-hidden="true">1.</strong> Rust syntax</a></li><li class="expanded "><a href="../ch2/ownership-borrowing.html" class="active"><strong aria-hidden="true">2.</strong> Ownership and borrowing</a></li><li class="expanded "><a href="../ch3/unix-multithreading.html"><strong aria-hidden="true">3.</strong> Unix and multithreading</a></li><li class="expanded "><a href="../ch4/ffi-unsafe.html"><strong aria-hidden="true">4.</strong> FFI and unsafe</a></li><li class="expanded "><a href="../ch5/sockets-http.html"><strong aria-hidden="true">5.</strong> Sockets and HTTP</a></li><li class="expanded "><a href="../ch6/webassembly.html"><strong aria-hidden="true">6.</strong> WebAssembly</a></li><li class="expanded "><a href="../p1/libppm.html"><strong aria-hidden="true">7.</strong> Project 1: libppm</a></li></ol>
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../ch0/introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../ch1/rust-syntax.html"><strong aria-hidden="true">2.</strong> Rust syntax</a></li><li class="chapter-item expanded "><a href="../ch2/ownership-borrowing.html" class="active"><strong aria-hidden="true">3.</strong> Ownership and borrowing</a></li><li class="chapter-item expanded "><a href="../ch3/unix-multithreading.html"><strong aria-hidden="true">4.</strong> Unix and multithreading</a></li><li class="chapter-item expanded "><a href="../ch4/ffi-unsafe.html"><strong aria-hidden="true">5.</strong> FFI and unsafe</a></li><li class="chapter-item expanded "><a href="../ch5/sockets-http.html"><strong aria-hidden="true">6.</strong> Sockets and HTTP</a></li><li class="chapter-item expanded "><a href="../ch6/webassembly.html"><strong aria-hidden="true">7.</strong> WebAssembly</a></li><li class="chapter-item expanded "><a href="../ch7/fast-safe-and-beyond.html"><strong aria-hidden="true">8.</strong> Fast, safe and beyond</a></li><li class="chapter-item expanded "><a href="../p0/libppm.html"><strong aria-hidden="true">9.</strong> Project 0: libppm</a></li><li class="chapter-item expanded "><a href="../p1/libpwn.html"><strong aria-hidden="true">10.</strong> Project 1: libpwn</a></li><li class="chapter-item expanded "><a href="../p2/libray.html"><strong aria-hidden="true">11.</strong> Project 2: libray</a></li><li class="chapter-item expanded "><a href="../p3/libiso.html"><strong aria-hidden="true">12.</strong> Project 3: libiso</a></li><li class="chapter-item expanded "><a href="../p4/rstrace.html"><strong aria-hidden="true">13.</strong> Project 4: rstrace</a></li><li class="chapter-item expanded "><a href="../p5/rsh.html"><strong aria-hidden="true">14.</strong> Project 5: rsh</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -153,10 +153,15 @@
 You will find a French version of this mail below, read it carefully and enjoy a homework bit trickier than the previous time: -->
 <h2><a class="header" href="#recap-from-the-previous-session" id="recap-from-the-previous-session">Recap from the previous session</a></h2>
 <ul>
-<li>QCM is a huge success, the mean of the class is X / 20 (negative points are on me this time)</li>
-<li>Correction of last homework: <a href="https://gist.github.com/yvan-sraka/94638a5dd95f46cdaecf5ab4d7ed2676">https://gist.github.com/yvan-sraka/94638a5dd95f46cdaecf5ab4d7ed2676</a></li>
-<li>I strongly advise you to try to finish rustlings to be more comfortable with basic language features <a href="https://github.com/rust-lang/rustlings">https://github.com/rust-lang/rustlings</a></li>
-<li>The small Rust code I wrote in class to play with ownership and borrowing:</li>
+<li>QCM is a huge success, the mean of the class is X / 20 (negative
+points are on me this time)</li>
+<li>Correction of last homework:
+<a href="https://gist.github.com/yvan-sraka/94638a5dd95f46cdaecf5ab4d7ed2676">https://gist.github.com/yvan-sraka/94638a5dd95f46cdaecf5ab4d7ed2676</a></li>
+<li>I strongly advise you to try to finish rustlings to be more
+comfortable with basic language features
+<a href="https://github.com/rust-lang/rustlings">https://github.com/rust-lang/rustlings</a></li>
+<li>The small Rust code I wrote in class to play with ownership and
+borrowing:</li>
 </ul>
 <pre><pre class="playpen"><code class="language-rust">use std::io;
 use std::fs::File;
@@ -174,7 +179,8 @@ fn main() -&gt; io::Result&lt;()&gt; {
     Ok(())
 }
 </code></pre></pre>
-<p><strong>REMINDER</strong>: Rule of thumbs of Rust -&gt; they cannot have both aliasing AND mutability!</p>
+<p><strong>REMINDER</strong>: Rule of thumbs of Rust ⇨ they cannot have both aliasing
+AND mutability!</p>
 <pre><pre class="playpen"><code class="language-rust">#[derive(Debug)]
 struct Color {
     r: u8,
@@ -210,19 +216,29 @@ fn main() {
 </code></pre></pre>
 <h2><a class="header" href="#mandatory-for-the-next-session" id="mandatory-for-the-next-session">Mandatory for the next session</a></h2>
 <p>⚠️ Have a UNIX system with Rust installed inside:</p>
-<p>For those that run a Windows machine, I highly recommend the installation of a WSL (Windows Subsystem for Linux) <a href="https://docs.microsoft.com/en-us/windows/wsl/install-win10">https://docs.microsoft.com/en-us/windows/wsl/install-win10</a></p>
-<p>and the nice VSCode extension <a href="https://code.visualstudio.com/remote-tutorials/wsl/run-in-wsl">https://code.visualstudio.com/remote-tutorials/wsl/run-in-wsl</a> that allows you to run <code>code</code> command remotely in bash.exe shell!</p>
-<p>(and, of course, to have a working Rust dev environment with RLS setup <a href="https://github.com/rust-lang/rls">https://github.com/rust-lang/rls</a>)</p>
+<p>For those that run a Windows machine, I highly recommend the
+installation of a WSL (Windows Subsystem for Linux)
+<a href="https://docs.microsoft.com/en-us/windows/wsl/install-win10">https://docs.microsoft.com/en-us/windows/wsl/install-win10</a></p>
+<p>and the nice VSCode extension
+<a href="https://code.visualstudio.com/remote-tutorials/wsl/run-in-wsl">https://code.visualstudio.com/remote-tutorials/wsl/run-in-wsl</a> that
+allows you to run <code>code</code> command remotely in <code>bash.exe</code> shell!</p>
+<p>(and, of course, to have a working Rust dev environment with RLS setup
+<a href="https://github.com/rust-lang/rls">https://github.com/rust-lang/rls</a>)</p>
 <h2><a class="header" href="#go-deeper-into-rust" id="go-deeper-into-rust">Go deeper into Rust</a></h2>
-<p>We, at this point cover, all of 6 first chapters, and most of 7, 8 and 9 of the Rust Book <a href="https://doc.rust-lang.org/stable/book/">https://doc.rust-lang.org/stable/book/</a></p>
-<p>We will not advance to much in Rust specific feature after this point (I will not make a class about trait e.g.), I let you free of learning more about it or not!</p>
-<p>I give you here three handy tools that will help you with homework and graded project:</p>
+<p>We, at this point cover, all of 6 first chapters, and most of 7, 8 and 9
+of the Rust Book <a href="https://doc.rust-lang.org/stable/book/">https://doc.rust-lang.org/stable/book/</a></p>
+<p>We will not advance to much in Rust specific feature after this point (I
+will not make a class about trait e.g.), I let you free of learning more
+about it or not!</p>
+<p>I give you here three handy tools that will help you with homework and
+graded project:</p>
 <ul>
 <li><a href="https://github.com/rust-lang/rust-clippy">https://github.com/rust-lang/rust-clippy</a></li>
 <li><a href="https://github.com/rust-lang/rustfmt">https://github.com/rust-lang/rustfmt</a></li>
 <li><a href="https://github.com/mre/cargo-inspect">https://github.com/mre/cargo-inspect</a> (play with it!)</li>
 </ul>
-<p>Play with small tests using Valgrind / GDB, <em>e.g.</em> Valgrind will tell you that this code has a big memory leak:</p>
+<p>Play with small tests using Valgrind / GDB, <em>e.g.</em> Valgrind will tell
+you that this code has a big memory leak:</p>
 <pre><code class="language-c">#include &quot;stdlib.h&quot;
 #include &quot;unistd.h&quot;
 
@@ -235,20 +251,32 @@ int main(void) {
 }
 </code></pre>
 <h2><a class="header" href="#go-deeper-into-memory" id="go-deeper-into-memory">Go deeper into memory</a></h2>
-<p>Try to create a small C program that creates a memory leak (like a loop that malloc but never free) and open it in Valgrind, translate the program in Rust and do the test again.</p>
-<p>Do you know that the program stack has a fixed space size in memory? What's happen when you fill it all with function calls? -&gt; a stack overflow!</p>
-<p>You can look at this minimalist malloc implementation from mine, using <code>mmap</code> syscall (read its man) to allocate memory pages: <a href="https://github.com/yvan-sraka/malloc">https://github.com/yvan-sraka/malloc</a></p>
+<p>Try to create a small C program that creates a memory leak (like a loop
+that malloc but never free) and open it in Valgrind, translate the
+program in Rust and do the test again.</p>
+<p>Do you know that the program stack has a fixed space size in memory?
+What's happen when you fill it all with function calls? ⇨ a stack
+overflow!</p>
+<p>You can look at this minimalist malloc implementation from mine, using
+<code>mmap</code> syscall (read its man) to allocate memory pages:
+<a href="https://github.com/yvan-sraka/malloc">https://github.com/yvan-sraka/malloc</a></p>
 <p>Supplementary links to feed your curiosity (bonus, not mandatory):</p>
 <ul>
-<li>There no null pointers in Rust! Why? Watch &quot;Null References: The Billion Dollar Mistake&quot; from Tony Hoare <a href="https://www.infoq.com/presentations/Null-References-The-Billion-Dollar-Mistake-Tony-Hoare/">https://www.infoq.com/presentations/Null-References-The-Billion-Dollar-Mistake-Tony-Hoare/</a></li>
-<li>Some more readings for the brave: &quot;What Every Programmer Should Know About Memory&quot; by Ulrich Drepper from Red Hat <a href="https://people.freebsd.org/%7Elstewart/articles/cpumemory.pdf">https://people.freebsd.org/~lstewart/articles/cpumemory.pdf</a></li>
-<li><a href="http://www.squidarth.com/rc/rust/2018/05/31/rust-borrowing-and-ownership.html">Fear not the Rust Borrow Checker</a></li>
+<li>There no null pointers in Rust! Why? Watch &quot;Null References: The
+Billion Dollar Mistake&quot; from Tony Hoare
+<a href="https://www.infoq.com/presentations/Null-References-The-Billion-Dollar-Mistake-Tony-Hoare/">https://www.infoq.com/presentations/Null-References-The-Billion-Dollar-Mistake-Tony-Hoare/</a></li>
+<li>Some more readings for the brave: &quot;What Every Programmer Should Know
+About Memory&quot; by Ulrich Drepper from Red Hat
+<a href="https://people.freebsd.org/%7Elstewart/articles/cpumemory.pdf">https://people.freebsd.org/~lstewart/articles/cpumemory.pdf</a></li>
+<li><a href="http://www.squidarth.com/rc/rust/2018/05/31/rust-borrowing-and-ownership.html">Fear not the Rust Borrow
+Checker</a></li>
+<li><a href="https://www.sublimetext.com/blog/articles/use-mmap-with-care">https://www.sublimetext.com/blog/articles/use-mmap-with-care</a></li>
 </ul>
 <h2><a class="header" href="#homework-due-to-next-session" id="homework-due-to-next-session">Homework due to next session</a></h2>
 <p>You have to recode a small pipe-like program, working like this:</p>
 <pre><code>$ mypipe --in fortune --out cowsay
-</code></pre>
-<pre><code> _______________________________________
+
+ _______________________________________
 / Q: What's tiny and yellow and very,   \
 | very, dangerous? A: A canary with the |
 \ super-user password.                  /
@@ -259,10 +287,19 @@ int main(void) {
                   ||----w |
                   ||     ||
 </code></pre>
-<p>You can use <a href="https://clap.rs">https://clap.rs</a> to parse the command-line arguments, and also follow the guide <a href="https://rust-lang-nursery.github.io/cli-wg/">https://rust-lang-nursery.github.io/cli-wg/</a></p>
-<p>Upload your code by doing a PR here: <a href="https://github.com/yvan-sraka/mypipe">https://github.com/yvan-sraka/mypipe</a></p>
+<p>You can use <a href="https://clap.rs">https://clap.rs</a> to parse the command-line arguments, and
+also follow the guide <a href="https://rust-lang-nursery.github.io/cli-wg/">https://rust-lang-nursery.github.io/cli-wg/</a></p>
+<p>Upload your code by doing a PR here:
+<a href="https://github.com/yvan-sraka/mypipe">https://github.com/yvan-sraka/mypipe</a></p>
 <h2><a class="header" href="#big-project" id="big-project">Big Project</a></h2>
-<p>I will present during the next class the final project on which you will be evaluated. You're free to come with your idea of an alternative project if you have already in mind something that you want to code in Rust. I will accept any idea that could be reasonably doable by a group of 3 or 4 students (chosen randomly), that implies features specific to systems or networks programming (think about playing with binary encoding, intense computing with concurrent programming, low-level binding with another library or just any funny syscalls, etc…)!</p>
+<p>I will present during the next class the final project on which you will
+be evaluated. You're free to come with your idea of an alternative
+project if you have already in mind something that you want to code in
+Rust. I will accept any idea that could be reasonably doable by a group
+of 3 or 4 students (chosen randomly), that implies features specific to
+systems or networks programming (think about playing with binary
+encoding, intense computing with concurrent programming, low-level
+binding with another library or just any funny syscalls, etc...)!</p>
 <p>Cheers, Yvan</p>
 <!--
 
@@ -294,7 +331,7 @@ fn main() -> io::Result<()> {
     Ok(())
 }
 ```
-**RAPPEL:** règle d'or de Rust -> il ne peut pas avoir à la fois de l'aliasing ET de la mutabilité!
+**RAPPEL:** règle d'or de Rust ⇨ il ne peut pas avoir à la fois de l'aliasing ET de la mutabilité!
 
 ```rust
 #[derive(Debug)]
@@ -339,7 +376,7 @@ fn main() {
 
 Pour ceux qui exécutent une machine Windows, je recommande vivement l'installation d'un WSL (Sous-système Windows pour Linux) <https://docs.microsoft.com/en-us/windows/wsl/install-win10>
 
-et de l'extension VSCode qui va bien <https://code.visualstudio.com/remote-tutorials/wsl/run-in-wsl> qui vous permet d'exécuter la commande `code` à distance dans un shell bash.exe!
+et de l'extension VSCode qui va bien <https://code.visualstudio.com/remote-tutorials/wsl/run-in-wsl> qui vous permet d'exécuter la commande `code` à distance dans un shell `bash.exe`!
 
 (et, bien sûr, d'avoir un environnement de développement Rust fonctionnel avec RLS activé <https://github.com/rust-lang/rls>)
 
@@ -373,7 +410,7 @@ int main(void) {
 
 Essayez de créer un petit programme en C qui crée une fuite de mémoire (comme une boucle qui « malloc » mais qui ne « free » jamais) et ouvrez-le dans Valgrind, traduisez le programme en Rust et refaites le test.
 
-Savez-vous que la pile d'un programme a une taille fixe dans l'espace mémoire ? Que se passe-t-il lorsque vous dépassez l'espace disponible avec trop d'appels de fonction ? -> « stack overflow » !
+Savez-vous que la pile d'un programme a une taille fixe dans l'espace mémoire ? Que se passe-t-il lorsque vous dépassez l'espace disponible avec trop d'appels de fonction ? ⇨ « stack overflow » !
 
 Vous pouvez regarder cette implémentation malloc minimaliste, basé sur l'appel système mmap (lisez son manuel) pour allouer des pages de mémoire : <https://github.com/yvan-sraka/malloc>
 
@@ -382,6 +419,7 @@ Quelques liens supplémentaires pour nourrir votre curiosité (en bonus, non obl
 - Il n'y a pas de pointeurs « null » dans Rust! Pourquoi? Regardez "Null References: The Billion Dollar Mistake" de Tony Hoare <https://www.infoq.com/presentations/Null-References-The-Billion-Dollar-Mistake-Tony-Hoare/>
 - Quelques lectures supplémentaires pour les plus courageux: "What Every Programmer Should Know About Memory" de Ulrich Drepper chez Red Hat <https://people.freebsd.org/~lstewart/articles/cpumemory.pdf>
 - [Fear not the Rust Borrow Checker](http://www.squidarth.com/rc/rust/2018/05/31/rust-borrowing-and-ownership.html)
+- <https://www.sublimetext.com/blog/articles/use-mmap-with-care>
 
 ## Devoirs maison pour la prochaine session
 

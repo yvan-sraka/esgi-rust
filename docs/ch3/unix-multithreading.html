@@ -80,8 +80,8 @@
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
-            <div id="sidebar-scrollbox" class="sidebar-scrollbox">
-                <ol class="chapter"><li class="expanded "><a href="../ch1/rust-syntax.html"><strong aria-hidden="true">1.</strong> Rust syntax</a></li><li class="expanded "><a href="../ch2/ownership-borrowing.html"><strong aria-hidden="true">2.</strong> Ownership and borrowing</a></li><li class="expanded "><a href="../ch3/unix-multithreading.html" class="active"><strong aria-hidden="true">3.</strong> Unix and multithreading</a></li><li class="expanded "><a href="../ch4/ffi-unsafe.html"><strong aria-hidden="true">4.</strong> FFI and unsafe</a></li><li class="expanded "><a href="../ch5/sockets-http.html"><strong aria-hidden="true">5.</strong> Sockets and HTTP</a></li><li class="expanded "><a href="../ch6/webassembly.html"><strong aria-hidden="true">6.</strong> WebAssembly</a></li><li class="expanded "><a href="../p1/libppm.html"><strong aria-hidden="true">7.</strong> Project 1: libppm</a></li></ol>
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../ch0/introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../ch1/rust-syntax.html"><strong aria-hidden="true">2.</strong> Rust syntax</a></li><li class="chapter-item expanded "><a href="../ch2/ownership-borrowing.html"><strong aria-hidden="true">3.</strong> Ownership and borrowing</a></li><li class="chapter-item expanded "><a href="../ch3/unix-multithreading.html" class="active"><strong aria-hidden="true">4.</strong> Unix and multithreading</a></li><li class="chapter-item expanded "><a href="../ch4/ffi-unsafe.html"><strong aria-hidden="true">5.</strong> FFI and unsafe</a></li><li class="chapter-item expanded "><a href="../ch5/sockets-http.html"><strong aria-hidden="true">6.</strong> Sockets and HTTP</a></li><li class="chapter-item expanded "><a href="../ch6/webassembly.html"><strong aria-hidden="true">7.</strong> WebAssembly</a></li><li class="chapter-item expanded "><a href="../ch7/fast-safe-and-beyond.html"><strong aria-hidden="true">8.</strong> Fast, safe and beyond</a></li><li class="chapter-item expanded "><a href="../p0/libppm.html"><strong aria-hidden="true">9.</strong> Project 0: libppm</a></li><li class="chapter-item expanded "><a href="../p1/libpwn.html"><strong aria-hidden="true">10.</strong> Project 1: libpwn</a></li><li class="chapter-item expanded "><a href="../p2/libray.html"><strong aria-hidden="true">11.</strong> Project 2: libray</a></li><li class="chapter-item expanded "><a href="../p3/libiso.html"><strong aria-hidden="true">12.</strong> Project 3: libiso</a></li><li class="chapter-item expanded "><a href="../p4/rstrace.html"><strong aria-hidden="true">13.</strong> Project 4: rstrace</a></li><li class="chapter-item expanded "><a href="../p5/rsh.html"><strong aria-hidden="true">14.</strong> Project 5: rsh</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -153,18 +153,19 @@
 Again, a too-long email, the french version is behind! -->
 <h2><a class="header" href="#recap-from-the-last-session" id="recap-from-the-last-session">Recap from the last session</a></h2>
 <ul>
-<li>
-<p>Recall previous episode:</p>
+<li>Recall previous episode:
 <ul>
-<li>Rust philosophy &quot;zero-cost abstractions&quot;, play a bit with <code>cargo inspect</code>, <code>cargo fmt</code>, <code>cargo clippy</code></li>
+<li>Rust philosophy &quot;zero-cost abstractions&quot;, play a bit with
+<code>cargo inspect</code>, <code>cargo fmt</code>, <code>cargo clippy</code></li>
 </ul>
 </li>
-<li>
-<p>Let's talk a bit about POSIX, UNIX, Linux, etc ... and file abstraction</p>
+<li>Let's talk a bit about POSIX, UNIX, Linux, etc ... and file
+abstraction
 <ul>
 <li>Named pipe example: <code>mkfifo</code> (to send a synchronous message)</li>
-<li>What about serialization? Do you know protocol buffer? <a href="https://developers.google.com/protocol-buffers">https://developers.google.com/protocol-buffers</a>
-(SPOILER: shared memory is better) <a href="https://capnproto.org">https://capnproto.org</a></li>
+<li>What about serialization? Do you know protocol buffer?
+<a href="https://developers.google.com/protocol-buffers">https://developers.google.com/protocol-buffers</a> (SPOILER:
+shared memory is better) <a href="https://capnproto.org">https://capnproto.org</a></li>
 </ul>
 </li>
 </ul>
@@ -332,14 +333,21 @@ fn main() {
 </code></pre></pre>
 <h2><a class="header" href="#to-go-further" id="to-go-further">To go further</a></h2>
 <ul>
-<li>Learn about File Descriptor <a href="https://en.wikipedia.org/wiki/File_descriptor">https://en.wikipedia.org/wiki/File_descriptor</a></li>
-<li>IOStream Is Hopelessly Broken <a href="https://www.moria.us/articles/iostream-is-hopelessly-broken/">https://www.moria.us/articles/iostream-is-hopelessly-broken/</a></li>
+<li>Learn about File Descriptor
+<a href="https://en.wikipedia.org/wiki/File_descriptor">https://en.wikipedia.org/wiki/File_descriptor</a></li>
+<li>IOStream Is Hopelessly Broken
+<a href="https://www.moria.us/articles/iostream-is-hopelessly-broken/">https://www.moria.us/articles/iostream-is-hopelessly-broken/</a></li>
 <li>Writing an OS in Rust <a href="https://os.phil-opp.com/">https://os.phil-opp.com/</a></li>
-<li>Why is a Rust executable large? <a href="https://lifthrasiir.github.io/rustlog/why-is-a-rust-executable-large.html">https://lifthrasiir.github.io/rustlog/why-is-a-rust-executable-large.html</a></li>
-<li>Smart pointers in Rust <a href="https://doc.rust-lang.org/book/ch15-00-smart-pointers.html">https://doc.rust-lang.org/book/ch15-00-smart-pointers.html</a></li>
-<li>Rust sucks because ... <a href="https://wiki.theory.org/index.php/YourLanguageSucks#Rust_sucks_because">https://wiki.theory.org/index.php/YourLanguageSucks#Rust_sucks_because</a></li>
+<li>Why is a Rust executable large?
+<a href="https://lifthrasiir.github.io/rustlog/why-is-a-rust-executable-large.html">https://lifthrasiir.github.io/rustlog/why-is-a-rust-executable-large.html</a></li>
+<li>Smart pointers in Rust
+<a href="https://doc.rust-lang.org/book/ch15-00-smart-pointers.html">https://doc.rust-lang.org/book/ch15-00-smart-pointers.html</a></li>
+<li>Rust sucks because ...
+<a href="https://wiki.theory.org/index.php/YourLanguageSucks#Rust_sucks_because">https://wiki.theory.org/index.php/YourLanguageSucks#Rust_sucks_because</a></li>
 <li><code>unfork</code> <a href="https://github.com/whitequark/unfork">https://github.com/whitequark/unfork</a></li>
 <li><a href="https://github.com/sebasmagri/rust-concurrency-patterns">https://github.com/sebasmagri/rust-concurrency-patterns</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Inter-process_communication">https://en.wikipedia.org/wiki/Inter-process_communication</a></li>
+<li><a href="https://en.wikipedia.org/wiki/D-Bus">https://en.wikipedia.org/wiki/D-Bus</a></li>
 </ul>
 <h2><a class="header" href="#prepare-the-next-session" id="prepare-the-next-session">Prepare the next session</a></h2>
 <p>Kkeep talking about Unix tools for binaries analysis:</p>
@@ -551,6 +559,8 @@ En français, vous pouvez lire ce cours d'OS <https://darnuria.eu/2019-2020_os> 
 - Rust est nul parce que ... <https://wiki.theory.org/index.php/YourLanguageSucks#Rust_sucks_because>
 - `unfork` <https://github.com/whitequark/unfork>
 - <https://github.com/sebasmagri/rust-concurrency-patterns>
+- <https://en.wikipedia.org/wiki/Inter-process_communication>
+- <https://en.wikipedia.org/wiki/D-Bus>
 
 ## Pour préparer le prochain cours (parlons d'outils Unix pour l'analyse de binaires)
 

@@ -80,8 +80,8 @@
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
-            <div id="sidebar-scrollbox" class="sidebar-scrollbox">
-                <ol class="chapter"><li class="expanded "><a href="../ch1/rust-syntax.html"><strong aria-hidden="true">1.</strong> Rust syntax</a></li><li class="expanded "><a href="../ch2/ownership-borrowing.html"><strong aria-hidden="true">2.</strong> Ownership and borrowing</a></li><li class="expanded "><a href="../ch3/unix-multithreading.html"><strong aria-hidden="true">3.</strong> Unix and multithreading</a></li><li class="expanded "><a href="../ch4/ffi-unsafe.html"><strong aria-hidden="true">4.</strong> FFI and unsafe</a></li><li class="expanded "><a href="../ch5/sockets-http.html" class="active"><strong aria-hidden="true">5.</strong> Sockets and HTTP</a></li><li class="expanded "><a href="../ch6/webassembly.html"><strong aria-hidden="true">6.</strong> WebAssembly</a></li><li class="expanded "><a href="../p1/libppm.html"><strong aria-hidden="true">7.</strong> Project 1: libppm</a></li></ol>
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../ch0/introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../ch1/rust-syntax.html"><strong aria-hidden="true">2.</strong> Rust syntax</a></li><li class="chapter-item expanded "><a href="../ch2/ownership-borrowing.html"><strong aria-hidden="true">3.</strong> Ownership and borrowing</a></li><li class="chapter-item expanded "><a href="../ch3/unix-multithreading.html"><strong aria-hidden="true">4.</strong> Unix and multithreading</a></li><li class="chapter-item expanded "><a href="../ch4/ffi-unsafe.html"><strong aria-hidden="true">5.</strong> FFI and unsafe</a></li><li class="chapter-item expanded "><a href="../ch5/sockets-http.html" class="active"><strong aria-hidden="true">6.</strong> Sockets and HTTP</a></li><li class="chapter-item expanded "><a href="../ch6/webassembly.html"><strong aria-hidden="true">7.</strong> WebAssembly</a></li><li class="chapter-item expanded "><a href="../ch7/fast-safe-and-beyond.html"><strong aria-hidden="true">8.</strong> Fast, safe and beyond</a></li><li class="chapter-item expanded "><a href="../p0/libppm.html"><strong aria-hidden="true">9.</strong> Project 0: libppm</a></li><li class="chapter-item expanded "><a href="../p1/libpwn.html"><strong aria-hidden="true">10.</strong> Project 1: libpwn</a></li><li class="chapter-item expanded "><a href="../p2/libray.html"><strong aria-hidden="true">11.</strong> Project 2: libray</a></li><li class="chapter-item expanded "><a href="../p3/libiso.html"><strong aria-hidden="true">12.</strong> Project 3: libiso</a></li><li class="chapter-item expanded "><a href="../p4/rstrace.html"><strong aria-hidden="true">13.</strong> Project 4: rstrace</a></li><li class="chapter-item expanded "><a href="../p5/rsh.html"><strong aria-hidden="true">14.</strong> Project 5: rsh</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -150,8 +150,11 @@
                         <h1><a class="header" href="#sockets-and-http" id="sockets-and-http">Sockets and HTTP</a></h1>
 <!-- Hello everyone, -->
 <h2><a class="header" href="#lvl-0---hello-world" id="lvl-0---hello-world">Lvl 0 - Hello World!</a></h2>
-<p>Today we will play with something fun, sockets:</p>
-<p>Use <code>tokio</code>: <a href="https://github.com/tokio-rs/tokio">https://github.com/tokio-rs/tokio</a> to create a small Rust program <code>alice</code> that asynchronously wait and print a message sent by a program <code>bob</code> using the standard library.</p>
+<p>Today we will play with something fun,
+<a href="https://en.wikipedia.org/wiki/Network_socket">sockets</a>:</p>
+<p>Use <code>tokio</code>: <a href="https://github.com/tokio-rs/tokio">https://github.com/tokio-rs/tokio</a> to create a small Rust
+program <code>alice</code> that asynchronously wait and print a message sent by a
+program <code>bob</code> using the standard library.</p>
 <pre><code class="language-toml">[dependencies]
 tokio = { version = &quot;0.2&quot;, features = [&quot;full&quot;] }
 futures = &quot;0.3&quot;
@@ -220,9 +223,11 @@ async fn main() {
 }
 </code></pre></pre>
 <blockquote>
-<p><strong>N.B.</strong> we can use https://ngrok.com/docs or a VPN to test this code over network meanwhile social distancing ...</p>
+<p><strong>N.B.</strong> we can use https://ngrok.com/docs or a VPN to test this code
+over network meanwhile social distancing ...</p>
 </blockquote>
-<p>Learn more about <code>async</code>: <a href="https://areweasyncyet.rs">https://areweasyncyet.rs</a> (you can use <code>futures</code>, <code>mio</code> or <code>async-std</code>)</p>
+<p>Learn more about <code>async</code>: <a href="https://areweasyncyet.rs">https://areweasyncyet.rs</a> (you can use
+<code>futures</code>, <code>mio</code> or <code>async-std</code>)</p>
 <pre><pre class="playpen"><code class="language-rust">use futures::executor::block_on;
 
 type Song = String;
@@ -268,7 +273,10 @@ fn main() {
 }
 </code></pre></pre>
 <h2><a class="header" href="#lvl-1---http-server" id="lvl-1---http-server">Lvl 1 - HTTP server</a></h2>
-<p>Create a simple HTTP server using <a href="https://hyper.rs">https://hyper.rs</a>, that display a fancy &quot;It's works!&quot; message in your favorite browser on <a href="http://127.0.0.1:8080">http://127.0.0.1:8080</a> like shown in <a href="https://rust-lang.github.io/async-book/01_getting_started/05_http_server_example.html">https://rust-lang.github.io/async-book/01_getting_started/05_http_server_example.html</a></p>
+<p>Create a simple HTTP server using <a href="https://hyper.rs">https://hyper.rs</a>, that display a
+fancy &quot;It's works!&quot; message in your favorite browser on
+<a href="http://127.0.0.1:8080">http://127.0.0.1:8080</a> like shown in
+<a href="https://rust-lang.github.io/async-book/01_getting_started/05_http_server_example.html">https://rust-lang.github.io/async-book/01_getting_started/05_http_server_example.html</a></p>
 <pre><code class="language-toml">[dependencies]
 # Hyper is an asynchronous HTTP library. We'll use it to power our HTTP
 # server and to make HTTP requests.
@@ -306,11 +314,15 @@ async fn main() {
 }
 </code></pre></pre>
 <blockquote>
-<p><strong>N.B.</strong> for stuffs that never fail<a href="https://doc.rust-lang.org/std/convert/enum.Infallible.html">https://doc.rust-lang.org/std/convert/enum.Infallible.html</a></p>
+<p><strong>N.B.</strong> for stuffs that never
+fail<a href="https://doc.rust-lang.org/std/convert/enum.Infallible.html">https://doc.rust-lang.org/std/convert/enum.Infallible.html</a></p>
 </blockquote>
 <p>There is plenty of alternatives here too: <a href="https://www.arewewebyet.org">https://www.arewewebyet.org</a></p>
 <h2><a class="header" href="#lvl-2---api-request" id="lvl-2---api-request">Lvl 2 - API Request</a></h2>
-<p>Using <a href="https://docs.rs/reqwest">https://docs.rs/reqwest</a> play with some external API, like Giphy one: <a href="https://developers.giphy.com/docs/api/endpoint#random">https://developers.giphy.com/docs/api/endpoint#random</a> and create a small command-line program that takes a parameter and save the GIF image on your computer!</p>
+<p>Using <a href="https://docs.rs/reqwest">https://docs.rs/reqwest</a> play with some external API, like Giphy
+one: <a href="https://developers.giphy.com/docs/api/endpoint#random">https://developers.giphy.com/docs/api/endpoint#random</a> and create
+a small command-line program that takes a parameter and save the GIF
+image on your computer!</p>
 <pre><code class="language-toml">[dependencies]
 reqwest = { version = &quot;0.10&quot;, features = [&quot;blocking&quot;] }
 </code></pre>
@@ -327,18 +339,30 @@ fn main() -&gt; Result&lt;(), Box&lt;dyn std::error::Error&gt;&gt; {
 }
 </code></pre></pre>
 <blockquote>
-<p><strong>N.B.</strong> I use <a href="https://doc.rust-lang.org/book/ch12-05-working-with-environment-variables.html">https://doc.rust-lang.org/book/ch12-05-working-with-environment-variables.html</a> to not write my secret <code>GIPHY_API_KEY</code> in code!</p>
+<p><strong>N.B.</strong> I use
+<a href="https://doc.rust-lang.org/book/ch12-05-working-with-environment-variables.html">https://doc.rust-lang.org/book/ch12-05-working-with-environment-variables.html</a>
+to not write my secret <code>GIPHY_API_KEY</code> in code!</p>
 </blockquote>
 <h2><a class="header" href="#lvl----bonus" id="lvl----bonus">Lvl ? - Bonus</a></h2>
-<p>Want to play with some &quot;real&quot; web framework, you can try <a href="https://gotham.rs">https://gotham.rs</a> (or <a href="http://nickel-org.github.io">http://nickel-org.github.io</a>)!</p>
-<p>There is also a cool static site generator (<a href="https://cobalt-org.github.io">https://cobalt-org.github.io</a>) or ORM (<a href="https://diesel.rs">https://diesel.rs</a>), and here is a bunch of supplementary resources, if you're interested in doing <em>web</em> stuff in Rust: </p>
+<p>Want to play with some &quot;real&quot; web framework, you can try
+<a href="https://gotham.rs">https://gotham.rs</a> (or <a href="http://nickel-org.github.io">http://nickel-org.github.io</a>)!</p>
+<p>There is also a cool static site generator
+(<a href="https://cobalt-org.github.io">https://cobalt-org.github.io</a>) or ORM (<a href="https://diesel.rs">https://diesel.rs</a>), and here
+is a bunch of supplementary resources, if you're interested in doing
+<em>web</em> stuff in Rust:</p>
 <ul>
-<li><a href="https://github.com/flosse/rust-web-framework-comparison">Rust web framework comparison</a></li>
-<li><a href="https://stevezeidner.com/blog/rust-actix-api/">A small Rust API with Actix</a></li>
-<li><a href="https://danielwelch.github.io/rust-web-service.html">Writing a Simple Web Service in Rust</a></li>
-<li><a href="https://gill.net.in/posts/auth-microservice-rust-actix-web-diesel-complete-tutorial-part-1/">Auth Web Microservice with rust using Actix-Web</a></li>
-<li><a href="https://github.com/saschagrunert/webapp.rs">A web application completely written in Rust</a></li>
-<li><a href="https://brandur.org/rust-web">Touring a Fast, Safe, and Complete(ish) Web Service in Rust</a></li>
+<li><a href="https://github.com/flosse/rust-web-framework-comparison">Rust web framework
+comparison</a></li>
+<li><a href="https://stevezeidner.com/blog/rust-actix-api/">A small Rust API with
+Actix</a></li>
+<li><a href="https://danielwelch.github.io/rust-web-service.html">Writing a Simple Web Service in
+Rust</a></li>
+<li><a href="https://gill.net.in/posts/auth-microservice-rust-actix-web-diesel-complete-tutorial-part-1/">Auth Web Microservice with rust using
+Actix-Web</a></li>
+<li><a href="https://github.com/saschagrunert/webapp.rs">A web application completely written in
+Rust</a></li>
+<li><a href="https://brandur.org/rust-web">Touring a Fast, Safe, and Complete(ish) Web Service in
+Rust</a></li>
 </ul>
 <h2><a class="header" href="#to-go-further--are-we-yet" id="to-go-further--are-we-yet">To go further .. are we yet?</a></h2>
 <ul>

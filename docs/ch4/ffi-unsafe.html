@@ -80,8 +80,8 @@
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
-            <div id="sidebar-scrollbox" class="sidebar-scrollbox">
-                <ol class="chapter"><li class="expanded "><a href="../ch1/rust-syntax.html"><strong aria-hidden="true">1.</strong> Rust syntax</a></li><li class="expanded "><a href="../ch2/ownership-borrowing.html"><strong aria-hidden="true">2.</strong> Ownership and borrowing</a></li><li class="expanded "><a href="../ch3/unix-multithreading.html"><strong aria-hidden="true">3.</strong> Unix and multithreading</a></li><li class="expanded "><a href="../ch4/ffi-unsafe.html" class="active"><strong aria-hidden="true">4.</strong> FFI and unsafe</a></li><li class="expanded "><a href="../ch5/sockets-http.html"><strong aria-hidden="true">5.</strong> Sockets and HTTP</a></li><li class="expanded "><a href="../ch6/webassembly.html"><strong aria-hidden="true">6.</strong> WebAssembly</a></li><li class="expanded "><a href="../p1/libppm.html"><strong aria-hidden="true">7.</strong> Project 1: libppm</a></li></ol>
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../ch0/introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../ch1/rust-syntax.html"><strong aria-hidden="true">2.</strong> Rust syntax</a></li><li class="chapter-item expanded "><a href="../ch2/ownership-borrowing.html"><strong aria-hidden="true">3.</strong> Ownership and borrowing</a></li><li class="chapter-item expanded "><a href="../ch3/unix-multithreading.html"><strong aria-hidden="true">4.</strong> Unix and multithreading</a></li><li class="chapter-item expanded "><a href="../ch4/ffi-unsafe.html" class="active"><strong aria-hidden="true">5.</strong> FFI and unsafe</a></li><li class="chapter-item expanded "><a href="../ch5/sockets-http.html"><strong aria-hidden="true">6.</strong> Sockets and HTTP</a></li><li class="chapter-item expanded "><a href="../ch6/webassembly.html"><strong aria-hidden="true">7.</strong> WebAssembly</a></li><li class="chapter-item expanded "><a href="../ch7/fast-safe-and-beyond.html"><strong aria-hidden="true">8.</strong> Fast, safe and beyond</a></li><li class="chapter-item expanded "><a href="../p0/libppm.html"><strong aria-hidden="true">9.</strong> Project 0: libppm</a></li><li class="chapter-item expanded "><a href="../p1/libpwn.html"><strong aria-hidden="true">10.</strong> Project 1: libpwn</a></li><li class="chapter-item expanded "><a href="../p2/libray.html"><strong aria-hidden="true">11.</strong> Project 2: libray</a></li><li class="chapter-item expanded "><a href="../p3/libiso.html"><strong aria-hidden="true">12.</strong> Project 3: libiso</a></li><li class="chapter-item expanded "><a href="../p4/rstrace.html"><strong aria-hidden="true">13.</strong> Project 4: rstrace</a></li><li class="chapter-item expanded "><a href="../p5/rsh.html"><strong aria-hidden="true">14.</strong> Project 5: rsh</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -149,10 +149,8 @@
                     <main>
                         <h1><a class="header" href="#ffi-and-unsafe" id="ffi-and-unsafe">FFI and unsafe</a></h1>
 <!-- Hello everyone, -->
+<p><em>Lvl -1, 0, 1 recalls from previous sessions ...</em></p>
 <h2><a class="header" href="#lvl--1-requierements-quick-setup" id="lvl--1-requierements-quick-setup">Lvl -1: Requierements (quick setup)</a></h2>
-<blockquote>
-<p><strong>N.B.</strong> Lvl -1, 0, 1 recalls from previous sessions ...</p>
-</blockquote>
 <p>Have an <strong>up to date rust toolchain</strong>:</p>
 <pre><code>rustup update
 </code></pre>
@@ -162,22 +160,24 @@
 <li><a href="https://learnxinyminutes.com/docs/rust/">https://learnxinyminutes.com/docs/rust/</a></li>
 <li><a href="https://exercism.io/tracks/rust">https://exercism.io/tracks/rust</a></li>
 </ul>
-<p><strong>Tooling</strong>: be sure to have <strong>RLS</strong> (<a href="https://github.com/rust-lang/rls">https://github.com/rust-lang/rls</a>) linting enabled in your editor!</p>
+<p><strong>Tooling</strong>: be sure to have <strong>RLS</strong>
+(<a href="https://github.com/rust-lang/rls">https://github.com/rust-lang/rls</a>) linting enabled in your editor!</p>
 <blockquote>
-<p><strong>N.B.</strong> if you're looking for a cool font with code ligatures: 
+<p><strong>N.B.</strong> if you're looking for a cool font with code ligatures:
 <a href="https://github.com/tonsky/FiraCode">https://github.com/tonsky/FiraCode</a></p>
 </blockquote>
 <h2><a class="header" href="#lvl-0-remind-me-whats-rust-again" id="lvl-0-remind-me-whats-rust-again">Lvl 0: Remind me, what's Rust again?</a></h2>
-<p>Rust is a <strong>compiled language</strong> with a <strong>strong static</strong> algebraic type system.</p>
-<blockquote>
-<p><em>Reminder:</em></p>
+<p>Rust is a <strong>compiled language</strong> with a <strong>strong static</strong> algebraic type
+system.</p>
+<p><strong>Reminder:</strong></p>
 <ul>
-<li>&quot;static&quot; stands for &quot;computed at compiletime&quot;, e.g. <code>macros</code></li>
-<li>&quot;dynamic&quot; stands for &quot;computed at runtime&quot;, e.g. <code>fn</code></li>
+<li>&quot;static&quot; stands for &quot;computed at compiletime&quot;, e.g. <code>macros</code></li>
+<li>&quot;dynamic&quot; stands for &quot;computed at runtime&quot;, e.g. <code>fn</code></li>
 </ul>
-</blockquote>
-<p>The Rust type system contains information about memory (ownership &amp; lifetime).</p>
-<p><strong>Rust rule of thumb:</strong> in safe mode, we can't have aliasing AND mutability!</p>
+<p>The Rust type system contains information about memory (ownership &amp;
+lifetime).</p>
+<p><strong>Rust rule of thumb:</strong> in safe mode, we can't have aliasing AND
+mutability!</p>
 <h3><a class="header" href="#a-quick-borrowing-example" id="a-quick-borrowing-example">A quick borrowing example</a></h3>
 <p>Try to recall that memory is split between:</p>
 <ul>
@@ -207,27 +207,35 @@ fn main() {
 <h2><a class="header" href="#lvl-1-sort-weel-known-programming-languages" id="lvl-1-sort-weel-known-programming-languages">Lvl 1: Sort weel-known programming languages</a></h2>
 <h3><a class="header" href="#static-typing-compiled-languages" id="static-typing-compiled-languages">Static typing (compiled languages)</a></h3>
 <ul>
-<li><strong>Static memory management (language that compiles to arch-specific binaries)</strong>:
-Rust (type inference is everywhere) | C++ (type inference with keyword <code>auto</code>) | C (no type inference, need to be explicit)</li>
+<li><strong>Static memory management (language that compiles to arch-specific
+binaries)</strong>: Rust (type inference is everywhere) | C++ (type
+inference with keyword <code>auto</code>) | C (no type inference, need to be
+explicit)</li>
 </ul>
 <blockquote>
-<p><strong>N.B.</strong> There are smart pointers (handle at runtime by reference counting) <a href="https://doc.rust-lang.org/book/ch15-00-smart-pointers.html">https://doc.rust-lang.org/book/ch15-00-smart-pointers.html</a></p>
+<p><strong>N.B.</strong> There are smart pointers (handle at runtime by reference
+counting) <a href="https://doc.rust-lang.org/book/ch15-00-smart-pointers.html">https://doc.rust-lang.org/book/ch15-00-smart-pointers.html</a></p>
 </blockquote>
 <ul>
 <li><strong>Dynamic memory management (with garbage collectors)</strong>
 <ul>
 <li>Haskell | OCaml | Go (compile to binaries)</li>
-<li>C# | Java | Scala (compile to &quot;portable&quot; bytecode, needs custom VM to run like JVM and .NET)</li>
+<li>C# | Java | Scala (compile to &quot;portable&quot; bytecode, needs
+custom VM to run like JVM and .NET)</li>
 </ul>
 </li>
 </ul>
 <h3><a class="header" href="#dynamic-typing-interpreted-languages-so-dynamic-memory-management-for-scripting-mainly" id="dynamic-typing-interpreted-languages-so-dynamic-memory-management-for-scripting-mainly">Dynamic typing (interpreted languages, so dynamic memory management, for scripting mainly)</a></h3>
 <ul>
-<li>BourneShell | Python | Prel | Ruby | PHP | ECMAScript (libs of these languages often rely on compiled code)</li>
+<li>BourneShell | Python | Prel | Ruby | PHP | ECMAScript (libs of
+these languages often rely on compiled code)</li>
 </ul>
 <h2><a class="header" href="#lvl-2-what-rustc-do-without-lying-in-the-details" id="lvl-2-what-rustc-do-without-lying-in-the-details">Lvl 2: What <code>rustc</code> do (without lying in the details):</a></h2>
-<p>Rust <code>=&gt;</code> Rust (without macro) <code>=&gt;</code> (module resolution) <code>=&gt;</code> (memory management) MIR <code>=&gt;</code> ... <code>=&gt;</code> LLVM <code>=&gt;</code> linking (static libs) <code>=&gt;</code> Binary</p>
-<p>We can have a taste of Rust without macros with <a href="https://github.com/mre/cargo-inspect">https://github.com/mre/cargo-inspect</a></p>
+<p>Rust ⇨ Rust (without macro) ⇨ (module resolution) ⇨ (memory
+management) MIR ⇨ ... ⇨ LLVM ⇨ linking (static libs) ⇨
+Binary</p>
+<p>We can have a taste of Rust without macros with
+<a href="https://github.com/mre/cargo-inspect">https://github.com/mre/cargo-inspect</a></p>
 <p>We can have a taste of MIR / LLVM / ASM with <a href="https://godbolt.org">https://godbolt.org</a></p>
 <h3><a class="header" href="#inlining-example" id="inlining-example">Inlining example</a></h3>
 <pre><pre class="playpen"><code class="language-rust">
@@ -253,29 +261,49 @@ pub fn square(num: i32) -&gt; i32 {
 </li>
 </ul>
 <blockquote>
-<p><strong>N.B.</strong> Binary format for Linux is ELF: <a href="https://en.wikipedia.org/wiki/Executable_and_Linkable_Format">https://en.wikipedia.org/wiki/Executable_and_Linkable_Format</a></p>
+<p><strong>N.B.</strong> Binary format for Linux is ELF:
+<a href="https://en.wikipedia.org/wiki/Executable_and_Linkable_Format">https://en.wikipedia.org/wiki/Executable_and_Linkable_Format</a></p>
 </blockquote>
 <ul>
 <li><strong>Library</strong>
 <ul>
-<li>lib static <code>-&gt;</code> compile time (UNIX <code>.a</code>, Windows <code>.lib</code>)
+<li>lib static ⇨ compile time (UNIX <code>.a</code>, Windows <code>.lib</code>)
 language-dependent &amp; platform-indepedent</li>
-<li>lib dynamic <code>-&gt;</code> runtime (Linux <code>.so</code>, Windows <code>.dll</code>, macOS <code>.dylib</code>)
-language-independent &amp; platform-dependent</li>
+<li>lib dynamic ⇨ runtime (Linux <code>.so</code>, Windows <code>.dll</code>, macOS
+<code>.dylib</code>) language-independent &amp; platform-dependent</li>
 </ul>
 </li>
 </ul>
 <h2><a class="header" href="#lvl-3-foreign-function-interface-ffi" id="lvl-3-foreign-function-interface-ffi">Lvl 3: Foreign Function Interface (FFI)</a></h2>
 <blockquote>
-<p><strong>N.B.</strong> the Book have a good section on the subject <a href="https://doc.rust-lang.org/book/ffi.html">https://doc.rust-lang.org/book/ffi.html</a></p>
+<p><strong>N.B.</strong> the Book have a good section on the subject
+<a href="https://doc.rust-lang.org/book/ffi.html">https://doc.rust-lang.org/book/ffi.html</a></p>
 </blockquote>
 <p>Today we will try to:</p>
 <ul>
-<li>Call a Rust function (compiled as a dynamic library) from a Python script: <a href="https://doc.rust-lang.org/1.5.0/book/rust-inside-other-languages.html">https://doc.rust-lang.org/1.5.0/book/rust-inside-other-languages.html</a></li>
-<li>Call a C function (compiled as a static library) from a Rust code: <a href="https://rust-embedded.github.io/book/interoperability/c-with-rust.html">https://rust-embedded.github.io/book/interoperability/c-with-rust.html</a></li>
+<li>Call a Rust function (compiled as a dynamic library) from a Python
+script:
+<a href="https://doc.rust-lang.org/1.5.0/book/rust-inside-other-languages.html">https://doc.rust-lang.org/1.5.0/book/rust-inside-other-languages.html</a></li>
+<li>Call a C function (compiled as a static library) from a Rust code:
+<a href="https://rust-embedded.github.io/book/interoperability/c-with-rust.html">https://rust-embedded.github.io/book/interoperability/c-with-rust.html</a></li>
 </ul>
-<p>This <a href="https://stackoverflow.com/questions/43826572/where-should-i-place-a-static-library-so-i-can-link-it-with-a-rust-program">https://stackoverflow.com/questions/43826572/where-should-i-place-a-static-library-so-i-can-link-it-with-a-rust-program</a> will help since we have to set up <a href="https://doc.rust-lang.org/cargo/reference/manifest.html#package-build">https://doc.rust-lang.org/cargo/reference/manifest.html#package-build</a> to tell <code>cargo</code> where our static lib is!</p>
-<p><strong>Here is our final code <a href="https://github.com/yvan-sraka/rust-ffi-demo">https://github.com/yvan-sraka/rust-ffi-demo</a> :)</strong></p>
+<p>This
+<a href="https://stackoverflow.com/questions/43826572/where-should-i-place-a-static-library-so-i-can-link-it-with-a-rust-program">https://stackoverflow.com/questions/43826572/where-should-i-place-a-static-library-so-i-can-link-it-with-a-rust-program</a>
+will help since we have to set up
+<a href="https://doc.rust-lang.org/cargo/reference/manifest.html#package-build">https://doc.rust-lang.org/cargo/reference/manifest.html#package-build</a>
+to tell <code>cargo</code> where our static lib is!</p>
+<blockquote>
+<p><strong>N.B.</strong> <a href="https://doc.rust-lang.org/std/ffi/struct.CStr.html">https://doc.rust-lang.org/std/ffi/struct.CStr.html</a></p>
+</blockquote>
+<p><strong>Here is our final code <a href="https://github.com/yvan-sraka/rust-ffi-demo">https://github.com/yvan-sraka/rust-ffi-demo</a>
+:)</strong></p>
+<h3><a class="header" href="#lvl-4-unsafe" id="lvl-4-unsafe">Lvl 4: Unsafe</a></h3>
+<p><img src="https://doc.rust-lang.org/nomicon/img/safeandunsafe.svg" alt="" /></p>
+<p>Rust has different rules in unsafe mode, closest to what you know in C,
+learn more about in the dedicated guide:
+<a href="https://doc.rust-lang.org/nomicon/index.html">https://doc.rust-lang.org/nomicon/index.html</a></p>
+<p>And we try here to reduce <code>unsafe</code> bloc to the strict minimum (extern
+calls to a C lib).</p>
 <p>Cheers, Yvan</p>
 
                     </main>

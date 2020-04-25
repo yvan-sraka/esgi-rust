@@ -1,0 +1,438 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Fast, safe and beyond - Systems and Networks programming in Rust</title>
+        
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "light" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../ch0/introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../ch1/rust-syntax.html"><strong aria-hidden="true">2.</strong> Rust syntax</a></li><li class="chapter-item expanded "><a href="../ch2/ownership-borrowing.html"><strong aria-hidden="true">3.</strong> Ownership and borrowing</a></li><li class="chapter-item expanded "><a href="../ch3/unix-multithreading.html"><strong aria-hidden="true">4.</strong> Unix and multithreading</a></li><li class="chapter-item expanded "><a href="../ch4/ffi-unsafe.html"><strong aria-hidden="true">5.</strong> FFI and unsafe</a></li><li class="chapter-item expanded "><a href="../ch5/sockets-http.html"><strong aria-hidden="true">6.</strong> Sockets and HTTP</a></li><li class="chapter-item expanded "><a href="../ch6/webassembly.html"><strong aria-hidden="true">7.</strong> WebAssembly</a></li><li class="chapter-item expanded "><a href="../ch7/fast-safe-and-beyond.html" class="active"><strong aria-hidden="true">8.</strong> Fast, safe and beyond</a></li><li class="chapter-item expanded "><a href="../p0/libppm.html"><strong aria-hidden="true">9.</strong> Project 0: libppm</a></li><li class="chapter-item expanded "><a href="../p1/libpwn.html"><strong aria-hidden="true">10.</strong> Project 1: libpwn</a></li><li class="chapter-item expanded "><a href="../p2/libray.html"><strong aria-hidden="true">11.</strong> Project 2: libray</a></li><li class="chapter-item expanded "><a href="../p3/libiso.html"><strong aria-hidden="true">12.</strong> Project 3: libiso</a></li><li class="chapter-item expanded "><a href="../p4/rstrace.html"><strong aria-hidden="true">13.</strong> Project 4: rstrace</a></li><li class="chapter-item expanded "><a href="../p5/rsh.html"><strong aria-hidden="true">14.</strong> Project 5: rsh</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
+
+                    <h1 class="menu-title">Systems and Networks programming in Rust</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1><a class="header" href="#fast-safe-and-beyond" id="fast-safe-and-beyond">Fast, safe and beyond</a></h1>
+<!-- Hello everyone, -->
+<h2><a class="header" href="#we-want-fast-programs" id="we-want-fast-programs">We want FAST programs</a></h2>
+<p>We have several ways to achieve speed, sorted by most simple/efficient
+to more advanced/fine tuned one</p>
+<ul>
+<li>algorithms (e.g. memoization)</li>
+</ul>
+<pre><code class="language-python">#! /usr/bin/env python3
+
+&quot;&quot;&quot;
+# How to write an homemade @functools.lru_cache
+
+def memoize(func):
+    magic = {}
+    def func_wrapper(n):
+        if n not in magic:
+            magic[n] = func(n)
+        return magic[n]
+    return func_wrapper
+&quot;&quot;&quot;
+
+import functools
+
+@functools.lru_cache(maxsize = 3)
+def fibo(n):
+    if n &lt; 2:
+        return 1
+    else:
+        return fibo(n - 1) + fibo(n - 2)
+
+for i in range(100):
+    print(&quot;fibo(%s) = %s&quot; % (i, fibo(i)))
+</code></pre>
+<ul>
+<li>
+<p>reduce syscall (visualize with <code>strace</code>), IO</p>
+</li>
+<li>
+<p>multi-thread (with rayon crate in Rust, using <code>par_iter</code>)</p>
+</li>
+<li>
+<p>locality <em>to prevent cache invalidation by making a jump into your
+program memory</em></p>
+<ol>
+<li>avoid ptr (because deref is slow)</li>
+<li>flatten struct (ex <code>Vec&lt;Pixel&gt;</code> is better than
+<code>Vec&lt;Vec&lt;Pixel&gt;&gt;</code>)</li>
+</ol>
+</li>
+<li>
+<p>efficient serialization:</p>
+<ul>
+<li><a href="https://github.com/serde-rs/serde">https://github.com/serde-rs/serde</a></li>
+<li><a href="https://github.com/google/flatbuffers">https://github.com/google/flatbuffers</a></li>
+</ul>
+</li>
+<li>
+<p>recursivity: make it terminal or replace by stack struct provide by
+stdlib</p>
+</li>
+</ul>
+<p>General advice could be to prefer array or other data structure that
+local in memory when we could (instead of, for e.g., of some OOP weird
+structs) ...</p>
+<blockquote>
+<p><strong>N.B.</strong> <em>static</em> struct VS <em>dynamic</em> static:</p>
+<ul>
+<li>static (size known at compiletime) ⇨ stack, ex: <code>&amp;str</code> or <code>&amp;[]</code></li>
+<li>dynamic (size unknow at compiletime) ⇨ heap, ex: <code>String</code> or <code>Vec</code>
+(size can change at runtime or also when size is not know at
+compile-time but will not change after creating the array
+<a href="https://doc.rust-lang.org/std/primitive.array.html">https://doc.rust-lang.org/std/primitive.array.html</a>)</li>
+</ul>
+</blockquote>
+<pre><pre class="playpen"><code class="language-rust">fn max_top3(top: &amp;[u8; 3]) -&gt; u8 {
+    if top[0] &gt; top[1] {
+        if top[0] &gt; top[2] top[0] else top[2]
+    } else {
+        if top[1] &gt; top[2] top[1] else top[2]
+    }
+}
+
+// https://doc.rust-lang.org/std/primitive.array.html
+
+fn main() {
+    let mut array: [u8; 3] = [23, 10, 50];
+    array[2] = 12;
+    // println!(&quot;{}&quot;, max_top3(&amp;array));
+    for elem in array.iter() {
+        println!(&quot;{}&quot;, elem);
+    }
+}
+</code></pre></pre>
+<h3><a class="header" href="#exercice" id="exercice">Exercice</a></h3>
+<p>The following script is quite sloooooow:</p>
+<pre><code class="language-python">#! /usr/bin/env python3
+import os, sys
+paths = []
+for arg in sys.argv:
+    for path, subdirs, files in os.walk(arg):
+        for name in files:
+            paths.append(os.path.join(path, name))
+hashcat = &quot;&quot;
+for f in sorted(paths):
+    hashcat += os.popen(&quot;md5sum %s&quot; % f).read().split()[0]
+os.system(&quot;echo \&quot;%s\&quot; | md5sum&quot; % hashcat)
+</code></pre>
+<p>Your mission is to improve it (recode it in Rust could be a first step
+but that not the main point here)...</p>
+<p>You should submit your solution by making a Pull-Request to
+<a href="https://github.com/yvan-sraka/md5sumsum">https://github.com/yvan-sraka/md5sumsum</a></p>
+<blockquote>
+<p><strong>Hint</strong>: create a process is slow ... and even slower when you
+involve the shell to run a command (I will not talk here about also
+the potential security issue of doing that, but you can take a look at
+<a href="https://gtfobins.github.io">https://gtfobins.github.io</a> if you're curious)</p>
+</blockquote>
+<h3><a class="header" href="#tooling" id="tooling">Tooling</a></h3>
+<p>To improve the speed of our program, we must understand a bit what's
+happen at compile and runtime, here some tools:</p>
+<ul>
+<li><a href="https://github.com/RazrFalcon/cargo-bloat">https://github.com/RazrFalcon/cargo-bloat</a></li>
+<li><a href="https://github.com/dtolnay/cargo-expand">https://github.com/dtolnay/cargo-expand</a></li>
+<li><a href="https://github.com/gnzlbg/cargo-asm">https://github.com/gnzlbg/cargo-asm</a></li>
+</ul>
+<p>... on macOS <a href="https://github.com/cmyr/cargo-instruments">https://github.com/cmyr/cargo-instruments</a></p>
+<p>... and to replay a program execution in GDB <a href="https://rr-project.org/">https://rr-project.org/</a>
+:)</p>
+<h3><a class="header" href="#to-go-further" id="to-go-further">To go further</a></h3>
+<ul>
+<li><a href="https://gist.github.com/kvark/f067ba974446f7c5ce5bd544fe370186">Achieving warp speed with
+Rust</a></li>
+<li><a href="https://fitzgeraldnick.com/2018/02/26/speed-without-wizardry.html">https://fitzgeraldnick.com/2018/02/26/speed-without-wizardry.html</a></li>
+</ul>
+<h2><a class="header" href="#we-want-safe-programs" id="we-want-safe-programs">We want SAFE programs</a></h2>
+<p>Rust gives us some nice guaranty in safe mode, we know are program are:</p>
+<ul>
+<li>Memory-safe</li>
+<li>Thread-safe</li>
+</ul>
+<p>But if we want to spot some known security issues (in dependencies) we
+would great <a href="https://github.com/RustSec/cargo-audit">https://github.com/RustSec/cargo-audit</a></p>
+<p>We can also supercharge our program with good test suites
+<a href="https://gitlab.com/tdiekmann/safety-guard">https://gitlab.com/tdiekmann/safety-guard</a></p>
+<p>And if we have C code, rewrite it in Rust <a href="https://c2rust.com">https://c2rust.com</a> :D</p>
+<h3><a class="header" href="#static-analysis-at-compiletime" id="static-analysis-at-compiletime">Static analysis (at compiletime)</a></h3>
+<p>There are some nice tools (and theory behind in the realm of abstract
+interpretation) to spot an error that compiler does not detect by
+default (for now
+<a href="https://developers.redhat.com/blog/2020/03/26/static-analysis-in-gcc-10/">https://developers.redhat.com/blog/2020/03/26/static-analysis-in-gcc-10/</a>),
+e.g.:</p>
+<ul>
+<li>int overflow</li>
+<li>divide by 0</li>
+</ul>
+<p>So take a look at:</p>
+<ul>
+<li><a href="https://frama-c.com">https://frama-c.com</a></li>
+<li><a href="https://fbinfer.com">https://fbinfer.com</a></li>
+</ul>
+<p>To go further:</p>
+<ul>
+<li><a href="https://blog.japaric.io/stack-analysis/">https://blog.japaric.io/stack-analysis/</a></li>
+</ul>
+<h3><a class="header" href="#exception-handling-at-runtime" id="exception-handling-at-runtime">Exception handling (at runtime)</a></h3>
+<p>Must have to <code>panic!</code> well:</p>
+<ul>
+<li><a href="https://github.com/rust-cli/human-panic">https://github.com/rust-cli/human-panic</a></li>
+<li><a href="https://docs.rs/failure/0.1.7/failure/index.html">https://docs.rs/failure/0.1.7/failure/index.html</a></li>
+<li><a href="https://github.com/tikv/fail-rs">https://github.com/tikv/fail-rs</a></li>
+</ul>
+<p>Well, also learning recently that, under Windows there are no signals (it is structured exceptions) and under MacOSX there is a richer mechanism which emulates the signals:</p>
+<ul>
+<li>macOS: <a href="https://www.mikeash.com/pyblog/friday-qa-2013-01-11-mach-exception-handlers.html">https://www.mikeash.com/pyblog/friday-qa-2013-01-11-mach-exception-handlers.html</a></li>
+<li>Windows: <a href="https://docs.microsoft.com/en-us/windows/win32/debug/structured-exception-handling">https://docs.microsoft.com/en-us/windows/win32/debug/structured-exception-handling</a></li>
+</ul>
+<p>Google Fuschia is, as always, full of intersting concepts:
+<a href="https://fuchsia.dev/fuchsia-src/concepts/kernel/exceptions">https://fuchsia.dev/fuchsia-src/concepts/kernel/exceptions</a></p>
+<h2><a class="header" href="#and-beyond-" id="and-beyond-">and beyond ...</a></h2>
+<p>I let this here, in place of a general conclusion of the lecture:</p>
+<ul>
+<li><a href="https://gankra.github.io/blah/rust-layouts-and-abis/">Notes on Type Layouts and ABIs in
+Rust</a></li>
+<li><a href="https://github.com/ferrous-systems/elements-of-rust">https://github.com/ferrous-systems/elements-of-rust</a></li>
+</ul>
+<p>To help you in projects:</p>
+<ul>
+<li><a href="https://rust-unofficial.github.io/too-many-lists/">Learn Rust With Entirely Too Many Linked
+Lists</a></li>
+<li><a href="https://rust-lang-nursery.github.io/rust-cookbook/">https://rust-lang-nursery.github.io/rust-cookbook/</a></li>
+<li><a href="https://doc.rust-lang.org/stable/rust-by-example/index.html">https://doc.rust-lang.org/stable/rust-by-example/index.html</a></li>
+<li><a href="https://zsiciarz.github.io/24daysofrust/">https://zsiciarz.github.io/24daysofrust/</a></li>
+</ul>
+<h3><a class="header" href="#some-languages-as-alternative-to-rust-" id="some-languages-as-alternative-to-rust-">some languages as alternative to Rust ...</a></h3>
+<ul>
+<li><a href="https://github.com/vlang/v">https://github.com/vlang/v</a></li>
+<li><a href="https://github.com/zetzit/zz">https://github.com/zetzit/zz</a></li>
+</ul>
+<h3><a class="header" href="#miscellaneous-" id="miscellaneous-">miscellaneous ...</a></h3>
+<p><strong>ML</strong> <em>(Machine Learning)</em> and <strong>RO</strong> <em>(Operational Research)</em>:</p>
+<ul>
+<li><a href="https://github.com/alphaville/optimization-engine">https://github.com/alphaville/optimization-engine</a></li>
+<li><a href="https://paulkernfeld.com/2019/03/17/hmmm.html">https://paulkernfeld.com/2019/03/17/hmmm.html</a></li>
+<li><a href="https://www.lpalmieri.com/posts/2019-03-12-scientific-computing-a-rust-adventure-part-1-zero-cost-abstractions/">https://www.lpalmieri.com/posts/2019-03-12-scientific-computing-a-rust-adventure-part-1-zero-cost-abstractions/</a></li>
+</ul>
+<p><strong>Embedded</strong> softwares and <strong>IoT</strong> <em>(Internet of Things)</em>:</p>
+<ul>
+<li><a href="https://github.com/rust-embedded/awesome-embedded-rust">https://github.com/rust-embedded/awesome-embedded-rust</a></li>
+<li><a href="https://github.com/avr-rust/ruduino">https://github.com/avr-rust/ruduino</a></li>
+<li><a href="https://blog.japaric.io/fearless-concurrency/">https://blog.japaric.io/fearless-concurrency/</a></li>
+<li><a href="https://rust-embedded.github.io/book/">https://rust-embedded.github.io/book/</a></li>
+</ul>
+<p>To go really further:</p>
+<ul>
+<li><a href="https://rfcbot.rs/">https://rfcbot.rs/</a></li>
+<li><a href="https://matematikaadit.github.io/posts/rust-turbofish.html">https://matematikaadit.github.io/posts/rust-turbofish.html</a></li>
+<li><a href="https://rustc-dev-guide.rust-lang.org/about-this-guide.html">https://rustc-dev-guide.rust-lang.org/about-this-guide.html</a></li>
+</ul>
+<p>Cheers, Yvan</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="../ch6/webassembly.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+                            <a rel="next" href="../p0/libppm.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a rel="prev" href="../ch6/webassembly.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a rel="next" href="../p0/libppm.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+        
+        
+        <script type="text/javascript">
+            window.playpen_copyable = true;
+        </script>
+        
+
+        
+
+        
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>

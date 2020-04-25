@@ -82,8 +82,8 @@
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
-            <div id="sidebar-scrollbox" class="sidebar-scrollbox">
-                <ol class="chapter"><li class="expanded "><a href="ch1/rust-syntax.html"><strong aria-hidden="true">1.</strong> Rust syntax</a></li><li class="expanded "><a href="ch2/ownership-borrowing.html"><strong aria-hidden="true">2.</strong> Ownership and borrowing</a></li><li class="expanded "><a href="ch3/unix-multithreading.html"><strong aria-hidden="true">3.</strong> Unix and multithreading</a></li><li class="expanded "><a href="ch4/ffi-unsafe.html"><strong aria-hidden="true">4.</strong> FFI and unsafe</a></li><li class="expanded "><a href="ch5/sockets-http.html"><strong aria-hidden="true">5.</strong> Sockets and HTTP</a></li><li class="expanded "><a href="ch6/webassembly.html"><strong aria-hidden="true">6.</strong> WebAssembly</a></li><li class="expanded "><a href="p1/libppm.html"><strong aria-hidden="true">7.</strong> Project 1: libppm</a></li></ol>
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="ch0/introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="ch1/rust-syntax.html"><strong aria-hidden="true">2.</strong> Rust syntax</a></li><li class="chapter-item expanded "><a href="ch2/ownership-borrowing.html"><strong aria-hidden="true">3.</strong> Ownership and borrowing</a></li><li class="chapter-item expanded "><a href="ch3/unix-multithreading.html"><strong aria-hidden="true">4.</strong> Unix and multithreading</a></li><li class="chapter-item expanded "><a href="ch4/ffi-unsafe.html"><strong aria-hidden="true">5.</strong> FFI and unsafe</a></li><li class="chapter-item expanded "><a href="ch5/sockets-http.html"><strong aria-hidden="true">6.</strong> Sockets and HTTP</a></li><li class="chapter-item expanded "><a href="ch6/webassembly.html"><strong aria-hidden="true">7.</strong> WebAssembly</a></li><li class="chapter-item expanded "><a href="ch7/fast-safe-and-beyond.html"><strong aria-hidden="true">8.</strong> Fast, safe and beyond</a></li><li class="chapter-item expanded "><a href="p0/libppm.html"><strong aria-hidden="true">9.</strong> Project 0: libppm</a></li><li class="chapter-item expanded "><a href="p1/libpwn.html"><strong aria-hidden="true">10.</strong> Project 1: libpwn</a></li><li class="chapter-item expanded "><a href="p2/libray.html"><strong aria-hidden="true">11.</strong> Project 2: libray</a></li><li class="chapter-item expanded "><a href="p3/libiso.html"><strong aria-hidden="true">12.</strong> Project 3: libiso</a></li><li class="chapter-item expanded "><a href="p4/rstrace.html"><strong aria-hidden="true">13.</strong> Project 4: rstrace</a></li><li class="chapter-item expanded "><a href="p5/rsh.html"><strong aria-hidden="true">14.</strong> Project 5: rsh</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -149,7 +149,134 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1><a class="header" href="#rust-syntax" id="rust-syntax">Rust syntax</a></h1>
+                        <h1><a class="header" href="#introduction" id="introduction">Introduction</a></h1>
+<h2><a class="header" href="#whats-that-another-rust-book" id="whats-that-another-rust-book">What's that? another Rust book?</a></h2>
+<p>I want to learn Rust, and what I want to do with is some system and
+network programming (big topic indeed):</p>
+<ul>
+<li>There is already a really good Rust course online, like
+<a href="http://intorust.com/">http://intorust.com/</a>, and of course, the official
+<a href="https://doc.rust-lang.org/book/">Book</a> or <a href="http://shop.oreilly.com/product/0636920040385.do">Programming
+Rust</a> that will be
+more suitable for you if you come from a C++ background.</li>
+<li>There is no better way to learn system programming than reading
+syscalls man pages and try to implement things (look at all the
+project assignments in this book)!</li>
+</ul>
+<p>But this could be a bit harsh, the purpose of the course is to organize
+the knowledge of increasing difficulty. I try to give you a gentle
+introduction to many general computer system concepts more than laying
+in implementation details.</p>
+<blockquote>
+<p>⚠️ This book comes from notes I take from the lectures I give in an
+engineering school. This is a complete <strong>Work In Progress</strong>: some
+chapter is just a bunch of links, some contain code from live coding I
+gave in class.</p>
+<p>I will try to progressively improve the content of it to a more
+readable and agnostic form, intended to a public that has no previous
+knowledge in Rust and only basis in computer systems, but that already
+know at list one &quot;low level&quot; language, I thinking about C.</p>
+</blockquote>
+<p>Knowledge in Linux systems is not required but would really help the
+interesting of the topics introduces after, even if I give a trick to
+get Rust on non-Unix machine, some parts of the courses are heavily
+Linux-oriented.</p>
+<p>Most of the course is organize around code example that I invite you to
+try on your personal computer.</p>
+<p>I have myslef a bias since I'm really into the programming language and
+compilation field, so we often take few detours to explain things works
+under the hood, even if it's more related to Rust mechanisms more than
+system programming itself.</p>
+<h2><a class="header" href="#program-of-the-next-lectures" id="program-of-the-next-lectures">Program of the next lectures</a></h2>
+<ul>
+<li>Rust basics (goals of the language and lectures, syntax and features
+overview)</li>
+<li>Rust advanced (static automated memory management: Ownership &amp;
+Borrowing)</li>
+<li>Files (standard IO, synchronous message through pipes), Tasks
+(process, thread) and other POSIX stuff</li>
+<li>FFI, unsafe world (let's talk about &quot;lifetimes&quot;) and the C runtime
+(stack &amp; heap)</li>
+<li>Sockets &amp; HTTP (finally, something fun for the last class)</li>
+<li>WebAssembly (because why not ... maybe it will become a thing
+someday)</li>
+<li>Fast, safe &amp; beyond (in place of a conclusion, general guidelines to
+improve our softwares)</li>
+</ul>
+<h2><a class="header" href="#syscalls-that-every-programmer-should-know" id="syscalls-that-every-programmer-should-know">Syscalls that every programmer should know</a></h2>
+<p>Disclaimer: we have not enough time in class to talk about all
+interesting syscalls, so I take the chance to give you here pills to go
+further by yourselves, the ultimate goals of this lecture is to show you
+everything about:</p>
+<ul>
+<li><code>errno</code>, filesystem API (<code>fstat</code>,<code>lstat</code>, <code>open</code>,<code>close</code>,
+<code>stat</code>,<code>read</code>, <code>write</code>,<code>mmap</code>), networking API (<code>poll</code>)</li>
+<li>memory API (<code>mmap</code>,<code>mprotect</code>, <code>munmap</code>)</li>
+<li>signal API (<code>rt_sigaction</code>,<code>rt_sigprocmask</code>, <code>rt_sigtreturn</code>)</li>
+<li><code>dup</code>,<code>dup2</code> which are important (also <code>madvise</code> but it's a bit less
+essential)</li>
+<li>IPC (InterProcess Communication) / shm (shared memory) are something
+you can't miss, so check <code>shmget</code>,<code>shmat</code>, <code>shmctl</code></li>
+<li><code>sendfile</code> (this is the 64-bit syscall to know when doing
+high-performance networked system)</li>
+</ul>
+<p>I would explain the costs of context switching kernel/user land, what
+happens when you file a userland buffer to the kernel if you want to be
+edgy, <code>copy_to_user</code> on the kernel side.</p>
+<p>I would have written a syscall, to show how it's simple!</p>
+<ul>
+<li><code>fork</code>,<code>execve</code> also important, explaining <code>execve</code> is not easy, and
+we even use it in Python</li>
+<li><code>flock</code> semaphores,<code>fsync</code> in filesystem if there is time (<code>flock</code>
+is very &quot;interesting&quot;)</li>
+</ul>
+<p>I would be left to extend the filesystem API (<code>fdatasync</code>, <code>truncate</code>,
+<code>ftruncate</code>, <code>getdents</code>, <code>getcwd</code>, <code>chdir</code>, <code>fchdir</code>, <code>rename</code>, <code>mkdir</code>,
+<code>rmdir</code>, <code>create</code>, <code>link</code>, <code>unlink</code>, <code>symlink</code>, <code>readlink</code>, <code>chmod</code>,
+<code>fchmod</code>, <code>fchown</code>, <code>chown</code>, <code>lchown</code>, <code>umask</code>)</p>
+<p>I would have left that and I would have embarked on <code>ptrace</code>, the
+privileges linux side, <code>getgid</code>, <code>setuid</code>, <code>setgid</code>, <code>setsid</code>,
+<code>getppid</code>, <code>getpgid</code>, <code>getpgrp</code>, <code>setresuid</code>, <code>getresuid</code>, and so on ...</p>
+<p>If affinities, I would have spoken quickly of capabilities,
+<code>capget</code>,<code>capset</code></p>
+<p>If I still have some time left, I would have talked about an interesting
+system API, <code>chroot</code>,<code>pivot_root</code>, <code>ioctl</code>,<code>mount</code> in particular :)</p>
+<p>If I was on the filesystem API or not, I would have talked about
+eXtended attributes, so <code>xattrs</code> syscalls!</p>
+<p>If I'm on networking and we have done a lot of things, we can discuss
+<code>io_XXX</code> with AIO or <code>epoll_YYY</code> and that would allow me to talk about
+BSD</p>
+<p>And frankly, ultimately, pick your poison:</p>
+<ul>
+<li><code>inotify</code> API (it should go into the course on the filesystem API in
+real life, but hey, it requires a little maturity)</li>
+<li><code>keyctl</code> API</li>
+<li><code>kexec</code> API</li>
+<li><code>splice</code>, <code>vmsplice</code></li>
+<li><code>perf_event_open</code></li>
+<li>System Tap</li>
+</ul>
+<p>And for the bests, there are also the <code>sched</code> &amp;<code>cgroups</code> ...</p>
+<p>So a big program, that right know this lecture does not cover at all,
+but maybe at some point, it will :)</p>
+<h2><a class="header" href="#greetings" id="greetings">Greetings</a></h2>
+<ul>
+<li>Axel Viala, which give the same lecture to another set of classes,
+in his way, but we highly collaborate in the project design</li>
+<li>Ryan Lahfa, that give me really good guidelines on how to improve
+these lectures and general feedback about the content presented here</li>
+</ul>
+<p>Cheers, Yvan</p>
+<!--
+
+## Programme des prochaines séances
+
+- Rust avancés (gestion automatique de la mémoire statique: « ownership » et « borrowing »)
+- Fichiers (E / S standard, message synchrone via des pipes), tâches (processus, thread) et autres POSIXeries
+- FFI,  unsafe mode (parlons de « lifetimes ») et binaire
+- *** NETWORK (enfin, quelque chose d'amusant pour le dernier cours) ***
+
+--><h1><a class="header" href="#rust-syntax" id="rust-syntax">Rust syntax</a></h1>
 <!-- Hello everyone,
 
 A quick mail about "Systems and networks programming in Rust" lecture, read it entirely, there is some homework for you at the end. -->
@@ -157,51 +284,77 @@ A quick mail about "Systems and networks programming in Rust" lecture, read it e
 <ul>
 <li>
 <ol start="0">
-<li>Schedule, purpose, and rules of the class (planning, assignments, grades, etc..)</li>
+<li>Schedule, purpose, and rules of the class (planning,
+assignments, grades, etc..)</li>
 </ol>
 </li>
 <li>
 <ol>
-<li>What's systems programming? Why systems (and networks) programming? Why Rust?</li>
+<li>What's systems programming? Why systems (and networks)
+programming? Why Rust?</li>
 </ol>
 </li>
 <li>
 <ol start="2">
-<li>Setup a Rust dev environment with <a href="https://rustup.rs">https://rustup.rs</a>, and a code editor (<a href="https://www.rust-lang.org/tools">https://www.rust-lang.org/tools</a>) with RLS support (<a href="https://github.com/rust-lang/rls">https://github.com/rust-lang/rls</a>) and be sure to not have just the VSCode extension but to install it with command <code>rustup component add rls rust-analysis rust-src</code></li>
+<li>Setup a Rust dev environment with <a href="https://rustup.rs">https://rustup.rs</a>, and a
+code editor (<a href="https://www.rust-lang.org/tools">https://www.rust-lang.org/tools</a>) with RLS support
+(<a href="https://github.com/rust-lang/rls">https://github.com/rust-lang/rls</a>) and be sure to not have
+just the VSCode extension but to install it with command
+<code>rustup component add rls rust-analysis rust-src</code></li>
 </ol>
 </li>
 </ul>
 <blockquote>
-<p><strong>N.B.</strong> People on Windows should read this <a href="https://github.com/rust-lang/rustup.rs/#working-with-rust-on-windows">https://github.com/rust-lang/rustup.rs/#working-with-rust-on-windows</a>, and installing Visual Studio C/C++ tools suite (like link.exe to link program) using Visual Studio Installer.</p>
+<p><strong>N.B.</strong> People on Windows should read this
+<a href="https://github.com/rust-lang/rustup.rs/#working-with-rust-on-windows">https://github.com/rust-lang/rustup.rs/#working-with-rust-on-windows</a>,
+and installing Visual Studio C/C++ tools suite (like link.exe to link
+program) using Visual Studio Installer.</p>
 </blockquote>
-<p>I also recommend getting you a WLS and install Rust with rustup in bash.exe, since starting from course 3 we will play with Linux file abstraction.</p>
+<p>I also recommend getting you a WLS and install Rust with rustup in
+bash.exe, since starting from course 3 we will play with Linux file
+abstraction.</p>
 <ul>
 <li>
 <ol start="3">
-<li>Get familiar with language syntax by playing a bit with <a href="https://github.com/rust-lang/rustlings">https://github.com/rust-lang/rustlings</a></li>
+<li>Get familiar with language syntax by playing a bit with
+<a href="https://github.com/rust-lang/rustlings">https://github.com/rust-lang/rustlings</a></li>
 </ol>
 </li>
 <li>
 <ol start="4">
-<li>Theoretical recap about the semantics of a Rust program (we talk about functions VS macros, type inference, enumeration types <a href="https://doc.rust-lang.org/std/result/enum.Result.html">https://doc.rust-lang.org/std/result/enum.Result.html</a>)</li>
+<li>Theoretical recap about the semantics of a Rust program (we talk
+about functions VS macros, type inference, enumeration types
+<a href="https://doc.rust-lang.org/std/result/enum.Result.html">https://doc.rust-lang.org/std/result/enum.Result.html</a>)</li>
 </ol>
 </li>
 <li>
 <ol start="5">
-<li>Show off basic tooling: how to create a binary/library with cargo, how to add a dependency form crate.io to our project, we start writing a little <strong>MASTERMIND</strong> game (Here is a link to the full implementation <a href="https://github.com/yvan-sraka/mymastermind">https://github.com/yvan-sraka/mymastermind</a>) SLIDES are here: <a href="https://github.com/yvan-sraka/mymastermind-slides">https://github.com/yvan-sraka/mymastermind-slides</a></li>
+<li>Show off basic tooling: how to create a binary/library with
+cargo, how to add a dependency form crate.io to our project, we
+start writing a little <strong>MASTERMIND</strong> game (Here is a link to
+the full implementation
+<a href="https://github.com/yvan-sraka/mymastermind">https://github.com/yvan-sraka/mymastermind</a>) SLIDES are here:
+<a href="https://github.com/yvan-sraka/mymastermind-slides">https://github.com/yvan-sraka/mymastermind-slides</a></li>
 </ol>
 </li>
 </ul>
-<p>Further information could be found in THE RUST BOOK -&gt; <a href="https://doc.rust-lang.org/stable/book/">https://doc.rust-lang.org/stable/book/</a> &lt;- (what we do in class match the 3 first chapters of the book)</p>
+<p>Further information could be found in THE RUST BOOK ⇨
+<a href="https://doc.rust-lang.org/stable/book/">https://doc.rust-lang.org/stable/book/</a> ⇦ (what we do in class match
+the 3 first chapters of the book)</p>
 <p>Alternatively in <a href="https://learning-rust.github.io/">https://learning-rust.github.io/</a>!</p>
 <h2><a class="header" href="#homeworks-mandatory" id="homeworks-mandatory">Homeworks (mandatory)</a></h2>
 <!-- deadline: push it before the class -->
-<p>Make a PR (Pull-Request) on this repository that fixes this code: <a href="https://github.com/yvan-sraka/base64decode/blob/master/src/main.rs">https://github.com/yvan-sraka/base64decode/blob/master/src/main.rs</a></p>
-<p>It will be automatically validated by GitHub Actions (Continuous Integration), so if it's green you already have a good grade. I will give you extra points if you succeed to reduce the size of the codebase without breaking it!</p>
+<p>Make a PR (Pull-Request) on this repository that fixes this code:
+<a href="https://github.com/yvan-sraka/base64decode/blob/master/src/main.rs">https://github.com/yvan-sraka/base64decode/blob/master/src/main.rs</a></p>
+<p>It will be automatically validated by GitHub Actions (Continuous
+Integration), so if it's green you already have a good grade. I will
+give you extra points if you succeed to reduce the size of the codebase
+without breaking it!</p>
 <p>You can test your code by trying to decode this secret message:</p>
 <pre><code>TGEgcmFjbGV0dGUgKEJyYXRjaMOkcywgwqsgZnJvbWFnZSDCuyByw7R0aSwgZW4gc3Vpc3NlIGFsbGVtYW5kKSBlc3QgZCd1bmUgcGFydCB1biBmcm9tYWdlIChsZSBvdSBsYSByYWNsZXR0ZSkgb3JpZ2luYWlyZSBkdSBjYW50b24gZHUgVmFsYWlzIGVuIFN1aXNzZSwgZXQgZCdhdXRyZSBwYXJ0LCB1bmUgcmVjZXR0ZSBkZSBjdWlzaW5lIHRyYWRpdGlvbm5lbGxlIGV0IGVtYmzDqW1hdGlxdWUgZGUgbGEgY3Vpc2luZSBzdWlzc2UsIGNvbm51ZSBkYW5zIGxlIG1vbmRlIGVudGllciwgdmFyaWFudGUgZGVzIGZvbmR1ZXMgYXUgZnJvbWFnZSwgw6AgYmFzZSBkZSBjZSBmcm9tYWdlIGZvbmR1LCByYWNsw6kgYXUgZnVyIGV0IMOgIG1lc3VyZSBxdeKAmWlsIGZvbmQsIGV0IHNlcnZpZSB0cmFkaXRpb25uZWxsZW1lbnQgYXZlYyBkZXMgcG9tbWVzIGRlIHRlcnJlIGVuIHJvYmUgZGVzIGNoYW1wcyBldCBhY2NvbXBhZ27DqWUgZGUgbMOpZ3VtZXMgYXUgdmluYWlncmUgKGNvcm5pY2hvbnMsIG9pZ25vbnMpLg==
 </code></pre>
-<p>⚠️ Reminder, the next class will start with a quick test (don't be late), it will be grade and take the form of a QCM.</p>
+<p>⚠️ Reminder, the next class will start with a quick test (don't be
+late), it will be grade and take the form of a QCM.</p>
 <p>Cheers, Yvan</p>
 <!--
 
@@ -229,7 +382,7 @@ Je vous recommande également de vous procurer un WLS et d'installer Rust avec r
 
 - 5. Les outils de base : comment créer une bibliothèque / binaire avec cargo, comment ajouter une dépendance crate.io à notre projet, nous avons commencé à écrire un petit jeu MASTERMIND (voici un lien vers l'implémentation complète <https://github.com/yvan-sraka/mymastermind>)
 
-Des informations complémentaires sont disponibles dans THE RUST BOOK -> <https://doc.rust-lang.org/stable/book/> <- (ce que nous avons fait en classe correspond aux 3 premiers chapitres du livre)
+Des informations complémentaires sont disponibles dans THE RUST BOOK ⇨ <https://doc.rust-lang.org/stable/book/> ⇦ (ce que nous avons fait en classe correspond aux 3 premiers chapitres du livre)
 
 Ou alternativement dans <https://learning-rust.github.io/>!
 
@@ -255,10 +408,15 @@ Amitiés, Yvan
 You will find a French version of this mail below, read it carefully and enjoy a homework bit trickier than the previous time: -->
 <h2><a class="header" href="#recap-from-the-previous-session" id="recap-from-the-previous-session">Recap from the previous session</a></h2>
 <ul>
-<li>QCM is a huge success, the mean of the class is X / 20 (negative points are on me this time)</li>
-<li>Correction of last homework: <a href="https://gist.github.com/yvan-sraka/94638a5dd95f46cdaecf5ab4d7ed2676">https://gist.github.com/yvan-sraka/94638a5dd95f46cdaecf5ab4d7ed2676</a></li>
-<li>I strongly advise you to try to finish rustlings to be more comfortable with basic language features <a href="https://github.com/rust-lang/rustlings">https://github.com/rust-lang/rustlings</a></li>
-<li>The small Rust code I wrote in class to play with ownership and borrowing:</li>
+<li>QCM is a huge success, the mean of the class is X / 20 (negative
+points are on me this time)</li>
+<li>Correction of last homework:
+<a href="https://gist.github.com/yvan-sraka/94638a5dd95f46cdaecf5ab4d7ed2676">https://gist.github.com/yvan-sraka/94638a5dd95f46cdaecf5ab4d7ed2676</a></li>
+<li>I strongly advise you to try to finish rustlings to be more
+comfortable with basic language features
+<a href="https://github.com/rust-lang/rustlings">https://github.com/rust-lang/rustlings</a></li>
+<li>The small Rust code I wrote in class to play with ownership and
+borrowing:</li>
 </ul>
 <pre><pre class="playpen"><code class="language-rust">use std::io;
 use std::fs::File;
@@ -276,7 +434,8 @@ fn main() -&gt; io::Result&lt;()&gt; {
     Ok(())
 }
 </code></pre></pre>
-<p><strong>REMINDER</strong>: Rule of thumbs of Rust -&gt; they cannot have both aliasing AND mutability!</p>
+<p><strong>REMINDER</strong>: Rule of thumbs of Rust ⇨ they cannot have both aliasing
+AND mutability!</p>
 <pre><pre class="playpen"><code class="language-rust">#[derive(Debug)]
 struct Color {
     r: u8,
@@ -312,19 +471,29 @@ fn main() {
 </code></pre></pre>
 <h2><a class="header" href="#mandatory-for-the-next-session" id="mandatory-for-the-next-session">Mandatory for the next session</a></h2>
 <p>⚠️ Have a UNIX system with Rust installed inside:</p>
-<p>For those that run a Windows machine, I highly recommend the installation of a WSL (Windows Subsystem for Linux) <a href="https://docs.microsoft.com/en-us/windows/wsl/install-win10">https://docs.microsoft.com/en-us/windows/wsl/install-win10</a></p>
-<p>and the nice VSCode extension <a href="https://code.visualstudio.com/remote-tutorials/wsl/run-in-wsl">https://code.visualstudio.com/remote-tutorials/wsl/run-in-wsl</a> that allows you to run <code>code</code> command remotely in bash.exe shell!</p>
-<p>(and, of course, to have a working Rust dev environment with RLS setup <a href="https://github.com/rust-lang/rls">https://github.com/rust-lang/rls</a>)</p>
+<p>For those that run a Windows machine, I highly recommend the
+installation of a WSL (Windows Subsystem for Linux)
+<a href="https://docs.microsoft.com/en-us/windows/wsl/install-win10">https://docs.microsoft.com/en-us/windows/wsl/install-win10</a></p>
+<p>and the nice VSCode extension
+<a href="https://code.visualstudio.com/remote-tutorials/wsl/run-in-wsl">https://code.visualstudio.com/remote-tutorials/wsl/run-in-wsl</a> that
+allows you to run <code>code</code> command remotely in <code>bash.exe</code> shell!</p>
+<p>(and, of course, to have a working Rust dev environment with RLS setup
+<a href="https://github.com/rust-lang/rls">https://github.com/rust-lang/rls</a>)</p>
 <h2><a class="header" href="#go-deeper-into-rust" id="go-deeper-into-rust">Go deeper into Rust</a></h2>
-<p>We, at this point cover, all of 6 first chapters, and most of 7, 8 and 9 of the Rust Book <a href="https://doc.rust-lang.org/stable/book/">https://doc.rust-lang.org/stable/book/</a></p>
-<p>We will not advance to much in Rust specific feature after this point (I will not make a class about trait e.g.), I let you free of learning more about it or not!</p>
-<p>I give you here three handy tools that will help you with homework and graded project:</p>
+<p>We, at this point cover, all of 6 first chapters, and most of 7, 8 and 9
+of the Rust Book <a href="https://doc.rust-lang.org/stable/book/">https://doc.rust-lang.org/stable/book/</a></p>
+<p>We will not advance to much in Rust specific feature after this point (I
+will not make a class about trait e.g.), I let you free of learning more
+about it or not!</p>
+<p>I give you here three handy tools that will help you with homework and
+graded project:</p>
 <ul>
 <li><a href="https://github.com/rust-lang/rust-clippy">https://github.com/rust-lang/rust-clippy</a></li>
 <li><a href="https://github.com/rust-lang/rustfmt">https://github.com/rust-lang/rustfmt</a></li>
 <li><a href="https://github.com/mre/cargo-inspect">https://github.com/mre/cargo-inspect</a> (play with it!)</li>
 </ul>
-<p>Play with small tests using Valgrind / GDB, <em>e.g.</em> Valgrind will tell you that this code has a big memory leak:</p>
+<p>Play with small tests using Valgrind / GDB, <em>e.g.</em> Valgrind will tell
+you that this code has a big memory leak:</p>
 <pre><code class="language-c">#include &quot;stdlib.h&quot;
 #include &quot;unistd.h&quot;
 
@@ -337,20 +506,32 @@ int main(void) {
 }
 </code></pre>
 <h2><a class="header" href="#go-deeper-into-memory" id="go-deeper-into-memory">Go deeper into memory</a></h2>
-<p>Try to create a small C program that creates a memory leak (like a loop that malloc but never free) and open it in Valgrind, translate the program in Rust and do the test again.</p>
-<p>Do you know that the program stack has a fixed space size in memory? What's happen when you fill it all with function calls? -&gt; a stack overflow!</p>
-<p>You can look at this minimalist malloc implementation from mine, using <code>mmap</code> syscall (read its man) to allocate memory pages: <a href="https://github.com/yvan-sraka/malloc">https://github.com/yvan-sraka/malloc</a></p>
+<p>Try to create a small C program that creates a memory leak (like a loop
+that malloc but never free) and open it in Valgrind, translate the
+program in Rust and do the test again.</p>
+<p>Do you know that the program stack has a fixed space size in memory?
+What's happen when you fill it all with function calls? ⇨ a stack
+overflow!</p>
+<p>You can look at this minimalist malloc implementation from mine, using
+<code>mmap</code> syscall (read its man) to allocate memory pages:
+<a href="https://github.com/yvan-sraka/malloc">https://github.com/yvan-sraka/malloc</a></p>
 <p>Supplementary links to feed your curiosity (bonus, not mandatory):</p>
 <ul>
-<li>There no null pointers in Rust! Why? Watch &quot;Null References: The Billion Dollar Mistake&quot; from Tony Hoare <a href="https://www.infoq.com/presentations/Null-References-The-Billion-Dollar-Mistake-Tony-Hoare/">https://www.infoq.com/presentations/Null-References-The-Billion-Dollar-Mistake-Tony-Hoare/</a></li>
-<li>Some more readings for the brave: &quot;What Every Programmer Should Know About Memory&quot; by Ulrich Drepper from Red Hat <a href="https://people.freebsd.org/%7Elstewart/articles/cpumemory.pdf">https://people.freebsd.org/~lstewart/articles/cpumemory.pdf</a></li>
-<li><a href="http://www.squidarth.com/rc/rust/2018/05/31/rust-borrowing-and-ownership.html">Fear not the Rust Borrow Checker</a></li>
+<li>There no null pointers in Rust! Why? Watch &quot;Null References: The
+Billion Dollar Mistake&quot; from Tony Hoare
+<a href="https://www.infoq.com/presentations/Null-References-The-Billion-Dollar-Mistake-Tony-Hoare/">https://www.infoq.com/presentations/Null-References-The-Billion-Dollar-Mistake-Tony-Hoare/</a></li>
+<li>Some more readings for the brave: &quot;What Every Programmer Should Know
+About Memory&quot; by Ulrich Drepper from Red Hat
+<a href="https://people.freebsd.org/%7Elstewart/articles/cpumemory.pdf">https://people.freebsd.org/~lstewart/articles/cpumemory.pdf</a></li>
+<li><a href="http://www.squidarth.com/rc/rust/2018/05/31/rust-borrowing-and-ownership.html">Fear not the Rust Borrow
+Checker</a></li>
+<li><a href="https://www.sublimetext.com/blog/articles/use-mmap-with-care">https://www.sublimetext.com/blog/articles/use-mmap-with-care</a></li>
 </ul>
 <h2><a class="header" href="#homework-due-to-next-session" id="homework-due-to-next-session">Homework due to next session</a></h2>
 <p>You have to recode a small pipe-like program, working like this:</p>
 <pre><code>$ mypipe --in fortune --out cowsay
-</code></pre>
-<pre><code> _______________________________________
+
+ _______________________________________
 / Q: What's tiny and yellow and very,   \
 | very, dangerous? A: A canary with the |
 \ super-user password.                  /
@@ -361,10 +542,19 @@ int main(void) {
                   ||----w |
                   ||     ||
 </code></pre>
-<p>You can use <a href="https://clap.rs">https://clap.rs</a> to parse the command-line arguments, and also follow the guide <a href="https://rust-lang-nursery.github.io/cli-wg/">https://rust-lang-nursery.github.io/cli-wg/</a></p>
-<p>Upload your code by doing a PR here: <a href="https://github.com/yvan-sraka/mypipe">https://github.com/yvan-sraka/mypipe</a></p>
+<p>You can use <a href="https://clap.rs">https://clap.rs</a> to parse the command-line arguments, and
+also follow the guide <a href="https://rust-lang-nursery.github.io/cli-wg/">https://rust-lang-nursery.github.io/cli-wg/</a></p>
+<p>Upload your code by doing a PR here:
+<a href="https://github.com/yvan-sraka/mypipe">https://github.com/yvan-sraka/mypipe</a></p>
 <h2><a class="header" href="#big-project" id="big-project">Big Project</a></h2>
-<p>I will present during the next class the final project on which you will be evaluated. You're free to come with your idea of an alternative project if you have already in mind something that you want to code in Rust. I will accept any idea that could be reasonably doable by a group of 3 or 4 students (chosen randomly), that implies features specific to systems or networks programming (think about playing with binary encoding, intense computing with concurrent programming, low-level binding with another library or just any funny syscalls, etc…)!</p>
+<p>I will present during the next class the final project on which you will
+be evaluated. You're free to come with your idea of an alternative
+project if you have already in mind something that you want to code in
+Rust. I will accept any idea that could be reasonably doable by a group
+of 3 or 4 students (chosen randomly), that implies features specific to
+systems or networks programming (think about playing with binary
+encoding, intense computing with concurrent programming, low-level
+binding with another library or just any funny syscalls, etc...)!</p>
 <p>Cheers, Yvan</p>
 <!--
 
@@ -396,7 +586,7 @@ fn main() -> io::Result<()> {
     Ok(())
 }
 ```
-**RAPPEL:** règle d'or de Rust -> il ne peut pas avoir à la fois de l'aliasing ET de la mutabilité!
+**RAPPEL:** règle d'or de Rust ⇨ il ne peut pas avoir à la fois de l'aliasing ET de la mutabilité!
 
 ```rust
 #[derive(Debug)]
@@ -441,7 +631,7 @@ fn main() {
 
 Pour ceux qui exécutent une machine Windows, je recommande vivement l'installation d'un WSL (Sous-système Windows pour Linux) <https://docs.microsoft.com/en-us/windows/wsl/install-win10>
 
-et de l'extension VSCode qui va bien <https://code.visualstudio.com/remote-tutorials/wsl/run-in-wsl> qui vous permet d'exécuter la commande `code` à distance dans un shell bash.exe!
+et de l'extension VSCode qui va bien <https://code.visualstudio.com/remote-tutorials/wsl/run-in-wsl> qui vous permet d'exécuter la commande `code` à distance dans un shell `bash.exe`!
 
 (et, bien sûr, d'avoir un environnement de développement Rust fonctionnel avec RLS activé <https://github.com/rust-lang/rls>)
 
@@ -475,7 +665,7 @@ int main(void) {
 
 Essayez de créer un petit programme en C qui crée une fuite de mémoire (comme une boucle qui « malloc » mais qui ne « free » jamais) et ouvrez-le dans Valgrind, traduisez le programme en Rust et refaites le test.
 
-Savez-vous que la pile d'un programme a une taille fixe dans l'espace mémoire ? Que se passe-t-il lorsque vous dépassez l'espace disponible avec trop d'appels de fonction ? -> « stack overflow » !
+Savez-vous que la pile d'un programme a une taille fixe dans l'espace mémoire ? Que se passe-t-il lorsque vous dépassez l'espace disponible avec trop d'appels de fonction ? ⇨ « stack overflow » !
 
 Vous pouvez regarder cette implémentation malloc minimaliste, basé sur l'appel système mmap (lisez son manuel) pour allouer des pages de mémoire : <https://github.com/yvan-sraka/malloc>
 
@@ -484,6 +674,7 @@ Quelques liens supplémentaires pour nourrir votre curiosité (en bonus, non obl
 - Il n'y a pas de pointeurs « null » dans Rust! Pourquoi? Regardez "Null References: The Billion Dollar Mistake" de Tony Hoare <https://www.infoq.com/presentations/Null-References-The-Billion-Dollar-Mistake-Tony-Hoare/>
 - Quelques lectures supplémentaires pour les plus courageux: "What Every Programmer Should Know About Memory" de Ulrich Drepper chez Red Hat <https://people.freebsd.org/~lstewart/articles/cpumemory.pdf>
 - [Fear not the Rust Borrow Checker](http://www.squidarth.com/rc/rust/2018/05/31/rust-borrowing-and-ownership.html)
+- <https://www.sublimetext.com/blog/articles/use-mmap-with-care>
 
 ## Devoirs maison pour la prochaine session
 
@@ -522,18 +713,19 @@ Amitiés, Yvan
 Again, a too-long email, the french version is behind! -->
 <h2><a class="header" href="#recap-from-the-last-session" id="recap-from-the-last-session">Recap from the last session</a></h2>
 <ul>
-<li>
-<p>Recall previous episode:</p>
+<li>Recall previous episode:
 <ul>
-<li>Rust philosophy &quot;zero-cost abstractions&quot;, play a bit with <code>cargo inspect</code>, <code>cargo fmt</code>, <code>cargo clippy</code></li>
+<li>Rust philosophy &quot;zero-cost abstractions&quot;, play a bit with
+<code>cargo inspect</code>, <code>cargo fmt</code>, <code>cargo clippy</code></li>
 </ul>
 </li>
-<li>
-<p>Let's talk a bit about POSIX, UNIX, Linux, etc ... and file abstraction</p>
+<li>Let's talk a bit about POSIX, UNIX, Linux, etc ... and file
+abstraction
 <ul>
 <li>Named pipe example: <code>mkfifo</code> (to send a synchronous message)</li>
-<li>What about serialization? Do you know protocol buffer? <a href="https://developers.google.com/protocol-buffers">https://developers.google.com/protocol-buffers</a>
-(SPOILER: shared memory is better) <a href="https://capnproto.org">https://capnproto.org</a></li>
+<li>What about serialization? Do you know protocol buffer?
+<a href="https://developers.google.com/protocol-buffers">https://developers.google.com/protocol-buffers</a> (SPOILER:
+shared memory is better) <a href="https://capnproto.org">https://capnproto.org</a></li>
 </ul>
 </li>
 </ul>
@@ -701,14 +893,21 @@ fn main() {
 </code></pre></pre>
 <h2><a class="header" href="#to-go-further" id="to-go-further">To go further</a></h2>
 <ul>
-<li>Learn about File Descriptor <a href="https://en.wikipedia.org/wiki/File_descriptor">https://en.wikipedia.org/wiki/File_descriptor</a></li>
-<li>IOStream Is Hopelessly Broken <a href="https://www.moria.us/articles/iostream-is-hopelessly-broken/">https://www.moria.us/articles/iostream-is-hopelessly-broken/</a></li>
+<li>Learn about File Descriptor
+<a href="https://en.wikipedia.org/wiki/File_descriptor">https://en.wikipedia.org/wiki/File_descriptor</a></li>
+<li>IOStream Is Hopelessly Broken
+<a href="https://www.moria.us/articles/iostream-is-hopelessly-broken/">https://www.moria.us/articles/iostream-is-hopelessly-broken/</a></li>
 <li>Writing an OS in Rust <a href="https://os.phil-opp.com/">https://os.phil-opp.com/</a></li>
-<li>Why is a Rust executable large? <a href="https://lifthrasiir.github.io/rustlog/why-is-a-rust-executable-large.html">https://lifthrasiir.github.io/rustlog/why-is-a-rust-executable-large.html</a></li>
-<li>Smart pointers in Rust <a href="https://doc.rust-lang.org/book/ch15-00-smart-pointers.html">https://doc.rust-lang.org/book/ch15-00-smart-pointers.html</a></li>
-<li>Rust sucks because ... <a href="https://wiki.theory.org/index.php/YourLanguageSucks#Rust_sucks_because">https://wiki.theory.org/index.php/YourLanguageSucks#Rust_sucks_because</a></li>
+<li>Why is a Rust executable large?
+<a href="https://lifthrasiir.github.io/rustlog/why-is-a-rust-executable-large.html">https://lifthrasiir.github.io/rustlog/why-is-a-rust-executable-large.html</a></li>
+<li>Smart pointers in Rust
+<a href="https://doc.rust-lang.org/book/ch15-00-smart-pointers.html">https://doc.rust-lang.org/book/ch15-00-smart-pointers.html</a></li>
+<li>Rust sucks because ...
+<a href="https://wiki.theory.org/index.php/YourLanguageSucks#Rust_sucks_because">https://wiki.theory.org/index.php/YourLanguageSucks#Rust_sucks_because</a></li>
 <li><code>unfork</code> <a href="https://github.com/whitequark/unfork">https://github.com/whitequark/unfork</a></li>
 <li><a href="https://github.com/sebasmagri/rust-concurrency-patterns">https://github.com/sebasmagri/rust-concurrency-patterns</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Inter-process_communication">https://en.wikipedia.org/wiki/Inter-process_communication</a></li>
+<li><a href="https://en.wikipedia.org/wiki/D-Bus">https://en.wikipedia.org/wiki/D-Bus</a></li>
 </ul>
 <h2><a class="header" href="#prepare-the-next-session" id="prepare-the-next-session">Prepare the next session</a></h2>
 <p>Kkeep talking about Unix tools for binaries analysis:</p>
@@ -920,6 +1119,8 @@ En français, vous pouvez lire ce cours d'OS <https://darnuria.eu/2019-2020_os> 
 - Rust est nul parce que ... <https://wiki.theory.org/index.php/YourLanguageSucks#Rust_sucks_because>
 - `unfork` <https://github.com/whitequark/unfork>
 - <https://github.com/sebasmagri/rust-concurrency-patterns>
+- <https://en.wikipedia.org/wiki/Inter-process_communication>
+- <https://en.wikipedia.org/wiki/D-Bus>
 
 ## Pour préparer le prochain cours (parlons d'outils Unix pour l'analyse de binaires)
 
@@ -937,10 +1138,8 @@ Amitiés, Yvan
 
 --><h1><a class="header" href="#ffi-and-unsafe" id="ffi-and-unsafe">FFI and unsafe</a></h1>
 <!-- Hello everyone, -->
+<p><em>Lvl -1, 0, 1 recalls from previous sessions ...</em></p>
 <h2><a class="header" href="#lvl--1-requierements-quick-setup" id="lvl--1-requierements-quick-setup">Lvl -1: Requierements (quick setup)</a></h2>
-<blockquote>
-<p><strong>N.B.</strong> Lvl -1, 0, 1 recalls from previous sessions ...</p>
-</blockquote>
 <p>Have an <strong>up to date rust toolchain</strong>:</p>
 <pre><code>rustup update
 </code></pre>
@@ -950,22 +1149,24 @@ Amitiés, Yvan
 <li><a href="https://learnxinyminutes.com/docs/rust/">https://learnxinyminutes.com/docs/rust/</a></li>
 <li><a href="https://exercism.io/tracks/rust">https://exercism.io/tracks/rust</a></li>
 </ul>
-<p><strong>Tooling</strong>: be sure to have <strong>RLS</strong> (<a href="https://github.com/rust-lang/rls">https://github.com/rust-lang/rls</a>) linting enabled in your editor!</p>
+<p><strong>Tooling</strong>: be sure to have <strong>RLS</strong>
+(<a href="https://github.com/rust-lang/rls">https://github.com/rust-lang/rls</a>) linting enabled in your editor!</p>
 <blockquote>
-<p><strong>N.B.</strong> if you're looking for a cool font with code ligatures: 
+<p><strong>N.B.</strong> if you're looking for a cool font with code ligatures:
 <a href="https://github.com/tonsky/FiraCode">https://github.com/tonsky/FiraCode</a></p>
 </blockquote>
 <h2><a class="header" href="#lvl-0-remind-me-whats-rust-again" id="lvl-0-remind-me-whats-rust-again">Lvl 0: Remind me, what's Rust again?</a></h2>
-<p>Rust is a <strong>compiled language</strong> with a <strong>strong static</strong> algebraic type system.</p>
-<blockquote>
-<p><em>Reminder:</em></p>
+<p>Rust is a <strong>compiled language</strong> with a <strong>strong static</strong> algebraic type
+system.</p>
+<p><strong>Reminder:</strong></p>
 <ul>
-<li>&quot;static&quot; stands for &quot;computed at compiletime&quot;, e.g. <code>macros</code></li>
-<li>&quot;dynamic&quot; stands for &quot;computed at runtime&quot;, e.g. <code>fn</code></li>
+<li>&quot;static&quot; stands for &quot;computed at compiletime&quot;, e.g. <code>macros</code></li>
+<li>&quot;dynamic&quot; stands for &quot;computed at runtime&quot;, e.g. <code>fn</code></li>
 </ul>
-</blockquote>
-<p>The Rust type system contains information about memory (ownership &amp; lifetime).</p>
-<p><strong>Rust rule of thumb:</strong> in safe mode, we can't have aliasing AND mutability!</p>
+<p>The Rust type system contains information about memory (ownership &amp;
+lifetime).</p>
+<p><strong>Rust rule of thumb:</strong> in safe mode, we can't have aliasing AND
+mutability!</p>
 <h3><a class="header" href="#a-quick-borrowing-example" id="a-quick-borrowing-example">A quick borrowing example</a></h3>
 <p>Try to recall that memory is split between:</p>
 <ul>
@@ -995,27 +1196,35 @@ fn main() {
 <h2><a class="header" href="#lvl-1-sort-weel-known-programming-languages" id="lvl-1-sort-weel-known-programming-languages">Lvl 1: Sort weel-known programming languages</a></h2>
 <h3><a class="header" href="#static-typing-compiled-languages" id="static-typing-compiled-languages">Static typing (compiled languages)</a></h3>
 <ul>
-<li><strong>Static memory management (language that compiles to arch-specific binaries)</strong>:
-Rust (type inference is everywhere) | C++ (type inference with keyword <code>auto</code>) | C (no type inference, need to be explicit)</li>
+<li><strong>Static memory management (language that compiles to arch-specific
+binaries)</strong>: Rust (type inference is everywhere) | C++ (type
+inference with keyword <code>auto</code>) | C (no type inference, need to be
+explicit)</li>
 </ul>
 <blockquote>
-<p><strong>N.B.</strong> There are smart pointers (handle at runtime by reference counting) <a href="https://doc.rust-lang.org/book/ch15-00-smart-pointers.html">https://doc.rust-lang.org/book/ch15-00-smart-pointers.html</a></p>
+<p><strong>N.B.</strong> There are smart pointers (handle at runtime by reference
+counting) <a href="https://doc.rust-lang.org/book/ch15-00-smart-pointers.html">https://doc.rust-lang.org/book/ch15-00-smart-pointers.html</a></p>
 </blockquote>
 <ul>
 <li><strong>Dynamic memory management (with garbage collectors)</strong>
 <ul>
 <li>Haskell | OCaml | Go (compile to binaries)</li>
-<li>C# | Java | Scala (compile to &quot;portable&quot; bytecode, needs custom VM to run like JVM and .NET)</li>
+<li>C# | Java | Scala (compile to &quot;portable&quot; bytecode, needs
+custom VM to run like JVM and .NET)</li>
 </ul>
 </li>
 </ul>
 <h3><a class="header" href="#dynamic-typing-interpreted-languages-so-dynamic-memory-management-for-scripting-mainly" id="dynamic-typing-interpreted-languages-so-dynamic-memory-management-for-scripting-mainly">Dynamic typing (interpreted languages, so dynamic memory management, for scripting mainly)</a></h3>
 <ul>
-<li>BourneShell | Python | Prel | Ruby | PHP | ECMAScript (libs of these languages often rely on compiled code)</li>
+<li>BourneShell | Python | Prel | Ruby | PHP | ECMAScript (libs of
+these languages often rely on compiled code)</li>
 </ul>
 <h2><a class="header" href="#lvl-2-what-rustc-do-without-lying-in-the-details" id="lvl-2-what-rustc-do-without-lying-in-the-details">Lvl 2: What <code>rustc</code> do (without lying in the details):</a></h2>
-<p>Rust <code>=&gt;</code> Rust (without macro) <code>=&gt;</code> (module resolution) <code>=&gt;</code> (memory management) MIR <code>=&gt;</code> ... <code>=&gt;</code> LLVM <code>=&gt;</code> linking (static libs) <code>=&gt;</code> Binary</p>
-<p>We can have a taste of Rust without macros with <a href="https://github.com/mre/cargo-inspect">https://github.com/mre/cargo-inspect</a></p>
+<p>Rust ⇨ Rust (without macro) ⇨ (module resolution) ⇨ (memory
+management) MIR ⇨ ... ⇨ LLVM ⇨ linking (static libs) ⇨
+Binary</p>
+<p>We can have a taste of Rust without macros with
+<a href="https://github.com/mre/cargo-inspect">https://github.com/mre/cargo-inspect</a></p>
 <p>We can have a taste of MIR / LLVM / ASM with <a href="https://godbolt.org">https://godbolt.org</a></p>
 <h3><a class="header" href="#inlining-example" id="inlining-example">Inlining example</a></h3>
 <pre><pre class="playpen"><code class="language-rust">
@@ -1041,35 +1250,58 @@ pub fn square(num: i32) -&gt; i32 {
 </li>
 </ul>
 <blockquote>
-<p><strong>N.B.</strong> Binary format for Linux is ELF: <a href="https://en.wikipedia.org/wiki/Executable_and_Linkable_Format">https://en.wikipedia.org/wiki/Executable_and_Linkable_Format</a></p>
+<p><strong>N.B.</strong> Binary format for Linux is ELF:
+<a href="https://en.wikipedia.org/wiki/Executable_and_Linkable_Format">https://en.wikipedia.org/wiki/Executable_and_Linkable_Format</a></p>
 </blockquote>
 <ul>
 <li><strong>Library</strong>
 <ul>
-<li>lib static <code>-&gt;</code> compile time (UNIX <code>.a</code>, Windows <code>.lib</code>)
+<li>lib static ⇨ compile time (UNIX <code>.a</code>, Windows <code>.lib</code>)
 language-dependent &amp; platform-indepedent</li>
-<li>lib dynamic <code>-&gt;</code> runtime (Linux <code>.so</code>, Windows <code>.dll</code>, macOS <code>.dylib</code>)
-language-independent &amp; platform-dependent</li>
+<li>lib dynamic ⇨ runtime (Linux <code>.so</code>, Windows <code>.dll</code>, macOS
+<code>.dylib</code>) language-independent &amp; platform-dependent</li>
 </ul>
 </li>
 </ul>
 <h2><a class="header" href="#lvl-3-foreign-function-interface-ffi" id="lvl-3-foreign-function-interface-ffi">Lvl 3: Foreign Function Interface (FFI)</a></h2>
 <blockquote>
-<p><strong>N.B.</strong> the Book have a good section on the subject <a href="https://doc.rust-lang.org/book/ffi.html">https://doc.rust-lang.org/book/ffi.html</a></p>
+<p><strong>N.B.</strong> the Book have a good section on the subject
+<a href="https://doc.rust-lang.org/book/ffi.html">https://doc.rust-lang.org/book/ffi.html</a></p>
 </blockquote>
 <p>Today we will try to:</p>
 <ul>
-<li>Call a Rust function (compiled as a dynamic library) from a Python script: <a href="https://doc.rust-lang.org/1.5.0/book/rust-inside-other-languages.html">https://doc.rust-lang.org/1.5.0/book/rust-inside-other-languages.html</a></li>
-<li>Call a C function (compiled as a static library) from a Rust code: <a href="https://rust-embedded.github.io/book/interoperability/c-with-rust.html">https://rust-embedded.github.io/book/interoperability/c-with-rust.html</a></li>
+<li>Call a Rust function (compiled as a dynamic library) from a Python
+script:
+<a href="https://doc.rust-lang.org/1.5.0/book/rust-inside-other-languages.html">https://doc.rust-lang.org/1.5.0/book/rust-inside-other-languages.html</a></li>
+<li>Call a C function (compiled as a static library) from a Rust code:
+<a href="https://rust-embedded.github.io/book/interoperability/c-with-rust.html">https://rust-embedded.github.io/book/interoperability/c-with-rust.html</a></li>
 </ul>
-<p>This <a href="https://stackoverflow.com/questions/43826572/where-should-i-place-a-static-library-so-i-can-link-it-with-a-rust-program">https://stackoverflow.com/questions/43826572/where-should-i-place-a-static-library-so-i-can-link-it-with-a-rust-program</a> will help since we have to set up <a href="https://doc.rust-lang.org/cargo/reference/manifest.html#package-build">https://doc.rust-lang.org/cargo/reference/manifest.html#package-build</a> to tell <code>cargo</code> where our static lib is!</p>
-<p><strong>Here is our final code <a href="https://github.com/yvan-sraka/rust-ffi-demo">https://github.com/yvan-sraka/rust-ffi-demo</a> :)</strong></p>
+<p>This
+<a href="https://stackoverflow.com/questions/43826572/where-should-i-place-a-static-library-so-i-can-link-it-with-a-rust-program">https://stackoverflow.com/questions/43826572/where-should-i-place-a-static-library-so-i-can-link-it-with-a-rust-program</a>
+will help since we have to set up
+<a href="https://doc.rust-lang.org/cargo/reference/manifest.html#package-build">https://doc.rust-lang.org/cargo/reference/manifest.html#package-build</a>
+to tell <code>cargo</code> where our static lib is!</p>
+<blockquote>
+<p><strong>N.B.</strong> <a href="https://doc.rust-lang.org/std/ffi/struct.CStr.html">https://doc.rust-lang.org/std/ffi/struct.CStr.html</a></p>
+</blockquote>
+<p><strong>Here is our final code <a href="https://github.com/yvan-sraka/rust-ffi-demo">https://github.com/yvan-sraka/rust-ffi-demo</a>
+:)</strong></p>
+<h3><a class="header" href="#lvl-4-unsafe" id="lvl-4-unsafe">Lvl 4: Unsafe</a></h3>
+<p><img src="https://doc.rust-lang.org/nomicon/img/safeandunsafe.svg" alt="" /></p>
+<p>Rust has different rules in unsafe mode, closest to what you know in C,
+learn more about in the dedicated guide:
+<a href="https://doc.rust-lang.org/nomicon/index.html">https://doc.rust-lang.org/nomicon/index.html</a></p>
+<p>And we try here to reduce <code>unsafe</code> bloc to the strict minimum (extern
+calls to a C lib).</p>
 <p>Cheers, Yvan</p>
 <h1><a class="header" href="#sockets-and-http" id="sockets-and-http">Sockets and HTTP</a></h1>
 <!-- Hello everyone, -->
 <h2><a class="header" href="#lvl-0---hello-world" id="lvl-0---hello-world">Lvl 0 - Hello World!</a></h2>
-<p>Today we will play with something fun, sockets:</p>
-<p>Use <code>tokio</code>: <a href="https://github.com/tokio-rs/tokio">https://github.com/tokio-rs/tokio</a> to create a small Rust program <code>alice</code> that asynchronously wait and print a message sent by a program <code>bob</code> using the standard library.</p>
+<p>Today we will play with something fun,
+<a href="https://en.wikipedia.org/wiki/Network_socket">sockets</a>:</p>
+<p>Use <code>tokio</code>: <a href="https://github.com/tokio-rs/tokio">https://github.com/tokio-rs/tokio</a> to create a small Rust
+program <code>alice</code> that asynchronously wait and print a message sent by a
+program <code>bob</code> using the standard library.</p>
 <pre><code class="language-toml">[dependencies]
 tokio = { version = &quot;0.2&quot;, features = [&quot;full&quot;] }
 futures = &quot;0.3&quot;
@@ -1138,9 +1370,11 @@ async fn main() {
 }
 </code></pre></pre>
 <blockquote>
-<p><strong>N.B.</strong> we can use https://ngrok.com/docs or a VPN to test this code over network meanwhile social distancing ...</p>
+<p><strong>N.B.</strong> we can use https://ngrok.com/docs or a VPN to test this code
+over network meanwhile social distancing ...</p>
 </blockquote>
-<p>Learn more about <code>async</code>: <a href="https://areweasyncyet.rs">https://areweasyncyet.rs</a> (you can use <code>futures</code>, <code>mio</code> or <code>async-std</code>)</p>
+<p>Learn more about <code>async</code>: <a href="https://areweasyncyet.rs">https://areweasyncyet.rs</a> (you can use
+<code>futures</code>, <code>mio</code> or <code>async-std</code>)</p>
 <pre><pre class="playpen"><code class="language-rust">use futures::executor::block_on;
 
 type Song = String;
@@ -1186,7 +1420,10 @@ fn main() {
 }
 </code></pre></pre>
 <h2><a class="header" href="#lvl-1---http-server" id="lvl-1---http-server">Lvl 1 - HTTP server</a></h2>
-<p>Create a simple HTTP server using <a href="https://hyper.rs">https://hyper.rs</a>, that display a fancy &quot;It's works!&quot; message in your favorite browser on <a href="http://127.0.0.1:8080">http://127.0.0.1:8080</a> like shown in <a href="https://rust-lang.github.io/async-book/01_getting_started/05_http_server_example.html">https://rust-lang.github.io/async-book/01_getting_started/05_http_server_example.html</a></p>
+<p>Create a simple HTTP server using <a href="https://hyper.rs">https://hyper.rs</a>, that display a
+fancy &quot;It's works!&quot; message in your favorite browser on
+<a href="http://127.0.0.1:8080">http://127.0.0.1:8080</a> like shown in
+<a href="https://rust-lang.github.io/async-book/01_getting_started/05_http_server_example.html">https://rust-lang.github.io/async-book/01_getting_started/05_http_server_example.html</a></p>
 <pre><code class="language-toml">[dependencies]
 # Hyper is an asynchronous HTTP library. We'll use it to power our HTTP
 # server and to make HTTP requests.
@@ -1224,11 +1461,15 @@ async fn main() {
 }
 </code></pre></pre>
 <blockquote>
-<p><strong>N.B.</strong> for stuffs that never fail<a href="https://doc.rust-lang.org/std/convert/enum.Infallible.html">https://doc.rust-lang.org/std/convert/enum.Infallible.html</a></p>
+<p><strong>N.B.</strong> for stuffs that never
+fail<a href="https://doc.rust-lang.org/std/convert/enum.Infallible.html">https://doc.rust-lang.org/std/convert/enum.Infallible.html</a></p>
 </blockquote>
 <p>There is plenty of alternatives here too: <a href="https://www.arewewebyet.org">https://www.arewewebyet.org</a></p>
 <h2><a class="header" href="#lvl-2---api-request" id="lvl-2---api-request">Lvl 2 - API Request</a></h2>
-<p>Using <a href="https://docs.rs/reqwest">https://docs.rs/reqwest</a> play with some external API, like Giphy one: <a href="https://developers.giphy.com/docs/api/endpoint#random">https://developers.giphy.com/docs/api/endpoint#random</a> and create a small command-line program that takes a parameter and save the GIF image on your computer!</p>
+<p>Using <a href="https://docs.rs/reqwest">https://docs.rs/reqwest</a> play with some external API, like Giphy
+one: <a href="https://developers.giphy.com/docs/api/endpoint#random">https://developers.giphy.com/docs/api/endpoint#random</a> and create
+a small command-line program that takes a parameter and save the GIF
+image on your computer!</p>
 <pre><code class="language-toml">[dependencies]
 reqwest = { version = &quot;0.10&quot;, features = [&quot;blocking&quot;] }
 </code></pre>
@@ -1245,18 +1486,30 @@ fn main() -&gt; Result&lt;(), Box&lt;dyn std::error::Error&gt;&gt; {
 }
 </code></pre></pre>
 <blockquote>
-<p><strong>N.B.</strong> I use <a href="https://doc.rust-lang.org/book/ch12-05-working-with-environment-variables.html">https://doc.rust-lang.org/book/ch12-05-working-with-environment-variables.html</a> to not write my secret <code>GIPHY_API_KEY</code> in code!</p>
+<p><strong>N.B.</strong> I use
+<a href="https://doc.rust-lang.org/book/ch12-05-working-with-environment-variables.html">https://doc.rust-lang.org/book/ch12-05-working-with-environment-variables.html</a>
+to not write my secret <code>GIPHY_API_KEY</code> in code!</p>
 </blockquote>
 <h2><a class="header" href="#lvl----bonus" id="lvl----bonus">Lvl ? - Bonus</a></h2>
-<p>Want to play with some &quot;real&quot; web framework, you can try <a href="https://gotham.rs">https://gotham.rs</a> (or <a href="http://nickel-org.github.io">http://nickel-org.github.io</a>)!</p>
-<p>There is also a cool static site generator (<a href="https://cobalt-org.github.io">https://cobalt-org.github.io</a>) or ORM (<a href="https://diesel.rs">https://diesel.rs</a>), and here is a bunch of supplementary resources, if you're interested in doing <em>web</em> stuff in Rust: </p>
+<p>Want to play with some &quot;real&quot; web framework, you can try
+<a href="https://gotham.rs">https://gotham.rs</a> (or <a href="http://nickel-org.github.io">http://nickel-org.github.io</a>)!</p>
+<p>There is also a cool static site generator
+(<a href="https://cobalt-org.github.io">https://cobalt-org.github.io</a>) or ORM (<a href="https://diesel.rs">https://diesel.rs</a>), and here
+is a bunch of supplementary resources, if you're interested in doing
+<em>web</em> stuff in Rust:</p>
 <ul>
-<li><a href="https://github.com/flosse/rust-web-framework-comparison">Rust web framework comparison</a></li>
-<li><a href="https://stevezeidner.com/blog/rust-actix-api/">A small Rust API with Actix</a></li>
-<li><a href="https://danielwelch.github.io/rust-web-service.html">Writing a Simple Web Service in Rust</a></li>
-<li><a href="https://gill.net.in/posts/auth-microservice-rust-actix-web-diesel-complete-tutorial-part-1/">Auth Web Microservice with rust using Actix-Web</a></li>
-<li><a href="https://github.com/saschagrunert/webapp.rs">A web application completely written in Rust</a></li>
-<li><a href="https://brandur.org/rust-web">Touring a Fast, Safe, and Complete(ish) Web Service in Rust</a></li>
+<li><a href="https://github.com/flosse/rust-web-framework-comparison">Rust web framework
+comparison</a></li>
+<li><a href="https://stevezeidner.com/blog/rust-actix-api/">A small Rust API with
+Actix</a></li>
+<li><a href="https://danielwelch.github.io/rust-web-service.html">Writing a Simple Web Service in
+Rust</a></li>
+<li><a href="https://gill.net.in/posts/auth-microservice-rust-actix-web-diesel-complete-tutorial-part-1/">Auth Web Microservice with rust using
+Actix-Web</a></li>
+<li><a href="https://github.com/saschagrunert/webapp.rs">A web application completely written in
+Rust</a></li>
+<li><a href="https://brandur.org/rust-web">Touring a Fast, Safe, and Complete(ish) Web Service in
+Rust</a></li>
 </ul>
 <h2><a class="header" href="#to-go-further--are-we-yet" id="to-go-further--are-we-yet">To go further .. are we yet?</a></h2>
 <ul>
@@ -1516,13 +1769,19 @@ Amitiés, Yvan
 <li>Languages &quot;for machines&quot; (VMs) : WebAssembly (<code>.wasm</code>)</li>
 </ul>
 <blockquote>
-<p>Yuck! <em>&quot;transpilation&quot;</em> ... JavaScript (ES2020) <em>turn by Babel magic into</em> JavaScript (ES3 compatible)</p>
+<p>Yuck! <em>&quot;transpilation&quot;</em> ... JavaScript (ES2020) <em>turn by Babel magic
+into</em> JavaScript (ES3 compatible)</p>
 </blockquote>
-<p>WebAssembly: <code>wasmtime</code> (sandboxing) work with <strong>WASI</strong>: the WebAssembly System Interface</p>
+<p>WebAssembly is an <a href="https://en.wikipedia.org/wiki/S-expression">S-expression
+language</a> that run in modern
+browser or in <code>wasmtime</code> (sandboxing) that work with <strong>WASI</strong>: the
+WebAssembly System Interface</p>
 <h2><a class="header" href="#lvl-0" id="lvl-0">Lvl 0</a></h2>
 <ul>
-<li>Install <code>wasm-pack</code> (to compile your Rust lib in <code>.wasm</code> and more) <a href="https://rustwasm.github.io/docs/wasm-pack/">https://rustwasm.github.io/docs/wasm-pack/</a></li>
-<li>Install <code>wasmtime</code> (to run a <code>.wasm</code> binary program, or <code>.wat</code> text format) <a href="https://wasmtime.dev">https://wasmtime.dev</a></li>
+<li>Install <code>wasm-pack</code> (to compile your Rust lib in <code>.wasm</code> and more)
+<a href="https://rustwasm.github.io/docs/wasm-pack/">https://rustwasm.github.io/docs/wasm-pack/</a></li>
+<li>Install <code>wasmtime</code> (to run a <code>.wasm</code> binary program, or <code>.wat</code> text
+format) <a href="https://wasmtime.dev">https://wasmtime.dev</a></li>
 </ul>
 <pre><code class="language-shell">$ cargo new hello-world
 $ cd hello-world
@@ -1538,8 +1797,9 @@ Hello, world!
 </ul>
 <p>Or try an alternative runtime <a href="https://wasmer.io">https://wasmer.io</a></p>
 <h2><a class="header" href="#lvl-1" id="lvl-1">Lvl 1</a></h2>
-<p>We write a small program that turns Markdown (<a href="https://commonmark.org">https://commonmark.org</a>) into HTML as describe in the video <a href="https://youtu.be/Qn_4F3foB3Q">https://youtu.be/Qn_4F3foB3Q</a></p>
-<p>We need to add few dependencies </p>
+<p>We write a small program that turns Markdown (<a href="https://commonmark.org">https://commonmark.org</a>)
+into HTML as describe in the video <a href="https://youtu.be/Qn_4F3foB3Q">https://youtu.be/Qn_4F3foB3Q</a></p>
+<p>We need to add few dependencies</p>
 <ul>
 <li><a href="https://crates.io/crates/pulldown-cmark">https://crates.io/crates/pulldown-cmark</a></li>
 <li><a href="https://docs.rs/wasm-bindgen/">https://docs.rs/wasm-bindgen/</a></li>
@@ -1611,24 +1871,30 @@ pub fn render(markdown_input: &amp;str) -&gt; String {
 <li><a href="https://rustwasm.github.io/docs/wasm-bindgen/examples/dom.html">https://rustwasm.github.io/docs/wasm-bindgen/examples/dom.html</a></li>
 <li><a href="https://rustwasm.github.io/docs/wasm-pack/tutorials/hybrid-applications-with-webpack/using-your-library.html">https://rustwasm.github.io/docs/wasm-pack/tutorials/hybrid-applications-with-webpack/using-your-library.html</a></li>
 </ul>
-<p>The result is here: <a href="https://github.com/yvan-sraka/markdown-viewer/blob/master/src/lib.rs">https://github.com/yvan-sraka/markdown-viewer/blob/master/src/lib.rs</a></p>
+<p>The result is here:
+<a href="https://github.com/yvan-sraka/markdown-viewer/blob/master/src/lib.rs">https://github.com/yvan-sraka/markdown-viewer/blob/master/src/lib.rs</a></p>
 <h2><a class="header" href="#lvl-3" id="lvl-3">Lvl 3</a></h2>
 <p>Writing a Brainfuck Interpreter in Rust (and WebAssembly):</p>
 <ul>
-<li>Article <a href="https://dev.to/shritesh/writing-a-brainfuck-interpreter-in-rust-and-webassembly-13f">https://dev.to/shritesh/writing-a-brainfuck-interpreter-in-rust-and-webassembly-13f</a></li>
+<li>Article
+<a href="https://dev.to/shritesh/writing-a-brainfuck-interpreter-in-rust-and-webassembly-13f">https://dev.to/shritesh/writing-a-brainfuck-interpreter-in-rust-and-webassembly-13f</a></li>
 <li>Demo <a href="https://shritesh.github.io/brainfuck-rs-wasm">https://shritesh.github.io/brainfuck-rs-wasm</a></li>
 <li>Code <a href="https://github.com/shritesh/brainfuck-rs-wasm">https://github.com/shritesh/brainfuck-rs-wasm</a></li>
 </ul>
 <h2><a class="header" href="#lvl-4" id="lvl-4">Lvl 4</a></h2>
-<p>There is an awesome Tutorial &quot;Conway's Game of Life&quot; on the official guide:</p>
+<p>There is an awesome Tutorial &quot;Conway's Game of Life&quot; on the official
+guide:</p>
 <ul>
 <li><a href="https://rustwasm.github.io/docs/book/">https://rustwasm.github.io/docs/book/</a></li>
 <li><a href="https://xkcd.com/2293/">https://xkcd.com/2293/</a></li>
 </ul>
 <h2><a class="header" href="#to-go-further-1" id="to-go-further-1">To go further</a></h2>
-<p>Binary Toolkit (useful for debugging): <a href="https://github.com/WebAssembly/wabt">https://github.com/WebAssembly/wabt</a></p>
-<p>Play also with <a href="https://github.com/WebAssembly/binaryen">https://github.com/WebAssembly/binaryen</a></p>
-<p>Mozilla Hacks cool tech blog <a href="https://hacks.mozilla.org/category/webassembly/">https://hacks.mozilla.org/category/webassembly/</a></p>
+<p>Binary Toolkit (useful for debugging):
+<a href="https://github.com/WebAssembly/wabt">https://github.com/WebAssembly/wabt</a></p>
+<p>Play also with <a href="https://github.com/WebAssembly/binaryen">https://github.com/WebAssembly/binaryen</a> and
+<a href="https://www.npmjs.com/package/rust-wasm-loader">https://www.npmjs.com/package/rust-wasm-loader</a></p>
+<p>Mozilla Hacks cool tech blog
+<a href="https://hacks.mozilla.org/category/webassembly/">https://hacks.mozilla.org/category/webassembly/</a>:</p>
 <ul>
 <li><a href="https://hacks.mozilla.org/2019/08/webassembly-interface-types/">https://hacks.mozilla.org/2019/08/webassembly-interface-types/</a></li>
 <li><a href="https://hacks.mozilla.org/2019/11/multi-value-all-the-wasm/">https://hacks.mozilla.org/2019/11/multi-value-all-the-wasm/</a></li>
@@ -1636,9 +1902,16 @@ pub fn render(markdown_input: &amp;str) -&gt; String {
 <li><a href="https://hacks.mozilla.org/2018/04/hello-wasm-pack/">https://hacks.mozilla.org/2018/04/hello-wasm-pack/</a></li>
 <li><a href="https://hacks.mozilla.org/2017/02/a-cartoon-intro-to-webassembly/">https://hacks.mozilla.org/2017/02/a-cartoon-intro-to-webassembly/</a></li>
 </ul>
+<p>Web UI Frameworks based on WebAssembly:</p>
+<ul>
+<li><a href="https://github.com/hecrj/iced">https://github.com/hecrj/iced</a></li>
+<li><a href="https://yew.rs/docs/getting-started/project-setup">https://yew.rs/docs/getting-started/project-setup</a></li>
+<li><a href="https://github.com/gabisurita/fullstack-rust">https://github.com/gabisurita/fullstack-rust</a></li>
+</ul>
 <p>Another way to solve <em>&quot; the JavaScript issue &quot;</em>:</p>
 <ul>
-<li><strong>BinAST</strong> <a href="https://github.com/tc39/proposal-binary-ast/">https://github.com/tc39/proposal-binary-ast/</a> &amp; <a href="https://github.com/binast">https://github.com/binast</a></li>
+<li><strong>BinAST</strong> <a href="https://github.com/tc39/proposal-binary-ast/">https://github.com/tc39/proposal-binary-ast/</a> &amp;
+<a href="https://github.com/binast">https://github.com/binast</a></li>
 <li><strong>Prepack</strong> <a href="https://prepack.io/">https://prepack.io/</a></li>
 </ul>
 <p>Can we compile JS to WASM?</p>
@@ -1656,12 +1929,234 @@ pub fn render(markdown_input: &amp;str) -&gt; String {
 <li><a href="https://servo.org/">https://servo.org/</a></li>
 <li><a href="https://webkit.org">https://webkit.org</a></li>
 </ul>
-<p>Happy COVID-19 quarantine, <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">no easter eggs</a> this year ...</p>
+<p>Happy COVID-19 quarantine, <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">no easter
+eggs</a> this year ...</p>
 <p>Best, Yvan</p>
+<h1><a class="header" href="#fast-safe-and-beyond" id="fast-safe-and-beyond">Fast, safe and beyond</a></h1>
+<!-- Hello everyone, -->
+<h2><a class="header" href="#we-want-fast-programs" id="we-want-fast-programs">We want FAST programs</a></h2>
+<p>We have several ways to achieve speed, sorted by most simple/efficient
+to more advanced/fine tuned one</p>
+<ul>
+<li>algorithms (e.g. memoization)</li>
+</ul>
+<pre><code class="language-python">#! /usr/bin/env python3
+
+&quot;&quot;&quot;
+# How to write an homemade @functools.lru_cache
+
+def memoize(func):
+    magic = {}
+    def func_wrapper(n):
+        if n not in magic:
+            magic[n] = func(n)
+        return magic[n]
+    return func_wrapper
+&quot;&quot;&quot;
+
+import functools
+
+@functools.lru_cache(maxsize = 3)
+def fibo(n):
+    if n &lt; 2:
+        return 1
+    else:
+        return fibo(n - 1) + fibo(n - 2)
+
+for i in range(100):
+    print(&quot;fibo(%s) = %s&quot; % (i, fibo(i)))
+</code></pre>
+<ul>
+<li>
+<p>reduce syscall (visualize with <code>strace</code>), IO</p>
+</li>
+<li>
+<p>multi-thread (with rayon crate in Rust, using <code>par_iter</code>)</p>
+</li>
+<li>
+<p>locality <em>to prevent cache invalidation by making a jump into your
+program memory</em></p>
+<ol>
+<li>avoid ptr (because deref is slow)</li>
+<li>flatten struct (ex <code>Vec&lt;Pixel&gt;</code> is better than
+<code>Vec&lt;Vec&lt;Pixel&gt;&gt;</code>)</li>
+</ol>
+</li>
+<li>
+<p>efficient serialization:</p>
+<ul>
+<li><a href="https://github.com/serde-rs/serde">https://github.com/serde-rs/serde</a></li>
+<li><a href="https://github.com/google/flatbuffers">https://github.com/google/flatbuffers</a></li>
+</ul>
+</li>
+<li>
+<p>recursivity: make it terminal or replace by stack struct provide by
+stdlib</p>
+</li>
+</ul>
+<p>General advice could be to prefer array or other data structure that
+local in memory when we could (instead of, for e.g., of some OOP weird
+structs) ...</p>
+<blockquote>
+<p><strong>N.B.</strong> <em>static</em> struct VS <em>dynamic</em> static:</p>
+<ul>
+<li>static (size known at compiletime) ⇨ stack, ex: <code>&amp;str</code> or <code>&amp;[]</code></li>
+<li>dynamic (size unknow at compiletime) ⇨ heap, ex: <code>String</code> or <code>Vec</code>
+(size can change at runtime or also when size is not know at
+compile-time but will not change after creating the array
+<a href="https://doc.rust-lang.org/std/primitive.array.html">https://doc.rust-lang.org/std/primitive.array.html</a>)</li>
+</ul>
+</blockquote>
+<pre><pre class="playpen"><code class="language-rust">fn max_top3(top: &amp;[u8; 3]) -&gt; u8 {
+    if top[0] &gt; top[1] {
+        if top[0] &gt; top[2] top[0] else top[2]
+    } else {
+        if top[1] &gt; top[2] top[1] else top[2]
+    }
+}
+
+// https://doc.rust-lang.org/std/primitive.array.html
+
+fn main() {
+    let mut array: [u8; 3] = [23, 10, 50];
+    array[2] = 12;
+    // println!(&quot;{}&quot;, max_top3(&amp;array));
+    for elem in array.iter() {
+        println!(&quot;{}&quot;, elem);
+    }
+}
+</code></pre></pre>
+<h3><a class="header" href="#exercice" id="exercice">Exercice</a></h3>
+<p>The following script is quite sloooooow:</p>
+<pre><code class="language-python">#! /usr/bin/env python3
+import os, sys
+paths = []
+for arg in sys.argv:
+    for path, subdirs, files in os.walk(arg):
+        for name in files:
+            paths.append(os.path.join(path, name))
+hashcat = &quot;&quot;
+for f in sorted(paths):
+    hashcat += os.popen(&quot;md5sum %s&quot; % f).read().split()[0]
+os.system(&quot;echo \&quot;%s\&quot; | md5sum&quot; % hashcat)
+</code></pre>
+<p>Your mission is to improve it (recode it in Rust could be a first step
+but that not the main point here)...</p>
+<p>You should submit your solution by making a Pull-Request to
+<a href="https://github.com/yvan-sraka/md5sumsum">https://github.com/yvan-sraka/md5sumsum</a></p>
+<blockquote>
+<p><strong>Hint</strong>: create a process is slow ... and even slower when you
+involve the shell to run a command (I will not talk here about also
+the potential security issue of doing that, but you can take a look at
+<a href="https://gtfobins.github.io">https://gtfobins.github.io</a> if you're curious)</p>
+</blockquote>
+<h3><a class="header" href="#tooling" id="tooling">Tooling</a></h3>
+<p>To improve the speed of our program, we must understand a bit what's
+happen at compile and runtime, here some tools:</p>
+<ul>
+<li><a href="https://github.com/RazrFalcon/cargo-bloat">https://github.com/RazrFalcon/cargo-bloat</a></li>
+<li><a href="https://github.com/dtolnay/cargo-expand">https://github.com/dtolnay/cargo-expand</a></li>
+<li><a href="https://github.com/gnzlbg/cargo-asm">https://github.com/gnzlbg/cargo-asm</a></li>
+</ul>
+<p>... on macOS <a href="https://github.com/cmyr/cargo-instruments">https://github.com/cmyr/cargo-instruments</a></p>
+<p>... and to replay a program execution in GDB <a href="https://rr-project.org/">https://rr-project.org/</a>
+:)</p>
+<h3><a class="header" href="#to-go-further-2" id="to-go-further-2">To go further</a></h3>
+<ul>
+<li><a href="https://gist.github.com/kvark/f067ba974446f7c5ce5bd544fe370186">Achieving warp speed with
+Rust</a></li>
+<li><a href="https://fitzgeraldnick.com/2018/02/26/speed-without-wizardry.html">https://fitzgeraldnick.com/2018/02/26/speed-without-wizardry.html</a></li>
+</ul>
+<h2><a class="header" href="#we-want-safe-programs" id="we-want-safe-programs">We want SAFE programs</a></h2>
+<p>Rust gives us some nice guaranty in safe mode, we know are program are:</p>
+<ul>
+<li>Memory-safe</li>
+<li>Thread-safe</li>
+</ul>
+<p>But if we want to spot some known security issues (in dependencies) we
+would great <a href="https://github.com/RustSec/cargo-audit">https://github.com/RustSec/cargo-audit</a></p>
+<p>We can also supercharge our program with good test suites
+<a href="https://gitlab.com/tdiekmann/safety-guard">https://gitlab.com/tdiekmann/safety-guard</a></p>
+<p>And if we have C code, rewrite it in Rust <a href="https://c2rust.com">https://c2rust.com</a> :D</p>
+<h3><a class="header" href="#static-analysis-at-compiletime" id="static-analysis-at-compiletime">Static analysis (at compiletime)</a></h3>
+<p>There are some nice tools (and theory behind in the realm of abstract
+interpretation) to spot an error that compiler does not detect by
+default (for now
+<a href="https://developers.redhat.com/blog/2020/03/26/static-analysis-in-gcc-10/">https://developers.redhat.com/blog/2020/03/26/static-analysis-in-gcc-10/</a>),
+e.g.:</p>
+<ul>
+<li>int overflow</li>
+<li>divide by 0</li>
+</ul>
+<p>So take a look at:</p>
+<ul>
+<li><a href="https://frama-c.com">https://frama-c.com</a></li>
+<li><a href="https://fbinfer.com">https://fbinfer.com</a></li>
+</ul>
+<p>To go further:</p>
+<ul>
+<li><a href="https://blog.japaric.io/stack-analysis/">https://blog.japaric.io/stack-analysis/</a></li>
+</ul>
+<h3><a class="header" href="#exception-handling-at-runtime" id="exception-handling-at-runtime">Exception handling (at runtime)</a></h3>
+<p>Must have to <code>panic!</code> well:</p>
+<ul>
+<li><a href="https://github.com/rust-cli/human-panic">https://github.com/rust-cli/human-panic</a></li>
+<li><a href="https://docs.rs/failure/0.1.7/failure/index.html">https://docs.rs/failure/0.1.7/failure/index.html</a></li>
+<li><a href="https://github.com/tikv/fail-rs">https://github.com/tikv/fail-rs</a></li>
+</ul>
+<p>Well, also learning recently that, under Windows there are no signals (it is structured exceptions) and under MacOSX there is a richer mechanism which emulates the signals:</p>
+<ul>
+<li>macOS: <a href="https://www.mikeash.com/pyblog/friday-qa-2013-01-11-mach-exception-handlers.html">https://www.mikeash.com/pyblog/friday-qa-2013-01-11-mach-exception-handlers.html</a></li>
+<li>Windows: <a href="https://docs.microsoft.com/en-us/windows/win32/debug/structured-exception-handling">https://docs.microsoft.com/en-us/windows/win32/debug/structured-exception-handling</a></li>
+</ul>
+<p>Google Fuschia is, as always, full of intersting concepts:
+<a href="https://fuchsia.dev/fuchsia-src/concepts/kernel/exceptions">https://fuchsia.dev/fuchsia-src/concepts/kernel/exceptions</a></p>
+<h2><a class="header" href="#and-beyond-" id="and-beyond-">and beyond ...</a></h2>
+<p>I let this here, in place of a general conclusion of the lecture:</p>
+<ul>
+<li><a href="https://gankra.github.io/blah/rust-layouts-and-abis/">Notes on Type Layouts and ABIs in
+Rust</a></li>
+<li><a href="https://github.com/ferrous-systems/elements-of-rust">https://github.com/ferrous-systems/elements-of-rust</a></li>
+</ul>
+<p>To help you in projects:</p>
+<ul>
+<li><a href="https://rust-unofficial.github.io/too-many-lists/">Learn Rust With Entirely Too Many Linked
+Lists</a></li>
+<li><a href="https://rust-lang-nursery.github.io/rust-cookbook/">https://rust-lang-nursery.github.io/rust-cookbook/</a></li>
+<li><a href="https://doc.rust-lang.org/stable/rust-by-example/index.html">https://doc.rust-lang.org/stable/rust-by-example/index.html</a></li>
+<li><a href="https://zsiciarz.github.io/24daysofrust/">https://zsiciarz.github.io/24daysofrust/</a></li>
+</ul>
+<h3><a class="header" href="#some-languages-as-alternative-to-rust-" id="some-languages-as-alternative-to-rust-">some languages as alternative to Rust ...</a></h3>
+<ul>
+<li><a href="https://github.com/vlang/v">https://github.com/vlang/v</a></li>
+<li><a href="https://github.com/zetzit/zz">https://github.com/zetzit/zz</a></li>
+</ul>
+<h3><a class="header" href="#miscellaneous-" id="miscellaneous-">miscellaneous ...</a></h3>
+<p><strong>ML</strong> <em>(Machine Learning)</em> and <strong>RO</strong> <em>(Operational Research)</em>:</p>
+<ul>
+<li><a href="https://github.com/alphaville/optimization-engine">https://github.com/alphaville/optimization-engine</a></li>
+<li><a href="https://paulkernfeld.com/2019/03/17/hmmm.html">https://paulkernfeld.com/2019/03/17/hmmm.html</a></li>
+<li><a href="https://www.lpalmieri.com/posts/2019-03-12-scientific-computing-a-rust-adventure-part-1-zero-cost-abstractions/">https://www.lpalmieri.com/posts/2019-03-12-scientific-computing-a-rust-adventure-part-1-zero-cost-abstractions/</a></li>
+</ul>
+<p><strong>Embedded</strong> softwares and <strong>IoT</strong> <em>(Internet of Things)</em>:</p>
+<ul>
+<li><a href="https://github.com/rust-embedded/awesome-embedded-rust">https://github.com/rust-embedded/awesome-embedded-rust</a></li>
+<li><a href="https://github.com/avr-rust/ruduino">https://github.com/avr-rust/ruduino</a></li>
+<li><a href="https://blog.japaric.io/fearless-concurrency/">https://blog.japaric.io/fearless-concurrency/</a></li>
+<li><a href="https://rust-embedded.github.io/book/">https://rust-embedded.github.io/book/</a></li>
+</ul>
+<p>To go really further:</p>
+<ul>
+<li><a href="https://rfcbot.rs/">https://rfcbot.rs/</a></li>
+<li><a href="https://matematikaadit.github.io/posts/rust-turbofish.html">https://matematikaadit.github.io/posts/rust-turbofish.html</a></li>
+<li><a href="https://rustc-dev-guide.rust-lang.org/about-this-guide.html">https://rustc-dev-guide.rust-lang.org/about-this-guide.html</a></li>
+</ul>
+<p>Cheers, Yvan</p>
 <h1><a class="header" href="#libppm-a-not-so-simple-ppm-image-manipulation-library" id="libppm-a-not-so-simple-ppm-image-manipulation-library"><code>libppm</code>: a not so simple PPM image manipulation library</a></h1>
-<p>Goals: Manipulating IO, Memory, Concurrent programming with threads and exposing Rust function
-through Foreign Function Interface.</p>
-<p>We will use the <a href="https://en.wikipedia.org/wiki/Netpbm_format">Portable Pixel Map</a> in binary format.</p>
+<p>Goals: Manipulating IO, Memory, Concurrent programming with threads and
+exposing Rust function through Foreign Function Interface.</p>
+<p>We will use the <a href="https://en.wikipedia.org/wiki/Netpbm_format">Portable Pixel
+Map</a> in binary format.</p>
 <h2><a class="header" href="#lvl-0---warmup" id="lvl-0---warmup">Lvl 0 - Warmup</a></h2>
 <ul>
 <li>Create a new <code>ppm</code> Rust project as a library</li>
@@ -1671,7 +2166,8 @@ through Foreign Function Interface.</p>
 </ul>
 <h2><a class="header" href="#lvl-1---struct" id="lvl-1---struct">Lvl 1 - Struct</a></h2>
 <ul>
-<li>Create a nice custom Rust data-structure <code>Image</code> to handle 24bits images.</li>
+<li>Create a nice custom Rust data-structure <code>Image</code> to handle 24bits
+images.</li>
 </ul>
 <blockquote>
 <p>Create first a <code>Pixel</code> structure to encode an RGB color.</p>
@@ -1683,39 +2179,52 @@ through Foreign Function Interface.</p>
 <li>8 for blue</li>
 </ul>
 <h3><a class="header" href="#epic-functions-for-an-epic-pixels" id="epic-functions-for-an-epic-pixels">Epic Functions for an Epic <code>Pixels</code></a></h3>
-<p>Because test are nices: Write a test for all the functions <a href="https://doc.rust-lang.org/book/ch11-01-writing-tests.html">doc</a>
-Also, write a doc in rust style <em>Prof! I don't how to write doc!</em> <a href="https://doc.rust-lang.org/rust-by-example/meta/doc.html">short answer</a>; <a href="https://doc.rust-lang.org/1.30.0/book/2018-edition/ch14-02-publishing-to-crates-io.html?highlight=document#making-useful-documentation-comments">long answer</a>
-TL;DR writes how to use the function if it panic says it! make an example in the doc!</p>
+<p>Because test are nices: Write a test for all the functions
+<a href="https://doc.rust-lang.org/book/ch11-01-writing-tests.html">doc</a> Also,
+write a doc in rust style <em>Prof! I don't how to write doc!</em> <a href="https://doc.rust-lang.org/rust-by-example/meta/doc.html">short
+answer</a>; <a href="https://doc.rust-lang.org/1.30.0/book/2018-edition/ch14-02-publishing-to-crates-io.html?highlight=document#making-useful-documentation-comments">long
+answer</a>
+TL;DR writes how to use the function if it panic says it! make an
+example in the doc!</p>
 <p>Warmups functions:</p>
 <ul>
 <li>Write a block <code>impl Pixel</code> for next questions</li>
-<li>(Optional) Write a nice constructor <code>fn new(red: u8, green: u8, blue: u8) -&gt; Self</code></li>
-<li>Derive <code>Clone</code> and <code>Copy</code> because a Pixel is a tiny type who fits in a register.</li>
+<li>(Optional) Write a nice constructor
+<code>fn new(red: u8, green: u8, blue: u8) -&gt; Self</code></li>
+<li>Derive <code>Clone</code> and <code>Copy</code> because a Pixel is a tiny type who fits in
+a register.</li>
 <li>Make a <code>std::fmt::Display</code> trait to render a pixel in terminal</li>
-<li>Carve a function <code>fn invert(&amp;mut self)</code> that inverts a pixel. Advise think <a href="https://doc.rust-lang.org/std/ops/trait.Not.html">bitwise</a><em>!</em> ;)</li>
+<li>Carve a function <code>fn invert(&amp;mut self)</code> that inverts a pixel. Advise
+think <a href="https://doc.rust-lang.org/std/ops/trait.Not.html">bitwise</a><em>!</em>
+;)</li>
 </ul>
 <p>Not so warmup:</p>
 <ul>
 <li>Make a function <code>fn eq(self, other: Pixel) -&gt; bool</code></li>
-<li>Rewrite your code of <code>eq</code> function to implement <code>PartialEq</code> <a href="https://doc.rust-lang.org/std/cmp/trait.Eq.html">Doc PartialEq</a>!</li>
+<li>Rewrite your code of <code>eq</code> function to implement <code>PartialEq</code> <a href="https://doc.rust-lang.org/std/cmp/trait.Eq.html">Doc
+PartialEq</a>!</li>
 </ul>
 <p>Advice: Read the doc again! :)</p>
 <p>Need some engagement:</p>
 <ul>
-<li>Make a function <code>grayscale</code> who convert an RGB pixel to a grayscale pixel</li>
+<li>Make a function <code>grayscale</code> who convert an RGB pixel to a grayscale
+pixel</li>
 </ul>
 <h2><a class="header" href="#lvl-2---image-manipulation" id="lvl-2---image-manipulation">Lvl 2 - Image manipulation</a></h2>
-<p>Write a little <code>struct Image</code> that represents a struct you might need the following fields:</p>
+<p>Write a little <code>struct Image</code> that represents a struct you might need
+the following fields:</p>
 <ul>
 <li><code>Vec&lt;Pixel&gt;</code> to represent the pixels buffer</li>
 <li><code>height</code> with type <code>usize</code></li>
 <li><code>width</code> with type <code>usize</code></li>
 <li>Maybe other fields?</li>
 </ul>
-<p>Now write some function to manipulate images!
-A function <code>fn new_with_file(filename: &amp;Path) -&gt; Image</code> that read in text mode a ppm image you might need to write
-the <code>.ppm</code> file format definition <a href="http://netpbm.sourceforge.net/doc/ppm.html">here</a>.</p>
-<p>Write in an <code>impl Image</code> a function <code>fn save(filename: &amp;Path)</code> who saves your struct into a file.</p>
+<p>Now write some function to manipulate images! A function
+<code>fn new_with_file(filename: &amp;Path) -&gt; Image</code> that read in text mode a
+ppm image you might need to write the <code>.ppm</code> file format definition
+<a href="http://netpbm.sourceforge.net/doc/ppm.html">here</a>.</p>
+<p>Write in an <code>impl Image</code> a function <code>fn save(filename: &amp;Path)</code> who saves
+your struct into a file.</p>
 <p>An example file in text mode looks like:</p>
 <pre><code>P3
 3 2
@@ -1733,28 +2242,36 @@ the <code>.ppm</code> file format definition <a href="http://netpbm.sourceforge.
 0 0 0 # black
 </code></pre>
 <ul>
-<li>Create an <code>invert</code> function that inverts image colors (reuse your code!)</li>
-<li>Create a <code>grayscale</code> function that makes image B&amp;W based on a filter color</li>
+<li>Create an <code>invert</code> function that inverts image colors (reuse your
+code!)</li>
+<li>Create a <code>grayscale</code> function that makes image B&amp;W based on a filter
+color</li>
 </ul>
 <h3><a class="header" href="#buffering" id="buffering">Buffering</a></h3>
-<p>Try to with really big files, improve performances. Maybe this doc pointer can help: <a href="https://doc.rust-lang.org/std/io/trait.BufRead.html">std::io::BufRead</a></p>
+<p>Try to with really big files, improve performances. Maybe this doc
+pointer can help:
+<a href="https://doc.rust-lang.org/std/io/trait.BufRead.html">std::io::BufRead</a></p>
 <blockquote>
 <p><a href="https://mega.nz/#!dQNSyASY!Vk6rM8ZqxpbwvSyRFzHdYVB1Rh8p_6yKTDewtUxVe6Q">Here</a>
 is a big <code>.ppm</code> the file of a Mandelbrot fractal for your tests!</p>
-<p>You may want to open the file in Rust using a buffer to do the reading of the file and
-image operations in parallel <a href="https://doc.rust-lang.org/std/io/trait.Read.html">https://doc.rust-lang.org/std/io/trait.Read.html</a></p>
+<p>You may want to open the file in Rust using a buffer to do the reading
+of the file and image operations in parallel
+<a href="https://doc.rust-lang.org/std/io/trait.Read.html">https://doc.rust-lang.org/std/io/trait.Read.html</a></p>
 <p><code>.ppm</code> file format has a simple syntax specified here:
 <a href="http://netpbm.sourceforge.net/doc/ppm.html">http://netpbm.sourceforge.net/doc/ppm.html</a></p>
-<p>The purpose of this level is to code a custom <code>.ppm</code> reading function in Rust!</p>
+<p>The purpose of this level is to code a custom <code>.ppm</code> reading function
+in Rust!</p>
 </blockquote>
 <h3><a class="header" href="#bonus-binary-edition" id="bonus-binary-edition">Bonus binary edition</a></h3>
 <ul>
-<li>Prepare yourself to read the pixel part in binary mode write an <code>fn new_with_file_bin(Path filename) -&gt; Image</code></li>
+<li>Prepare yourself to read the pixel part in binary mode write an
+<code>fn new_with_file_bin(Path filename) -&gt; Image</code></li>
 </ul>
 <blockquote>
-<p>The whole purpose of this part is to do these computations using several threads,
-and to develop a strategy to find a good compromise on the number of threads to assign
-(e.g. one thread by pixel is maybe a bit too much ...)</p>
+<p>The whole purpose of this part is to do these computations using
+several threads, and to develop a strategy to find a good compromise
+on the number of threads to assign (e.g. one thread by pixel is maybe
+a bit too much ...)</p>
 <p>Try to calls these functions from another language!</p>
 </blockquote>
 <h2><a class="header" href="#lvl-3---benchmarks" id="lvl-3---benchmarks">Lvl 3 - Benchmarks</a></h2>
@@ -1772,20 +2289,23 @@ and to develop a strategy to find a good compromise on the number of threads to 
 <li>Create an <code>writePPM</code> function to read <code>.ppm</code> files</li>
 </ul>
 <blockquote>
-<p>Use PPMA_IO: Portable Pixel Map (ASCII) Files Read and Write Utilities
+<p>Use PPMA_IO: Portable Pixel Map (ASCII) Files Read and Write
+Utilities
 <a href="https://people.sc.fsu.edu/%7Ejburkardt/c_src/ppma_io/ppma_io.html">https://people.sc.fsu.edu/~jburkardt/c_src/ppma_io/ppma_io.html</a></p>
-<p>You may need to call C code in Rust using <code>unsafe</code> blocks.
-If you want to know about some dark magics, read <a href="https://doc.rust-lang.org/nomicon/ffi.html">https://doc.rust-lang.org/nomicon/ffi.html</a></p>
+<p>You may need to call C code in Rust using <code>unsafe</code> blocks. If you want
+to know about some dark magics, read
+<a href="https://doc.rust-lang.org/nomicon/ffi.html">https://doc.rust-lang.org/nomicon/ffi.html</a></p>
 <p>You can start with a simpler format like <code>.pbm</code> or <code>.pgm</code>.</p>
-<p>You should make a static library and include it,
-<a href="https://stackoverflow.com/questions/43826572/where-should-i-place-a-static-library-so-i-can-link-it-with-a-rust-program">this StackOverflow post</a>
+<p>You should make a static library and include it, <a href="https://stackoverflow.com/questions/43826572/where-should-i-place-a-static-library-so-i-can-link-it-with-a-rust-program">this StackOverflow
+post</a>
 could help!</p>
 </blockquote>
 <h3><a class="header" href="#lvl-5---ffi-for-the-fun-and-profit" id="lvl-5---ffi-for-the-fun-and-profit">Lvl 5 - FFI for the fun and profit</a></h3>
 <p>Relatively easy:</p>
 <ul>
 <li>Make a <code>dummy()</code> function that return <code>42</code></li>
-<li>Call this function in another language like Python using basic Foreign Function Interface FFI</li>
+<li>Call this function in another language like Python using basic
+Foreign Function Interface FFI</li>
 </ul>
 <blockquote>
 <p><strong>N.B.</strong> The Rust doc has a really handy page on the subject:
@@ -1794,7 +2314,9 @@ could help!</p>
 <p>Somewhat harder:</p>
 <ul>
 <li>Exposes functions of your <code>ppm</code> crate to Python</li>
-<li>Use <a href="https://github.com/PyO3/pyo3">PyO3</a> and <a href="https://github.com/PyO3/maturin">Maturin</a> read the README of the projects!</li>
+<li>Use <a href="https://github.com/PyO3/pyo3">PyO3</a> and
+<a href="https://github.com/PyO3/maturin">Maturin</a> read the README of the
+projects!</li>
 </ul>
 <!--
 
@@ -1924,7 +2446,663 @@ Je m'autorise également à poser en fin de présentation en plus de questions s
 
 Yvan
 
+--><h1><a class="header" href="#libpwn-a-not-so-complicated-library-to-pwned-a-binary" id="libpwn-a-not-so-complicated-library-to-pwned-a-binary"><code>libpwn</code>: a not so complicated library to pwned a binary</a></h1>
+<p>What about a lib that we could load dynamically (with <code>LD_PRELOAD</code>) that
+has a custom, e.g., <code>malloc</code>, <code>random</code>, or <code>fork</code>?</p>
+<p><img src="https://imgs.xkcd.com/comics/random_number.png" alt="" /></p>
+<p>There is already a nice implementation of that:
+<a href="https://github.com/zardus/preeny">https://github.com/zardus/preeny</a></p>
+<p>This project is not so hard to implement and will help you to remind the
+differences between what could be a syscall and what could be
+implemented in a standard library.</p>
+<h1><a class="header" href="#libray-a-fully-featured-raytracing-library" id="libray-a-fully-featured-raytracing-library"><code>libray</code>: a fully-featured raytracing library</a></h1>
+<p>Raytracing involves a bit of maths, but not a lot of code!</p>
+<p>The code of a raytracer can be contained in a business card
+<a href="https://fabiensanglard.net/rayTracing_back_of_business_card/">https://fabiensanglard.net/rayTracing_back_of_business_card/</a></p>
+<p>If it's quite simple to do a raytracer, it's way more complicated to
+make it run fast (actually it's has you can guess an open research
+field) ...</p>
+<p>This project is not so much about system programming but about being
+able to use way what you know to optimize your program speed.</p>
+<p>Bonus if you use your own <code>libppm</code> as your <code>libray</code> dependency :)</p>
+<h1><a class="header" href="#libiso-a-library-to-manipulate-Ìso-format" id="libiso-a-library-to-manipulate-Ìso-format"><code>libiso</code>: a library to manipulate <code>ÌSO</code> format</a></h1>
+<p>Rust a really weel suitable language to write file format!</p>
+<p>You can take a look at this example:
+<a href="https://github.com/yvan-sraka/fat.rs">https://github.com/yvan-sraka/fat.rs</a></p>
+<p>To play with <code>.iso</code>file, a good idea could be to take a look at some
+common Linux tools
+<a href="https://wiki.archlinux.org/index.php/Optical_disc_drive">https://wiki.archlinux.org/index.php/Optical_disc_drive</a></p>
+<p>As a bonus you can do a fancy <code>ncursive</code> TUI with
+<a href="https://github.com/gyscos/cursive">https://github.com/gyscos/cursive</a></p>
+<h1><a class="header" href="#rstrace-a-rust-implementation-of-strace" id="rstrace-a-rust-implementation-of-strace"><code>rstrace</code>: a Rust implementation of <code>strace</code></a></h1>
+<p>First <code>man strace</code>, for the rest, everything is in the title!</p>
+<p>The following resources could be very helpful in learning how to do
+this:</p>
+<ul>
+<li>Julia Evans's <a href="https://jvns.ca/strace-zine-unfolded.pdf">strace zine
+unfolded</a></li>
+<li>Nelson Elhage's <a href="https://blog.nelhage.com/2010/08/write-yourself-an-strace-in-70-lines-of-code/">Write yourself an strace in 70 lines of
+code</a></li>
+<li>Joe Kain's <a href="http://system.joekain.com/2015/07/15/rust-load-and-ptrace.html">Loading and ptrac'ing a process in
+Rust</a>
+and related blog posts</li>
+<li>the <a href="http://man7.org/linux/man-pages/man2/ptrace.2.html">ptrace(2) man
+page</a>, in
+particular the extended description <a href="https://git.kernel.org/pub/scm/docs/man-pages/man-pages.git/commit/?id=4d12a715f2780abaecb4001e50be3ac6e915cbba">written by Denys
+Vlasenko</a></li>
+</ul>
+<h1><a class="header" href="#rsh-a-shell-for-the-future-written-in-rust" id="rsh-a-shell-for-the-future-written-in-rust"><code>rsh</code>: a shell for the future written in Rust</a></h1>
+<blockquote>
+<p>This project was nicely brought by Axel and it's a nice opportunity to
+maybe reuse what you did in the <code>mypipe</code> assignment!</p>
+</blockquote>
+<h2><a class="header" href="#reminders-process" id="reminders-process">(Reminders) Process</a></h2>
+<p>During this practical workshop, we will start by demystifying process
+abstraction by making a mini command prompt very simple.</p>
+<p>Whether you are on Linux, macOS or Windows your programs are isolated
+each other, this abstraction is called the process, sometimes called
+&quot;task&quot;. This basic mechanism makes it possible to implement stronger
+insulations like those used in docker or type virtual machines
+<a href="https://www.qemu.org/">QEMU</a>.</p>
+<p>But in everyday life the processes allow you to write programs without
+having access to other programs on the computer.</p>
+<blockquote>
+<p><strong>N.B.</strong>: We will see a close concept seen earlier on last semester
+the concept of
+<a href="https://en.wikipedia.org/wiki/Thread_(computing)"><em>thread</em></a> or thread
+calculation. A thread is an additional thread in a process! For have
+another program you have to do a process if you want just do
+calculations on another processor a thread is what you need!</p>
+</blockquote>
+<p>A process has its own address space divided into segments, i.e. its own
+<strong>stack</strong>, its own <strong>heap</strong>, its own code in the segment <strong>.text</strong>, its
+own data known to the compilation <strong>.data</strong> and others with their own
+use like space dynamic libraries.</p>
+<p>The size of this space depends on your system, on a 32bit system this
+space goes from the address <code>0x0000_0000</code> to<code>0xFFFF_FFFF</code> on 64 bits
+from <code>0x0000_0000_0000_0000</code> to <code>0xFFFF_FFFF_FFFF_FFFF</code> <sup class="footnote-reference"><a href="#1">1</a></sup> the formula
+for knowing the space maximum addressing is: <code>pow(2, n) - 1</code>.</p>
+<p>This space is divided as we have seen before into segments, it is your
+operating system that orchestrates this abstraction, compilers linkers
+<strong>linkers</strong> and assemblers respect it.</p>
+<h1><a class="header" href="#practical-micro-shell" id="practical-micro-shell">Practical micro-shell</a></h1>
+<p>To appropriate the concepts, we will write a program that reproduces the
+behavior of a shell. A shell is a program that expects commands and
+organizes the execution of programs with a dedicated language in your
+favorite terminal manager. There are many, for example, Bash, Zsh, Ksh,
+PowerShell (Windows).</p>
+<p>Your program at the end of the TP can do at least the actions following:</p>
+<ul>
+<li>You display a character to invite the user to write</li>
+<li>You are waiting for an entry on the <code>STDIN</code></li>
+<li>Try to execute the command</li>
+<li>Read the status of the command</li>
+<li>Repeat at the initial stage</li>
+</ul>
+<p>We will start with the following hand:</p>
+<pre><pre class="playpen"><code class="language-rust">use std::io::{self};
+
+fn main() -&gt; std::io::Result&lt;()&gt; {
+    let stdin = io::stdin();
+    let mut user_input = String::with_capacity(256);
+    // On prend une référence mutable
+    stdin.read_line(&amp;mut user_input)?;
+    // `?` sert à « propager l'erreur » dans la fonction appellante
+    // c'est mieux que de crash avec un unwrap ou expect ;)
+    Ok(())
+}
+</code></pre></pre>
+<h2><a class="header" href="#deployment-of-the-project-and-inputsoutputs" id="deployment-of-the-project-and-inputsoutputs">Deployment of the project and inputs/outputs</a></h2>
+<p>Create a binary project with cargo:</p>
+<pre><code class="language-shell">cargo new --new micro-shell
+    Created binary (application) `micro-shell`.
+</code></pre>
+<p>How to compile and then run your program? Run the tests? Where are put
+the binaries (in debug mode)?</p>
+<ul>
+<li><code>cargo build</code></li>
+<li><code>cargo run</code></li>
+<li><code>cargo test</code></li>
+<li>from your current project directory <code>./target/debug</code></li>
+</ul>
+<p>Display a character inviting to type a command.</p>
+<p>In our micro-shell, we will write a character which indicates that we
+can take a command! It's called <em>prompt</em> in many languages.</p>
+<p>To start, write a <code>main</code> function like here. Challenge of the TP do not
+use <code>unwrap</code> but <code>expect</code> to manage errors correctly.</p>
+<p>In this main function, we will manipulate the standard <code>stdout</code> output
+to display a character prompting for input, for example,<code>&gt;</code>, you
+discover that to write on the <code>stdout</code> and that it appears in common
+sense will have to be explicit because by default the order of reading
+and writing on the <code>stdin</code> and <code>stdout</code> is not the one that you write in
+your program but depending on the availability of the system <sup class="footnote-reference"><a href="#2">2</a></sup>.</p>
+<p>To succeed here are links to the documentation:
+<a href="https://doc.rust-lang.org/std/io/struct.Stdout.htmldoc"><code>std::io::stdout</code></a>
+the <code>flush</code> method may be useful for you it is implemented by the line
+<code>Write</code> <sup class="footnote-reference"><a href="#3">3</a></sup>. For worries with command display of messages on standard
+STDIN and STDOUT streams <code>Write::flush</code> is there to force the effective
+write/read.</p>
+<p>At this point you should have something like this:</p>
+<pre><code class="language-shell">cargo run
+&gt;
+</code></pre>
+<pre><pre class="playpen"><code class="language-rust">use std::io::{self, Read, Write};
+
+fn main() -&gt; std::io::Result&lt;()&gt; {
+    let stdout = io::stdout();
+
+    // All this to display `&gt;` in the console ;)
+    {
+        let mut handle = stdout.lock();
+        handle.write_all(b&quot;&gt; &quot;)?;
+        handle.flush()?
+    }
+
+    let mut user_input = String::with_capacity(256);
+    io::stdin().read_line(&amp;mut user_input)?;
+    Ok(())
+}
+</code></pre></pre>
+<h1><a class="header" href="#execution-of-a-process" id="execution-of-a-process">Execution of a Process</a></h1>
+<p>The next step is to be able to execute a command typed by a user, in
+fact this will require: creating a process and make it execute a program
+of our choice, for example, <code>ls</code>.</p>
+<p>For example, if you write <code>sl</code> instead of <code>ls</code> <sup class="footnote-reference"><a href="#4">4</a></sup>.</p>
+<p>An error will occur, or if you are in the wrong directory, or have the
+wrong rights, short run is full of risks.</p>
+<p>To do so, we will use the <code>std::process</code> module in the standard library
+<a href="https://doc.rust-lang.org/stable/std/process/index.html">doc</a>, this
+abstraction offers a portable way between several OS to manage processes
+<sup class="footnote-reference"><a href="#5">5</a></sup></p>
+<p>Sometimes we need libraries closer to systems like that
+<a href="https://github.com/nix-rust/nix">nix</a> for
+<a href="https://lib.rs/os/windows-apis">windows</a></p>
+<p>A process can execute a process, it gives a parent and a child often
+performing and having a child are two separate actions for an OS and run
+a new program comes back to create a child then execute. Your children's
+program will have its own address space, but it will inherit your open
+file descriptors and you will have the responsibility of verifying that
+he has finished <sup class="footnote-reference"><a href="#6">6</a></sup></p>
+<p>For example, under Linux, the only program without parents is the
+process 1 often called <code>init</code>. His responsibility is quite important,
+all the other processes are children or grandchildren of that one.</p>
+<h2><a class="header" href="#execute-a-command" id="execute-a-command">Execute a command</a></h2>
+<p>Successfully execute a command with <code>std::process::Command::status</code>.</p>
+<p>View command status, why Rust is forcing you to recover the status?</p>
+<p>What does your program do while the child is running?</p>
+<p>Now manage but for a command with several arguments!</p>
+<h1><a class="header" href="#pipe-my-programs" id="pipe-my-programs">Pipe my programs</a></h1>
+<p>As you must have seen from our programs, in addition to memory, system
+calls and files have access to 3 magic files, inputs <code>STDIN</code>,
+outputs<code>STDOUT</code> and standard error <code>STDERR</code>. It allows programs to
+communicate with each other and with the user in the context of a
+terminal.</p>
+<p>We want to be able to communicate very basically two programs between
+them, as if you could connect a tube to redirect the exit to the entry
+of another program.</p>
+<p>We wish we could do something like:</p>
+<pre><code class="language-shell">ls | grep hello
+</code></pre>
+<h2><a class="header" href="#redirects" id="redirects">Redirects</a></h2>
+<p>Writing a basic version or a command without arguments processes a
+command without arguments, for example, a simple <code>ls</code> redirected in the
+<code>echo</code> program.</p>
+<p>Write a more advanced version where our two programs run really at the
+same time (no cheating with <code>std::process::Command::output</code>) and handle
+multiple arguments to both commands.</p>
+<h1><a class="header" href="#competitive-executions-manage-background-commands" id="competitive-executions-manage-background-commands">Competitive executions: Manage background commands</a></h1>
+<p>We would now like to manage commands in the background.</p>
+<p>Now if a command is issued like this with the series of <code>&gt;</code> characters
+in front of the command then your shell will not hang.</p>
+<pre><code class="language-shell">&gt; ls &amp;
+[1] 21520
+latex micro-shell exercises
+[1] + Done ls
+</code></pre>
+<p>The <code>21520</code> corresponds to the process identifier <em>process id</em> of the
+program that you just launched and the <code>[1]</code> to the current command
+number internal shell.</p>
+<p>What's a process id? Write an implementation basic that manages only one
+job in a background task. Write a structure <sup class="footnote-reference"><a href="#7">7</a></sup> to store running
+programs for your shell. To write a job command which displays the
+programs running in the background and their condition.</p>
+<h1><a class="header" href="#program-environment" id="program-environment">Program environment</a></h1>
+<p>In addition to having a stack, a heap, a segment for the code and
+arguments our programs have a little space called environment which
+contains lots of information like the <code>PATH</code> variable which contains the
+paths where to find the executables.</p>
+<p>Write a small program (other binary than the shell) <code>filterEnv</code> which
+executes a command with its arguments as a parameter but filters its
+environment to contain only the variable <code>PATH</code>, <code>TERM</code>, <code>LANG</code> and <code>TZ</code></p>
+<p>To help you importants
+<a href="https://doc.rust-lang.org/stable/std/process/struct.Command.html#method.envs">documentation</a>
+the <code>std::process::Command::env</code> function can be useful!</p>
+<h1><a class="header" href="#go-further" id="go-further">Go further</a></h1>
+<p>Here start the bonuses! It's much harder but free to try!</p>
+<p>In the exercises, we used the terminal in &quot;managed&quot; mode. say that the
+shell has an already existing configuration. You have probably noticed
+you can't rewrite what you write and you can't control the display in
+the terminal. The solution is to change the terminal mode, for that two
+libraries can help you: <a href="https://github.com/redox-os/termion"><code>termion</code></a>
+and <a href="https://dcuddeback.github.io/termios-rs/termios/"><code>termios</code></a></p>
+<p>You may have noticed that <code>Ctrl-C</code> or<code>Ctrl-Z</code> etc does not work as
+expected? On a Unix system, if you want to redefine this stuff you will
+have to discover the signals! A voucher starting point is this piece of
+code from <a href="https://rust-cli.github.io/book/in-depth/signals.html">the interfaces section in book of Command Line Applications
+in Rust</a>.</p>
+<p>So far we have implemented everything using <code>std::process</code>. It is a
+high-level library, present try writing the code to execute a process
+using the crate <a href="https://crates.io/crates/libc"><code>libc</code></a> which offers
+bindings on system libraries in C. The C functions wrapped in <code>fork</code> and
+<code>execve</code> should suit you. Try to write a safe wrapper.</p>
+<!--
+
+**Questions - rendu**: Les questions de code et de compréhension sont à
+faire, celles notées *bonus* sont optionnelles mais recommandées ! Pour
+le rendu un dépôt git sans historique réécrit ni triche sera bien, les
+questions doivent être rendues au format *markdown* dans le fichier
+`readme.md` à la racine du dépôt. **Taille des groupes :** maximum 2
+pensez a noter les noms de votre binôme, votre dépôt contiendra tous les
+travaux pratiques.
+
+Introduction
+============
+
+Bienvenue dans la suite du cours de programmation systèmes et réseaux.
+Au travers ce cours, nous allons visiter des concepts liés aux capacités
+qu'offrent votre hardware et vos systèmes d'exploitations, afin de vous
+dévoiler la magie qui est cachée par les langages de haut niveau.
+
+L'étendue des concepts est très vaste, nous ne pourront pas tout voir
+malheureusement.
+
+Processus
+---------
+
+Au cours de ce travail pratique nous allons commencer par démystifier
+l'abstraction des processus en réalisant un mini invité de commande très
+simple.
+
+Que vous soyez sur Linux, MacOS ou Windows vos programmes sont isolés
+les un des autres, cette abstraction s'appelle le processus, parfois
+appelée «tâche». Ce mécanisme de base permet d'implémenter des
+isolations plus fortes comme celles utilisées dans docker ou les
+machines virtuelles type [QEMU](https://www.qemu.org/).
+
+Mais dans la vie de tout les jours les processus permettent d'écrire des
+programmes sans avoir accès aux autres programmes sur l'ordinateur.
+
+Attention: Nous reverrons plus tard un concept proche déjà vu au premier
+semestre, le concept de
+[*thread*](https://en.wikipedia.org/wiki/Thread_(computing)) ou fil de
+calcul. Un thread est un fil de calcul en plus dans un processus! Pour
+avoir un autre programme il faut faire un processus, si vous voulez
+juste faire des calculs sur un autre processeur, un thread est ce qu'il
+vous faut!
+
+Un processus possède son propre espace d'adressage découpé en segments,
+c'est à dire sa propre pile **stack**, son propre tas **heap**, son
+propre code dans le segment **.text**, ses propres données connues à la
+compilation **.data** et d'autres avec leur propre usage comme l'espace
+des bibliothèques dynamiques.
+
+La taille de cet espace dépend de votre système, sur un système 32bit
+cet espace va de l'adresse `0x0000_0000` à `0xFFFF_FFFF`
+sur 64 bits de `0x0000_0000_0000_0000` à
+`0xFFFF_FFFF_FFFF_FFFF`[^1] la formule pour connaître l'espace
+maximum d'adressage est la suivante: $2^n -1$.
+
+Cet espace est découpé comme nous l'avons vu avant en segments, c'est
+votre système d'exploitation qui orchestre cette abstraction, les
+compilateurs lieurs **linkers** et assembleurs la respectent.
+
+Questions: Rappels de Rust, généralités
+---------------------------------------
+
+En Rust à quoi servent les références?
+
+À partager des données sans les copier, ni les déplacer.
+
+Citez en Rust les grandes façons de déclarer ses propres types. Rust est
+compilé nativement (assembleur sous forme de code machine) ou compte sur
+une machine virtuelle pour s'exécuter?
+
+Rust est compilé nativement.
+
+Imaginons qu'on a un système avec un processeur 8bits, quelle est la
+valeur maximale adressable ? Écrire la solution en notation hexadécimale
+et décimale.
+
+$2^8 - 1 = 255 = 0xFF$
+
+Donnez votre définition d'un processus citez vos sources!
+
+Pratique - micro-shell
+======================
+
+Pour s'approprier les concepts, on va écrire un programme qui reproduit
+le comportement d'un shell. Un shell est le programme qui attend des
+commandes et organise l'exécution de programmes avec un langage dédié
+dans votre gestionnaire de terminal favori. Il en existe de nombreux,
+par exemple: Bash, Zsh, Ksh, PowerShell (Windows).
+
+Votre programme à l'issue du TP pourra faire au moins les actions
+suivantes:
+
+-   Vous affichez un caractère pour inviter l'utilisateur à écrire
+-   Vous attendez une saisie sur la `STDIN`
+-   Tentez d'exécuter la commande
+-   Relevez le statut de la commande
+-   Recommencez à l'étape initiale
+
+On commencera avec le main suivant:
+
+```rust
+use std::io::{self};
+
+fn main() -> std::io::Result<()> {
+    let stdin = io::stdin();
+    let mut user_input = String::with_capacity(256);
+    // On prend une référence mutable
+    stdin.read_line(&mut user_input)?;
+    // `?` sert à « propager l'erreur » dans la fonction appellante
+    // c'est mieux que de crash avec un unwrap ou expect ;)
+    Ok(())
+}
+```
+
+Questions: Deployement du projet et entrées sorties
+---------------------------------------------------
+
+Créer un projet binaire avec cargo:
+
+```shell
+cargo new --new micro-shell
+    Created binary (application) `micro-shell` packageedinline{shell}{}.
+```
+
+Comment compiler puis exécuter son programme? Exécuter les test? Où sont
+rangés les binaires (en mode debug)?
+
+-   `cargo build`
+-   `cargo run`
+-   `cargo test`
+-   depuis votre répertoire courant du projet `./target/debug`
+
+Afficher un caractère invitant à taper une commande
+
+Dans notre micro-shell on va écrire un caractère qui indique qu'on peut
+saisir une commande! Ça s'appelle le *prompt* dans beaucoup de langages.
+
+Pour commencer, écrire une fonction `main` comme ici. Challenge
+du TP n'utilisez pas `unwrap` `expect` afin de gérer
+correctement les erreurs.
+
+Dans cette fonction main, on va manipuler la sortie standard `stdout`
+pour afficher un caractère invitant à la saisie par exemple `>`, vous
+allez découvrir que pour écrire sur la `stdout` et que ça s'affiche dans
+le bon sens il va falloir être explicite car par défaut l'ordre de
+lecture et d'écriture sur la `stdin` et textttstdout n'est pas celui que
+vous écrivez dans votre programme mais en fonction de la disponibilité
+du système [^2].
+
+Pour réussir voici des liens vers la documentation:
+[std::io:stdout](https://doc.rust-lang.org/std/io/struct.Stdout.htmldoc)
+la méthode `flush` risque de vous être utile elle est implémentée
+par le trait `Write`[^3]. Pour les soucis avec l'ordre
+d'affichage des messages sur les flux standards STDIN et STDOUT
+`Write::flush` est là pour forcer l'écriture/lecture effective.
+
+A ce stade vous devriez avoir quelque chose comme ça
+
+```shell
+cargo run
+>
+```
+
+```rust
+use std::io::{self, Read, Write};
+
+fn main() -> std::io::Result<()> {
+    let stdout = io::stdout();
+
+    // All this to display `>` in the console ;)
+    {
+        let mut handle = stdout.lock();
+        handle.write_all(b"> ")?;
+        handle.flush()?
+    }
+
+    let mut user_input = String::with_capacity(256);
+    io::stdin().read_line(&mut user_input)?;
+    Ok(())
+}
+```
+
+Execution d'un Processus
+========================
+
+La prochaine étape est de pouvoir exécuter une commande tapée par un
+utilisateur, dans les fait cela va nécessiter de: créer un processus et
+lui faire exécuter un programme de notre choix, par exemple `ls`.
+
+Par exemple si vous écrivez `sl` au lieu de `ls`[^4].
+
+Une erreur va se produire, ou alors si vous êtes dans le mauvais
+répertoire, ou avez les mauvais droits, bref exécuter est plein de
+risques.
+
+Pour se faire on va utiliser le module `std::process` de la
+bibliothèque standard
+[doc](https://doc.rust-lang.org/stable/std/process/index.html), cette
+abstraction propose une façon portable entre plusieurs OS pour gérer des
+processus[^5]
+
+Parfois on a besoin de bibliothèques plus proches des systèmes telles
+que [nix](https://github.com/nix-rust/nix) pour
+[windows](https://lib.rs/os/windows-apis)
+
+Un processus peut exécuter un processus, ça donne un parent et un enfant
+souvent exécuter et avoir un enfant sont deux actions séparées pour un
+OS et exécuter un nouveau programme reviens à créer un enfant puis
+exécuter. Votre programme enfant va avoir son propre espace d'adressage,
+mais il va hériter de vos descripteurs de fichier ouvert et vous aurez
+la responsabilité de vérifier qu'il ai bien terminé[^6]
+
+Par exemple sous Linux le seul programme sans parents c'est le processus
+1 souvent appelé `init`. Sa responsabilité est assez importante, tous
+les autres processus sont des enfants ou petits enfants de celui-là.
+
+Questions: Executer une commande
+--------------------------------
+
+Réussir à exécuter une commande avec
+`std::process::Command::status`.
+
+Afficher le statut d'une commande, pourquoi Rust vous force à récupérer
+le statut ?
+
+Que fait votre programme pendant que son enfant s'exécute?
+
+Maintenant gérer mais pour une commande avec plusieurs arguments !
+
+Redirections - pipe my programs'
+================================
+
+Comme vous avez dû le constater nos programmes, en plus de la mémoire,
+des appels systèmes et des fichiers ont accès à 3 fichiers magiques, les
+entrées `STDIN`, sorties `STDOUT` et erreur standards `STDERR`. Ça
+permet de faire communiquer les programmes entre eux et avec
+l'utilisateur dans le contexte d'un terminal.
+
+On souhaite pouvoir faire communiquer très basiquement deux programmes
+entre eux, comme si vous pouviez connecter un tube pour rediriger la
+sortie dans l'entrée d'un autre programme.
+
+On souhaiterait pouvoir faire quelque chose comme :
+
+```shell
+ls | grep hello
+```
+
+Questions: Redirections
+-----------------------
+
+Donnez avec vos mot une définition d'un tupe entre deux programmes citez
+vos sources.[^7]
+
+Écrire une version basique ou une commande sans argument traite une
+commande sans arguments par exemple un simple `ls` redirigé dans le
+programme `echo`.
+
+Écrire une version plus avancée où nos deux programmes s'exécutent
+vraiment en même temps (pas de triche avec
+`std::process::Command::output`) et gèrent plusieurs arguments
+aux deux commandes.
+
+Executions en concurence: Gérer des commandes en fond
+=====================================================
+
+On aimerait maintenant gérer des commandes en tâche de fond.
+
+Maintenant si une commande est lancée de la sorte avec la série de
+caractères `>` devant la commande alors votre shell ne se bloquera pas.
+
+```shell
+> ls &
+[1] 21520
+exercices  latex  micro-shell
+[1]+  Done ls
+```
+
+Le `21520` correspond au processus identifier *process id* du programme
+que vous venez de lancer et le `[1]` au numéro de commande en cours
+interne du shell.
+
+Questions
+---------
+
+C'est quoi un processus id? Citez vos sources. Écrire une implémentation
+basique qui gère un seul job en tâche de fond. Écrire une structure [^8]
+pour stocker les programmes en cours d'exécution de votre shell. Écrire
+une commande jobs qui affiche les programmes en cours d'exécution en
+fond et leur état.
+
+Environnement de programmes
+===========================
+
+En plus d'avoir une stack, une heap, un segment pour le code et les
+arguments nos programmes ont un petit espace appelé environnement qui
+contient plein d'informations comme la variable `PATH` qui contient les
+chemins où trouver les exécutables.
+
+questions
+---------
+
+Écrire un petit programme (autre binaire que le shell) `filterEnv` qui
+exécute une commande avec ses arguments en paramètre mais filtre son
+environnement pour contenir seulement la variable `PATH` `TERM` `LANG`
+et `TZ`
+
+Pour vous aider la
+[https://doc.rust-lang.org/stable/std/process/struct.Command.html\#method.envs](documentation)
+de la fonction `std::process::Command::env` peut vous être
+utile !
+
+Aller plus loin
+===============
+
+Ici commencent les bonus ! C'est beaucoup plus dur attention mais libre
+à vour de tenter!
+
+Dans les exercices on a utilisé le terminal en mode «managé», c'est à
+dire que le shell a une configuration déjà existante. Vous avez
+probablement remarqué vous ne pouvez pas réécrire ce que vous écrivez et
+vous ne pouvez pas vraiment contrôler l'affichage dans le terminal. La
+solution est de changer le mode du terminal, pour cela deux
+bibliothèques peuvent vous aider:
+[https://github.com/redox-os/termion](termion) et
+[https://dcuddeback.github.io/termios-rs/termios/](termios)
+
+Vous avez peut être remarqué que `Ctrl-C` ou `Ctrl-Z` etc ne
+fonctionnent pas comme attendu? Sous un système Unix, si vous voulez
+redéfinir ce genre de choses vous devrez découvrir les signaux! Un bon
+point de départ est ce bout de code issu du livre sur les interfaces en
+ligne de commande
+[https://rust-cli.github.io/book/in-depth/signals.html](cli app book).
+
+Jusqu'à présent nous avons tout implémenté a l'aide de
+`std::process`. Il s'agit d'une bibliothèque de haut niveau, à
+présent essayez d'écrire le code pour exécuter un processus en utilisant
+la crate [https://crates.io/crates/libc](libc) qui propose des bindings
+sur les bibliothèques systèmes en C. Les fonctions C wrappé `fork` et
+`execve` devraient vous convenir. Tentez d'écrire un wrapper safe.
+
+[^1]: En décimal : $2^{64} - 1 = 18446744073709551615$ C'est très
+    grand ...
+
+[^2]: si ça vous intéresse voici un bon article:
+    [https://medium.com/\@JoeKreydt/stdout-more-like-stdout-of-order-rust-1f9acc016e89](Stdout? More like Stdout of Order! (Rust) par Joe Kreydt)
+
+[^3]: Les Traits comme `Write` sont un système assez proche des
+    interfaces que vous avez sûrement ailleurs, ce sont des contrats qui
+    peuvent être rempli par des types
+
+[^4]: Pour la blague : Il existe un programme satirique `sl` *steam
+    locomotive*.
+
+[^5]: Attention, c'est une abstraction, chaque système a ses
+    particularités par exemple sous Linux et MacOS il y a `fork` et
+    `execve` pour créer et exécuter un processus.
+
+[^6]: Sinon ça fait un [processus
+    zombie](https://en.wikipedia.org/wiki/Zombie_process) et personne
+    n'aime les zombies, si vous voulez une image pour illustrer [Zombie
+    processes by Daniel
+    Stori](https://turnoff.us/geek/zombie-processes/)
+
+[^7]: La page wikipédia
+    [pipeline](https://en.wikipedia.org/wiki/Pipeline_%28Unix%29) peut
+    vous aider.
+
+[^8]: Vous pouvez utilisé une `std::collections::VecDeque` ou un
+    `Vec` dans votre réalisation
+
 -->
+<div class="footnote-definition" id="1"><sup class="footnote-definition-label">1</sup>
+<p>In decimal: <code>pow(2, 64) - 1 = 18446744073709551615</code> This is very
+big ...</p>
+</div>
+<div class="footnote-definition" id="2"><sup class="footnote-definition-label">2</sup>
+<p>if you are interested here is a good article: <a href="https://medium.com/@JoeKreydt/stdout-more-like-stdout-of-order-rust-1f9acc016e89">Stdout? More like
+Stdout of
+Order!</a></p>
+</div>
+<div class="footnote-definition" id="3"><sup class="footnote-definition-label">3</sup>
+<p>Traits like <code>Write</code> are fairly close to interfaces that you surely
+have elsewhere, these are contracts that can be filled by types</p>
+</div>
+<div class="footnote-definition" id="4"><sup class="footnote-definition-label">4</sup>
+<p>For the joke: There is a satirical program <code>sl</code> <em>steam
+locomotive</em>.</p>
+</div>
+<div class="footnote-definition" id="5"><sup class="footnote-definition-label">5</sup>
+<p>Be careful, it's an abstraction, each system has its own
+particularities for example under Linux and MacOS there is <code>fork</code>
+and <code>execve</code> to create and execute a process.</p>
+</div>
+<div class="footnote-definition" id="6"><sup class="footnote-definition-label">6</sup>
+<p>Otherwise it makes a <a href="https://en.wikipedia.org/wiki/Zombie_process">process
+zombie</a> and no one
+don't like zombies, if you want a picture to illustrate <a href="https://turnoff.us/geek/zombie-processes/">Zombie
+processes by Daniel
+Stori</a></p>
+</div>
+<div class="footnote-definition" id="7"><sup class="footnote-definition-label">7</sup>
+<p>You can use a <code>std::collections::VecDeque</code> or a <code>Vec</code> in your
+achievement</p>
+</div>
+
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">

@@ -80,8 +80,8 @@
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
-            <div id="sidebar-scrollbox" class="sidebar-scrollbox">
-                <ol class="chapter"><li class="expanded "><a href="../ch1/rust-syntax.html"><strong aria-hidden="true">1.</strong> Rust syntax</a></li><li class="expanded "><a href="../ch2/ownership-borrowing.html"><strong aria-hidden="true">2.</strong> Ownership and borrowing</a></li><li class="expanded "><a href="../ch3/unix-multithreading.html"><strong aria-hidden="true">3.</strong> Unix and multithreading</a></li><li class="expanded "><a href="../ch4/ffi-unsafe.html"><strong aria-hidden="true">4.</strong> FFI and unsafe</a></li><li class="expanded "><a href="../ch5/sockets-http.html"><strong aria-hidden="true">5.</strong> Sockets and HTTP</a></li><li class="expanded "><a href="../ch6/webassembly.html" class="active"><strong aria-hidden="true">6.</strong> WebAssembly</a></li><li class="expanded "><a href="../p1/libppm.html"><strong aria-hidden="true">7.</strong> Project 1: libppm</a></li></ol>
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../ch0/introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../ch1/rust-syntax.html"><strong aria-hidden="true">2.</strong> Rust syntax</a></li><li class="chapter-item expanded "><a href="../ch2/ownership-borrowing.html"><strong aria-hidden="true">3.</strong> Ownership and borrowing</a></li><li class="chapter-item expanded "><a href="../ch3/unix-multithreading.html"><strong aria-hidden="true">4.</strong> Unix and multithreading</a></li><li class="chapter-item expanded "><a href="../ch4/ffi-unsafe.html"><strong aria-hidden="true">5.</strong> FFI and unsafe</a></li><li class="chapter-item expanded "><a href="../ch5/sockets-http.html"><strong aria-hidden="true">6.</strong> Sockets and HTTP</a></li><li class="chapter-item expanded "><a href="../ch6/webassembly.html" class="active"><strong aria-hidden="true">7.</strong> WebAssembly</a></li><li class="chapter-item expanded "><a href="../ch7/fast-safe-and-beyond.html"><strong aria-hidden="true">8.</strong> Fast, safe and beyond</a></li><li class="chapter-item expanded "><a href="../p0/libppm.html"><strong aria-hidden="true">9.</strong> Project 0: libppm</a></li><li class="chapter-item expanded "><a href="../p1/libpwn.html"><strong aria-hidden="true">10.</strong> Project 1: libpwn</a></li><li class="chapter-item expanded "><a href="../p2/libray.html"><strong aria-hidden="true">11.</strong> Project 2: libray</a></li><li class="chapter-item expanded "><a href="../p3/libiso.html"><strong aria-hidden="true">12.</strong> Project 3: libiso</a></li><li class="chapter-item expanded "><a href="../p4/rstrace.html"><strong aria-hidden="true">13.</strong> Project 4: rstrace</a></li><li class="chapter-item expanded "><a href="../p5/rsh.html"><strong aria-hidden="true">14.</strong> Project 5: rsh</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -155,13 +155,19 @@
 <li>Languages &quot;for machines&quot; (VMs) : WebAssembly (<code>.wasm</code>)</li>
 </ul>
 <blockquote>
-<p>Yuck! <em>&quot;transpilation&quot;</em> ... JavaScript (ES2020) <em>turn by Babel magic into</em> JavaScript (ES3 compatible)</p>
+<p>Yuck! <em>&quot;transpilation&quot;</em> ... JavaScript (ES2020) <em>turn by Babel magic
+into</em> JavaScript (ES3 compatible)</p>
 </blockquote>
-<p>WebAssembly: <code>wasmtime</code> (sandboxing) work with <strong>WASI</strong>: the WebAssembly System Interface</p>
+<p>WebAssembly is an <a href="https://en.wikipedia.org/wiki/S-expression">S-expression
+language</a> that run in modern
+browser or in <code>wasmtime</code> (sandboxing) that work with <strong>WASI</strong>: the
+WebAssembly System Interface</p>
 <h2><a class="header" href="#lvl-0" id="lvl-0">Lvl 0</a></h2>
 <ul>
-<li>Install <code>wasm-pack</code> (to compile your Rust lib in <code>.wasm</code> and more) <a href="https://rustwasm.github.io/docs/wasm-pack/">https://rustwasm.github.io/docs/wasm-pack/</a></li>
-<li>Install <code>wasmtime</code> (to run a <code>.wasm</code> binary program, or <code>.wat</code> text format) <a href="https://wasmtime.dev">https://wasmtime.dev</a></li>
+<li>Install <code>wasm-pack</code> (to compile your Rust lib in <code>.wasm</code> and more)
+<a href="https://rustwasm.github.io/docs/wasm-pack/">https://rustwasm.github.io/docs/wasm-pack/</a></li>
+<li>Install <code>wasmtime</code> (to run a <code>.wasm</code> binary program, or <code>.wat</code> text
+format) <a href="https://wasmtime.dev">https://wasmtime.dev</a></li>
 </ul>
 <pre><code class="language-shell">$ cargo new hello-world
 $ cd hello-world
@@ -177,8 +183,9 @@ Hello, world!
 </ul>
 <p>Or try an alternative runtime <a href="https://wasmer.io">https://wasmer.io</a></p>
 <h2><a class="header" href="#lvl-1" id="lvl-1">Lvl 1</a></h2>
-<p>We write a small program that turns Markdown (<a href="https://commonmark.org">https://commonmark.org</a>) into HTML as describe in the video <a href="https://youtu.be/Qn_4F3foB3Q">https://youtu.be/Qn_4F3foB3Q</a></p>
-<p>We need to add few dependencies </p>
+<p>We write a small program that turns Markdown (<a href="https://commonmark.org">https://commonmark.org</a>)
+into HTML as describe in the video <a href="https://youtu.be/Qn_4F3foB3Q">https://youtu.be/Qn_4F3foB3Q</a></p>
+<p>We need to add few dependencies</p>
 <ul>
 <li><a href="https://crates.io/crates/pulldown-cmark">https://crates.io/crates/pulldown-cmark</a></li>
 <li><a href="https://docs.rs/wasm-bindgen/">https://docs.rs/wasm-bindgen/</a></li>
@@ -250,24 +257,30 @@ pub fn render(markdown_input: &amp;str) -&gt; String {
 <li><a href="https://rustwasm.github.io/docs/wasm-bindgen/examples/dom.html">https://rustwasm.github.io/docs/wasm-bindgen/examples/dom.html</a></li>
 <li><a href="https://rustwasm.github.io/docs/wasm-pack/tutorials/hybrid-applications-with-webpack/using-your-library.html">https://rustwasm.github.io/docs/wasm-pack/tutorials/hybrid-applications-with-webpack/using-your-library.html</a></li>
 </ul>
-<p>The result is here: <a href="https://github.com/yvan-sraka/markdown-viewer/blob/master/src/lib.rs">https://github.com/yvan-sraka/markdown-viewer/blob/master/src/lib.rs</a></p>
+<p>The result is here:
+<a href="https://github.com/yvan-sraka/markdown-viewer/blob/master/src/lib.rs">https://github.com/yvan-sraka/markdown-viewer/blob/master/src/lib.rs</a></p>
 <h2><a class="header" href="#lvl-3" id="lvl-3">Lvl 3</a></h2>
 <p>Writing a Brainfuck Interpreter in Rust (and WebAssembly):</p>
 <ul>
-<li>Article <a href="https://dev.to/shritesh/writing-a-brainfuck-interpreter-in-rust-and-webassembly-13f">https://dev.to/shritesh/writing-a-brainfuck-interpreter-in-rust-and-webassembly-13f</a></li>
+<li>Article
+<a href="https://dev.to/shritesh/writing-a-brainfuck-interpreter-in-rust-and-webassembly-13f">https://dev.to/shritesh/writing-a-brainfuck-interpreter-in-rust-and-webassembly-13f</a></li>
 <li>Demo <a href="https://shritesh.github.io/brainfuck-rs-wasm">https://shritesh.github.io/brainfuck-rs-wasm</a></li>
 <li>Code <a href="https://github.com/shritesh/brainfuck-rs-wasm">https://github.com/shritesh/brainfuck-rs-wasm</a></li>
 </ul>
 <h2><a class="header" href="#lvl-4" id="lvl-4">Lvl 4</a></h2>
-<p>There is an awesome Tutorial &quot;Conway's Game of Life&quot; on the official guide:</p>
+<p>There is an awesome Tutorial &quot;Conway's Game of Life&quot; on the official
+guide:</p>
 <ul>
 <li><a href="https://rustwasm.github.io/docs/book/">https://rustwasm.github.io/docs/book/</a></li>
 <li><a href="https://xkcd.com/2293/">https://xkcd.com/2293/</a></li>
 </ul>
 <h2><a class="header" href="#to-go-further" id="to-go-further">To go further</a></h2>
-<p>Binary Toolkit (useful for debugging): <a href="https://github.com/WebAssembly/wabt">https://github.com/WebAssembly/wabt</a></p>
-<p>Play also with <a href="https://github.com/WebAssembly/binaryen">https://github.com/WebAssembly/binaryen</a></p>
-<p>Mozilla Hacks cool tech blog <a href="https://hacks.mozilla.org/category/webassembly/">https://hacks.mozilla.org/category/webassembly/</a></p>
+<p>Binary Toolkit (useful for debugging):
+<a href="https://github.com/WebAssembly/wabt">https://github.com/WebAssembly/wabt</a></p>
+<p>Play also with <a href="https://github.com/WebAssembly/binaryen">https://github.com/WebAssembly/binaryen</a> and
+<a href="https://www.npmjs.com/package/rust-wasm-loader">https://www.npmjs.com/package/rust-wasm-loader</a></p>
+<p>Mozilla Hacks cool tech blog
+<a href="https://hacks.mozilla.org/category/webassembly/">https://hacks.mozilla.org/category/webassembly/</a>:</p>
 <ul>
 <li><a href="https://hacks.mozilla.org/2019/08/webassembly-interface-types/">https://hacks.mozilla.org/2019/08/webassembly-interface-types/</a></li>
 <li><a href="https://hacks.mozilla.org/2019/11/multi-value-all-the-wasm/">https://hacks.mozilla.org/2019/11/multi-value-all-the-wasm/</a></li>
@@ -275,9 +288,16 @@ pub fn render(markdown_input: &amp;str) -&gt; String {
 <li><a href="https://hacks.mozilla.org/2018/04/hello-wasm-pack/">https://hacks.mozilla.org/2018/04/hello-wasm-pack/</a></li>
 <li><a href="https://hacks.mozilla.org/2017/02/a-cartoon-intro-to-webassembly/">https://hacks.mozilla.org/2017/02/a-cartoon-intro-to-webassembly/</a></li>
 </ul>
+<p>Web UI Frameworks based on WebAssembly:</p>
+<ul>
+<li><a href="https://github.com/hecrj/iced">https://github.com/hecrj/iced</a></li>
+<li><a href="https://yew.rs/docs/getting-started/project-setup">https://yew.rs/docs/getting-started/project-setup</a></li>
+<li><a href="https://github.com/gabisurita/fullstack-rust">https://github.com/gabisurita/fullstack-rust</a></li>
+</ul>
 <p>Another way to solve <em>&quot; the JavaScript issue &quot;</em>:</p>
 <ul>
-<li><strong>BinAST</strong> <a href="https://github.com/tc39/proposal-binary-ast/">https://github.com/tc39/proposal-binary-ast/</a> &amp; <a href="https://github.com/binast">https://github.com/binast</a></li>
+<li><strong>BinAST</strong> <a href="https://github.com/tc39/proposal-binary-ast/">https://github.com/tc39/proposal-binary-ast/</a> &amp;
+<a href="https://github.com/binast">https://github.com/binast</a></li>
 <li><strong>Prepack</strong> <a href="https://prepack.io/">https://prepack.io/</a></li>
 </ul>
 <p>Can we compile JS to WASM?</p>
@@ -295,7 +315,8 @@ pub fn render(markdown_input: &amp;str) -&gt; String {
 <li><a href="https://servo.org/">https://servo.org/</a></li>
 <li><a href="https://webkit.org">https://webkit.org</a></li>
 </ul>
-<p>Happy COVID-19 quarantine, <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">no easter eggs</a> this year ...</p>
+<p>Happy COVID-19 quarantine, <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">no easter
+eggs</a> this year ...</p>
 <p>Best, Yvan</p>
 
                     </main>
@@ -309,7 +330,7 @@ pub fn render(markdown_input: &amp;str) -&gt; String {
                         
 
                         
-                            <a rel="next" href="../p1/libppm.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="../ch7/fast-safe-and-beyond.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
                         
@@ -327,7 +348,7 @@ pub fn render(markdown_input: &amp;str) -&gt; String {
                 
 
                 
-                    <a rel="next" href="../p1/libppm.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="../ch7/fast-safe-and-beyond.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
                 
