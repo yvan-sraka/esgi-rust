@@ -16,8 +16,8 @@ Rust basics (Introduction, Syntax, Error Handling)
 
 -   2.  Setup a Rust dev environment with <https://rustup.rs>, and a
         code editor (<https://www.rust-lang.org/tools>) with RLS support
-        (<https://github.com/rust-lang/rls>) and be sure to not have
-        just the VSCode extension but to install it with command
+        (<https://github.com/rust-lang/rls>) and be sure not to have
+        only the VSCode extension but to install it with the command
         `rustup component add rls rust-analysis rust-src`
 
 > **N.B.** People on Windows should read this
@@ -25,7 +25,7 @@ Rust basics (Introduction, Syntax, Error Handling)
 > and installing Visual Studio C/C++ tools suite (like link.exe to link
 > program) using Visual Studio Installer.
 
-I also recommend getting you a WLS and install Rust with rustup in
+I also recommend to get you a WLS and install Rust with rustup in
 bash.exe, since starting from course 3 we will play with Linux file
 abstraction.
 
@@ -44,12 +44,12 @@ abstraction.
         <https://github.com/yvan-sraka/mymastermind-slides>
 
 Further information could be found in THE RUST BOOK ⇨
-<https://doc.rust-lang.org/stable/book/> ⇦ (what we do in class match
-the 3 first chapters of the book)
+<https://doc.rust-lang.org/stable/book/> ⇦ (what we do in class matches
+the first 3 chapters of the book)
 
 Alternatively in <https://learning-rust.github.io/>!
 
-Homeworks (mandatory)
+Homework (mandatory)
 ---------------------
 
 <!-- deadline: push it before the class -->
@@ -67,7 +67,7 @@ You can test your code by trying to decode this secret message:
     TGEgcmFjbGV0dGUgKEJyYXRjaMOkcywgwqsgZnJvbWFnZSDCuyByw7R0aSwgZW4gc3Vpc3NlIGFsbGVtYW5kKSBlc3QgZCd1bmUgcGFydCB1biBmcm9tYWdlIChsZSBvdSBsYSByYWNsZXR0ZSkgb3JpZ2luYWlyZSBkdSBjYW50b24gZHUgVmFsYWlzIGVuIFN1aXNzZSwgZXQgZCdhdXRyZSBwYXJ0LCB1bmUgcmVjZXR0ZSBkZSBjdWlzaW5lIHRyYWRpdGlvbm5lbGxlIGV0IGVtYmzDqW1hdGlxdWUgZGUgbGEgY3Vpc2luZSBzdWlzc2UsIGNvbm51ZSBkYW5zIGxlIG1vbmRlIGVudGllciwgdmFyaWFudGUgZGVzIGZvbmR1ZXMgYXUgZnJvbWFnZSwgw6AgYmFzZSBkZSBjZSBmcm9tYWdlIGZvbmR1LCByYWNsw6kgYXUgZnVyIGV0IMOgIG1lc3VyZSBxdeKAmWlsIGZvbmQsIGV0IHNlcnZpZSB0cmFkaXRpb25uZWxsZW1lbnQgYXZlYyBkZXMgcG9tbWVzIGRlIHRlcnJlIGVuIHJvYmUgZGVzIGNoYW1wcyBldCBhY2NvbXBhZ27DqWUgZGUgbMOpZ3VtZXMgYXUgdmluYWlncmUgKGNvcm5pY2hvbnMsIG9pZ25vbnMpLg==
 
 ⚠️ Reminder, the next class will start with a quick test (don't be
-late), it will be grade and take the form of a QCM.
+late), it will be graded and take the form of a QCM.
 
 Cheers, Yvan
 

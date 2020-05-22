@@ -64,7 +64,7 @@ To go further
 Prepare the next session
 ------------------------
 
-Kkeep talking about Unix tools for binaries analysis:
+Keep talking about Unix tools for binaries analysis:
 
 -   <https://lldb.llvm.org>
 -   <https://godbolt.org>

@@ -48,10 +48,10 @@ allows you to run `code` command remotely in `bash.exe` shell!
 Go deeper into Rust
 -------------------
 
-We, at this point cover, all of 6 first chapters, and most of 7, 8 and 9
+We, at this point covered, all of first 6 chapters, and most of 7, 8 and 9
 of the Rust Book <https://doc.rust-lang.org/stable/book/>
 
-We will not advance to much in Rust specific feature after this point (I
+We will not advance too much in Rust specific feature after this point (I
 will not make a class about trait e.g.), I let you free of learning more
 about it or not!
 
@@ -86,7 +86,7 @@ that malloc but never free) and open it in Valgrind, translate the
 program in Rust and do the test again.
 
 Do you know that the program stack has a fixed space size in memory?
-What's happen when you fill it all with function calls? ⇨ a stack
+What happens when you fill it all with function calls? ⇨ a stack
 overflow!
 
 You can look at this minimalist malloc implementation from mine, using
@@ -95,7 +95,7 @@ You can look at this minimalist malloc implementation from mine, using
 
 Supplementary links to feed your curiosity (bonus, not mandatory):
 
--   There no null pointers in Rust! Why? Watch "Null References: The
+-   There is no null pointers in Rust! Why? Watch "Null References: The
     Billion Dollar Mistake" from Tony Hoare
     <https://www.infoq.com/presentations/Null-References-The-Billion-Dollar-Mistake-Tony-Hoare/>
 -   Some more readings for the brave: "What Every Programmer Should Know
@@ -126,7 +126,7 @@ You have to recode a small pipe-like program, working like this:
 You can use <https://clap.rs> to parse the command-line arguments, and
 also follow the guide <https://rust-lang-nursery.github.io/cli-wg/>
 
-Upload your code by doing a PR here:
+Upload your code by submitting a PR here:
 <https://github.com/yvan-sraka/mypipe>
 
 Big Project
@@ -135,7 +135,7 @@ Big Project
 I will present during the next class the final project on which you will
 be evaluated. You're free to come with your idea of an alternative
 project if you have already in mind something that you want to code in
-Rust. I will accept any idea that could be reasonably doable by a group
+Rust. I will accept any ideas that could be reasonably doable by a group
 of 3 or 4 students (chosen randomly), that implies features specific to
 systems or networks programming (think about playing with binary
 encoding, intense computing with concurrent programming, low-level

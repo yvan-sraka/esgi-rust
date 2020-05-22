@@ -77,7 +77,7 @@ Lvl 1: Sort weel-known programming languages
 -   BourneShell \| Python \| Prel \| Ruby \| PHP \| ECMAScript (libs of
     these languages often rely on compiled code)
 
-Lvl 2: What `rustc` do (without lying in the details):
+Lvl 2: What `rustc` does (without lying in the details):
 ------------------------------------------------------
 
 Rust ⇨ Rust (without macro) ⇨ (module resolution) ⇨ (memory
@@ -112,7 +112,7 @@ We can have a taste of MIR / LLVM / ASM with <https://godbolt.org>
 Lvl 3: Foreign Function Interface (FFI)
 ---------------------------------------
 
-> **N.B.** the Book have a good section on the subject
+> **N.B.** the Book has a good section on the subject
 > <https://doc.rust-lang.org/book/ffi.html>
 
 Today we will try to:
