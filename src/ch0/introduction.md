@@ -1,7 +1,7 @@
 Introduction
 ============
 
-What's that? another Rust book?
+What's that? Another Rust book?
 -------------------------------
 
 I want to learn Rust, and what I want to do with is some system and
@@ -17,31 +17,31 @@ network programming (big topic indeed):
     project assignments in this book)!
 
 But this could be a bit harsh, the purpose of the course is to organize
-the knowledge of increasing difficulty. I try to give you a gentle
+the knowledge in increasing difficulty. I try to give you a gentle
 introduction to many general computer system concepts more than laying
 in implementation details.
 
 > ⚠️ This book comes from notes I take from the lectures I give in an
-> engineering school. This is a complete **Work In Progress**: some
-> chapter is just a bunch of links, some contain code from live coding I
+> engineering school. This is a **Work In Progress**: some
+> chapters are made of just a bunch of links, some contain code from live coding I
 > gave in class.
 >
 > I will try to progressively improve the content of it to a more
 > readable and agnostic form, intended to a public that has no previous
 > knowledge in Rust and only basis in computer systems, but that already
-> know at list one "low level" language, I thinking about C.
+> knows at least one "low level" language, I'm thinking about C.
 
 Knowledge in Linux systems is not required but would really help the
 interesting of the topics introduces after, even if I give a trick to
 get Rust on non-Unix machine, some parts of the courses are heavily
 Linux-oriented.
 
-Most of the course is organize around code example that I invite you to
+Most of the course is organized around code examples that I invite you to
 try on your personal computer.
 
-I have myslef a bias since I'm really into the programming language and
-compilation field, so we often take few detours to explain things works
-under the hood, even if it's more related to Rust mechanisms more than
+I have myself a bias since I'm really into the programming language and
+compilation field, so we often take few detours to explain how things works
+under the hood, even if it's related to Rust mechanisms more than
 system programming itself.
 
 Program of the next lectures
@@ -56,7 +56,7 @@ Program of the next lectures
 -   FFI, unsafe world (let's talk about "lifetimes") and the C runtime
     (stack & heap)
 -   Sockets & HTTP (finally, something fun for the last class)
--   WebAssembly (because why not ... maybe it will become a thing
+-   WebAssembly (why not ... maybe it will become a thing
     someday)
 -   Fast, safe & beyond (in place of a conclusion, general guidelines to
     improve our softwares)
@@ -64,7 +64,7 @@ Program of the next lectures
 Syscalls that every programmer should know
 ------------------------------------------
 
-Disclaimer: we have not enough time in class to talk about all
+Disclaimer: we don't have enough time in class to talk about all
 interesting syscalls, so I take the chance to give you here pills to go
 further by yourselves, the ultimate goals of this lecture is to show you
 everything about:
@@ -123,7 +123,7 @@ And frankly, ultimately, pick your poison:
 -   `perf_event_open`
 -   System Tap
 
-And for the bests, there are also the `sched` &`cgroups` ...
+And for the bests, there are also the `sched` & `cgroups` ...
 
 So a big program, that right know this lecture does not cover at all,
 but maybe at some point, it will :)
