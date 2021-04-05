@@ -1,3 +1,1 @@
-# Summary
-
-- [Chapter 1](./chapter_1.md)
+[Prerequisite](0_prerequisite.md)
