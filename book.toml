@@ -1,0 +1,6 @@
+[book]
+authors = ["Yvan Sraka"]
+language = "en"
+multilingual = false
+src = "src"
+title = "Dive into systems programming with Rust"
